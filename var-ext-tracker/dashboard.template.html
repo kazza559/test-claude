@@ -1,0 +1,486 @@
+<title>VAR · EXT TGE Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --page:#f2f4f7; --surface:#ffffff; --surface-2:#f7f8fa;
+  --ink:#0f1720; --ink-2:#4b5664; --muted:#838d99; --grid:#e4e8ec; --axis:#c7ced6;
+  --line:rgba(15,23,32,.10);
+  --var:#2a78d6; --var-wash:rgba(42,120,214,.12);
+  --ext:#eb6834; --ext-wash:rgba(235,104,52,.13);
+  --model:#4b5664;
+  --good:#0ca30c; --good-ink:#006300; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b;
+  --focus:#2a78d6;
+  --sans:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --page:#0b0f13; --surface:#141a20; --surface-2:#1a2129;
+    --ink:#eef2f5; --ink-2:#b6c0ca; --muted:#7e8995; --grid:#232b33; --axis:#36404a;
+    --line:rgba(255,255,255,.10);
+    --var:#3987e5; --var-wash:rgba(57,135,229,.18);
+    --ext:#d95926; --ext-wash:rgba(217,89,38,.2);
+    --model:#b6c0ca; --good-ink:#0ca30c; --focus:#3987e5;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#0b0f13; --surface:#141a20; --surface-2:#1a2129;
+  --ink:#eef2f5; --ink-2:#b6c0ca; --muted:#7e8995; --grid:#232b33; --axis:#36404a;
+  --line:rgba(255,255,255,.10);
+  --var:#3987e5; --var-wash:rgba(57,135,229,.18);
+  --ext:#d95926; --ext-wash:rgba(217,89,38,.2);
+  --model:#b6c0ca; --good-ink:#0ca30c; --focus:#3987e5;
+}
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:20px 48px;display:grid;gap:18px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-size:22px;font-weight:700;letter-spacing:-.01em}
+h2{font-size:16px;font-weight:600}
+h3{font-size:13px;font-weight:600;color:var(--ink-2)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--mono)}
+.num{font-variant-numeric:tabular-nums}
+a{color:inherit;text-decoration-color:var(--axis);text-underline-offset:2px}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+
+header.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between}
+header.top p{margin:4px 0 0;color:var(--ink-2);max-width:64ch}
+.fresh{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--ink-2)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:12px;white-space:nowrap}
+.dot{width:8px;height:8px;border-radius:50%;flex:none}
+
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.strip > div{background:var(--surface);padding:10px 14px;display:grid;gap:2px}
+.strip .k{font-size:12px;color:var(--ink-2)}
+.strip .v{font-size:17px;font-weight:600}
+.strip .s{font-size:12px;color:var(--muted)}
+
+.tokens{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:18px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:18px;min-width:0}
+.panel-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:start}
+.tname{display:flex;gap:10px;align-items:center}
+.tname .sw{width:12px;height:12px;border-radius:3px}
+.tname h2{font-size:18px}
+.tname .sub{font-size:12px;color:var(--ink-2)}
+.launch{display:grid;gap:6px;min-width:200px}
+.launch-row{display:grid;grid-template-columns:88px 1fr 44px;gap:8px;align-items:center;font-size:12px;color:var(--ink-2)}
+.meter{height:6px;border-radius:3px;background:var(--grid);overflow:hidden}
+.meter > i{display:block;height:100%;border-radius:3px}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hero .box{padding:12px 14px;border-radius:10px;background:var(--surface-2);display:grid;gap:2px}
+.hero .lab{font-size:12px;color:var(--ink-2);display:flex;gap:6px;align-items:center}
+.hero .big{font-size:30px;font-weight:700;letter-spacing:-.01em;line-height:1.15}
+.hero .rng{font-size:12px;color:var(--muted)}
+.gapnote{font-size:12px;color:var(--ink-2);margin:0}
+
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .cap{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline;margin-bottom:6px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.key-line{width:14px;height:2px;border-radius:1px;display:inline-block}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,.12);border-radius:8px;padding:8px 10px;font-size:12px;min-width:150px;z-index:5}
+.tip .d{color:var(--muted);font-family:var(--mono);font-size:11px;margin-bottom:4px}
+.tip .r{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.tip .r span:first-child{display:inline-flex;gap:6px;align-items:center;color:var(--ink-2)}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px}
+.tile .sub{font-size:12px;color:var(--muted)}
+.tile{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:2px;min-width:0}
+.tile .k{font-size:12px;color:var(--ink-2)}
+.tile .v{font-size:18px;font-weight:600}
+.tile .dl{font-size:12px;display:flex;gap:4px;align-items:center}
+.tile svg{width:100%;height:28px;display:block;margin-top:4px}
+.up{color:var(--good-ink)} .down{color:var(--crit)} .flat{color:var(--muted)}
+
+.signals{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.signals li{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;font-size:13px;color:var(--ink-2)}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:2px 7px;border-radius:5px;border:1px solid var(--line);white-space:nowrap;color:var(--ink)}
+.chip .dot{width:7px;height:7px}
+
+.calc{border-top:1px solid var(--line);padding-top:14px;display:grid;gap:10px}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.field{display:grid;gap:4px;font-size:12px;color:var(--ink-2)}
+.field input{font:inherit;font-size:14px;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:7px;padding:7px 9px;width:100%;font-variant-numeric:tabular-nums}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;width:fit-content;flex-wrap:wrap}
+.seg button{font:inherit;font-size:12px;border:0;background:transparent;color:var(--ink-2);padding:6px 10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.out{display:flex;gap:18px;flex-wrap:wrap;align-items:baseline}
+.out b{font-size:20px}
+.out .note{font-size:12px;color:var(--muted)}
+
+.section{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:12px;min-width:0}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--grid);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:500;color:var(--ink-2);font-size:12px}
+td{font-variant-numeric:tabular-nums}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px}
+.notes{margin:0;padding-left:18px;color:var(--ink-2);display:grid;gap:6px;max-width:80ch}
+details summary{cursor:pointer;color:var(--ink-2);font-size:13px}
+@media (max-width:560px){
+  .hero{grid-template-columns:1fr}
+  .hero .big{font-size:26px}
+  .launch{min-width:0;width:100%}
+}
+@media (prefers-reduced-motion:no-preference){ .meter>i{transition:width .4s ease} }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Theo dõi trước TGE · Perp DEX</div>
+      <h1>VAR · EXT TGE Watch</h1>
+      <p>FDV dự kiến ở mốc D+1 (24 giờ sau khi niêm yết) của Variational và Extended, so giữa kỳ vọng thị trường (Polymarket) và mô hình theo chỉ số hoạt động, cùng các chỉ báo thị trường cho đến ngày TGE.</p>
+    </div>
+    <div class="fresh">
+      <span class="pill" id="src-pill"><span class="dot" id="src-dot" style="background:var(--muted)"></span><span id="src-text">Bản chụp lúc xuất bản</span></span>
+      <span class="pill mono" id="upd">—</span>
+    </div>
+  </header>
+
+  <section class="strip" aria-label="Bối cảnh thị trường" id="mkt"></section>
+
+  <div class="tokens">
+    <article class="panel" id="p-var" aria-labelledby="h-var"></article>
+    <article class="panel" id="p-ext" aria-labelledby="h-ext"></article>
+  </div>
+
+  <div class="two">
+    <section class="section" aria-labelledby="h-peers">
+      <div><h2 id="h-peers">Các perp DEX đã TGE</h2><p class="gapnote">FDV mốc D+1 là mốc so sánh trực tiếp với hai dự báo ở trên.</p></div>
+      <div class="tbl-wrap"><table id="peers"></table></div>
+    </section>
+    <section class="section" aria-labelledby="h-calib">
+      <div><h2 id="h-calib">Hệ số hiệu chỉnh D+1</h2><p class="gapnote">FDV 24 giờ sau niêm yết chia cho chỉ số trung bình 30 ngày trước TGE. Mô hình lấy trung vị từng phương pháp rồi lấy trung vị chung.</p></div>
+      <div class="tbl-wrap"><table id="calib"></table></div>
+    </section>
+  </div>
+
+  <section class="section" aria-labelledby="h-method">
+    <h2 id="h-method">Cách đọc và giới hạn</h2>
+    <ul class="notes">
+      <li><b>Polymarket</b>: trung vị nội suy tuyến tính trên đường xác suất “FDV trên ___ một ngày sau khi ra mắt”. Đây không phải mức giá giao dịch trực tiếp và không phải trung bình theo xác suất.</li>
+      <li><b>Mô hình</b>: nhân chỉ số hiện tại (OI trung bình 30 ngày, TVL, volume 30 ngày, phí quy năm) với hệ số D+1 của LIT, EDGE, GRVT, BP. Chuỗi lịch sử của VAR chỉ dùng OI và volume vì TVL không có lịch sử; số hiện tại dùng mọi phương pháp có dữ liệu.</li>
+      <li>Không có hệ số điều chỉnh theo tâm lý thị trường: kiểm tra trên cùng token cho thấy hệ số định giá chỉ đổi khoảng 0,9–1,35 lần từ Fear sang Greed, dao động rất rộng.</li>
+      <li>Giá trị mỗi điểm là phép chia tỷ lệ thuận. VAR: phân bổ Genesis 32% đã xác nhận, tổng điểm là giả định. EXT: tỷ lệ và tổng điểm chưa được tài liệu chính thức xác nhận.</li>
+      <li>Sau TGE, FDV của LIT và EDGE còn 0,30–0,43 lần mốc D+1 sau 90 ngày, nhưng giai đoạn đó trùng lúc BTC giảm. Theo <a href="https://mementoresearch.com/state-of-2025-token-launches-year-in-review" target="_blank" rel="noopener">Memento Research</a>, 84,7% token ra mắt năm 2025 giao dịch dưới định giá TGE.</li>
+      <li>Nguồn: API Variational và Extended, DefiLlama (OI, TVL, phí, giá), CoinGecko (volume sàn), Polymarket, alternative.me (Fear &amp; Greed). Cập nhật mỗi ngày. Không phải lời khuyên đầu tư.</li>
+    </ul>
+    <details id="raw">
+      <summary>Bảng số liệu 14 ngày gần nhất</summary>
+      <div class="tbl-wrap" style="margin-top:10px"><table id="rawtbl"></table></div>
+    </details>
+  </section>
+</div>
+
+<script>
+const FALLBACK = /*__FALLBACK__*/null;
+
+const TOKENS = {
+  var: { key:"var", name:"Variational", sym:"VAR", color:"--var", wash:"--var-wash",
+         official:"Q4/2026 (thông báo chính thức)", launchPick:["October 31, 2026","November 30, 2026","December 31, 2026"],
+         alloc:32, allocNote:"đã xác nhận", points:9.9e6, pointsNote:"giả định: 9,15 triệu cuối Q3 + khoảng 150 nghìn/tuần",
+         rowPm:"v_pm", rowModel:"v_model", rowVol:"v_vol", rowOi:"v_oi" },
+  ext: { key:"ext", name:"Extended", sym:"EXT", color:"--ext", wash:"--ext-wash",
+         official:"Chưa công bố ngày", launchPick:["December 31, 2026"],
+         alloc:30, allocNote:"chưa xác nhận chính thức", points:70e6, pointsNote:"giả định: mức trần 70 triệu điểm",
+         rowPm:"e_pm", rowModel:"e_model", rowVol:"e_vol", rowOi:"e_oi" },
+};
+const PEER_D1 = [["LIT",2.714e9],["EDGE",0.665e9],["GRVT",0.262e9],["BP",0.199e9]];
+const METHOD_LABEL = {oi:"OI", tvl:"TVL", vol30:"Volume 30 ngày", fees:"Phí quy năm"};
+
+let STATE = { latest: FALLBACK ? FALLBACK.latest : null, rows: FALLBACK ? FALLBACK.rows : {}, live:false };
+
+/* ---------- formatting ---------- */
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function vn(x, d){ return x.toFixed(d).replace(".", ","); }
+function usd(x){
+  if (x == null || !isFinite(x)) return "—";
+  const a = Math.abs(x);
+  if (a >= 1e9) return "$" + vn(x/1e9, a >= 1e10 ? 1 : 2) + "B";
+  if (a >= 1e6) return "$" + vn(x/1e6, a >= 1e8 ? 0 : 1) + "M";
+  if (a >= 1e3) return "$" + vn(x/1e3, 0) + "K";
+  return "$" + vn(x, 2);
+}
+function pct(x, d=0){ return x == null || !isFinite(x) ? "—" : vn(x*100, d) + "%"; }
+function signed(x, d=0){ return x == null || !isFinite(x) ? "—" : (x>0?"+":"") + vn(x*100, d) + "%"; }
+function el(tag, attrs={}, html){ const e=document.createElement(tag); for (const [k,v] of Object.entries(attrs)) e.setAttribute(k,v); if (html!=null) e.innerHTML=html; return e; }
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function sortedRows(){
+  return Object.keys(STATE.rows||{}).sort().map(d => ({date:d, ...STATE.rows[d]}));
+}
+function avgOf(rows, key, from, to){
+  const v = rows.slice(from, to).map(r=>r[key]).filter(x=>x!=null && isFinite(x));
+  return v.length ? v.reduce((a,b)=>a+b,0)/v.length : null;
+}
+
+function pmLo(pm){ if (pm.p25) return usd(pm.p25); const pts = pm.points||[]; return pts.length? "< " + usd(pts[0][0]) : "—"; }
+
+/* ---------- storage (per-viewer convenience only) ---------- */
+function load(k, d){ try{ const v = localStorage.getItem("varext:"+k); return v==null? d : JSON.parse(v); }catch(e){ return d; } }
+function save(k, v){ try{ localStorage.setItem("varext:"+k, JSON.stringify(v)); }catch(e){} }
+
+/* ---------- market strip ---------- */
+function renderMarket(L){
+  const m = L.mkt || {};
+  const fedO = (m.fed||{}).fed_oct||{}, fedD = (m.fed||{}).fed_dec||{};
+  const fngColor = m.fng>=75? "--serious" : m.fng>=55? "--warn" : m.fng>=45? "--muted" : m.fng>=25? "--var" : "--crit";
+  const cells = [
+    ["BTC", m.btc? "$"+Math.round(m.btc).toLocaleString("vi-VN") : "—", "30 ngày: " + signed(m.btc30,1)],
+    ["Fear &amp; Greed", `<span class="dot" style="display:inline-block;background:var(${fngColor});margin-right:6px"></span>${m.fng ?? "—"}`, `${esc(m.fngLabel||"")} · TB 30 ngày ${m.fng30!=null? vn(m.fng30,0):"—"}`],
+    ["HYPE", m.hype? "$"+vn(m.hype,2) : "—", "Chỉ báo sức nóng nhóm perp DEX"],
+    ["Fed tháng 10: tăng 25bps", pct(fedO["25 bps increase"]), "Giữ nguyên " + pct(fedO["No change"])],
+    ["Fed tháng 12: tăng 25bps", pct(fedD["25 bps increase"]), "Giữ nguyên " + pct(fedD["No change"])],
+  ];
+  const s = document.getElementById("mkt"); s.innerHTML = "";
+  for (const [k,v,sub] of cells) s.append(el("div",{}, `<span class="k">${k}</span><span class="v">${v}</span><span class="s">${sub}</span>`));
+}
+
+/* ---------- range strip: where D+1 FDV lands (log scale) ---------- */
+function rangeStrip(T, L){
+  const W=560, H=146, padL=8, padR=8, axisY=120;
+  const lo=Math.log10(6e7), hi=Math.log10(6e9);
+  const x = v => padL + (Math.log10(Math.max(6e7,Math.min(6e9,v))) - lo)/(hi-lo)*(W-padL-padR);
+  const c = `var(${T.color})`, wash=`var(${T.wash})`;
+  const pm = L.pm||{}, mo = L.model||{methods:{}};
+  let g = "";
+  for (const t of [1e8,3e8,1e9,3e9]) {
+    g += `<line x1="${x(t)}" x2="${x(t)}" y1="36" y2="${axisY}" stroke="var(--grid)" stroke-width="1"/>`;
+    g += `<text x="${x(t)}" y="${axisY+16}" text-anchor="middle" font-size="10" font-family="var(--mono)" fill="var(--muted)">${usd(t)}</text>`;
+  }
+  // peer D+1 reference ticks with staggered labels
+  PEER_D1.forEach(([s,v],i)=>{
+    const yy = i%2 ? 26 : 13;
+    g += `<line x1="${x(v)}" x2="${x(v)}" y1="${yy+4}" y2="${axisY}" stroke="var(--axis)" stroke-width="1" opacity=".55"/>`;
+    g += `<text x="${x(v)}" y="${yy}" text-anchor="middle" font-size="10" font-family="var(--mono)" fill="var(--muted)">${s} ${usd(v)}</text>`;
+  });
+  g += `<line x1="${padL}" x2="${W-padR}" y1="${axisY}" y2="${axisY}" stroke="var(--axis)" stroke-width="1"/>`;
+  // model: one row per method (whisker = range across calibration tokens), then the model median
+  const meths = Object.entries(mo.methods||{});
+  meths.forEach(([k,m],i)=>{
+    const yy = 44 + i*10;
+    g += `<line x1="${x(m.low)}" x2="${x(m.high)}" y1="${yy}" y2="${yy}" stroke="var(--model)" stroke-width="1" opacity=".45"/>`;
+    g += `<circle cx="${x(m.mid)}" cy="${yy}" r="4" fill="var(--model)" stroke="var(--surface)" stroke-width="2"><title>${METHOD_LABEL[k]}: ${usd(m.mid)} (khoảng ${usd(m.low)} – ${usd(m.high)})</title></circle>`;
+  });
+  const my = 44 + Math.max(meths.length,1)*10 + 4;
+  if (mo.median) g += `<rect x="${x(mo.median)-5}" y="${my-5}" width="10" height="10" transform="rotate(45 ${x(mo.median)} ${my})" fill="var(--model)" stroke="var(--surface)" stroke-width="2"><title>Mô hình trung vị ${usd(mo.median)}</title></rect>`;
+  // Polymarket IQR band + median
+  const py = axisY - 12;
+  const p25 = pm.p25 || ((pm.points||[])[0]||[])[0];
+  if (p25 && pm.p75) g += `<rect x="${x(p25)}" y="${py-5}" width="${Math.max(2,x(pm.p75)-x(p25))}" height="10" rx="4" fill="${wash}"><title>Polymarket P25–P75: ${pmLo(pm)} – ${usd(pm.p75)}</title></rect>`;
+  if (pm.median) g += `<circle cx="${x(pm.median)}" cy="${py}" r="6" fill="${c}" stroke="var(--surface)" stroke-width="2"><title>Polymarket trung vị ${usd(pm.median)}</title></circle>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Vị trí FDV D+1 dự kiến của ${T.sym} trên thang log, so với các TGE trước">${g}</svg>`;
+}
+
+/* ---------- history line chart with crosshair ---------- */
+function lineChart(host, T, rows){
+  const W=560, H=200, pl=48, pr=12, pt=10, pb=24;
+  const data = rows.filter(r => r[T.rowPm]!=null || r[T.rowModel]!=null);
+  if (data.length < 2){ host.innerHTML = `<p class="gapnote">Chưa đủ dữ liệu lịch sử.</p>`; return; }
+  const ys = data.flatMap(r=>[r[T.rowPm], r[T.rowModel]]).filter(v=>v!=null);
+  const yMax = niceMax(Math.max(...ys)*1.08);
+  const X = i => pl + i/(data.length-1)*(W-pl-pr);
+  const Y = v => pt + (1 - v/yMax)*(H-pt-pb);
+  const ticks = [0, yMax/4, yMax/2, yMax*3/4, yMax];
+  let g = "";
+  ticks.forEach(t=>{ g += `<line x1="${pl}" x2="${W-pr}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--grid)" stroke-width="1"/><text x="${pl-6}" y="${Y(t)+3}" text-anchor="end" font-size="10" font-family="var(--mono)" fill="var(--muted)">${usd(t)}</text>`; });
+  const months = [];
+  data.forEach((r,i)=>{ if (r.date.endsWith("-01")) months.push(i); });
+  if (!months.length || X(months[0]) - X(0) > 44) months.unshift(0);
+  months.forEach(i=>{ const d=data[i].date; g += `<text x="${X(i)}" y="${H-6}" text-anchor="${i===0?"start":"middle"}" font-size="10" font-family="var(--mono)" fill="var(--muted)">${d.slice(5,7)}/${d.slice(2,4)}</text>`; });
+  const path = key => { let s="", on=false; data.forEach((r,i)=>{ const v=r[key]; if (v==null){ on=false; return; } s += (on?"L":"M") + X(i).toFixed(1)+","+Y(v).toFixed(1); on=true; }); return s; };
+  const lastIdx = key => { for (let i=data.length-1;i>=0;i--) if (data[i][key]!=null) return i; return -1; };
+  g += `<path d="${path(T.rowModel)}" fill="none" stroke="var(--model)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  g += `<path d="${path(T.rowPm)}" fill="none" stroke="var(${T.color})" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  for (const [key,col] of [[T.rowModel,"var(--model)"],[T.rowPm,`var(${T.color})`]]) {
+    const i = lastIdx(key); if (i<0) continue;
+    g += `<circle cx="${X(i)}" cy="${Y(data[i][key])}" r="4" fill="${col}" stroke="var(--surface)" stroke-width="2"/>`;
+  }
+  g += `<line id="xh-${T.key}" x1="0" x2="0" y1="${pt}" y2="${H-pb}" stroke="var(--axis)" stroke-width="1" visibility="hidden"/>`;
+  g += `<rect x="${pl}" y="${pt}" width="${W-pl-pr}" height="${H-pt-pb}" fill="transparent" id="hit-${T.key}" style="cursor:crosshair"/>`;
+  host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Lịch sử FDV D+1 dự kiến của ${T.sym}: Polymarket và mô hình">${g}</svg><div class="tip" hidden></div>`;
+  const svg = host.querySelector("svg"), tip = host.querySelector(".tip"), xh = host.querySelector(`#xh-${T.key}`), hit = host.querySelector(`#hit-${T.key}`);
+  const move = ev => {
+    const r = svg.getBoundingClientRect(); const sx = (ev.clientX - r.left) / r.width * W;
+    const i = Math.max(0, Math.min(data.length-1, Math.round((sx-pl)/(W-pl-pr)*(data.length-1))));
+    const d = data[i]; xh.setAttribute("x1", X(i)); xh.setAttribute("x2", X(i)); xh.setAttribute("visibility","visible");
+    tip.innerHTML = `<div class="d">${d.date}</div>
+      <div class="r"><span><i class="key-line" style="background:var(${T.color})"></i>Polymarket</span><b class="num">${usd(d[T.rowPm])}</b></div>
+      <div class="r"><span><i class="key-line" style="background:var(--model)"></i>Mô hình</span><b class="num">${usd(d[T.rowModel])}</b></div>`;
+    tip.hidden = false;
+    const px = X(i)/W*r.width; const tw = tip.offsetWidth;
+    tip.style.left = Math.min(r.width - tw, Math.max(0, px + 12 > r.width - tw ? px - tw - 12 : px + 12)) + "px";
+    tip.style.top = "8px";
+  };
+  hit.addEventListener("pointermove", move);
+  hit.addEventListener("pointerleave", ()=>{ tip.hidden = true; xh.setAttribute("visibility","hidden"); });
+}
+function niceMax(v){ const p = Math.pow(10, Math.floor(Math.log10(v))); for (const m of [1,1.5,2,2.5,3,4,5,6,8,10]) if (m*p >= v) return m*p; return 10*p; }
+
+/* ---------- sparkline tile ---------- */
+function spark(values, color){
+  const v = values.filter(x=>x!=null); if (v.length<2) return "";
+  const W=160,H=28, mn=Math.min(...v), mx=Math.max(...v), rg=(mx-mn)||1;
+  const pts = v.map((y,i)=>[i/(v.length-1)*(W-4)+2, H-3-(y-mn)/rg*(H-6)]);
+  const d = pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+","+p[1].toFixed(1)).join("");
+  const last = pts[pts.length-1];
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><path d="${d} L${W-2},${H} L2,${H} Z" fill="var(${color}-wash)" opacity=".9"/><path d="${d}" fill="none" stroke="var(${color})" stroke-width="1.5" vector-effect="non-scaling-stroke"/><circle cx="${last[0]}" cy="${last[1]}" r="2.5" fill="var(${color})"/></svg>`;
+}
+function tile(label, value, deltaTxt, deltaDir, sparkSvg, sub){
+  const cls = deltaDir>0? "up" : deltaDir<0? "down" : "flat";
+  const arrow = deltaDir>0? "▲" : deltaDir<0? "▼" : "■";
+  return `<div class="tile"><span class="k">${label}</span><span class="v">${value}</span>${deltaTxt? `<span class="dl ${cls}"><span aria-hidden="true">${arrow}</span>${deltaTxt}</span>`:""}${sub? `<span class="sub">${sub}</span>`:""}${sparkSvg||""}</div>`;
+}
+
+/* ---------- token panel ---------- */
+function renderToken(T){
+  const L = (STATE.latest||{})[T.key]; const host = document.getElementById("p-"+T.key);
+  if (!L){ host.innerHTML = `<p>Chưa có dữ liệu.</p>`; return; }
+  const rows = sortedRows(); const n = rows.length;
+  const pm = L.pm||{}, mo = L.model||{};
+  // launch probabilities
+  const launch = (L.launch||[]).filter(x=>T.launchPick.includes(x.label)).sort((a,b)=>T.launchPick.indexOf(a.label)-T.launchPick.indexOf(b.label));
+  const monthVN = s => { const [m,d,y] = s.replace(",","").split(" "); const mm = {January:"01",February:"02",March:"03",April:"04",May:"05",June:"06",July:"07",August:"08",September:"09",October:"10",November:"11",December:"12"}[m]; return `trước ${d}/${mm}`; };
+  const launchHtml = launch.map(x=>`<div class="launch-row"><span>${monthVN(x.label)}</span><span class="meter" role="img" aria-label="${pct(x.p)}"><i style="width:${(x.p||0)*100}%;background:var(${T.color})"></i></span><span class="num mono" style="text-align:right">${pct(x.p)}</span></div>`).join("");
+  // signals
+  const volKey = T.rowVol, oiKey = T.rowOi;
+  const v7 = avgOf(rows, volKey, n-7, n), v30 = avgOf(rows, volKey, n-30, n);
+  const oi7 = avgOf(rows, oiKey, n-7, n), oi30 = avgOf(rows, oiKey, n-30, n);
+  const pmNow = avgOf(rows, T.rowPm, n-1, n), pm7 = avgOf(rows, T.rowPm, n-8, n-7);
+  const volMom = v7 && v30 ? v7/v30-1 : null;
+  const gap = pm.median && mo.median ? pm.median/mo.median : null;
+  const sig = [];
+  if (volMom!=null) sig.push([volMom>0.15? ["--warn","Tăng tốc"] : volMom<-0.15? ["--var","Hạ nhiệt"] : ["--muted","Ổn định"],
+    `Volume 7 ngày so với 30 ngày: <b class="num">${signed(volMom)}</b>. ${volMom>0.15? "Volume dồn lên trước TGE thường giảm mạnh sau đó (LIT, EDGE, BP giảm khoảng 70%).":"Volume tăng hay giảm trước TGE ảnh hưởng tới mức sụt sau TGE."}`]);
+  if (gap!=null) sig.push([gap>1.6||gap<0.6? ["--serious","Lệch lớn"] : ["--good","Gần nhau"],
+    `Polymarket bằng <b class="num">${vn(gap,2)} lần</b> mô hình. ${gap>1.6? "Phần chênh là premium cho VC và narrative mà chỉ số hoạt động chưa phản ánh.":"Hai nguồn ước lượng đang khá thống nhất."}`]);
+  if (pmNow && pm7) { const ch = pmNow/pm7-1; sig.push([Math.abs(ch)>0.1? ["--warn","Biến động"] : ["--muted","Ít đổi"], `Trung vị Polymarket 7 ngày: <b class="num">${signed(ch)}</b> (${usd(pm7)} → ${usd(pmNow)}).`]); }
+  if (oi7 && oi30) { const ch = oi7/oi30-1; sig.push([ch>0.1? ["--good","Tăng"] : ch<-0.1? ["--crit","Giảm"] : ["--muted","Ổn định"], `OI 7 ngày so với 30 ngày: <b class="num">${signed(ch)}</b>. OI khó làm giả hơn volume.`]); }
+  const sigHtml = sig.map(([[c,label],txt])=>`<li><span class="chip"><span class="dot" style="background:var(${c})"></span>${label}</span><span>${txt}</span></li>`).join("");
+  // tiles
+  const last90 = rows.slice(-90);
+  const tiles = [];
+  const share = T.key==="var" ? `${pct(L.tradfiShare)} từ TradFi` : `${pct(L.rwaShare)} từ RWA`;
+  tiles.push(tile("Volume 24 giờ", usd(L.vol24), volMom!=null? `7N/30N ${signed(volMom)}`:"", volMom==null?0:Math.sign(volMom), spark(last90.map(r=>r[volKey]), T.color), share));
+  tiles.push(tile("Open interest", usd(L.oi), oi7&&oi30? `7N/30N ${signed(oi7/oi30-1)}`:"", oi7&&oi30? Math.sign(oi7/oi30-1):0, spark(last90.map(r=>r[oiKey]), T.color), "trung bình 30N " + usd(L.oi30)));
+  tiles.push(tile("TVL", usd(L.tvl), "", 0, T.key==="ext"? spark(last90.map(r=>r.e_tvl), T.color) : "", T.key==="var" ? `${L.markets} thị trường · spread ${vn(L.spreadBps||0,2)} bps` : `${L.markets} thị trường`));
+  if (T.key==="ext") tiles.push(tile("Phí 30 ngày", usd(L.fees30), "", 0, spark(last90.map(r=>r.e_fee), T.color), `quy năm ${usd(L.feesAnn)}`));
+  const listing = T.key==="ext" && L.listing ? `<div><h3>Niêm yết trong 30 ngày sau TGE (Polymarket)</h3><div class="launch" style="margin-top:6px">${L.listing.map(x=>`<div class="launch-row"><span>${esc(x.label)}</span><span class="meter"><i style="width:${(x.p||0)*100}%;background:var(${T.color})"></i></span><span class="num mono" style="text-align:right">${pct(x.p)}</span></div>`).join("")}</div></div>` : "";
+
+  host.innerHTML = `
+    <div class="panel-head">
+      <div class="tname"><span class="sw" style="background:var(${T.color})"></span><div><h2 id="h-${T.key}">${T.name} <span class="mono" style="color:var(--muted);font-weight:500">${T.sym}</span></h2><div class="sub">TGE: ${T.official}</div></div></div>
+      <div class="launch"><div class="eyebrow">Xác suất TGE (Polymarket)</div>${launchHtml}</div>
+    </div>
+    <div class="hero">
+      <div class="box"><span class="lab"><span class="dot" style="background:var(${T.color})"></span>Polymarket · trung vị D+1</span><span class="big">${usd(pm.median)}</span><span class="rng">P25–P75: ${pmLo(pm)} – ${usd(pm.p75)}</span></div>
+      <div class="box"><span class="lab"><span class="dot" style="background:var(--model)"></span>Mô hình · trung vị D+1</span><span class="big">${usd(mo.median)}</span><span class="rng">${Object.entries(mo.methods||{}).map(([k,m])=>`${METHOD_LABEL[k]} ${usd(m.mid)}`).join(" · ")}</span></div>
+    </div>
+    <div class="chart">
+      <div class="cap"><h3>FDV D+1 đặt cạnh các TGE trước (thang log)</h3>
+        <div class="legend"><span><span class="dot" style="background:var(${T.color})"></span>Polymarket, dải P25–P75</span><span><i style="width:9px;height:9px;background:var(--model);transform:rotate(45deg);display:inline-block"></i>Mô hình</span><span><span class="dot" style="background:var(--model);width:7px;height:7px"></span>Từng phương pháp</span></div></div>
+      ${rangeStrip(T, L)}
+    </div>
+    <div class="chart" id="lc-${T.key}-wrap">
+      <div class="cap"><h3>Diễn biến dự báo theo ngày</h3>
+        <div class="legend"><span><i class="key-line" style="background:var(${T.color})"></i>Polymarket</span><span><i class="key-line" style="background:var(--model)"></i>Mô hình${T.key==="var"? " (OI + volume)":""}</span></div></div>
+      <div id="lc-${T.key}"></div>
+    </div>
+    <div class="tiles">${tiles.join("")}</div>
+    <div><h3 style="margin-bottom:8px">Tín hiệu cần để ý</h3><ul class="signals">${sigHtml}</ul></div>
+    ${listing}
+    <div class="calc" id="calc-${T.key}"></div>
+  `;
+  lineChart(document.getElementById("lc-"+T.key), T, rows);
+  renderCalc(T, L);
+}
+
+/* ---------- points calculator ---------- */
+function renderCalc(T, L){
+  const host = document.getElementById("calc-"+T.key);
+  const st = Object.assign({src:"pm", custom:"", alloc:T.alloc, total:T.points/1e6, mine:""}, load("calc-"+T.key, {}));
+  const fdvOf = () => st.src==="pm"? (L.pm||{}).median : st.src==="model"? (L.model||{}).median : (parseFloat(String(st.custom).replace(",", "."))||0)*1e9;
+  host.innerHTML = `
+    <h3>Ước tính giá trị điểm</h3>
+    <div class="seg" role="group" aria-label="Chọn FDV">
+      <button type="button" data-src="pm" aria-pressed="${st.src==="pm"}">Polymarket ${usd((L.pm||{}).median)}</button>
+      <button type="button" data-src="model" aria-pressed="${st.src==="model"}">Mô hình ${usd((L.model||{}).median)}</button>
+      <button type="button" data-src="custom" aria-pressed="${st.src==="custom"}">Tự nhập</button>
+    </div>
+    <div class="calc-grid">
+      <label class="field" for="c-${T.key}-custom">FDV tự nhập (tỷ USD)<input id="c-${T.key}-custom" inputmode="decimal" value="${esc(st.custom)}" placeholder="vd 1,1"></label>
+      <label class="field" for="c-${T.key}-alloc">Phân bổ cho điểm (%) · ${T.allocNote}<input id="c-${T.key}-alloc" inputmode="decimal" value="${st.alloc}"></label>
+      <label class="field" for="c-${T.key}-total">Tổng điểm đủ điều kiện (triệu)<input id="c-${T.key}-total" inputmode="decimal" value="${st.total}"></label>
+      <label class="field" for="c-${T.key}-mine">Điểm của bạn<input id="c-${T.key}-mine" inputmode="decimal" value="${esc(st.mine)}" placeholder="vd 1250"></label>
+    </div>
+    <div class="out" aria-live="polite"><span>Giá trị mỗi điểm <b class="num" id="c-${T.key}-pp">—</b></span><span>Phần của bạn <b class="num" id="c-${T.key}-val">—</b></span><span class="note">${T.pointsNote}. Chưa tính lọc sybil, tier hay referral.</span></div>`;
+  const num = v => parseFloat(String(v).replace(/\s/g,"").replace(",", "."));
+  const recalc = () => {
+    const fdv = fdvOf(), a = num(st.alloc)/100, N = num(st.total)*1e6, mine = num(st.mine);
+    const pp = fdv && a && N ? fdv*a/N : null;
+    host.querySelector(`#c-${T.key}-pp`).textContent = pp? "$"+vn(pp, pp<10?2:1) : "—";
+    host.querySelector(`#c-${T.key}-val`).textContent = pp && mine? usd(pp*mine) : "—";
+    save("calc-"+T.key, st);
+  };
+  host.querySelectorAll("[data-src]").forEach(b=>b.addEventListener("click", ()=>{ st.src=b.dataset.src; host.querySelectorAll("[data-src]").forEach(x=>x.setAttribute("aria-pressed", String(x===b))); recalc(); }));
+  for (const f of ["custom","alloc","total","mine"]) host.querySelector(`#c-${T.key}-${f}`).addEventListener("input", e=>{ st[f]=e.target.value; if (f==="custom" && e.target.value){ st.src="custom"; host.querySelectorAll("[data-src]").forEach(x=>x.setAttribute("aria-pressed", String(x.dataset.src==="custom"))); } recalc(); });
+  recalc();
+}
+
+/* ---------- tables ---------- */
+function renderPeers(L){
+  const t = document.getElementById("peers");
+  const rows = (L.peers||[]).map(p=>`<tr><td><b>${p.sym}</b></td><td class="mono">${p.tge.slice(8,10)}/${p.tge.slice(5,7)}/${p.tge.slice(2,4)}</td><td>${usd(p.d1)}</td><td>${usd(p.fdv)}</td><td class="${p.d1&&p.fdv? (p.fdv>=p.d1?"up":"down"):""}">${p.d1&&p.fdv? vn(p.fdv/p.d1,2)+"×":"—"}</td><td class="${p.ch30>0?"up":p.ch30<0?"down":""}">${p.ch30!=null? (p.ch30>0?"+":"")+vn(p.ch30,0)+"%":"—"}</td></tr>`).join("");
+  t.innerHTML = `<thead><tr><th>Token</th><th>TGE</th><th>FDV D+1</th><th>FDV hiện tại</th><th>So với D+1</th><th>30 ngày</th></tr></thead><tbody>${rows}</tbody>`;
+}
+function renderCalib(L){
+  const c = L.calib||{}; const toks = ["LIT","EDGE","GRVT","BP"];
+  const fmt = (k,v) => v==null? "—" : k==="vol30"? vn(v,4) : vn(v,2)+"×";
+  const med = a => { const s=[...a].sort((x,y)=>x-y); const m=s.length>>1; return s.length? (s.length%2? s[m] : (s[m-1]+s[m])/2) : null; };
+  const rows = Object.entries(c).map(([k,obj])=>`<tr><td>FDV / ${METHOD_LABEL[k]}</td>${toks.map(tk=>`<td>${fmt(k,obj[tk])}</td>`).join("")}<td><b>${fmt(k, med(Object.values(obj)))}</b></td></tr>`).join("");
+  document.getElementById("calib").innerHTML = `<thead><tr><th>Phương pháp</th>${toks.map(t=>`<th>${t}</th>`).join("")}<th>Trung vị</th></tr></thead><tbody>${rows}</tbody>`;
+}
+function renderRaw(){
+  const r = sortedRows().slice(-14).reverse();
+  const cols = [["date","Ngày"],["v_pm","VAR Polymarket"],["v_model","VAR mô hình"],["v_vol","VAR volume"],["v_oi","VAR OI"],["e_pm","EXT Polymarket"],["e_model","EXT mô hình"],["e_vol","EXT volume"],["e_oi","EXT OI"],["btc","BTC"],["fng","F&G"]];
+  document.getElementById("rawtbl").innerHTML = `<thead><tr>${cols.map(c=>`<th>${c[1]}</th>`).join("")}</tr></thead><tbody>${r.map(x=>`<tr>${cols.map(([k])=>`<td>${k==="date"? x[k] : k==="fng"? (x[k]??"—") : usd(x[k])}</td>`).join("")}</tr>`).join("")}</tbody>`;
+}
+
+function renderAll(){
+  const L = STATE.latest;
+  if (!L) return;
+  const u = L.updatedAt ? L.updatedAt.replace("T"," ").slice(0,16) + " UTC" : "—";
+  document.getElementById("upd").textContent = "Cập nhật " + u;
+  document.getElementById("src-text").textContent = STATE.live ? "Dữ liệu trực tiếp" : "Bản chụp lúc xuất bản";
+  document.getElementById("src-dot").style.background = STATE.live ? "var(--good)" : "var(--muted)";
+  renderMarket(L); renderToken(TOKENS.var); renderToken(TOKENS.ext); renderPeers(L); renderCalib(L); renderRaw();
+}
+
+renderAll();
+
+/* ---------- live data from the artifact database ---------- */
+(async () => {
+  let db = null;
+  try { db = await window.claude?.use?.("db"); } catch(e) { db = null; }
+  if (!db) return;
+  let gotLatest = false, gotRows = false;
+  db.doc("state/latest").onSnapshot(s => {
+    if (!s.exists) return;
+    STATE.latest = s.data(); gotLatest = true; STATE.live = gotLatest; renderAll();
+  }, () => {});
+  db.doc("series/daily").onSnapshot(s => {
+    if (!s.exists) return;
+    const d = s.data(); STATE.rows = d.rows || {}; gotRows = true; if (gotLatest) renderAll();
+  }, () => {});
+})();
+</script>
