@@ -6,6 +6,7 @@ Usage:
   python3 scan.py --size 20000 --hold 24    # override size per leg / holding time (hours)
   python3 scan.py --only AAPL,TSLA,XAG      # restrict to these tickers (Variational symbols)
   python3 scan.py --all                     # also list pairs that are not tradable right now
+  python3 scan.py --any                     # scan every pair, not only the listed ones (config listed_only)
   python3 scan.py --exit AAPL:short-var     # cost of closing an open hedge now (short-var = short on VAR, long on EXT)
   python3 scan.py --json                    # machine-readable output
   python3 scan.py --log spreads.csv         # append one row per pair (build your own time-of-day stats)
@@ -400,6 +401,7 @@ def main():
     ap.add_argument("--top", type=int)
     ap.add_argument("--only", help="comma-separated tickers")
     ap.add_argument("--all", action="store_true", help="also show pairs that are not tradable now")
+    ap.add_argument("--any", action="store_true", help="scan every matched pair, not only tickers in var_points_per_m")
     ap.add_argument("--exit", help="TICKER:long-var|short-var[,...] cost of closing an open hedge now")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--log", help="append a CSV snapshot to this file")
@@ -414,6 +416,8 @@ def main():
 
     pairs = load(cfg)
     only = {t.strip().upper() for t in (a.only or "").split(",") if t.strip()}
+    if not only and cfg.get("listed_only") and not a.any:
+        only = {t.upper() for t in cfg["var_points_per_m"]}
     if a.exit:
         only |= {s.split(":")[0].strip().upper() for s in a.exit.split(",")}
     excl = {t.upper() for t in cfg["exclude"]}

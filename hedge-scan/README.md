@@ -8,6 +8,7 @@ python3 hedge-scan/scan.py                          # top 10, $15k/chân, giữ 
 python3 hedge-scan/scan.py --size 20000 --hold 24   # đổi size mỗi chân / thời gian giữ
 python3 hedge-scan/scan.py --only AAPL,TSLA,XAG     # chỉ xét vài mã (ticker Variational)
 python3 hedge-scan/scan.py --all                    # hiện cả cặp đang không giao dịch được
+python3 hedge-scan/scan.py --any                    # quét mọi cặp, không chỉ 7 mã trong list
 python3 hedge-scan/scan.py --exit AAPL:short-var    # đang SHORT VAR/LONG EXT: đóng bây giờ tốn bao nhiêu?
 python3 hedge-scan/scan.py --json                   # xuất JSON
 python3 hedge-scan/scan.py --log spreads.csv        # ghi snapshot để tự thống kê giờ nào rẻ nhất
@@ -83,6 +84,7 @@ vào lệnh theo chiều có lợi, rồi dùng `--exit` để đóng khi basis 
 | `aliases`, `proxies` | Map ticker EXT → VAR (proxy = tài sản khác nhưng tương quan, vd SPX500m ↔ US500) |
 | `max_price_diff` | Lệch giá tối đa để coi là cùng tài sản (loại các mã trùng tên khác công ty) |
 | `max_quote_age_s`, `min_var_volume_24h`, `vol_spike_ratio` | Ngưỡng cảnh báo |
-| `exclude` | Mã không muốn xét |
+| `listed_only` | `true`: chỉ quét các mã trong `var_points_per_m` (list đã xác minh); `--any` để quét hết |
+| `exclude` | Mã không muốn xét (đang loại `CL`) |
 
 Không phải lời khuyên đầu tư.

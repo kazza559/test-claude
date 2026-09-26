@@ -7,6 +7,7 @@
     "AMZN": 50, "MSTR": 50, "AAPL": 50, "TSLA": 50, "MSFT": 50, "XAG": 50, "BZ": 50
   },
   "var_points_default": 50,
+  "listed_only": true,
   "points_boost": 0.0,
   "ext_points_per_m": 0,
 
@@ -22,5 +23,5 @@
   "max_quote_age_s": 900,
   "min_var_volume_24h": 50000,
   "vol_spike_ratio": 2.0,
-  "exclude": []
+  "exclude": ["CL"]
 }

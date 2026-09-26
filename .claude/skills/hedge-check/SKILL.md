@@ -8,6 +8,8 @@ description: Suggest which TradFi pair to open as a delta-neutral hedge between 
    - holding time in hours: `--hold 24`
    - specific tickers: `--only AAPL,XAG`
    - an open position to close: `--exit AAPL:short-var` (short-var = short on Variational, long on Extended)
+   By default only the user's listed tickers are scanned (`listed_only` + `var_points_per_m` in config; CL excluded).
+   Add `--all` so closed listed pairs still show; use `--any` only if the user asks to look beyond the list.
    If the user gives a size range, also run the two ends (`--size 10000`, `--size 20000`) and say which is cheaper per point.
 2. Reply in Vietnamese, short:
    - the pick: ticker, which side on which exchange (e.g. "SHORT AAPL trên Variational + LONG AAPL_24_5 trên Extended"), size,
