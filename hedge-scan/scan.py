@@ -221,7 +221,8 @@ def evaluate(p, n, hold, cfg, now):
     if float(v["volume_24h"]) < cfg["min_var_volume_24h"]:
         flags.add("var_illiquid")
     if not p["bids"] or not p["asks"]:
-        flags.add("no_data")
+        if not flags & HARD:  # books are not fetched for markets already known to be untradable
+            flags.add("no_data")
         return dict(pair=p, flags=flags, n=n)
 
     exp, fee = cfg["var_size_curve_exp"], cfg["ext_taker_fee"] * 1e4
