@@ -1,0 +1,26 @@
+{
+  "size_usd": 15000,
+  "hold_hours": 8,
+  "top": 10,
+
+  "var_points_per_m": {
+    "AMZN": 50, "MSTR": 50, "AAPL": 50, "TSLA": 50, "MSFT": 50, "XAG": 50, "BZ": 50
+  },
+  "var_points_default": 50,
+  "points_boost": 0.0,
+  "ext_points_per_m": 0,
+
+  "ext_taker_fee": 0.0001,
+  "ext_maker_fee": 0.0,
+
+  "var_size_curve_exp": 0.6,
+  "leg_delay_s": 10,
+
+  "aliases": {"XBR": "BZ", "WTI": "CL", "XNG": "NATGAS", "XCU": "COPPER"},
+  "proxies": {"SPX500m": "US500", "TECH100m": "QQQ"},
+  "max_price_diff": 0.015,
+  "max_quote_age_s": 900,
+  "min_var_volume_24h": 50000,
+  "vol_spike_ratio": 2.0,
+  "exclude": []
+}
