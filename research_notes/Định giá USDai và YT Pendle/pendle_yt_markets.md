@@ -164,6 +164,22 @@ Breakeven per unit if locked (scaled by old/new multiplier):
 | USDai-Feb | 5.13e-6 (to maturity) or 4.65e-5 (Season 2 only) |
 | sUSDai-Feb | 4.32e-6 (to maturity) or 3.92e-5 (Season 2 only) |
 
+**Coordinator-requested check at sUSDai net APY 7.2%** (coordinator's end-Aug-2026 figure). The share price of 1.1153 matches Pendle `conversionRate` 1.1153153902. My Pendle data shows underlyingApy of 8.62% on 2026-08-31; DefiLlama's 30d mean is 7.11%.
+
+| Market | Yield per YT after fee | Yield per $1,000 | Loss excl. points | Net cost per YT | Breakeven per unit |
+|---|---|---|---|---|---|
+| YT-sUSDai-Oct | 0.95 × ((1.072)^(16.5076/365) − 1) = 0.002992 | $570.25 | −$429.75 | 0.002255 USDai | $1.198e-5 |
+| YT-sUSDai-Feb | 0.027444 | $667.33 | −$332.67 | 0.013681 | $7.270e-5 (Season 2 only) or $8.027e-6 (to maturity) |
+
+(Arithmetic: 190,546 × 0.002992 × 1.00027 for sUSDai-Oct.)
+
+**Short-window summary (~16.5 days to the Oct-14/15 maturity)**
+
+| YT | Share of price that is points cost | Share returned as yield-back |
+|---|---|---|
+| YT-USDai-Oct | 100% | 0% |
+| YT-sUSDai-Oct | ~40% (at 7.575% APY) to ~43% (at 7.2% APY) | ~57–60% |
+
 ### Inferences
 - The market is efficient between the Oct pairs. The implied price per point-unit is $1.103e-5 for USDai-YT and $1.118e-5 for sUSDai-YT, within 1.4%, so neither Oct YT is clearly "cheaper" for points. USDai-YT has no yield risk but gives zero residual value. sUSDai-YT returns ~60% as yield but carries sUSDai APY and loan-default risk; a ±1.5 pp APY swing moves the per-$1,000 result by about ±$110.
 - The Feb-2027 YTs price points at ~$7.2–8.2e-6 per unit *if* accrual continues after Oct 14. That is ~26–35% cheaper than the Oct YTs, which is consistent with the market pricing some probability that a post-Season-2 program continues at similar rates. If Season 2 is the last program, Feb YT buyers overpay by ~6–7x per point.
@@ -354,6 +370,8 @@ Pendle streams points to YT; PT earns none, so LP earns only on its non-PT (SY) 
 - No explicit cap on Pendle points or per-wallet points was found. The practical constraint is the unknown total Allo supply that the Season 2 CHIP pool is divided among.
 
 ### Gaps
+- **Points on post-Oct-14 maturities (Feb-2027 YTs) are NOT guaranteed.** The USD.AI rewards page does list Allo rates for YT-USDai-24FEB (25x buy / 40x lock) and YT-sUSDai-24FEB (12x / 20x) — [USD.AI rewards](https://app.usd.ai/rewards). But the only official program dates found say Season 2 "runs through October 14, 2026" — [USD.AI "$CHIP Is Live"](https://usd.ai/insights/chip-is-live). I found no statement that accrual (or a CHIP payout) continues for these positions after Oct 14. A Feb-2027 YT buyer is betting on a Season 3 or extension, or else earns only ~16.5 days of Season 2 points plus sUSDai yield.
+- The Season 2 multiplier *is* shown: Pendle's API `points` field shows 25 (USDai) and 12 (sUSDai) for both the Oct and Feb markets, the same as the USD.AI app's "Buy YT" rates.
 - No official Season 2 CHIP pool size and no Season 3 announcement were found. The Medium article "Season 2 Points" returned HTTP 403. The Allo Google Sheet (master multiplier sheet) was not accessible.
 - The exact Allo unit (Allo per $ per day at 1x) was not confirmed.
 - It is unknown whether Season 2 points are claimable/airdropped immediately after October 14 or vest.
