@@ -113,6 +113,34 @@ Across ~20 stablecoin/yield-dollar programs, the first-season airdrop was typica
 - **[EST] S1 airdrop value** = 300M × $0.03 = $9.0M at the ICO price; ×$0.1189 = $35.7M at ATH; ×$0.0789 = $23.7M on Apr 25; ×$0.04425 = $13.3M now.
 - **[EST] Protocol-level airdrop APR**, assuming ~$450M average TVL over ~0.75 years (the S1 start date was not verified): 9.0 / (450 × 0.75) ≈ **2.7% at the ICO price**, 3.9% now, 7.0% on Apr 25, and 10.6% at ATH. A plain sUSDai 2x holder's share was smaller than this proxy.
 
+**USD.AI Season 1 case study (added at the coordinator's request)**
+- **Structure: two paths for S1 Allo points.**
+  - ICO path: "brown points at 5x multiplier." These gave the right to buy part of the 700M CHIP (7%) at $0.03 ($300M FDV).
+  - Airdrop path: "teal points" at a "2x multiplier with native yield from sUSDai staking." These shared 300M free CHIP (3%).
+  - Split of token value: 70% ICO / 30% airdrop. All S1 tokens were fully unlocked at TGE.
+  - Sources [SECONDARY]: [Tekedia](https://www.tekedia.com/usd-ai-releases-ico-and-airdrop-details/); [PANews](https://panews.io/articles/c5b49d4c-f3f4-4e1c-8544-0451c0e4097b); [MEXC](https://blog.mexc.com/usdai-airdrop-guide-chip-eligibility-yield-strategies-and-season-2-opportunities/)
+- Points had to be "aligned" to one path by Feb 18, 2026; **unaligned points were burned** [SECONDARY] — [MEXC Learn](https://www.mexc.com/learn/article/what-is-usd-ai-crypto-usdai-susdai-chip-token-and-allo-points-explained/1); [X @USDai_Official "How to Switch Alignment"](https://x.com/USDai_Official/status/2001338117580611883)
+- **Pendle YT multipliers were cut mid-season.** YT-USDai holders' Allo multiplier went from **30x to 15x on Nov 18, 2025**, and YT-USDai volume fell 21.45% in 24h. Earlier cuts to deposit-related rewards had preceded this [SECONDARY, CMC AI summary] — [CoinMarketCap USDai analysis](https://coinmarketcap.com/cmc-ai/usdai/price-analysis/) (page 404 on fetch; content from search summary, so [UNVERIFIED])
+- Before the cut, YTs got "12×–15× base Allo points" with a "25×–30× alignment multiplier" [UNVERIFIED snippet]. Pendle YT on Arbitrum earned "Allo points 30x faster" [SECONDARY] — [Blockchain.news](https://blockchain.news/flashnews/usdai-stablecoin-on-plasma-earn-allo-points-30x-faster-via-pendle-yt-on-arbitrum-for-ico-allocation)
+- USDai "had just 32 holders before Pendle Boost Vaults launched on Aug 25, 2025"; USD.AI then ran 25x Allo multipliers on Pendle [UNVERIFIED snippet of Dune blog] — [Dune – The Pendle Effect](https://dune.com/blog/the-pendle-effect)
+- Other data points:
+  - At one point, sUSDai staking yielded 13.22% and USDai traded at about $1.03 [SECONDARY, undated ~Aug–Sep 2025] — [PANews](https://panews.io/articles/c5b49d4c-f3f4-4e1c-8544-0451c0e4097b)
+  - A Pendle YT-USDai market maturing Nov 19, 2025 existed on Arbitrum — [Pendle app](https://app.pendle.finance/trade/markets/0x8e101c690390de722163d4dc3f76043bebbbcadd?view=yt&chain=arbitrum)
+- **Total S1 Allo points and an official CHIP-per-point ratio were NOT found** in any public source reviewed: docs, MEXC, Tekedia, CoinGabbar, CryptoRank, airdrops.io. Exact $/point therefore cannot be computed; see Gaps.
+- **[EST] Total value delivered to S1 points holders** (airdrop pool plus the ICO-path discount; formula: 300M × P + 700M × (P − $0.03)):
+  - At P = $0.03 (ICO/TGE reference): $9.0M + $0 = **$9.0M**
+  - At P = $0.1189 (ATH, Apr 22, 2026): $35.7M + $62.2M = **≈ $97.9M**
+  - At P = $0.0789 (Apr 25, 2026): $23.7M + $34.2M = **≈ $57.9M**
+  - At P = $0.04425 (late Sep 2026): $13.3M + $9.98M = **≈ $23.3M**
+  - Caveat: the ICO path required paying $0.03/CHIP in cash, so its value is a discount, not a free airdrop.
+- **[EST] $/point scaling.** Because total points are unknown, the airdrop-path value per point scales as $/point_now ≈ $/point_TGE × (P_now / $0.03) ≈ **1.475x the value at the ICO price** (and ≈3.96x at ATH). Whatever break-even a YT buyer computed at a $300M FDV improved by ~48% at today's price. The ICO path's value per point moved from $0 to (P − $0.03) per CHIP of allocation.
+- **Was buying YT-USDai/YT-sUSDai in S1 profitable? (inference; no ROI dataset exists)**
+  - Pre-TGE (Mar 5, 2026), YT farmers who bought "at elevated premiums … need FDV considerably above $300M to recover their cost" [SECONDARY] — [Whales Market](https://whales.market/blog/usd-ai-chip-fdv-prediction/)
+  - Realized FDV was ≈$1.19B at the Apr 22 ATH, ≈$790M on Apr 25, and ≈$440M in late Sep 2026 (P × 10B).
+  - So YT buyers who sold within the first days after listing very likely beat the "well above $300M" hurdle. Those who held to late Sep 2026 are near that hurdle ($440M ≈ 1.47x $300M), so the result depends on entry price. Buyers who entered before the Nov 18, 2025 multiplier cut (30x) earned twice the points per $ of YT that later buyers (15x) did.
+  - The Level Up program offered "refund rights, discounted pricing, or a premium buyout" for locked YTs, which limited downside for participants who opted in [OFFICIAL] — [USD.AI Level Up guide](https://usd.ai/insights/allo-game-to-flatiron-level-up-guide)
+  - **Net inference: S1 YT buyers were plausibly profitable if they entered early (30x era) and/or sold near listing. Late (15x-era) buyers holding to today are roughly break-even to modestly positive.** This cannot be quantified without total points and YT entry prices.
+
 **Cap (caps → no token airdrop)**
 - On Jan 31, 2026 the co-founder said "the CAP token will not be distributed via airdrop." Frontier users instead get a stablecoin "Stabledrop," and nearly 100% of circulating supply goes through a public sale [SECONDARY] — [Phemex](https://phemex.com/news/article/cap-cofounder-confirms-no-airdrop-for-cap-token-public-sale-to-distribute-supply-57230)
 - The Frontier phase ended Feb 4, 2026 with a promised $12M cUSD stabledrop, later **cut to $4.2M (−65%)**. The founder apologized for committing "before the funding … was fully secured" [SECONDARY] — [The Defiant](https://thedefiant.io/news/defi/cap-airdrops-usd12-million-in-stablecoins-to-early-users); [The Defiant](https://thedefiant.io/news/defi/cap-cuts-its-stabledrop-airdrop-to-usd4-2m-from-usd12m-as-backlash-mounts)
@@ -245,10 +273,11 @@ The snapshot-to-claim gap is usually **1 day to 6 weeks** (median ≈3–4 weeks
 ### Inferences
 - **[EST]** Median first-season % for the stablecoin-specific set, sorted (Falcon 1.5, USD.AI 3, Spark ~4.3, Ethena 5, Huma 5, Reservoir 5, Usual 7.5, OpenEden 7.5, Resolv 10, GAIB ~10): **median = 5%**. Second and later seasons are typically smaller: Ethena went 5 → 3.5 → 2; Huma 5 → 2.1.
 - USD.AI's S1 (3%) was already below the median. If S2 follows the Ethena/Huma pattern, **2–3% of supply** is a reasonable base case; this is inference, since the S2 % has not been disclosed. The source is the remaining ~17.5% of the 27.5% Ecosystem Bootstrapping bucket, per [USD.AI docs](https://docs.usd.ai/governance/tokenomics.md).
-- USD.AI S2 ends Oct 14, 2026 [UNVERIFIED search snippet]. Based on USD.AI's own S1 precedent (6 weeks to TGE/claim, 9 weeks to listing) and Ethena's 4–6 week pattern, a claim around late Nov – Dec 2026 would be typical. Slippage of months is common (Strata, infiniFi).
+- USD.AI S2 ("Flatiron") ends **2026-10-14**. This comes from a search snippet and was confirmed by the coordinator's context. Sources disagree on the S1 "TGE" date: some list the TGE event/claim start as Mar 30, 2026 ([MEXC Learn](https://www.mexc.com/learn/article/what-is-usd-ai-crypto-usdai-susdai-chip-token-and-allo-points-explained/1)), while exchange trading began Apr 21–22, 2026 ([CoinGabbar](https://www.coingabbar.com/en/price-prediction/chip-price-prediction-usd-ai-buy-the-dip-or-exit)). CHIP is already liquid, so the S2 distribution needs no new TGE. By Ethena's pattern for live tokens (claims 4–6 weeks after season end), an S2 claim around mid-Nov to late-Nov 2026 would be typical (inference). Delays of months happen elsewhere (Strata, infiniFi).
 
 ### Gaps
-- USD.AI S2 allocation %, exact end date and claim date were not confirmed from an official page.
+- USD.AI S2 allocation % and claim date were not confirmed from an official page. The end date of 2026-10-14 is per the coordinator plus a search snippet.
+- USD.AI S1 total Allo points and CHIP-per-point were not published in any source found. The S1 YT entry prices and implied APYs (e.g., the Nov 19, 2025 YT-USDai market) were not retrievable, because Pendle app pages are not readable by fetch.
 
 ---
 
@@ -295,6 +324,7 @@ Every pitfall the brief lists has at least one documented stablecoin-points case
 ### Cited Findings
 - **Late-season point inflation.** Ethena S2 sats were projected to grow from 1.76T to ~10T by season end — [Foresight News](https://www.binance.com/en/square/post/6273119441873); [Gate Learn](https://www.gate.com/learn/articles/detailed-explanation-of-ethena-s-three-strategies-in-season-2-and-their-potential-rewards/2709). Cap warned of "significant points dilution from long farming history" — [Today in DeFi](https://news.todayindefi.com/p/airdrop-alpha-re-protocol-tge-tomorrow). Falcon ran 72x Miles boosts on new Pendle pools — [Falcon](https://falcon.finance/news/falcon-finance-deep-dive-usdf-miles--yap2fly-)
 - **Airdrop % lower than expected, and shrinking by season.** Falcon's free airdrop was ~1.5% of supply — [Bittime](https://www.bittime.com/en/blog/airdrop-falcon-finance-ff). Ethena went 5% → 2% by S5 — [KuCoin](https://www.kucoin.com/blog/how-to-claim-ethena-season-5-airdrop). USD.AI S1 was 3% — [MEXC](https://blog.mexc.com/usdai-airdrop-guide-chip-eligibility-yield-strategies-and-season-2-opportunities/)
+- **Mid-season multiplier cuts for YT holders.** USD.AI cut the Allo multiplier for YT-USDai from 30x to 15x on Nov 18, 2025, and YT-USDai volume fell 21.45% in 24h [UNVERIFIED, CMC AI summary] — [CoinMarketCap](https://coinmarketcap.com/cmc-ai/usdai/price-analysis/). YT bought just before a cut earns half the expected points for the rest of its life.
 - **No token or a changed reward form.** Cap's CAP was not airdropped; points were paid in stablecoins and the payout was cut from $12M to $4.2M — [Phemex](https://phemex.com/news/article/cap-cofounder-confirms-no-airdrop-for-cap-token-public-sale-to-distribute-supply-57230); [The Defiant](https://thedefiant.io/news/defi/cap-cuts-its-stabledrop-airdrop-to-usd4-2m-from-usd12m-as-backlash-mounts). Level was sunset with no XP compensation mentioned — [Level docs](https://level-money.gitbook.io/level-documentation)
 - **Vesting and claim frictions.**
   - Usual top 1.5%: 90% vested 6 months, with a pay-to-skip option — [Usual](https://usual.money/blog/airdrop-the-genesis-of-ownership)
