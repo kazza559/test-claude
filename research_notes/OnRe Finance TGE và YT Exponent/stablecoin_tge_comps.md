@@ -1,0 +1,37 @@
+# Stablecoin / Synthetic-Dollar / RWA-Yield TGE Comparables for OnRe (ONyc) — as of 2026-09-29
+
+(WORK IN PROGRESS — partial notes, being updated)
+
+## Comps covered / IDs
+- CoinGecko IDs found: ethena (ENA), usual (USUAL), openeden (EDEN), falcon-finance-ff (FF), resolv (RESOLV), elixir-finance (ELX), avalon-2 (AVL), cap-4 (CAP; Cap cUSD — listed Coinbase, Upbit, Bybit, Kraken, KuCoin), plasma (XPL), stable-2 (STABLE), huma-finance (HUMA), solstice (SLX), reservoir (DAM), ondo-finance (ONDO), syrup (SYRUP), sky (SKY), fxn-token (FXN), frax-share (FRAX ex-FXS), spark-2 (SPK), plume (PLUME), chip-2 (CHIP / USD.AI), unitas (UP), treehouse (TREE), yield-basis (YB), re (RE, Re Protocol governance), apyx (APYX), onyc (ONyc).
+- No governance token found on CoinGecko (as of 2026-09-29) for: Perena, Noble, Agora, Midas, Level (lvlUSD), Neutrl (NUSD; S2 runs to mid-Sep 2026 before TGE), Exponent.
+
+## Re Protocol (RE) — closest comp (onchain reinsurance)
+- $RE TGE June 18, 2026 on Ethereum; tokenomics 50% Ecosystem (140M liquid at TGE, rest vesting 48 months), 13% Development Reserve, 17% Investors (12m cliff, 36m vest), 20% Core Contributors — [Bitget/search summary](https://www.bitget.com/news/detail/12560605431814)
+- Airdrop claim: 95% of Season 1 participants (<=150M points) claim full allocation; >150M-point holders get 150M RE + 10% of excess at TGE, remainder in 6 equal semiannual installments over 3 years; top 5% KYC — [Bitget](https://www.bitget.com/news/detail/12560605466805)
+- Pre-TGE: $409M premiums written since inception, $226M in 2026 YTD, ~4,000 onchain capital participants, 30+ insurance partners — [InsuranceNewsNet, 2026-05-26](https://insurancenewsnet.com/oarticle/resilience-foundation-to-launch-the-re-governance-token)
+- Apyx (APYX): Season 2 ends Oct 11 2026, TGE Oct 13 2026; S2 rewards 6% of supply (S1 4%) — [Today in DeFi, 2026-05-27](https://news.todayindefi.com/p/airdrop-alpha-re-protocol-announced)
+- Cap: emissions halving June 1 (2026); TGE date not confirmed as of 2026-05-27 — [Today in DeFi](https://news.todayindefi.com/p/airdrop-alpha-re-protocol-announced)
+
+## Raw findings log (to be synthesized)
+### RE (Re Protocol)
+- TGE 2026-06-18: 159.6M RE circulating at TGE; KuCoin "World Premiere" RE/USDT 14:00 UTC; Binance spot RE/USDT, RE/USDC, RE/TRY; MEXC same day; five exchanges within 26 hours; ATH $1.08 on 2026-06-20; FDV figure quoted $463.8M (search snippet of CoinGecko page, date unclear) — [TradingView/CoinMarketCal](https://www.tradingview.com/news/coinmarketcal:5429a86fc094b:0-re-binance-listing-18-june-2026/), [TradingView KuCoin](https://www.tradingview.com/news/coinmarketcal:57d07696e094b:0-re-kucoin-listing-18-june-2026/), [CoinGecko RE](https://www.coingecko.com/en/coins/re)
+### SLX (Solstice, Solana USX/eUSX)
+- Flares S1 ran from Sept 2025 launch; SLX TGE originally targeted Dec 2025; min 7.5% supply to airdrop scaling with TVL — [CoinChapter/airdrop guides](https://coinchapter.com/airdrop_post/flares-airdrop-opens-path-to-slx-token-rewards-on-solana/), [Airdrops_one X](https://x.com/Airdrops_one/status/1975294055505334494)
+- Actual TGE 2026-05-25: Binance Alpha first, claim ~1h later; also Kraken, Gate, Bitget, OKX; MEXC Innovation Zone 05-26. 8.5% of supply to airdrop; 99.68% of participants in lowest tier sharing 0.49% of pool; surprise vesting for larger cohorts; 0.075 SOL registration fee — [SolanaFloor](https://solanafloor.com/news/solstice-slx-launch-sparks-backlash-from-airdrop-farmers-over-surprise-vesting), [MEXC/Manila Times](https://www.manilatimes.net/2026/05/26/tmt-newswire/globenewswire/mexc-lists-solstice-finance-slx-with-200000-slx-and-40000-usdt-airdrop-rewards/2351500)
+- Lost >40% within hours of launch; post-selloff price ~$0.20, mcap $64M, FDV $198.3M (DefiLlama) — [cryptonews.net](https://cryptonews.net/news/analytics/32917942/)
+### CAP (Cap Labs, cUSD)
+- Auction 2026-06-08: 5.5x oversubscribed, $16.4M from 1,002 bids, clearing $0.011/token = $106M FDV; 4% via auction + 1% Uniswap CCA (rCAP) — [The Defiant](https://thedefiant.io/news/defi/cap-labs-cap-token-auction-106m-fdv-oversubscription), [Bitget 2026-06-15](https://www.bitget.com/news/detail/12560605460949)
+- TGE 2026-06-26; 10B fixed supply; ~15.6% circulating at TGE (5% ICO + 10% Ecosystem & Community); closed day 1 at $325M FDV (~3x auction); $862M cum. volume first 10 days; "Stabledrop" paid in cUSD, cut from $12M to $4.2M after backlash — [The Defiant](https://thedefiant.io/news/defi/cap-token-climbs-to-2-lending-borrowing-protocol-by-volume-10-days-after-launch), [The Defiant stabledrop](https://thedefiant.io/news/defi/cap-cuts-its-stabledrop-airdrop-to-usd4-2m-from-usd12m-as-backlash-mounts), [search summary](https://www.bitget.com/asia/amp/news/detail/12560605474641)
+- Listings (current tickers per CoinGecko API 2026-09-29): Upbit, Bithumb, Bybit, Coinbase, Kraken, KuCoin, Bitvavo — [CoinGecko](https://www.coingecko.com/en/coins/cap)
+### CHIP (USD.AI)
+- TGE ~2026-04-21; 10B supply; 12 spot venues incl. Binance, Coinbase, Upbit, Bybit; perps Binance/OKX/Bitget/Hyperliquid; ICO = 7% at $300M FDV, airdrop 3% (300M CHIP); airdrop participants paid USDC on 2026-04-20; ICO "protected CHIP" settles at $270M and $190M FDV (June 17 / Oct 14 2026); Allo S2 runs to 2026-10-14 — [USD.AI blog](https://usd.ai/insights/chip-is-live), [KuCoin news](https://www.kucoin.com/news/flash/usd-ai-to-conduct-30m-fdv-token-sale-on-coinlist), [CryptoRank](https://cryptorank.io/ico/usd-ai)
+### UP (Unitas, Solana/BNB synthetic dollar USDu)
+- TGE 2026-03-13, 44th Binance Wallet Exclusive TGE; 1B supply; 12.6% circulating at TGE; 45% ecosystem & community; TVL surged past $100M when airdrop campaign announced mid-Jan 2026; Pine Analytics thread "$UP at $5M FDV: The Math Doesn't Work" — [Solana Compass](https://solanacompass.com/projects/unitas), [MEXC blog](https://blog.mexc.com/news/what-is-unitas-labs-up-yield-bearing-stablecoin-earning-8-15-apy-binance-tge-march-13/), [Pine Analytics X](https://x.com/PineAnalytics/status/2031911500927938840)
+### ENA (Ethena)
+- S1 Shards: Feb 19 2024 start (~6 weeks) -> 750M ENA (5% of supply) airdrop; ENA launched ~$1B mcap post airdrop (Apr 2 2024); S2 Sats to Sep 2 2024 or $5B USDe — [The Defiant](https://thedefiant.io/news/defi/ethena-labs-ena-launches-at-usd1-billion-post-airdrop-as-sats-campaign-kicks-off), [Binance Square](https://www.binance.com/en/square/post/6273119441873)
+- Binance day 1 (2024-04-02): open 0.30, high 0.913, close 0.775 (Binance kline API). Current 2026-09-29 $0.254, FDV $3.81B, ATL $0.0702 on 2026-06-30 (CoinGecko API)
+### FF (Falcon Finance)
+- Binance HODLer Airdrops (#46/49?) 150M FF = 1.5% supply; Binance spot 2025-09-29 13:00 UTC; Buidlpad sale $350M FDV (tier 1) / $450M FDV — [CryptoNewsZ](https://www.cryptonewsz.com/binance-falcon-finance-as-49th-hodler-airdrop/), [Dropstab](https://dropstab.com/research/alpha/falcon-finance-ff-token-sale-what-participants-need-to-know)
+### XPL (Plasma)
+- TGE 2025-09-25; sale $500M FDV ($0.05); 25M XPL split equally among verified pre-depositors (9,304 XPL each); 19% of supply at TGE (10% sale, 8% eco, 1% airdrop); early trading high $1.54, then $0.90–1.10 ($8.6–10.4B FDV) — [The Defiant](https://thedefiant.io/news/blockchains/plasma-mainnet-beta-xpl-token-launch), [Bitget Academy](https://www.bitget.com/academy/plasma-tge-september-25-2025-xpl-token-mainnet-beta-launch), [KuCoin Square](https://www.kucoin.com/square/post/content_6ab808fc003e86000766b240)
