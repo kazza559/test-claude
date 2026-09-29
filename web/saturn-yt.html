@@ -1,0 +1,1690 @@
+<title>Định giá YT Saturn</title>
+<meta name="description" content="Phân tích Saturn.credit, dự báo TGE và FDV của STRN, định giá các pool YT trên Pendle kèm máy tính lợi nhuận.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: research brief with a sticky contents rail on the left and a trader's worksheet (calculator) near the end.
+   Palette: cool paper and navy ink, with the pale ochre of Saturn's rings as the single accent. */
+:root {
+  --bg: #f3f4f8;
+  --surface: #fcfcfd;
+  --surface-2: #eceef4;
+  --ink: #131826;
+  --ink-2: #454c60;
+  --muted: #697187;
+  --line: #d9dce6;
+  --grid: #e3e6ee;
+  --axis: #bcc2d0;
+  --accent: #b27b14;
+  --accent-ink: #825808;
+  --accent-wash: rgba(178, 123, 20, 0.13);
+  --s1: #2a78d6;
+  --s2: #eb6834;
+  --pos: #2a78d6;
+  --neg: #e34948;
+  --mid: #eef0f4;
+  --good: #0b7a2e;
+  --bad: #b8322a;
+  --on-strong: #ffffff;
+  --shadow: 0 1px 2px rgba(19, 24, 38, 0.06), 0 8px 24px rgba(19, 24, 38, 0.06);
+
+  --f-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-base: 1rem;
+  --t-md: 1.125rem;
+  --t-lg: 1.5rem;
+  --t-xl: 2.125rem;
+  --t-2xl: clamp(2.1rem, 5vw, 3.4rem);
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c101a;
+    --surface: #141926;
+    --surface-2: #1b2132;
+    --ink: #e8eaf1;
+    --ink-2: #b6bccb;
+    --muted: #8a91a5;
+    --line: #283044;
+    --grid: #222839;
+    --axis: #3b4358;
+    --accent: #e0aa45;
+    --accent-ink: #ebbd68;
+    --accent-wash: rgba(224, 170, 69, 0.14);
+    --s1: #3987e5;
+    --s2: #d95926;
+    --pos: #3987e5;
+    --neg: #e66767;
+    --mid: #2a3040;
+    --good: #45c46c;
+    --bad: #ff7d72;
+    --on-strong: #ffffff;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c101a;
+  --surface: #141926;
+  --surface-2: #1b2132;
+  --ink: #e8eaf1;
+  --ink-2: #b6bccb;
+  --muted: #8a91a5;
+  --line: #283044;
+  --grid: #222839;
+  --axis: #3b4358;
+  --accent: #e0aa45;
+  --accent-ink: #ebbd68;
+  --accent-wash: rgba(224, 170, 69, 0.14);
+  --s1: #3987e5;
+  --s2: #d95926;
+  --pos: #3987e5;
+  --neg: #e66767;
+  --mid: #2a3040;
+  --good: #45c46c;
+  --bad: #ff7d72;
+  --on-strong: #ffffff;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+a:hover { color: var(--accent-ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: var(--t-2xl); font-weight: 800; font-stretch: 88%; line-height: 1.05; }
+h2 { font-size: var(--t-xl); font-weight: 750; font-stretch: 92%; line-height: 1.12; }
+h3 { font-size: var(--t-md); font-weight: 700; font-stretch: 100%; line-height: 1.3; }
+p { margin: 0; }
+ul { margin: 0; padding-left: 1.2em; }
+li + li { margin-top: 0.35em; }
+strong { font-weight: 650; }
+.num { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--f-mono); font-size: 0.92em; }
+.muted { color: var(--muted); }
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.wrap { max-width: 1200px; margin: 0 auto; padding-inline: 20px; }
+
+/* Masthead */
+.masthead { border-bottom: 1px solid var(--line); background: var(--surface); }
+.masthead .wrap { padding-block: 36px 32px; display: grid; gap: 28px; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: start; }
+.masthead-copy { display: grid; gap: 16px; min-width: 0; }
+.lede { font-size: var(--t-md); color: var(--ink-2); max-width: 62ch; }
+.ring-mark { display: inline-flex; align-items: center; gap: 10px; }
+.ring-mark svg { flex: none; }
+
+.verdict {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg);
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.verdict-head { display: grid; gap: 8px; }
+.verdict-call { font-family: var(--f-display); font-weight: 750; font-stretch: 95%; font-size: var(--t-lg); line-height: 1.2; }
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; display: grid; gap: 2px; min-width: 0; }
+.tile.wide { grid-column: 1 / -1; }
+.tile-label { font-size: var(--t-xs); color: var(--muted); letter-spacing: 0.02em; }
+.tile-value { font-size: 1.45rem; font-weight: 650; line-height: 1.2; }
+.tile-sub { font-size: var(--t-xs); color: var(--ink-2); line-height: 1.45; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.03em;
+  padding: 3px 10px; border-radius: 999px; border: 1px solid currentColor;
+  width: fit-content; white-space: nowrap;
+}
+.pill.caution { color: var(--accent-ink); background: var(--accent-wash); }
+.pill.avoid { color: var(--bad); }
+.pill.ok { color: var(--good); }
+
+/* Page layout */
+.layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 48px; padding-block: 40px 64px; }
+.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); align-self: start; display: grid; gap: 4px; font-size: var(--t-sm); }
+.toc .eyebrow { margin-bottom: 6px; }
+.toc a { text-decoration: none; color: var(--ink-2); padding: 4px 10px; border-left: 2px solid var(--line); }
+.toc a:hover, .toc a.active { color: var(--ink); border-left-color: var(--accent); }
+main { display: grid; gap: 72px; min-width: 0; }
+section { display: grid; gap: 20px; min-width: 0; scroll-margin-top: 24px; }
+.section-head { display: grid; gap: 8px; }
+.prose { display: grid; gap: 14px; max-width: 72ch; color: var(--ink); }
+.prose p, .prose li { color: var(--ink); }
+.note { font-size: var(--t-sm); color: var(--muted); max-width: 80ch; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 2px; min-width: 0; }
+.stat .v { font-size: 1.35rem; font-weight: 650; line-height: 1.25; }
+.stat .l { font-size: var(--t-xs); color: var(--muted); }
+.stat .s { font-size: var(--t-xs); color: var(--ink-2); }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 14px; min-width: 0; box-shadow: var(--shadow); }
+.panel-head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+.panel-title { font-weight: 650; font-size: var(--t-base); }
+.panel-sub { font-size: var(--t-sm); color: var(--muted); }
+
+.cols-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.cols-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card.base { border-color: var(--accent); background: linear-gradient(0deg, var(--accent-wash), var(--accent-wash)), var(--surface); }
+.card .big { font-size: 1.6rem; font-weight: 650; line-height: 1.15; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: var(--t-sm); }
+th, td { padding: 9px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--grid); }
+th { font-weight: 600; color: var(--ink-2); background: var(--surface-2); white-space: nowrap; font-size: var(--t-xs); letter-spacing: 0.02em; }
+tbody tr:last-child td { border-bottom: 0; }
+td.r, th.r { text-align: right; }
+td { font-variant-numeric: tabular-nums; }
+tr.hl td { background: var(--accent-wash); }
+tr.hl td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+.up { color: var(--good); }
+.down { color: var(--bad); }
+details.table-toggle > summary { cursor: pointer; font-size: var(--t-sm); color: var(--ink-2); width: fit-content; }
+details.table-toggle[open] > summary { margin-bottom: 10px; }
+
+/* Charts */
+.chart { width: 100%; min-width: 0; position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--f-body); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: var(--t-xs); color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.key-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.key-ring { width: 10px; height: 10px; border-radius: 50%; display: inline-block; border: 1.5px solid var(--ink-2); background: var(--surface); }
+.key-line { width: 16px; height: 2px; border-radius: 2px; display: inline-block; }
+.key-band { width: 16px; height: 10px; border-radius: 3px; display: inline-block; background: var(--accent-wash); border: 1px solid var(--accent); }
+
+.tip {
+  position: fixed; z-index: 50; pointer-events: none;
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow);
+  padding: 8px 10px; font-size: var(--t-xs); line-height: 1.45; max-width: 260px;
+}
+.tip .tt { font-weight: 600; color: var(--ink-2); margin-bottom: 4px; }
+.tip .row { display: flex; gap: 8px; align-items: center; justify-content: space-between; }
+.tip .row b { font-weight: 650; color: var(--ink); font-variant-numeric: tabular-nums; }
+.tip .row span { color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
+
+/* Probability rows */
+.prob-rows { display: grid; gap: 12px; }
+.prob-row { display: grid; grid-template-columns: 150px 1fr; gap: 6px 16px; align-items: center; }
+.prob-label { font-weight: 600; font-size: var(--t-sm); }
+.prob-bar { display: flex; align-items: center; gap: 10px; }
+.prob-track { flex: 1; height: 10px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+.prob-fill { height: 100%; background: var(--s1); border-radius: 999px; }
+.prob-val { font-weight: 650; font-variant-numeric: tabular-nums; width: 3.2em; text-align: right; }
+.prob-note { grid-column: 2; font-size: var(--t-sm); color: var(--ink-2); }
+
+/* Heatmap */
+.heat td.cell { text-align: center; font-weight: 600; min-width: 74px; cursor: default; border: 2px solid var(--surface); }
+.heat td.cell.base { outline: 2px solid var(--accent); outline-offset: -2px; }
+.heat th.rowh { background: var(--surface-2); }
+.scale { display: flex; align-items: center; gap: 10px; font-size: var(--t-xs); color: var(--muted); }
+.scale-bar { width: 160px; height: 8px; border-radius: 999px; background: linear-gradient(90deg, var(--neg), var(--mid), var(--pos)); }
+
+/* Calculator */
+.calc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 18px; align-items: start; }
+.form { display: grid; gap: 16px; }
+.fieldset { border: 1px solid var(--line); border-radius: var(--r); padding: 14px; display: grid; gap: 12px; background: var(--surface); }
+.fieldset legend { font-size: var(--t-xs); font-family: var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); padding: 0 6px; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: var(--t-xs); color: var(--ink-2); font-weight: 500; }
+.field .hint { font-size: 0.7rem; color: var(--muted); line-height: 1.35; }
+input, select {
+  font: inherit; font-size: var(--t-sm); color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; width: 100%; min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
+input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+.check { display: flex; align-items: center; gap: 8px; font-size: var(--t-sm); color: var(--ink-2); }
+.check input { width: 16px; height: 16px; accent-color: var(--accent); }
+.btn {
+  font: inherit; font-size: var(--t-sm); font-weight: 600; cursor: pointer;
+  border-radius: 8px; padding: 8px 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.btn:hover { border-color: var(--accent); }
+.results { display: grid; gap: 14px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.hero-out { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.hero-out .tile-value { font-size: 1.9rem; }
+.out-list { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; font-size: var(--t-sm); }
+.out-list dt { color: var(--ink-2); }
+.out-list dd { margin: 0; text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.mc-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mc-stats .tile-value { font-size: 1.15rem; }
+
+.signal-list { display: grid; gap: 10px; }
+.verdicts { display: grid; gap: 8px; }
+.verdict-row { display: grid; grid-template-columns: 170px 130px minmax(0, 1fr); gap: 12px; align-items: center; padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); font-size: var(--t-sm); }
+.verdict-row b { font-weight: 650; }
+
+.sources { columns: 2; column-gap: 32px; font-size: var(--t-sm); }
+.sources li { break-inside: avoid; }
+footer { border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--muted); display: grid; gap: 6px; }
+
+@media (max-width: 1040px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .toc { position: static; display: flex; flex-wrap: wrap; gap: 6px; }
+  .toc .eyebrow { width: 100%; margin-bottom: 0; }
+  .toc a { border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; background: var(--surface); font-size: var(--t-xs); }
+  .calc { grid-template-columns: minmax(0, 1fr); }
+  .results { position: static; }
+}
+@media (max-width: 860px) {
+  .masthead .wrap { grid-template-columns: minmax(0, 1fr); }
+  .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cols-3, .cols-2 { grid-template-columns: minmax(0, 1fr); }
+  .verdict-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .verdict-row .why { grid-column: 1 / -1; }
+  .sources { columns: 1; }
+}
+@media (max-width: 520px) {
+  .wrap { padding-inline: 16px; }
+  .tiles, .hero-out, .fields { grid-template-columns: minmax(0, 1fr); }
+  .stat-grid { grid-template-columns: minmax(0, 1fr); }
+  .mc-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .prob-row { grid-template-columns: minmax(0, 1fr); }
+  .prob-note { grid-column: 1; }
+  main { gap: 56px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .prob-fill { transition: width 0.4s ease; }
+  html { scroll-behavior: smooth; }
+}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-copy">
+      <div class="ring-mark">
+        <svg width="34" height="22" viewBox="0 0 34 22" aria-hidden="true">
+          <ellipse cx="17" cy="11" rx="15.5" ry="5" fill="none" stroke="var(--accent)" stroke-width="1.6" transform="rotate(-14 17 11)"/>
+          <circle cx="17" cy="11" r="6.5" fill="var(--ink)"/>
+          <path d="M3.3 13.9 C 8 17.5, 26 13, 30.7 8.1" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+        </svg>
+        <span class="eyebrow">Báo cáo nghiên cứu · Saturn · STRN · dữ liệu chốt 28–29/9/2026</span>
+      </div>
+      <h1>Saturn YT: cược nhỏ, đợi giá rẻ hơn</h1>
+      <p class="lede">Saturn (saturn.credit) phát hành stablecoin USDat và vault sUSDat nắm cổ phiếu ưu đãi STRC của Strategy. Ngày 25/9, dự án công bố token STRN với TGE trong Q4/2026. Trang này định giá các pool YT của Saturn trên Pendle bằng dữ liệu Merkl, Pendle API và on-chain, đặt cạnh 12 dự án stablecoin đã TGE. Các tham số được đặt rộng và cố ý nghiêng về phía bi quan.</p>
+      <p class="note">Dùng dấu chấm thập phân và dấu phẩy hàng nghìn, ngày viết theo ngày/tháng. Các phép tính, kịch bản và xác suất không kèm nguồn là ước tính của báo cáo.</p>
+    </div>
+    <aside class="verdict" aria-label="Kết luận">
+      <div class="verdict-head">
+        <span class="pill caution">◐ Khuyến nghị: vị thế nhỏ</span>
+        <p class="verdict-call">Chỉ mua YT-USDat (Ethereum hoặc Monad), và chỉ khi implied APY ≤ 7%.</p>
+        <p class="tile-sub">Hiện tại 8.98%, mức đắt nhất trong lịch sử pool. Tránh YT-sUSDat, YT-USDat trên BNB và YT-srUSDat.</p>
+      </div>
+      <div class="tiles">
+        <div class="tile"><span class="tile-label">TGE dự kiến</span><span class="tile-value">Đầu–giữa 12/2026</span><span class="tile-sub">~45% trước 8/12 · ~25% trượt sang 2027</span></div>
+        <div class="tile"><span class="tile-label">FDV ngày TGE, kịch bản cơ sở</span><span class="tile-value">$150M</span><span class="tile-sub">Bi quan $50–80M · lạc quan $250–350M · Polymarket ~$207M</span></div>
+        <div class="tile"><span class="tile-label">Chi phí điểm, ETH YT-USDat</span><span class="tile-value">$8.4–12.5</span><span class="tile-sub">cho mỗi 1M điểm, tùy thưởng USDC 3% kéo dài bao lâu</span></div>
+        <div class="tile"><span class="tile-label">FDV hòa vốn, đã điều chỉnh rủi ro</span><span class="tile-value">$98–145M</span><span class="tile-sub">Nếu TGE giữa tháng 11: $122–180M</span></div>
+        <div class="tile wide"><span class="tile-label">Monte Carlo, $1,000 ETH YT-USDat ở giá hiện tại (200,000 lượt)</span><span class="tile-value">Trung vị −17% · trung bình +15%</span><span class="tile-sub">Xác suất lỗ 59%. Nếu vào ở implied APY 7%: trung bình +46%, trung vị +5%.</span></div>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Mục lục">
+    <span class="eyebrow">Mục lục</span>
+    <a href="#du-an">Dự án</a>
+    <a href="#so-sanh">So sánh TGE</a>
+    <a href="#boi-canh">Bối cảnh thị trường</a>
+    <a href="#tge">Thời điểm TGE</a>
+    <a href="#fdv">FDV dự kiến</a>
+    <a href="#diem">Chương trình điểm</a>
+    <a href="#pool">Các pool YT</a>
+    <a href="#kich-ban">Kịch bản</a>
+    <a href="#nguong">Điểm vào lệnh</a>
+    <a href="#may-tinh">Máy tính YT</a>
+    <a href="#khuyen-nghi">Khuyến nghị</a>
+    <a href="#doi-chieu">Đối chiếu số liệu</a>
+    <a href="#nguon">Nguồn</a>
+  </nav>
+
+  <main>
+    <!-- DỰ ÁN -->
+    <section id="du-an">
+      <div class="section-head">
+        <span class="eyebrow">Nền tảng</span>
+        <h2>Saturn là lớp bọc STRC $147M, sống chủ yếu nhờ dòng vốn săn điểm</h2>
+      </div>
+      <div class="prose">
+        <p><strong>USDat</strong> là stablecoin mint có cấp phép (KYC khi mint/redeem). Nó được bảo chứng 1:1 bằng $M của M0 đến 19/8/2026, sau đó chuyển toàn bộ sang <strong>PYUSDx</strong>, lớp bọc PYUSD của PayPal/Paxos. Từ khoảng 9/9, USDat trả 3% APR dưới dạng thưởng USDC.</p>
+        <p><strong>sUSDat</strong> là vault ERC-4626 nắm 100% cổ phiếu ưu đãi vĩnh viễn STRC của Strategy. NAV đi theo giá thị trường của STRC, rút tiền qua hàng chờ 3–7 ngày. STRC trả cổ tức 12%/năm, nhưng giá từng rơi xuống $71.25 vào tháng 6/2026. Vì vậy sUSDat mới tăng 3.05% từ khi ra mắt, khoảng 6.3%/năm, thấp hơn nhiều so với mức 13.6–16.4% đang được quảng bá. Ngày 4/6 Saturn nói sản phẩm "không bị ảnh hưởng"; câu đó đúng với peg của USDat nhưng sai với NAV của sUSDat.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><span class="l">TVL (DefiLlama, 28/9)</span><span class="v">$146.9M</span><span class="s">Đỉnh $214.1M ngày 9/6, giảm 31%</span></div>
+        <div class="stat"><span class="l">USDat lưu hành</span><span class="v">$84.8M</span><span class="s">Monad $45.1M · Ethereum $39.7M</span></div>
+        <div class="stat"><span class="l">NAV sUSDat</span><span class="v">$66.1M</span><span class="s">Từ $105.9M ngày 22/5</span></div>
+        <div class="stat"><span class="l">USDat đang nằm trong Pendle</span><span class="v">~74%</span><span class="s">~63M YT-USDat; riêng Monad ~95%</span></div>
+        <div class="stat"><span class="l">Vốn gọi công bố</span><span class="v">~$2.8M</span><span class="s">YZi Labs, Sora, Spartan, Anchorage, Susquehanna; Ondo (chiến lược)</span></div>
+        <div class="stat"><span class="l">Điểm rủi ro Yearn</span><span class="v">3.15 / 5</span><span class="s">"Medium Risk", nâng từ 2.825 ngày 8/9</span></div>
+      </div>
+      <div class="cols-2">
+        <div class="panel">
+          <div class="panel-head"><span class="panel-title">Tỷ giá sUSDat (USDat cho mỗi sUSDat)</span><span class="panel-sub">on-chain, 2026</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Ngày</th><th class="r">Tỷ giá</th><th>Ghi chú</th></tr></thead>
+              <tbody>
+                <tr><td>1/4</td><td class="r">1.0000</td><td>Ra mắt</td></tr>
+                <tr><td>15/5</td><td class="r">1.0094</td><td>Đỉnh</td></tr>
+                <tr><td>1/7</td><td class="r down">0.8511</td><td>Đáy, −15.7% khi STRC sập</td></tr>
+                <tr><td>28/9</td><td class="r">1.0305</td><td>+3.05% từ khi ra mắt</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><span class="panel-title">Rủi ro chính</span></div>
+          <ul>
+            <li>Năm bản audit đã công bố đều không bao quát kiến trúc PYUSDx chạy từ 19/8. Không có bug bounty.</li>
+            <li>Innora công bố lỗi Critical SAT-001 (có thể đóng băng tới ~$35.7M) và High SAT-002; chưa có phản hồi công khai.</li>
+            <li>Khóa compliance (ví 2-of-3, không timelock) có thể đóng băng, tịch thu và tạm dừng.</li>
+            <li>Curve USDC/USDat chỉ ~$9.25M; bán 5M USDat trượt ~20.7%.</li>
+            <li>Chặn Mỹ, EEA, UK. Phần doanh thu giao thức thực giữ lại chỉ ~$1–2M/năm.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SO SÁNH -->
+    <section id="so-sanh">
+      <div class="section-head">
+        <span class="eyebrow">So sánh</span>
+        <h2>Các stablecoin đã TGE cho thấy STRN khó được định giá trên ~1× TVL</h2>
+      </div>
+      <div class="prose">
+        <p>Năm dự án bạn nêu đều mở cửa ở 1.8–5.5 lần nguồn cung stablecoin tại TGE. Bốn trong năm đã mất 71–96% so với giá mở cửa; chỉ Ethena giữ được tương đối (−54%). Lứa TGE nửa đầu 2026 được định giá dè dặt hơn (khoảng 1.3× TVL) và giữ giá tốt hơn.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-title">FDV lúc mở cửa và hiện tại, thang log</span>
+          <span class="panel-sub">Sắp theo ngày TGE. Rê chuột hoặc chạm vào từng dòng để xem chi tiết.</span>
+        </div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="key-ring"></i>FDV mở cửa / ngày 1</span>
+          <span><i class="key-dot" style="background:var(--neg)"></i>FDV hiện tại, giảm</span>
+          <span><i class="key-dot" style="background:var(--pos)"></i>FDV hiện tại, tăng</span>
+          <span><i class="key-band"></i>Saturn: vùng dự báo $50–350M, chấm là cơ sở $150M</span>
+        </div>
+        <div class="chart" id="chart-comps" role="img" aria-label="Biểu đồ FDV mở cửa và hiện tại của 12 dự án stablecoin, cùng vùng dự báo FDV của Saturn"></div>
+        <details class="table-toggle">
+          <summary>Xem bảng số liệu</summary>
+          <div class="table-wrap">
+            <table id="table-comps">
+              <thead><tr><th>Dự án</th><th>TGE</th><th class="r">Stablecoin/TVL lúc TGE</th><th class="r">FDV mở cửa</th><th class="r">FDV/TVL</th><th class="r">FDV hiện tại</th><th class="r">Thay đổi</th><th>Airdrop điểm</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </details>
+        <p class="note">Năm dự án đầu (ENA, USUAL, RESOLV, EDEN, FF) dùng giá VWAP giờ giao dịch đầu tiên trên Binance. Lứa 2025–2026 dùng giá đóng cửa ngày đầu (Gate/DefiLlama). FDV hiện tại chốt 28–29/9/2026. Yala (YALA) về gần 0 nên không vẽ được trên thang log.</p>
+      </div>
+      <div class="prose">
+        <p>Quy luật rút ra: dự án nào có nguồn cung tiếp tục tăng sau TGE thì giữ được FDV. Ethena và Falcon tăng nguồn cung 1–3 tháng sau TGE nhờ các mùa điểm tiếp theo. Resolv TGE khi USR đã giảm 63% từ đỉnh; USDO của OpenEden mất 62% nguồn cung trong 60 ngày sau TGE. Saturn gần nhóm thứ hai hơn: TVL đã giảm 31% từ đỉnh và phần tăng gần đây đến từ YT săn điểm.</p>
+        <p>Theo Memento Research, stablecoin là một trong những nhóm tệ nhất năm 2025 (trung bình −70%). Các dự án TGE trên $1B FDV có 0% xác suất tăng giá sau niêm yết, còn nhóm $25–200M có 40%.</p>
+      </div>
+    </section>
+
+    <!-- BỐI CẢNH -->
+    <section id="boi-canh">
+      <div class="section-head">
+        <span class="eyebrow">Bối cảnh</span>
+        <h2>Xu hướng stablecoin đang chững lại, và dữ liệu xác nhận điều đó</h2>
+      </div>
+      <div class="cols-2">
+        <div class="panel">
+          <span class="panel-title">Nguồn cung và nhu cầu</span>
+          <ul>
+            <li>Tổng stablecoin USD đi ngang quanh $300–318B từ tháng 10/2025, hiện $311.5B. Tháng 6/2026 giảm $7.7B, mức giảm tháng lớn nhất trong bốn năm.</li>
+            <li>Stablecoin sinh lợi co mạnh nhất từ đỉnh: USDe −66%, USD0 −66%, USDf −41%, Cap cUSD −75%. USR (Resolv) và lvlUSD (Level) gần như về 0.</li>
+            <li>Ethena dừng ưu đãi token cho USDe từ cuối tháng 9.</li>
+            <li>Pendle TVL ~$1.26B, giảm ~90% từ đỉnh tháng 9/2025. Các thị trường có điểm chiếm 69% TVL và 90% khối lượng.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <span class="panel-title">Vĩ mô và lịch TGE</span>
+          <ul>
+            <li>Không có TGE stablecoin nào trong Q3/2026. Avant trượt khỏi mục tiêu giữa tháng 9, Apyx (cũng dựa vào STRC) hoãn TGE 13/10 và nâng airdrop từ 6% lên 9%, infiniFi dời sang Q4.</li>
+            <li>Fed tăng 25bp lên 3.75–4.00% ngày 16/9; lợi suất 10 năm 5.18%.</li>
+            <li>BTC ~$83–84k, hồi ~40% từ đáy $60k tháng 6 nhưng vẫn −22.6% so với cùng kỳ. Chỉ số altseason 34.</li>
+            <li>Lệnh cấm trả lợi suất stablecoin của GENIUS Act vẫn giữ; đây là lực cản, không phải lực đẩy.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Lứa TGE stablecoin</th><th class="r">Số dự án</th><th class="r">FDV ngày 1 (trung vị)</th><th class="r">FDV/TVL (trung vị)</th><th class="r">Sau 30 ngày</th><th class="r">Sau 90 ngày</th><th class="r">Hiện tại</th></tr></thead>
+          <tbody>
+            <tr><td>H2 2025</td><td class="r">7</td><td class="r">~$668M</td><td class="r">~1.65×</td><td class="r down">−31%</td><td class="r down">−67%</td><td class="r down">−93%</td></tr>
+            <tr><td>H1 2026</td><td class="r">5</td><td class="r">~$289M</td><td class="r">~1.3×</td><td class="r up">+2%</td><td class="r down">−7%</td><td class="r up">+1%</td></tr>
+            <tr><td>Q3 2026</td><td class="r">0</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Mỗi lứa chỉ có 5–7 dự án, và lứa 2026 mới có 3–6 tháng để giảm giá, nên các trung vị cần đọc thận trọng. Lứa 2026 được định giá thấp hơn nên giữ giá tốt hơn; số lượng TGE thì giảm rõ.</p>
+    </section>
+
+    <!-- TGE -->
+    <section id="tge">
+      <div class="section-head">
+        <span class="eyebrow">Thời điểm</span>
+        <h2>TGE nhiều khả năng rơi vào đầu tháng 12, nhưng Season 2 có ~45% khả năng bị cắt sớm</h2>
+      </div>
+      <div class="prose">
+        <p>Thông tin chính thức duy nhất là thread của @saturn_credit ngày 25/9: "$STRN / TGE: Q4 2026"; tối đa 5% tổng cung cho Season 2; nếu TGE trước 8/12 thì Season 2 kết thúc ngay trước đó và phần phân bổ bị cắt theo tỷ lệ số ngày đã chạy; Season 3 bắt đầu ngay sau snapshot; tokenomics sẽ công bố sau. Polymarket phản ứng mạnh: xác suất ra token trước 31/12/2026 tăng từ ~0.20 lên <strong>0.74</strong>, và trước 30/6/2027 là 0.90.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><span class="panel-title">Phân phối thời điểm TGE (ước tính)</span><span class="panel-sub">Tổng trong năm 2026: 75%, khớp mức 74% trên Polymarket</span></div>
+        <div class="prob-rows">
+          <div class="prob-row"><span class="prob-label">Trước 15/11</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:30%"></div></div><span class="prob-val">30%</span></div><span class="prob-note">Snapshot khoảng 1–15/11. Người mua YT hôm nay chỉ nhận 32–48 ngày điểm S2 thay vì 71.7 ngày; pool S2 còn 68–80% của 5%.</span></div>
+          <div class="prob-row"><span class="prob-label">16/11–7/12</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:15%"></div></div><span class="prob-val">15%</span></div><span class="prob-note">Mất tới ~23 ngày điểm; pool còn khoảng 81–99%.</span></div>
+          <div class="prob-row"><span class="prob-label">8/12–31/12</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:30%"></div></div><span class="prob-val">30%</span></div><span class="prob-note">Đủ Season 2 và đủ 5%; thêm ~36 ngày điểm S3 trước khi YT đáo hạn 14/1/2027.</span></div>
+          <div class="prob-row"><span class="prob-label">Trượt sang 2027</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:25%"></div></div><span class="prob-val">25%</span></div><span class="prob-note">Vẫn đủ S2 (kết thúc 8/12), nhưng chờ token lâu hơn, rủi ro định giá và thay đổi luật cao hơn.</span></div>
+        </div>
+      </div>
+      <div class="prose">
+        <ul>
+          <li>Việc tự đưa điều khoản cắt sớm vào thông báo cho thấy đội ngũ nghiêm túc giữ lựa chọn TGE trước 8/12.</li>
+          <li>Đến 25/9 tokenomics, tổng cung và cơ chế claim đều chưa công bố. Chuỗi tokenomics → sàn → claim thường mất 4–8 tuần, nên TGE sớm nhất thực tế là đầu đến giữa tháng 11.</li>
+          <li>Apyx, dự án tương đồng nhất vì cũng dựa vào STRC, đã hoãn TGE. STRC vẫn dưới mệnh giá và chương trình ATM của Strategy đang tạm dừng.</li>
+          <li>Năm 2026 có nhiều vụ hoãn TGE vì điều kiện thị trường (Avant, Apyx, OpenSea).</li>
+        </ul>
+        <p>Báo cáo cố ý đặt trọng số cao cho TGE sớm, vì đây là kịch bản bất lợi nhất với người mua YT: YT đã trả tiền cho quyền lợi đến 14/1, nhưng điểm Season 2 dừng sớm.</p>
+      </div>
+    </section>
+
+    <!-- FDV -->
+    <section id="fdv">
+      <div class="section-head">
+        <span class="eyebrow">Định giá</span>
+        <h2>FDV ngày TGE: cơ sở ~$150M, thấp hơn Polymarket khoảng 30%</h2>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Xác suất FDV ngày đầu vượt mỗi mốc, với điều kiện có token</span>
+          <span class="panel-sub">Polymarket (29/9, 06:00 UTC, chia cho ~0.89 xác suất ra token) so với phân phối của báo cáo</span>
+        </div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="key-line" style="background:var(--s1)"></i>Polymarket</span>
+          <span><i class="key-line" style="background:var(--s2)"></i>Mô hình báo cáo (lognormal, trung vị $140M)</span>
+          <span><i class="key-band"></i>Vùng FDV hòa vốn của ETH YT-USDat, $98–145M</span>
+        </div>
+        <div class="chart" id="chart-fdv" role="img" aria-label="Đường xác suất FDV vượt các mốc: Polymarket so với mô hình báo cáo"></div>
+        <details class="table-toggle">
+          <summary>Xem bảng số liệu</summary>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Mốc FDV</th><th class="r">Giá "Yes" Polymarket</th><th class="r">Có điều kiện ra token</th><th class="r">Mô hình báo cáo</th></tr></thead>
+              <tbody id="table-fdv"></tbody>
+            </table>
+          </div>
+        </details>
+        <p class="note">Tổng khối lượng giao dịch của thị trường Polymarket này chỉ ~$21.6k, nên vài nghìn đô có thể kéo lệch một mốc. Các mốc >$200M và >$300M đã giảm 6 và 12 điểm trong tháng qua.</p>
+      </div>
+      <div class="cols-3">
+        <div class="card"><span class="pill avoid">▼ Bi quan</span><span class="big">$50–80M</span><p class="tile-sub">TVL tiếp tục co sau snapshot, STRC chưa về mệnh giá, niêm yết sàn nhỏ. Tương đương 0.35–0.55× TVL, như Unitas lúc TGE.</p></div>
+        <div class="card base"><span class="pill caution">◐ Cơ sở</span><span class="big">~$150M</span><p class="tile-sub">Khoảng 1× TVL. Thấp hơn bội số 1.27× của tám nhà phát hành gần đây vì TVL đang co, doanh thu giữ lại nhỏ, rủi ro tập trung STRC và vốn gọi rất nhỏ.</p></div>
+        <div class="card"><span class="pill ok">▲ Lạc quan</span><span class="big">$250–350M</span><p class="tile-sub">Niêm yết Binance Alpha/HODLer, nguồn cung tăng lại nhờ PYUSDx và STRCon của Ondo, STRC trở lại mệnh giá.</p></div>
+      </div>
+      <div class="prose">
+        <p>Ba nguồn được đối chiếu. <strong>Polymarket</strong> ngụ ý trung vị ~$207M, khoảng tứ phân vị $96–331M. <strong>Bội số so sánh</strong>: $147M TVL × trung vị FDV/TVL 1.27× cho ~$186–192M, biên độ $53–315M. <strong>Yếu tố riêng của Saturn</strong> kéo xuống. Mô phỏng dùng lognormal trung vị $140M, tứ phân vị $79–247M, trung bình ~$200M. Sau TGE còn áp lực bán: trung vị giá sau 30 ngày của 12 dự án 2025–2026 là −20%, của rổ token được farm là −41%.</p>
+      </div>
+    </section>
+
+    <!-- ĐIỂM -->
+    <section id="diem">
+      <div class="section-head">
+        <span class="eyebrow">Chương trình điểm</span>
+        <h2>Mỗi YT-USDat nhận 30 điểm/ngày, cùng chia 5% nguồn cung</h2>
+      </div>
+      <div class="prose">
+        <p>Saturn chạy điểm qua Merkl. <strong>1×</strong> nghĩa là 1 điểm cho mỗi $1 mỗi ngày, tính theo thời gian nắm giữ. Điểm của YT tính trên <strong>1 USDat danh nghĩa cho mỗi YT</strong>, không theo giá thị trường của YT (phân phối thực tế xác nhận: một ví nắm 3.24M YT nhận ~97M điểm/ngày). Pendle thu 5% toàn bộ lợi suất YT, kể cả điểm, nên người mua mới không có boost nhận <strong>28.5 điểm/YT/ngày</strong>.</p>
+      </div>
+      <div class="cols-2">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Hoạt động (Season 2)</th><th class="r">Hệ số</th></tr></thead>
+            <tbody>
+              <tr class="hl"><td>Pendle YT-USDat</td><td class="r">30×</td></tr>
+              <tr><td>Curve USDC/USDat, PancakeSwap (trong range)</td><td class="r">25×</td></tr>
+              <tr><td>Pendle YT-srUSDat</td><td class="r">15×</td></tr>
+              <tr><td>Pendle LP USDat</td><td class="r">15×</td></tr>
+              <tr><td>Pendle YT-sUSDat</td><td class="r">10×</td></tr>
+              <tr><td>Pendle LP srUSDat</td><td class="r">7.5×</td></tr>
+              <tr><td>Giữ USDat · Pendle LP sUSDat · Strata jrUSDat</td><td class="r">5×</td></tr>
+              <tr><td>Vay AUSD thế chấp sUSDat (Morpho)</td><td class="r">2×</td></tr>
+              <tr><td>Giữ sUSDat · Strata srUSDat · cho vay Morpho</td><td class="r">1×</td></tr>
+              <tr><td>Pendle PT</td><td class="r">0×</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel">
+          <span class="panel-title">Tổng cung điểm và pha loãng</span>
+          <dl class="out-list">
+            <dt>Season 1 (Gravity, 8/4–8/8), tối đa 5% "nguồn cung ban đầu"</dt><dd>474–497 tỷ</dd>
+            <dt>Season 2 (Orbital, 9/8–8/12) đến 28/9, tối đa 5% "tổng cung"</dt><dd>150–156 tỷ</dd>
+            <dt>Tốc độ phát hành S2 hiện tại, gồm boost</dt><dd>2.8–3.4 tỷ/ngày</dd>
+            <dt>Dự phóng tổng S2 tại 8/12</dt><dd>350–400 tỷ</dd>
+            <dt>Phần điểm S2 do YT-USDat tạo ra</dt><dd>60.7%</dd>
+            <dt>10 ví lớn nhất nắm</dt><dd>41.4%</dd>
+          </dl>
+          <p class="tile-sub">Boost: +20% cho ví có hơn 1M điểm S1 (3,480 trên 8,100 ví), +10% cho người giới thiệu, +5% cho người được giới thiệu. Người mua mới không có boost S1 bị pha loãng bởi người cày lâu năm.</p>
+        </div>
+      </div>
+      <div class="cols-3">
+        <div class="card">
+          <h3>Cắt sớm không đổi giá trị mỗi điểm</h3>
+          <p class="tile-sub">Pool token và tổng điểm cùng co theo tỷ lệ. Ở FDV $100M, 1M điểm đáng $12.87 nếu snapshot 1/11, $12.74 nếu 15/11 và $12.60 nếu 8/12. Thứ bị cắt là số điểm của người mua: TGE giữa tháng 11 cho 53M thay vì 80M điểm mỗi $1,000.</p>
+        </div>
+        <div class="card">
+          <h3>Hạn mức ngân sách Merkl</h3>
+          <p class="tile-sub">Ngân sách chỉ đủ trả 30× cho ~26.6M YT trên Ethereum (đang ở 76%) và ~53.0M YT trên Monad (81%). Ba chiến dịch YT kỳ hạn tháng 8 đã chạm trần. Vượt hạn mức thì điểm mỗi YT giảm tỷ lệ thuận.</p>
+        </div>
+        <div class="card">
+          <h3>Season 3 khó định giá nhất</h3>
+          <p class="tile-sub">Sau 8/12 YT còn ~36 ngày đến đáo hạn, 60–75 ngày nếu TGE sớm. Tỷ lệ, hệ số và việc YT có đủ điều kiện đều chưa công bố, và điểm S3 được chia sau TGE. Báo cáo định giá điểm S3 bằng 0–60% điểm S2, cơ sở 30%.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- POOL -->
+    <section id="pool">
+      <div class="section-head">
+        <span class="eyebrow">Pendle</span>
+        <h2>YT-USDat cho điểm rẻ hơn YT-sUSDat 4–6 lần</h2>
+      </div>
+      <div class="prose"><p>Bảy pool, tất cả đáo hạn 14/1/2027 (107.5 ngày tính từ 28/9). Số liệu dưới dùng báo giá khớp thật từ API convert của Pendle cho lệnh $1,000 (đã gồm phí swap và trượt giá), phí Pendle 5%, người mua không có boost.</p></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Pool (hệ số)</th><th class="r">Thanh khoản</th><th class="r">Implied APY</th><th class="r">Giá YT</th><th class="r">YT / $1k</th><th class="r">Điểm/ngày / $1k</th><th class="r">Điểm đến 8/12</th><th class="r">Điểm nếu snapshot 15/11</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td>ETH YT-USDat (30×)</td><td class="r">$1.96M</td><td class="r">8.98%</td><td class="r">$0.02502</td><td class="r">39,151</td><td class="r">1.116M</td><td class="r">80.0M</td><td class="r">53.2M</td></tr>
+            <tr><td>Monad YT-USDat (30×)</td><td class="r">$1.47M</td><td class="r">9.10%</td><td class="r">$0.02532</td><td class="r">38,125</td><td class="r">1.087M</td><td class="r">77.9M</td><td class="r">51.8M</td></tr>
+            <tr><td>BNB YT-USDat (30×)</td><td class="r">$0.04M</td><td class="r">8.29%</td><td class="r">$0.02317</td><td class="r">không khớp $1k</td><td class="r">0.848M*</td><td class="r">60.8M*</td><td class="r">40.5M*</td></tr>
+            <tr><td>ETH YT-sUSDat (10×)</td><td class="r">$1.35M</td><td class="r">12.92%</td><td class="r">$0.03506</td><td class="r">27,470</td><td class="r">0.261M</td><td class="r">18.7M</td><td class="r">12.4M</td></tr>
+            <tr><td>Monad YT-sUSDat (10×)</td><td class="r">$1.61M</td><td class="r">17.41%</td><td class="r">$0.04605</td><td class="r">21,223</td><td class="r">0.202M</td><td class="r">14.5M</td><td class="r">9.6M</td></tr>
+            <tr><td>ETH YT-srUSDat (15×)</td><td class="r">$0.23M</td><td class="r">10.20%</td><td class="r">$0.02821</td><td class="r">31,648</td><td class="r">0.451M</td><td class="r">32.3M</td><td class="r">21.5M</td></tr>
+            <tr><td>Monad YT-srUSDat (15×?)</td><td class="r">$0.36M</td><td class="r">10.41%</td><td class="r">$0.02875</td><td class="r">32,325</td><td class="r">0.461M?</td><td class="r">33.0M?</td><td class="r">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">* BNB quy đổi từ lệnh $500 (không khớp được $1,000). Monad srUSDat có chiến dịch trên Merkl nhưng không có trong danh sách chính thức của Saturn.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Pool</th><th>Lợi suất / thưởng giả định</th><th class="r">Nhận lại</th><th class="r">Chi phí ròng / $1k</th><th class="r">$ / 1M điểm (đến 8/12)</th><th class="r">$ / 1M điểm (snapshot 15/11)</th><th class="r">FDV hòa vốn thô</th><th class="r">FDV hòa vốn điều chỉnh rủi ro (đủ S2 / TGE 15/11)</th></tr></thead>
+          <tbody>
+            <tr><td>ETH YT-USDat</td><td>USDC dừng ngay</td><td class="r">$0</td><td class="r">$1,000</td><td class="r">$12.50</td><td class="r">$18.79</td><td class="r">$99M</td><td class="r">$145M / $180M</td></tr>
+            <tr class="hl"><td>ETH YT-USDat</td><td>USDC đến snapshot</td><td class="r">$217</td><td class="r">$783</td><td class="r">$9.79</td><td class="r">$16.08</td><td class="r">$78M</td><td class="r">$114M / $141M</td></tr>
+            <tr><td>ETH YT-USDat</td><td>USDC đến 14/1</td><td class="r">$325</td><td class="r">$675</td><td class="r">$8.43</td><td class="r">$12.68</td><td class="r">$67M</td><td class="r">$98M / $122M</td></tr>
+            <tr><td>Monad YT-USDat</td><td>USDC dừng / đến snapshot / đến 14/1</td><td class="r">$0 / $211 / $317</td><td class="r">$1,000 / $789 / $683</td><td class="r">$12.84 / $10.13 / $8.77</td><td class="r">$19.29 / $16.59 / $13.18</td><td class="r">$102M / $80M / $70M</td><td class="r">$149M / $118M / $102M (đủ S2)</td></tr>
+            <tr><td>BNB YT-USDat ($500)</td><td>không có USDC</td><td class="r">$0</td><td class="r">$500</td><td class="r">$16.44</td><td class="r">$24.71</td><td class="r">$131M</td><td class="r">$191M / $237M</td></tr>
+            <tr><td>ETH YT-sUSDat</td><td>lợi suất 0% / 6.4% / 8% / 12%</td><td class="r">$0 / $481 / $598 / $886</td><td class="r">$1,000 / $519 / $402 / $114</td><td class="r">$53.4 / $27.7 / $21.5 / $6.1</td><td class="r">$80.3 (0%)</td><td class="r">$424M / $220M / $170M / $48M</td><td class="r">$620M / $322M / $249M / $71M</td></tr>
+            <tr><td>Monad YT-sUSDat</td><td>0% / 6.4% / 8% / 12%</td><td class="r">$0 / $372 / $462 / $684</td><td class="r">$1,000 / $628 / $538 / $316</td><td class="r">$69.2 / $43.4 / $37.1 / $21.8</td><td class="r">$104 (0%)</td><td class="r">$549M / $345M / $295M / $173M</td><td class="r">$803M / $504M / $432M / $253M</td></tr>
+            <tr><td>ETH YT-srUSDat</td><td>6% / 7.5% / 8.11%</td><td class="r">$520 / $647 / $698</td><td class="r">$480 / $353 / $302</td><td class="r">$14.8 / $10.9 / $9.3</td><td class="r">$46.5 (0%)</td><td class="r">$118M / $87M / $74M</td><td class="r">$172M / $127M / $108M</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">"Thô": FDV để giá trị điểm S2 vừa bằng chi phí ròng, với S2 chạy đủ, phát hành 3.4 tỷ/ngày (tổng 397 tỷ), phân bổ 5%, không chiết khấu, không tính S3. "Điều chỉnh rủi ro": thêm chiết khấu vesting và áp lực bán 30%, xác suất không có token 15%, điểm S3 bằng 30% điểm S2.</p>
+      <div class="cols-2">
+        <div class="panel">
+          <span class="panel-title">YT-sUSDat là cược đòn bẩy vào NAV của STRC</span>
+          <p class="tile-sub">Hệ số chỉ 10× và giá YT cao hơn, nên chi phí mỗi điểm đắt gấp 4–6 lần YT-USDat, trừ khi STRC giữ được ~12%. YT-sUSDat kỳ hạn tháng 8 từng nhận 0% lợi suất từ cuối tháng 5 đến đáo hạn, vì YT của Pendle chỉ tích lũy khi chỉ số vượt đỉnh cũ. Hiện tỷ giá vẫn thấp hơn đỉnh 22/9 khoảng 0.25%.</p>
+        </div>
+        <div class="panel">
+          <span class="panel-title">YT-USDat đang ở mức đắt nhất lịch sử</span>
+          <p class="tile-sub">Implied APY trên Ethereum đi từ 5.00% lúc mở pool, qua 6.1–6.9% trong tháng 8 và đầu tháng 9, lên 8.98% khi thanh khoản pool giảm từ $5.94M xuống $1.96M (17–27/9). Trượt giá trên Ethereum là −2.1% cho $1k, −7.4% cho $10k, −16% cho $50k; trên Monad lệnh $50k trượt tới −44%.</p>
+        </div>
+      </div>
+      <div class="prose">
+        <p><strong>Cách lấy điểm rẻ hơn với vốn lớn, vẫn giữ gốc:</strong> LP Curve USDC/USDat (25×) cho 1.79M điểm trên mỗi $1,000 đến 8/12, chi phí cơ hội chỉ ~$4.5–9.7 cho mỗi 1M điểm, nhưng cần ~$44.6k để có cùng số điểm mỗi ngày với $1k YT. Giữ USDat (5×, kèm 3% APR) tốn ~$6.8/1M điểm so với T-bill. LP Pendle USDat (15× trên toàn bộ giá trị LP) trả 9.31% APY cộng điểm. YT chỉ hợp lý với vốn nhỏ muốn đòn bẩy điểm và chấp nhận mất toàn bộ số tiền bỏ vào.</p>
+      </div>
+    </section>
+
+    <!-- KỊCH BẢN -->
+    <section id="kich-ban">
+      <div class="section-head">
+        <span class="eyebrow">Kịch bản</span>
+        <h2>Ma trận kịch bản cho kỳ vọng dương mỏng nhưng trung vị lỗ</h2>
+      </div>
+      <div class="prose">
+        <p>Tham số lấy từ lịch sử các chương trình điểm cày qua Pendle: 88% airdrop giảm giá (Keyrock), điểm Renzo chỉ hiện thực hóa ~27% giá trước TGE, Ethena S4 chỉ cho claim ngay 1.5% trong 3.5%, Cap cắt stabledrop từ $12M xuống $4.2M, Level đóng cửa không có token, Resolv bị hack. Một vị thế $10k YT-USDat kiếm ~0.76 tỷ điểm, đủ vào nhóm ~100 ví đầu S2, nên có thể bị xếp vào nhóm "cá voi" nếu Saturn vesting theo tầng.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tham số</th><th>Bi quan</th><th>Cơ sở</th><th>Lạc quan</th><th>Phân phối Monte Carlo</th></tr></thead>
+          <tbody>
+            <tr><td>Snapshot S2 / TGE</td><td>15/11 (47.7 ngày)</td><td>8/12 (71.7 ngày)</td><td>8/12</td><td>10% ~1/11 · 20% ~15/11 · 15% ~1/12 · 30% 8/12 · 25% 8/12 nhưng TGE sang 2027 (thêm −20% giá trị)</td></tr>
+            <tr><td>Phát hành S2</td><td>4.5 tỷ/ngày</td><td>3.4 tỷ/ngày (397 tỷ)</td><td>2.8 tỷ/ngày (354 tỷ)</td><td>Đều 2.8–5.0 tỷ/ngày</td></tr>
+            <tr><td>Phân bổ S2</td><td>4%</td><td>5%</td><td>5%</td><td>80% là 5%, 20% là 4%</td></tr>
+            <tr><td>FDV ngày TGE</td><td>$60M</td><td>$150M</td><td>$300M</td><td>Lognormal trung vị $140M, σ = 0.85</td></tr>
+            <tr><td>Chiết khấu vesting, áp lực bán</td><td>50%</td><td>30%</td><td>10%</td><td>Đều 15–50%</td></tr>
+            <tr><td>Xác suất không có token / sự cố</td><td>25%</td><td>15%</td><td>7%</td><td>15%</td></tr>
+            <tr><td>Hệ số hạn mức Merkl</td><td>0.92</td><td>1.00</td><td>1.00</td><td>Đều 0.90–1.00</td></tr>
+            <tr><td>Giá trị điểm S3 so với S2</td><td>0%</td><td>30%</td><td>60%</td><td>Đều 0–50%</td></tr>
+            <tr><td>Thưởng USDC 3% (pool USDat)</td><td>Dừng ngay</td><td>Đến snapshot</td><td>Đến 14/1</td><td>25% / 35% / 40%</td></tr>
+            <tr><td>Lợi suất sUSDat / srUSDat cho YT</td><td>0% / 5%</td><td>8% / 7.5%</td><td>12% / 8.1%</td><td>sUSDat 0–12% lệch về 0; srUSDat đều 5–8.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-title">ROI của $1,000 ETH YT-USDat theo FDV × ngày snapshot × mức pha loãng</span>
+          <div class="scale" aria-hidden="true"><span>Lỗ</span><span class="scale-bar"></span><span>Lãi</span></div>
+        </div>
+        <div class="table-wrap">
+          <table class="heat" id="heat"></table>
+        </div>
+        <p class="note">Cố định: chiết khấu 30%, xác suất không có token 15%, S3 bằng 30% S2, USDC đến snapshot, phân bổ 5%. Ô viền vàng là kịch bản cơ sở (+25%). Cần đồng thời FDV ≥ $150M và Season 2 chạy gần đủ để có lãi đáng kể; TGE đầu tháng 11 cần FDV ~$200M chỉ để hòa vốn. Mỗi ~80 tỷ điểm pha loãng thêm lấy đi ~15–20 điểm phần trăm ROI.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Pool, quy mô</th><th class="r">Bi quan</th><th class="r">Cơ sở</th><th class="r">Lạc quan</th><th class="r">MC trung bình</th><th class="r">MC trung vị</th><th class="r">P(lỗ)</th><th class="r">P(lỗ &gt; 50%)</th><th class="r">P10 / P90</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td>ETH YT-USDat $1k</td><td class="r down">−90%</td><td class="r up">+25%</td><td class="r up">+301%</td><td class="r up">+15%</td><td class="r down">−17%</td><td class="r">59%</td><td class="r">28%</td><td class="r">−78% / +140%</td></tr>
+            <tr><td>ETH YT-USDat $10k</td><td class="r down">−91%</td><td class="r up">+18%</td><td class="r up">+280%</td><td class="r up">+9%</td><td class="r down">−21%</td><td class="r">62%</td><td class="r">30%</td><td class="r">−80% / +127%</td></tr>
+            <tr><td>ETH YT-USDat $50k</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r down">−1%</td><td class="r down">−29%</td><td class="r">66%</td><td class="r">34%</td><td class="r">−81% / +105%</td></tr>
+            <tr><td>Monad YT-USDat $1k</td><td class="r down">−91%</td><td class="r up">+22%</td><td class="r up">+291%</td><td class="r up">+12%</td><td class="r down">−19%</td><td class="r">60%</td><td class="r">29%</td><td class="r">−79% / +133%</td></tr>
+            <tr><td>Monad YT-USDat $10k</td><td class="r down">−91%</td><td class="r up">+18%</td><td class="r up">+280%</td><td class="r up">+9%</td><td class="r down">−21%</td><td class="r">62%</td><td class="r">30%</td><td class="r">−79% / +127%</td></tr>
+            <tr><td>BNB YT-USDat $500</td><td class="r down">−93%</td><td class="r down">−5%</td><td class="r up">+205%</td><td class="r down">−12%</td><td class="r down">−37%</td><td class="r">71%</td><td class="r">39%</td><td class="r">−84% / +82%</td></tr>
+            <tr><td>ETH YT-sUSDat $1k</td><td class="r down">−98%</td><td class="r down">−16%</td><td class="r up">+75%</td><td class="r down">−36%</td><td class="r down">−31%</td><td class="r">77%</td><td class="r">36%</td><td class="r">−100% / +19%</td></tr>
+            <tr><td>Monad YT-sUSDat $1k</td><td class="r down">−98%</td><td class="r down">−35%</td><td class="r up">+35%</td><td class="r down">−50%</td><td class="r down">−47%</td><td class="r">93%</td><td class="r">45%</td><td class="r">−100% / −8%</td></tr>
+            <tr><td>ETH YT-srUSDat $1k</td><td class="r down">−53%</td><td class="r up">+7%</td><td class="r up">+119%</td><td class="r down">−5%</td><td class="r down">−17%</td><td class="r">69%</td><td class="r">4%</td><td class="r">−43% / +46%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Lợi nhuận của YT-USDat có dạng một quyền chọn mua: kỳ vọng dương nhưng đến từ đuôi phải (FDV ≥ $300M, không pha loãng, không vesting); kết quả thường gặp nhất là lỗ vừa đến nặng. YT-srUSDat có đuôi trái nhẹ nhất nhờ lợi suất tranche senior, nhưng pool chỉ $0.23M và trượt 10.7% ngay ở $1k. YT-sUSDat kỳ vọng âm trong mọi phân phối hợp lý.</p>
+    </section>
+
+    <!-- NGƯỠNG -->
+    <section id="nguong">
+      <div class="section-head">
+        <span class="eyebrow">Điểm vào</span>
+        <h2>Ngưỡng implied APY: ≤ 7% mới đáng vào đủ quy mô</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Implied APY (ETH YT-USDat)</th><th class="r">Giá YT</th><th class="r">YT / $1k</th><th class="r">MC trung bình</th><th class="r">MC trung vị</th><th class="r">P(lỗ)</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>5%</td><td class="r">$0.0143</td><td class="r">68,650</td><td class="r up">+102%</td><td class="r up">+46%</td><td class="r">33%</td><td></td></tr>
+            <tr><td>6%</td><td class="r">$0.0170</td><td class="r">57,563</td><td class="r up">+70%</td><td class="r up">+22%</td><td class="r">41%</td><td></td></tr>
+            <tr class="hl"><td>7%</td><td class="r">$0.0197</td><td class="r">49,643</td><td class="r up">+46%</td><td class="r up">+5%</td><td class="r">47%</td><td><span class="pill ok">Ngưỡng mua</span></td></tr>
+            <tr><td>8%</td><td class="r">$0.0224</td><td class="r">43,702</td><td class="r up">+29%</td><td class="r down">−7%</td><td class="r">54%</td><td></td></tr>
+            <tr><td>9%</td><td class="r">$0.0251</td><td class="r">39,081</td><td class="r up">+15%</td><td class="r down">−17%</td><td class="r">59%</td><td><span class="pill caution">Hiện tại</span></td></tr>
+            <tr><td>10%</td><td class="r">$0.0277</td><td class="r">35,383</td><td class="r up">+4%</td><td class="r down">−25%</td><td class="r">64%</td><td><span class="pill avoid">Không mua</span></td></tr>
+            <tr><td>12%</td><td class="r">$0.0328</td><td class="r">29,836</td><td class="r down">−12%</td><td class="r down">−37%</td><td class="r">71%</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Chờ cũng tốn tiền: đợi thêm 14 ngày mà implied APY không đổi thì kỳ vọng ở 7% giảm từ +46% xuống +38%, trung vị từ +5% xuống −1%, vì cửa sổ điểm S2 co nhanh hơn thời gian đến đáo hạn. Ngưỡng nên siết dần: ≤ 7% vào cuối tháng 9, ≤ 6.5% vào giữa tháng 10. Pool đã giao dịch ở 6.1–6.9% trong phần lớn tháng 8 và đầu tháng 9, nên có thể đặt lệnh giới hạn để chờ.</p>
+    </section>
+
+    <!-- MÁY TÍNH -->
+    <section id="may-tinh">
+      <div class="section-head">
+        <span class="eyebrow">Công cụ</span>
+        <h2>Máy tính YT Saturn</h2>
+        <p class="note">Mặc định là số liệu của báo cáo ngày 28/9. Cập nhật implied APY, ngày mua và tổng điểm hiện tại theo Pendle và Merkl để tính lại. Mô hình giống hệt báo cáo; các giá trị bạn nhập chỉ lưu trong trình duyệt của bạn.</p>
+      </div>
+      <div class="calc">
+        <form class="form" id="calc-form" autocomplete="off">
+          <fieldset class="fieldset">
+            <legend>Vị thế</legend>
+            <div class="fields">
+              <div class="field full">
+                <label for="pool">Pool</label>
+                <select id="pool">
+                  <option value="eth-usdat">ETH YT-USDat (30×)</option>
+                  <option value="monad-usdat">Monad YT-USDat (30×)</option>
+                  <option value="bnb-usdat">BNB YT-USDat (30×)</option>
+                  <option value="eth-susdat">ETH YT-sUSDat (10×)</option>
+                  <option value="monad-susdat">Monad YT-sUSDat (10×)</option>
+                  <option value="eth-srusdat">ETH YT-srUSDat (15×)</option>
+                </select>
+              </div>
+              <div class="field"><label for="capital">Vốn ($)</label><input id="capital" type="number" min="1" step="100" inputmode="decimal"></div>
+              <div class="field"><label for="apy">Implied APY (%)</label><input id="apy" type="number" min="0.1" step="0.01" inputmode="decimal"><span class="hint">Giá YT suy ra từ APY và số ngày đến 14/1/2027</span></div>
+              <div class="field"><label for="impact">Trượt giá + phí swap (%)</label><input id="impact" type="number" min="0" max="90" step="0.1" inputmode="decimal"><span class="hint">ETH USDat: 2.1% ở $1k, 7.4% ở $10k</span></div>
+              <div class="field"><label for="buyDate">Ngày mua</label><input id="buyDate" type="date" min="2026-08-09" max="2027-01-13"></div>
+              <div class="field" data-kind="usdat"><label for="reward">Thưởng USDC cho YT kéo dài</label>
+                <select id="reward"><option value="none">Dừng ngay</option><option value="snap">Đến snapshot</option><option value="expiry">Đến đáo hạn 14/1</option></select></div>
+              <div class="field" data-kind="usdat"><label for="rewardApr">APR thưởng USDC (%)</label><input id="rewardApr" type="number" min="0" step="0.1" inputmode="decimal"></div>
+              <div class="field" data-kind="yield"><label for="uapy">Lợi suất underlying cho YT (%/năm)</label><input id="uapy" type="number" min="0" step="0.1" inputmode="decimal"><span class="hint">sUSDat thực tế ~6.4%/năm; từng 0% cả quý</span></div>
+              <div class="field full"><label class="check" for="boost"><input id="boost" type="checkbox">Ví có hơn 1M điểm Season 1 (boost +20% điểm S2)</label></div>
+            </div>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend>Season 2 và pha loãng</legend>
+            <div class="fields">
+              <div class="field"><label for="snapDate">Ngày snapshot S2</label><input id="snapDate" type="date" min="2026-08-09" max="2026-12-08"><span class="hint">Tối đa 8/12; TGE sớm thì cắt theo tỷ lệ</span></div>
+              <div class="field"><label for="alloc">Phân bổ S2 (% tổng cung)</label><input id="alloc" type="number" min="0" step="0.1" inputmode="decimal"></div>
+              <div class="field"><label for="pcur">Tổng điểm S2 tại ngày mua (tỷ)</label><input id="pcur" type="number" min="0" step="1" inputmode="decimal"><span class="hint">153 tỷ ngày 28/9 (Merkl)</span></div>
+              <div class="field"><label for="emis">Phát hành S2 (tỷ điểm/ngày)</label><input id="emis" type="number" min="0" step="0.1" inputmode="decimal"><span class="hint">Hiện 2.8–3.4; bi quan 4.5+</span></div>
+              <div class="field"><label for="cap">Hệ số hạn mức Merkl (%)</label><input id="cap" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+              <div class="field"><label for="fee">Phí Pendle trên YT (%)</label><input id="fee" type="number" min="0" max="100" step="0.5" inputmode="decimal"></div>
+            </div>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend>Định giá token</legend>
+            <div class="fields">
+              <div class="field"><label for="fdv">FDV ngày TGE ($M)</label><input id="fdv" type="number" min="1" step="5" inputmode="decimal"></div>
+              <div class="field"><label for="hair">Chiết khấu vesting, áp lực bán (%)</label><input id="hair" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+              <div class="field"><label for="pz">Xác suất không có token (%)</label><input id="pz" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+              <div class="field"><label for="s3">Giá trị điểm S3 so với S2 (%)</label><input id="s3" type="number" min="0" max="200" step="5" inputmode="decimal"></div>
+            </div>
+          </fieldset>
+          <div><button type="button" class="btn" id="reset">Đặt lại theo báo cáo</button></div>
+        </form>
+
+        <div class="results" aria-live="polite">
+          <div class="hero-out">
+            <div class="tile"><span class="tile-label">ROI kỳ vọng (đã điều chỉnh rủi ro)</span><span class="tile-value" id="o-roi">—</span><span class="tile-sub" id="o-ev">—</span></div>
+            <div class="tile"><span class="tile-label">FDV hòa vốn, điều chỉnh rủi ro</span><span class="tile-value" id="o-be">—</span><span class="tile-sub" id="o-beraw">—</span></div>
+          </div>
+          <div class="panel">
+            <dl class="out-list">
+              <dt>Giá YT · số YT mua được</dt><dd id="o-yt">—</dd>
+              <dt>Điểm mỗi ngày</dt><dd id="o-ppd">—</dd>
+              <dt id="o-d2l">Điểm S2 đến snapshot</dt><dd id="o-pts2">—</dd>
+              <dt id="o-d3l">Điểm S3 thô đến đáo hạn</dt><dd id="o-pts3">—</dd>
+              <dt>Nhận lại (USDC / lợi suất, sau phí)</dt><dd id="o-cash">—</dd>
+              <dt>Chi phí ròng</dt><dd id="o-net">—</dd>
+              <dt>Chi phí cho mỗi 1M điểm S2</dt><dd id="o-cpm">—</dd>
+              <dt>Giá trị 1M điểm S2 ở FDV đã chọn</dt><dd id="o-vpm">—</dd>
+            </dl>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><span class="panel-title">ROI kỳ vọng theo FDV</span><span class="panel-sub">Giữ nguyên các tham số khác</span></div>
+            <div class="chart" id="chart-sens" role="img" aria-label="Đường ROI kỳ vọng theo FDV ngày TGE"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><span class="panel-title">Mô phỏng Monte Carlo (40,000 lượt)</span><span class="panel-sub">Phân phối của báo cáo; chỉ lấy pool, APY, trượt giá, vốn, ngày mua, tổng điểm và boost từ máy tính</span></div>
+            <div class="mc-stats">
+              <div class="tile"><span class="tile-label">Trung bình</span><span class="tile-value" id="mc-mean">—</span></div>
+              <div class="tile"><span class="tile-label">Trung vị</span><span class="tile-value" id="mc-med">—</span></div>
+              <div class="tile"><span class="tile-label">P(lỗ)</span><span class="tile-value" id="mc-ploss">—</span></div>
+              <div class="tile"><span class="tile-label">P(lỗ &gt; 50%)</span><span class="tile-value" id="mc-p50">—</span></div>
+              <div class="tile"><span class="tile-label">P10</span><span class="tile-value" id="mc-p10">—</span></div>
+              <div class="tile"><span class="tile-label">P90</span><span class="tile-value" id="mc-p90">—</span></div>
+            </div>
+            <div class="legend" aria-hidden="true">
+              <span><i class="key-dot" style="background:var(--neg);border-radius:3px"></i>Kết quả lỗ</span>
+              <span><i class="key-dot" style="background:var(--pos);border-radius:3px"></i>Kết quả lãi</span>
+            </div>
+            <div class="chart" id="chart-mc" role="img" aria-label="Phân phối ROI mô phỏng"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KHUYẾN NGHỊ -->
+    <section id="khuyen-nghi">
+      <div class="section-head">
+        <span class="eyebrow">Hành động</span>
+        <h2>Khuyến nghị: chỉ vào vị thế nhỏ YT-USDat khi implied APY ≤ 7%</h2>
+      </div>
+      <div class="verdicts">
+        <div class="verdict-row"><b>ETH YT-USDat</b><span class="pill caution">◐ Vị thế nhỏ, ưu tiên</span><span class="why">Pool sâu nhất ($1.96M), điểm rẻ nhất, còn dư 24% hạn mức Merkl.</span></div>
+        <div class="verdict-row"><b>Monad YT-USDat</b><span class="pill caution">◐ Vị thế nhỏ, thay thế</span><span class="why">Tương đương Ethereum; dùng để chia nhỏ lệnh. Chú ý ~95% USDat trên Monad nằm trong Pendle.</span></div>
+        <div class="verdict-row"><b>YT-sUSDat (ETH, Monad)</b><span class="pill avoid">✕ Tránh</span><span class="why">Kỳ vọng −36% đến −50%, điểm đắt gấp 4–6 lần, chịu rủi ro STRC trực tiếp.</span></div>
+        <div class="verdict-row"><b>BNB YT-USDat</b><span class="pill avoid">✕ Tránh</span><span class="why">Không khớp được lệnh $1k, không có thưởng USDC.</span></div>
+        <div class="verdict-row"><b>YT-srUSDat</b><span class="pill avoid">✕ Tránh</span><span class="why">Pool quá mỏng, trượt 10.7% ở $1k; Monad chưa chắc có điểm.</span></div>
+      </div>
+      <div class="cols-2">
+        <div class="panel">
+          <span class="panel-title">Quy mô vị thế</span>
+          <ul>
+            <li>Kelly tối ưu trong mô hình là ~16% vốn ở giá hiện tại và ~30% ở 7%, nhưng tham số chủ quan nên chỉ dùng ~1/10 Kelly.</li>
+            <li>Tổng vị thế YT Saturn không quá <strong>1–2% danh mục</strong>, chỉ dùng tiền chấp nhận mất 100%.</li>
+            <li>Mỗi pool tối đa <strong>$5–10k</strong> để trượt giá dưới ~7%; lớn hơn thì chia giữa Ethereum và Monad.</li>
+            <li>Vốn trên ~$20k: dùng LP Curve USDC/USDat hoặc giữ USDat, chi phí điểm tương đương hoặc rẻ hơn mà giữ được gốc.</li>
+            <li>Có boost S1 (+20%): chi phí mỗi 1M điểm giảm từ $12.50 xuống ~$10.42, FDV hòa vốn giảm ~17%.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <span class="panel-title">Điều kiện vào lệnh và kế hoạch thoát</span>
+          <ul>
+            <li>Vào khi đủ: implied APY ≤ 7%; Pendle vẫn hiển thị thưởng USDC 3%; nguồn cung YT dưới hạn mức Merkl; chưa có thông báo TGE trước giữa tháng 11.</li>
+            <li>TGE chốt trước 15/11: FDV hòa vốn lên $122–180M, dừng mua thêm.</li>
+            <li>Tại snapshot S2: nếu Season 3 có phân bổ rõ, giữ YT đến 14/1; nếu không, bán YT nếu còn giá mua.</li>
+            <li>Sau TGE: bán phần lớn token trong vài ngày đầu nếu không bị vesting. Lứa 2025 đạt đỉnh ngay giờ giao dịch đầu; trung vị token được farm sau 30 ngày là −41%.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tín hiệu cần theo dõi</th><th>Nguồn</th><th>Ngưỡng hành động</th></tr></thead>
+          <tbody>
+            <tr><td>Implied APY của YT-USDat</td><td><a href="https://api-v2.pendle.finance/core/v1/1/markets/0x4ccf6deb3d1895373f604b418ff55d8adae8b846">Pendle API</a></td><td>≤ 7% (≤ 6.5% từ giữa tháng 10): mua; &gt; 10%: không mua</td></tr>
+            <tr><td>Ngày TGE, snapshot</td><td><a href="https://x.com/saturn_credit/status/2103290807847645584">@saturn_credit</a></td><td>TGE trước 15/11: giảm quy mô, dừng mua</td></tr>
+            <tr><td>Tokenomics: tổng cung, % S2, vesting cho ví lớn</td><td>@saturn_credit</td><td>S2 &lt; 5% hoặc vesting nặng: không mua thêm, cân nhắc bán</td></tr>
+            <tr><td>Nguồn cung YT so với hạn mức Merkl (ETH 26.6M, Monad 53M)</td><td><a href="https://etherscan.io/token/0x480c3c9470fa4bbda030f6396fa4b17adefc1ce0">Etherscan</a>, <a href="https://monadscan.com/token/0x5aff25c86c7cb739e554be8904b32047738b7440">Monadscan</a></td><td>Vượt hạn mức mà không bơm thêm ngân sách: điểm/YT &lt; 30</td></tr>
+            <tr><td>Tổng Orbital Points, tốc độ phát hành</td><td><a href="https://api.merkl.xyz/v4/rewards/token/total?chainId=1&amp;address=0x10710501778b7FAf9e478f36FaE0B286C028eDE8">Merkl API</a></td><td>&gt; 4.5 tỷ/ngày kéo dài: dùng cột pha loãng cao</td></tr>
+            <tr><td>Thưởng USDC 3% trên YT</td><td><a href="https://api-v2.pendle.finance/core/v3/1/markets/0x4ccf6deb3d1895373f604b418ff55d8adae8b846/historical-data?time_frame=day">Pendle history</a></td><td>Về 0: chi phí ròng thành $1,000 mỗi $1k</td></tr>
+            <tr><td>Giá và cổ tức STRC</td><td><a href="https://www.sec.gov/Archives/edgar/data/0001050446/000119312526377583/mstr-20260831.htm">SEC 8-K</a></td><td>STRC &lt; $95 hoặc cắt cổ tức: rủi ro hoãn TGE kiểu Apyx</td></tr>
+            <tr><td>Polymarket FDV</td><td><a href="https://polymarket.com/event/saturn-fdv-above-one-day-after-launch-20260623191408697">Polymarket</a></td><td>Mốc &gt; $200M dưới 0.35: hạ kỳ vọng về cơ sở hoặc bi quan</td></tr>
+            <tr><td>Niêm yết Binance Alpha/HODLer, pre-market</td><td>Thông báo sàn</td><td>Có niêm yết: ủng hộ kịch bản lạc quan</td></tr>
+            <tr><td>Kết quả TGE của Apyx</td><td><a href="https://www.chaincatcher.com/en/article/2291854">ChainCatcher</a></td><td>FDV/TVL của Apyx là điểm neo gần nhất cho STRN</td></tr>
+            <tr><td>Sự cố bảo mật, peg USDat, độ lệch pool Curve</td><td><a href="https://github.com/yearn/risk-score/blob/master/reports/report/saturn-usdat.md">Yearn</a></td><td>Bất kỳ sự cố nào: thoát</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ĐỐI CHIẾU -->
+    <section id="doi-chieu">
+      <div class="section-head">
+        <span class="eyebrow">Phương pháp</span>
+        <h2>Đối chiếu số liệu mâu thuẫn và giới hạn của phân tích</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Vấn đề</th><th>Các con số khác nhau</th><th>Con số dùng và lý do</th></tr></thead>
+          <tbody>
+            <tr><td>FDV hòa vốn YT-USDat</td><td>~$55M (tính nhanh) so với $12.5/1M điểm</td><td>$67–99M thô, $98–145M sau điều chỉnh rủi ro. Con số $55M dùng giá giữa sổ, bỏ qua phí Pendle 5% và trượt giá, và giả định USDC chạy đến đáo hạn: đó là trường hợp tốt nhất.</td></tr>
+            <tr><td>Quy tắc cắt sớm Season 2</td><td>Một nguồn xem là tin cộng đồng</td><td>Chính thức: nguyên văn trong thread @saturn_credit ngày 25/9, được KuCoin, ChainCatcher, Bloomingbit đưa lại.</td></tr>
+            <tr><td>Thưởng USDC 3% cho YT-USDat</td><td>Chương trình $32k (27/8–27/9) so với APR 3% của USDat từ 9/9</td><td>Nhiều khả năng là APR 3% của USDat chảy qua YT (bắt đầu 9/9, có ở cả ETH và Monad, vẫn hiển thị 3.00% ngày 28/9). Chưa xác nhận thời hạn nên mô hình ba nhánh 25% / 35% / 40%.</td></tr>
+            <tr><td>Đỉnh TVL</td><td>$214.1M (DefiLlama), ~$248M (Saturn tự báo cáo)</td><td>$214.1M vì kiểm chứng được.</td></tr>
+            <tr><td>Phí YT của Pendle</td><td>5% (tài liệu Pendle) so với 3% (nguồn thứ cấp)</td><td>5% theo tài liệu gốc. Nếu thực tế 3%, chi phí mỗi điểm giảm ~2%.</td></tr>
+            <tr><td>Tổng điểm S2 hiện tại</td><td>150.2 tỷ so với 156.1 tỷ</td><td>153 tỷ, điểm giữa.</td></tr>
+            <tr><td>APY của sUSDat</td><td>13.6–16.4% quảng bá so với 6.3–6.4%/năm thực tế</td><td>Kịch bản 0% / 8% / 12%; con số quảng bá bị thổi phồng bởi đợt STRC hồi về mệnh giá.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <ul>
+          <li>Discord và Telegram của Saturn cần đăng nhập nên không truy cập được; dữ liệu X lấy qua mirror.</li>
+          <li>Chưa xác minh được hệ số 30× đã trừ sẵn phí Pendle hay chưa; báo cáo trừ thêm 5% cho chắc.</li>
+          <li>Tokenomics (tổng cung, vesting, định nghĩa "initial" và "total supply") chưa công bố; ma trận cần cập nhật khi có.</li>
+          <li>Không có dữ liệu công khai về lãi/lỗ thực tế của người mua YT theo từng thị trường; lịch sử thắng/thua là tổng hợp từ ~15 trường hợp.</li>
+          <li>Xác suất, kịch bản và phân phối Monte Carlo là ước tính chủ quan, cố ý nghiêng bi quan.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NGUỒN -->
+    <section id="nguon">
+      <div class="section-head">
+        <span class="eyebrow">Nguồn</span>
+        <h2>Nguồn chính</h2>
+      </div>
+      <ul class="sources">
+        <li><a href="https://x.com/saturn_credit/status/2103290807847645584">@saturn_credit, thread TGE 25/9/2026</a></li>
+        <li><a href="https://saturncredit.gitbook.io/saturn-docs/overview/orbital-points-season-2">Saturn docs: Orbital Points Season 2</a></li>
+        <li><a href="https://saturncredit.gitbook.io/saturn-docs/overview/allocations">Saturn docs: Allocations</a></li>
+        <li><a href="https://saturncredit.gitbook.io/saturn-docs/solution/susdat-overview/staking-and-unstaking-process">Saturn docs: staking và unstaking</a></li>
+        <li><a href="https://saturn.credit/legal/gravity-program">Điều khoản chương trình điểm</a></li>
+        <li><a href="https://api.merkl.xyz/v4/campaigns?creatorAddress=0x80c6a512B548229226C0676d6fdbAfF81d325990&amp;items=100&amp;page=0">Merkl: chiến dịch của Saturn</a></li>
+        <li><a href="https://api.merkl.xyz/v4/rewards/token/total?chainId=1&amp;address=0x10710501778b7FAf9e478f36FaE0B286C028eDE8">Merkl: tổng Orbital Points</a></li>
+        <li><a href="https://api-v2.pendle.finance/core/v1/markets/all?limit=100">Pendle API: markets</a></li>
+        <li><a href="https://docs.pendle.finance/pendle-v2/ProtocolMechanics/Mechanisms/Fees">Pendle docs: phí</a></li>
+        <li><a href="https://api.llama.fi/protocol/saturn">DefiLlama: TVL Saturn</a></li>
+        <li><a href="https://stablecoins.llama.fi/stablecoin/400">DefiLlama: USDat</a></li>
+        <li><a href="https://github.com/yearn/risk-score/blob/master/reports/report/saturn-usdat.md">Yearn risk report: USDat</a></li>
+        <li><a href="https://gist.github.com/sgInnora/b70ad98327649ed4ab976a122f45e485">Innora: phát hiện về vault sUSDat</a></li>
+        <li><a href="https://www.sec.gov/Archives/edgar/data/0001050446/000119312526377583/mstr-20260831.htm">Strategy 8-K: cổ tức STRC</a></li>
+        <li><a href="https://polymarket.com/event/saturn-fdv-above-one-day-after-launch-20260623191408697">Polymarket: Saturn FDV một ngày sau launch</a></li>
+        <li><a href="https://www.chaincatcher.com/en/article/2291854">ChainCatcher: Apyx hoãn TGE</a></li>
+        <li><a href="https://mementoresearch.com/state-of-2025-token-launches-year-in-review">Memento Research: token launch 2025</a></li>
+        <li><a href="https://keyrock.com/airdrops-in-the-barren-desert/">Keyrock: airdrop</a></li>
+        <li><a href="https://stablecoins.llama.fi/stablecoincharts/all">DefiLlama: tổng stablecoin</a></li>
+        <li><a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm">Fed: quyết định 16/9/2026</a></li>
+      </ul>
+      <p class="note">Báo cáo Markdown đầy đủ và toàn bộ ghi chú nghiên cứu có trong repo, thư mục <span class="mono">reports/</span> và <span class="mono">research_notes/</span>.</p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Dữ liệu thị trường Pendle, Merkl và on-chain chốt ngày 28–29/9/2026. Giá trị thực tế sẽ thay đổi; dùng máy tính để cập nhật.</span>
+    <span>Phân tích mang tính tham khảo. Các xác suất, kịch bản và mức FDV là ước tính của báo cáo, không phải cam kết của dự án.</span>
+  </div>
+</footer>
+
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- helpers ---------- */
+  const $ = (id) => document.getElementById(id);
+  const NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent) {
+    const n = document.createElementNS(NS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function txt(parent, x, y, s, attrs) {
+    const t = el("text", Object.assign({ x: x, y: y }, attrs || {}), parent);
+    t.textContent = s;
+    return t;
+  }
+  const fmtInt = (v) => Math.round(v).toLocaleString("en-US");
+  function fmtUSD(v, d) {
+    const a = Math.abs(v), s = v < 0 ? "−" : "";
+    if (a >= 1e9) return s + "$" + (a / 1e9).toFixed(2) + "B";
+    if (a >= 1e6) return s + "$" + (a / 1e6).toFixed(a >= 1e8 ? 0 : 1) + "M";
+    if (a >= 1e3) return s + "$" + fmtInt(a);
+    return s + "$" + a.toFixed(d == null ? 0 : d);
+  }
+  const fmtM = (m) => (m >= 1000 ? "$" + (m / 1000).toFixed(m >= 10000 ? 1 : 2) + "B" : "$" + (m >= 100 ? Math.round(m) : m.toFixed(1)) + "M");
+  function fmtPct(v, signed) {
+    const p = v * 100;
+    const s = p > 0.5 && signed ? "+" : p < -0.5 ? "−" : "";
+    return s + Math.abs(Math.round(p)) + "%";
+  }
+  function fmtPts(v) {
+    if (v >= 1e9) return (v / 1e9).toFixed(2) + " tỷ";
+    if (v >= 1e6) return (v / 1e6).toFixed(2) + "M";
+    return fmtInt(v);
+  }
+  const logScale = (d0, d1, r0, r1) => {
+    const a = Math.log10(d0), b = Math.log10(d1);
+    return (v) => r0 + ((Math.log10(v) - a) / (b - a)) * (r1 - r0);
+  };
+  const linScale = (d0, d1, r0, r1) => (v) => r0 + ((v - d0) / (d1 - d0)) * (r1 - r0);
+
+  /* ---------- tooltip ---------- */
+  const tip = $("tip");
+  function showTip(title, rows, x, y) {
+    tip.replaceChildren();
+    const t = document.createElement("div");
+    t.className = "tt";
+    t.textContent = title;
+    tip.appendChild(t);
+    rows.forEach((r) => {
+      const row = document.createElement("div");
+      row.className = "row";
+      const lab = document.createElement("span");
+      if (r.color) {
+        const k = document.createElement("i");
+        k.className = "key-line";
+        k.style.background = r.color;
+        lab.appendChild(k);
+      }
+      lab.appendChild(document.createTextNode(r.label));
+      const val = document.createElement("b");
+      val.textContent = r.value;
+      row.appendChild(lab);
+      row.appendChild(val);
+      tip.appendChild(row);
+    });
+    tip.hidden = false;
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    let left = x + 14, top = y + 14;
+    if (left + w > window.innerWidth - 8) left = x - w - 14;
+    if (top + h > window.innerHeight - 8) top = y - h - 14;
+    tip.style.left = Math.max(8, left) + "px";
+    tip.style.top = Math.max(8, top) + "px";
+  }
+  const hideTip = () => { tip.hidden = true; };
+  function bindTip(node, fn) {
+    node.addEventListener("pointermove", (e) => { const c = fn(e); showTip(c.title, c.rows, e.clientX, e.clientY); });
+    node.addEventListener("pointerleave", hideTip);
+    node.addEventListener("focus", () => {
+      const r = node.getBoundingClientRect();
+      const c = fn(null);
+      showTip(c.title, c.rows, r.left + r.width / 2, r.top + r.height / 2);
+    });
+    node.addEventListener("blur", hideTip);
+  }
+  window.addEventListener("scroll", hideTip, { passive: true });
+
+  /* ---------- comps dumbbell ---------- */
+  const COMPS = [
+    { n: "Ethena", t: "ENA", d: "4/2024", open: 8550, now: 3950, tvl: "$1.56B", ft: "5.5×", ad: "5% (S1)", basis: "VWAP giờ đầu Binance" },
+    { n: "Usual", t: "USUAL", d: "11/2024", open: 1450, now: 60, tvl: "$375M", ft: "3.9×", ad: "8.5%", basis: "VWAP giờ đầu Binance" },
+    { n: "Resolv", t: "RESOLV", d: "6/2025", open: 384, now: 18.6, tvl: "$217M", ft: "1.8×", ad: "10% (S1)", basis: "VWAP giờ đầu Binance; bị hack 3/2026" },
+    { n: "Reservoir", t: "DAM", d: "8/2025", open: 89, now: 2.4, tvl: "$54M", ft: "1.65×", ad: "n/d", basis: "Giá DefiLlama đầu tiên" },
+    { n: "River", t: "RIVER", d: "9/2025", open: 201, now: 110, tvl: "$553M", ft: "0.36×", ad: "30% (động)", basis: "Giá DefiLlama đầu tiên" },
+    { n: "Falcon", t: "FF", d: "9/2025", open: 4530, now: 1300, tvl: "$1.90B", ft: "2.4×", ad: "≤8.3% (gồm sale)", basis: "VWAP giờ đầu Binance" },
+    { n: "OpenEden", t: "EDEN", d: "9/2025", open: 843, now: 58.8, tvl: "$235M", ft: "3.6×", ad: "7.5%", basis: "VWAP giờ đầu Binance" },
+    { n: "Unitas", t: "UP", d: "3/2026", open: 72, now: 241, tvl: "$81M", ft: "0.9×", ad: "n/d", basis: "Giá DefiLlama đầu tiên" },
+    { n: "USD.AI", t: "CHIP", d: "4/2026", open: 612, now: 433, tvl: "$284M", ft: "2.2×", ad: "3%", basis: "Giá đóng cửa ngày 1 (Gate)" },
+    { n: "Solstice", t: "SLX", d: "5/2026", open: 207, now: 64, tvl: "$398M", ft: "0.5×", ad: "~7.5–8%", basis: "Giá đóng cửa ngày 1 (Gate)" },
+    { n: "Re", t: "RE", d: "6/2026", open: 437, now: 463, tvl: "$258M", ft: "1.7×", ad: "n/d", basis: "Giá đóng cửa ngày 1 (Gate)" },
+    { n: "Cap", t: "CAP", d: "6/2026", open: 289, now: 558, tvl: "$221M", ft: "1.3×", ad: "stabledrop cUSD", basis: "Giá DefiLlama đầu tiên" },
+    { n: "Saturn", t: "STRN", d: "Q4/2026?", saturn: true, lo: 50, base: 150, hi: 350, pm: 207, tvl: "$147M", ft: "~1.0× (cơ sở)", ad: "5% S1 + 5% S2" }
+  ];
+
+  function fillCompsTable() {
+    const tb = document.querySelector("#table-comps tbody");
+    COMPS.forEach((c) => {
+      const tr = document.createElement("tr");
+      const ch = c.saturn ? "—" : fmtPct(c.now / c.open - 1, true);
+      const cells = [c.n + " (" + c.t + ")", c.d, c.tvl, c.saturn ? "Cơ sở $150M" : fmtM(c.open), c.ft, c.saturn ? "—" : fmtM(c.now), ch, c.ad];
+      cells.forEach((v, i) => {
+        const td = document.createElement("td");
+        td.textContent = v;
+        if (i >= 2 && i <= 6) td.className = "r";
+        if (i === 6 && !c.saturn) td.classList.add(c.now < c.open ? "down" : "up");
+        tr.appendChild(td);
+      });
+      if (c.saturn) tr.className = "hl";
+      tb.appendChild(tr);
+    });
+  }
+
+  function renderComps() {
+    const host = $("chart-comps");
+    const W = Math.max(300, host.clientWidth);
+    const narrow = W < 560;
+    const labelW = narrow ? 74 : 150, rightW = 54, rowH = 30, top = 6, axisH = 26;
+    const H = top + COMPS.length * rowH + axisH;
+    const x = logScale(1, 20000, labelW + 6, W - rightW - 6);
+    const svg = el("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H });
+    const ticks = [[1, "$1M"], [10, "$10M"], [100, "$100M"], [1000, "$1B"], [10000, "$10B"]];
+    const gy0 = top, gy1 = top + COMPS.length * rowH;
+    ticks.forEach(([v, l]) => {
+      el("line", { x1: x(v), x2: x(v), y1: gy0, y2: gy1, stroke: "var(--grid)", "stroke-width": 1 }, svg);
+      txt(svg, x(v), gy1 + 17, l, { "text-anchor": "middle", "font-size": 11, fill: "var(--muted)" });
+    });
+    COMPS.forEach((c, i) => {
+      const y = top + i * rowH + rowH / 2;
+      const g = el("g", { tabindex: 0, "aria-label": c.n }, svg);
+      el("rect", { x: 0, y: y - rowH / 2, width: W, height: rowH, fill: "transparent" }, g);
+      if (i > 0) el("line", { x1: 0, x2: W, y1: y - rowH / 2, y2: y - rowH / 2, stroke: "var(--grid)", "stroke-width": 1, opacity: 0.6 }, g);
+      const lab = txt(g, 0, y + 4, narrow ? c.t : c.n, { "font-size": 12.5, fill: "var(--ink)", "font-weight": c.saturn ? 650 : 500 });
+      if (!narrow) {
+        const ts = el("tspan", { fill: "var(--muted)", "font-size": 11, dx: 6 }, lab);
+        ts.textContent = c.d;
+      }
+      if (c.saturn) {
+        el("rect", { x: x(c.lo), y: y - 5, width: x(c.hi) - x(c.lo), height: 10, rx: 5, fill: "var(--accent-wash)", stroke: "var(--accent)", "stroke-width": 1 }, g);
+        el("circle", { cx: x(c.pm), cy: y, r: 4, fill: "var(--surface)", stroke: "var(--s1)", "stroke-width": 2 }, g);
+        el("circle", { cx: x(c.base), cy: y, r: 5, fill: "var(--accent)", stroke: "var(--surface)", "stroke-width": 2 }, g);
+        txt(g, W, y + 4, "dự báo", { "text-anchor": "end", "font-size": 11.5, fill: "var(--ink-2)" });
+      } else {
+        const up = c.now >= c.open;
+        const col = up ? "var(--pos)" : "var(--neg)";
+        el("line", { x1: x(c.open), x2: x(c.now), y1: y, y2: y, stroke: col, "stroke-width": 2, "stroke-linecap": "round", opacity: 0.55 }, g);
+        el("circle", { cx: x(c.open), cy: y, r: 4, fill: "var(--surface)", stroke: "var(--ink-2)", "stroke-width": 1.5 }, g);
+        el("circle", { cx: x(c.now), cy: y, r: 4.5, fill: col, stroke: "var(--surface)", "stroke-width": 2 }, g);
+        const ch = c.now / c.open - 1;
+        txt(g, W, y + 4, (up ? "▲ " : "▼ ") + fmtPct(Math.abs(ch), false), { "text-anchor": "end", "font-size": 11.5, fill: "var(--ink-2)" });
+      }
+      bindTip(g, () => {
+        if (c.saturn) {
+          return { title: "Saturn (STRN) · TGE dự kiến Q4/2026", rows: [
+            { label: "Bi quan – lạc quan", value: "$50–350M" },
+            { label: "Cơ sở", value: "$150M", color: "var(--accent)" },
+            { label: "Polymarket trung vị", value: "~$207M", color: "var(--s1)" },
+            { label: "TVL hiện tại", value: c.tvl },
+            { label: "Airdrop điểm", value: c.ad }
+          ] };
+        }
+        return { title: c.n + " (" + c.t + ") · TGE " + c.d, rows: [
+          { label: "FDV mở cửa", value: fmtM(c.open) },
+          { label: "FDV hiện tại", value: fmtM(c.now) },
+          { label: "Thay đổi", value: fmtPct(c.now / c.open - 1, true) },
+          { label: "TVL lúc TGE", value: c.tvl },
+          { label: "FDV/TVL lúc TGE", value: c.ft },
+          { label: "Airdrop điểm", value: c.ad },
+          { label: "Giá mở cửa", value: c.basis }
+        ] };
+      });
+    });
+    host.replaceChildren(svg);
+  }
+
+  /* ---------- FDV survival chart ---------- */
+  const PM = [[50, 0.885], [100, 0.65], [200, 0.46], [300, 0.26], [400, 0.14], [500, 0.075], [1000, 0.024]];
+  const PLAUNCH = 0.89;
+  function erf(x) {
+    const s = x < 0 ? -1 : 1; x = Math.abs(x);
+    const t = 1 / (1 + 0.3275911 * x);
+    const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+    return s * y;
+  }
+  const modelSurv = (m) => 1 - 0.5 * (1 + erf(Math.log(m / 140) / 0.85 / Math.SQRT2));
+  const pmCond = (p) => Math.min(1, p / PLAUNCH);
+  function pmAt(m) {
+    if (m <= PM[0][0]) return pmCond(PM[0][1]);
+    for (let i = 1; i < PM.length; i++) {
+      if (m <= PM[i][0]) {
+        const [a, pa] = PM[i - 1], [b, pb] = PM[i];
+        const t = (Math.log(m) - Math.log(a)) / (Math.log(b) - Math.log(a));
+        return pmCond(pa + (pb - pa) * t);
+      }
+    }
+    return pmCond(PM[PM.length - 1][1]);
+  }
+  function fillFdvTable() {
+    const tb = $("table-fdv");
+    PM.forEach(([m, p]) => {
+      const tr = document.createElement("tr");
+      [">" + fmtM(m), p.toFixed(3), fmtPct(pmCond(p)), fmtPct(modelSurv(m))].forEach((v, i) => {
+        const td = document.createElement("td");
+        td.textContent = v;
+        if (i) td.className = "r";
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  }
+  function renderFdv() {
+    const host = $("chart-fdv");
+    const W = Math.max(300, host.clientWidth);
+    const H = W < 560 ? 250 : 300;
+    const m = { l: 40, r: 14, t: 12, b: 30 };
+    const x = logScale(40, 1200, m.l, W - m.r);
+    const y = linScale(0, 1, H - m.b, m.t);
+    const svg = el("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H });
+    [0, 0.25, 0.5, 0.75, 1].forEach((v) => {
+      el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: v === 0 ? "var(--axis)" : "var(--grid)", "stroke-width": 1 }, svg);
+      txt(svg, m.l - 8, y(v) + 4, Math.round(v * 100) + "%", { "text-anchor": "end", "font-size": 11, fill: "var(--muted)" });
+    });
+    [[50, "$50M"], [100, "$100M"], [200, "$200M"], [500, "$500M"], [1000, "$1B"]].forEach(([v, l]) => {
+      txt(svg, x(v), H - m.b + 18, l, { "text-anchor": "middle", "font-size": 11, fill: "var(--muted)" });
+    });
+    el("rect", { x: x(98), y: m.t, width: x(145) - x(98), height: H - m.b - m.t, fill: "var(--accent-wash)" }, svg);
+    txt(svg, x(119), m.t + 12, "hòa vốn", { "text-anchor": "middle", "font-size": 10.5, fill: "var(--accent-ink)" });
+    let dModel = "";
+    for (let i = 0; i <= 80; i++) {
+      const v = 40 * Math.pow(1200 / 40, i / 80);
+      dModel += (i ? "L" : "M") + x(v).toFixed(1) + " " + y(modelSurv(v)).toFixed(1);
+    }
+    el("path", { d: dModel, fill: "none", stroke: "var(--s2)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+    const pmPts = PM.map(([v, p]) => [x(v), y(pmCond(p))]);
+    el("path", { d: pmPts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(""), fill: "none", stroke: "var(--s1)", "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+    pmPts.forEach((p) => el("circle", { cx: p[0], cy: p[1], r: 4, fill: "var(--s1)", stroke: "var(--surface)", "stroke-width": 2 }, svg));
+    txt(svg, x(200) + 6, y(pmCond(0.46)) - 8, "Polymarket", { "font-size": 11.5, fill: "var(--ink-2)", "font-weight": 600 });
+    txt(svg, x(200) - 6, y(modelSurv(200)) + 16, "Mô hình", { "font-size": 11.5, fill: "var(--ink-2)", "font-weight": 600, "text-anchor": "end" });
+    const cross = el("line", { x1: 0, x2: 0, y1: m.t, y2: H - m.b, stroke: "var(--axis)", "stroke-width": 1, visibility: "hidden" }, svg);
+    const hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.b - m.t, fill: "transparent", tabindex: 0 }, svg);
+    const inv = (px) => 40 * Math.pow(1200 / 40, (px - m.l) / (W - m.r - m.l));
+    let focusV = 150;
+    bindTip(hit, (e) => {
+      let v = focusV;
+      if (e) {
+        const r = svg.getBoundingClientRect();
+        const px = (e.clientX - r.left) * (W / r.width);
+        v = Math.min(1200, Math.max(40, inv(px)));
+      }
+      cross.setAttribute("x1", x(v)); cross.setAttribute("x2", x(v)); cross.setAttribute("visibility", "visible");
+      return { title: "FDV > " + fmtM(v), rows: [
+        { label: "Polymarket", value: fmtPct(pmAt(v)), color: "var(--s1)" },
+        { label: "Mô hình báo cáo", value: fmtPct(modelSurv(v)), color: "var(--s2)" }
+      ] };
+    });
+    hit.addEventListener("pointerleave", () => cross.setAttribute("visibility", "hidden"));
+    hit.addEventListener("blur", () => cross.setAttribute("visibility", "hidden"));
+    host.replaceChildren(svg);
+  }
+
+  /* ---------- heatmap ---------- */
+  const HEAT_COLS = [
+    ["Snapshot 1/11", "264 tỷ điểm"], ["Snapshot 15/11", "315 tỷ"], ["8/12, pha loãng thấp", "354 tỷ"],
+    ["8/12, cơ sở", "397 tỷ"], ["8/12, pha loãng cao", "476 tỷ"], ["8/12, rất cao", "583 tỷ"]
+  ];
+  const HEAT = [
+    [50, [-67, -58, -40, -44, -50, -55]],
+    [75, [-55, -44, -20, -27, -35, -43]],
+    [100, [-43, -30, -1, -9, -21, -31]],
+    [150, [-19, -2, 38, 25, 8, -8]],
+    [200, [4, 25, 76, 60, 37, 15]],
+    [300, [51, 81, 154, 129, 94, 62]],
+    [400, [98, 136, 231, 197, 152, 109]]
+  ];
+  function renderHeat() {
+    const t = $("heat");
+    const thead = document.createElement("thead");
+    const hr = document.createElement("tr");
+    const h0 = document.createElement("th");
+    h0.textContent = "FDV ngày TGE";
+    hr.appendChild(h0);
+    HEAT_COLS.forEach(([a, b]) => {
+      const th = document.createElement("th");
+      th.className = "r";
+      th.appendChild(document.createTextNode(a));
+      th.appendChild(document.createElement("br"));
+      const s = document.createElement("span");
+      s.className = "muted";
+      s.textContent = b;
+      th.appendChild(s);
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+    const tb = document.createElement("tbody");
+    HEAT.forEach(([fdv, vals]) => {
+      const tr = document.createElement("tr");
+      const th = document.createElement("th");
+      th.className = "rowh";
+      th.textContent = "$" + fdv + "M";
+      tr.appendChild(th);
+      vals.forEach((v, j) => {
+        const td = document.createElement("td");
+        td.className = "cell";
+        const tt = Math.min(1, Math.abs(v) / 150);
+        const pct = Math.round(10 + tt * 72);
+        td.style.background = "color-mix(in oklab, " + (v < 0 ? "var(--neg)" : "var(--pos)") + " " + pct + "%, var(--mid))";
+        td.style.color = pct > 52 ? "var(--on-strong)" : "var(--ink)";
+        td.textContent = (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v) + "%";
+        td.tabIndex = 0;
+        if (fdv === 150 && j === 3) td.classList.add("base");
+        bindTip(td, () => ({ title: "FDV $" + fdv + "M · " + HEAT_COLS[j][0], rows: [
+          { label: "Tổng điểm S2", value: HEAT_COLS[j][1].replace(" điểm", "") },
+          { label: "ROI kỳ vọng", value: (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v) + "%" }
+        ] }));
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+    t.replaceChildren(thead, tb);
+  }
+
+  /*CORE-START*/
+  const DAY = 86400000;
+  const S2_START = Date.UTC(2026, 7, 9, 4, 0);
+  const S2_END = Date.UTC(2026, 11, 9, 4, 59);
+  const EXPIRY = Date.UTC(2027, 0, 14, 0, 0);
+  const S2LEN = (S2_END - S2_START) / DAY;
+
+  const POOLS = {
+    "eth-usdat":   { name: "ETH YT-USDat",   M: 30, kind: "usdat",   apy: 8.98,  impact: 2.05, reward: true },
+    "monad-usdat": { name: "Monad YT-USDat", M: 30, kind: "usdat",   apy: 9.10,  impact: 3.5,  reward: true },
+    "bnb-usdat":   { name: "BNB YT-USDat",   M: 30, kind: "usdat",   apy: 8.29,  impact: 10,   reward: false },
+    "eth-susdat":  { name: "ETH YT-sUSDat",  M: 10, kind: "susdat",  apy: 12.92, impact: 3.45, uapy: 8 },
+    "monad-susdat":{ name: "Monad YT-sUSDat",M: 10, kind: "susdat",  apy: 17.41, impact: 2.1,  uapy: 8 },
+    "eth-srusdat": { name: "ETH YT-srUSDat", M: 15, kind: "srusdat", apy: 10.20, impact: 10.8, uapy: 7.5 }
+  };
+
+  function dateMs(s, hourUTC, minUTC, addDays) {
+    const [y, mo, d] = s.split("-").map(Number);
+    return Date.UTC(y, mo - 1, d + (addDays || 0), hourUTC, minUTC || 0);
+  }
+
+  function setup(p) {
+    const pool = POOLS[p.pool];
+    const buy = dateMs(p.buyDate, 12, 0);
+    const T = Math.max(0.5, (EXPIRY - buy) / DAY);
+    const yt = 1 - Math.pow(1 + p.apy / 100, -T / 365);
+    const N = (p.capital * (1 - p.impact / 100)) / yt;
+    const fee = 1 - p.fee / 100;
+    const elapsed = (buy - S2_START) / DAY;
+    return { pool, buy, T, yt, N, fee, elapsed };
+  }
+  function yld(N, apy, days, fee) { return days > 0 ? N * (Math.pow(1 + apy, days / 365) - 1) * fee : 0; }
+
+  function compute(p) {
+    const s = setup(p);
+    const snap = Math.min(S2_END, dateMs(p.snapDate, 4, 59, 1));
+    const D2 = Math.max(0, Math.min(s.T, (snap - s.buy) / DAY));
+    const D3 = Math.max(0, s.T - D2);
+    const frac = Math.min(1, Math.max(0, (s.elapsed + D2) / S2LEN));
+    const P2 = p.pcur * 1e9 + p.emis * 1e9 * D2;
+    const boost = p.boost ? 1.2 : 1;
+    const ppdBase = s.N * s.pool.M * s.fee;
+    const ppd = ppdBase * boost;
+    const pts2 = ppd * D2 * (p.cap / 100);
+    const pts3 = ppdBase * D3;
+    const v = P2 > 0 ? (p.alloc / 100) * frac / P2 : 0;
+    let cash = 0;
+    if (s.pool.kind === "usdat") {
+      const days = p.reward === "none" ? 0 : p.reward === "snap" ? D2 : s.T;
+      cash = yld(s.N, p.rewardApr / 100, days, s.fee);
+    } else {
+      cash = yld(s.N, p.uapy / 100, s.T, s.fee);
+    }
+    const hair = 1 - p.hair / 100, live = 1 - p.pz / 100, s3 = p.s3 / 100;
+    const F = p.fdv * 1e6;
+    const tokAdjPerF = live * (pts2 + pts3 * s3) * v * hair;
+    const ev = tokAdjPerF * F + cash;
+    const net = p.capital - cash;
+    return {
+      s, D2, D3, P2, ppd, pts2, pts3, v, cash, net, ev,
+      roi: ev / p.capital - 1,
+      cpm: pts2 > 0 ? (net / pts2) * 1e6 : Infinity,
+      vpm: v * F * 1e6,
+      beRaw: pts2 > 0 && v > 0 ? net / (pts2 * v) : Infinity,
+      beAdj: tokAdjPerF > 0 ? net / tokAdjPerF : Infinity,
+      roiAt: (fdvM) => (tokAdjPerF * fdvM * 1e6 + cash) / p.capital - 1
+    };
+  }
+
+  function rng(seed) {
+    let a = seed >>> 0;
+    return function () {
+      a = (a + 0x6d2b79f5) >>> 0;
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function monteCarlo(p, n) {
+    const s = setup(p);
+    const R = rng(20260928);
+    const gauss = () => { let u = 0; while (u === 0) u = R(); const v = R(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+    const snaps = [
+      [0.10, Date.UTC(2026, 9, 31, 16, 48), 0], [0.30, Date.UTC(2026, 10, 14, 16, 48), 0],
+      [0.45, Date.UTC(2026, 10, 30, 16, 48), 0], [0.75, S2_END, 0], [1.0, S2_END, 0.2]
+    ];
+    const SUS = [0, 0, 0.064, 0.08, 0.08, 0.12, 0.12];
+    const boost = p.boost ? 1.2 : 1;
+    const out = new Float64Array(n);
+    for (let i = 0; i < n; i++) {
+      const u = R();
+      let snapMs = S2_END, slip = 0;
+      for (const [c, ms, sl] of snaps) { if (u < c) { snapMs = ms; slip = sl; break; } }
+      const D2 = Math.max(0, Math.min(s.T, (snapMs - s.buy) / DAY));
+      const D3 = s.T - D2;
+      const fdv = Math.min(2e9, Math.exp(Math.log(140e6) + 0.85 * gauss()));
+      const e = 2.8e9 + R() * 2.2e9;
+      const A2 = R() < 0.8 ? 0.05 : 0.04;
+      const cap = 0.9 + R() * 0.1;
+      const hair = 0.15 + R() * 0.35;
+      const zero = R() < 0.15;
+      const s3 = R() * 0.5;
+      const vv = R();
+      const ysus = SUS[Math.floor(R() * SUS.length)];
+      const ysr = 0.05 + R() * 0.031;
+      const frac = Math.min(1, Math.max(0, (s.elapsed + D2) / S2LEN));
+      const P2 = p.pcur * 1e9 + e * D2;
+      const v2 = A2 * frac * fdv * (1 - hair) * (1 - slip) / P2;
+      const tok = zero ? 0 : s.N * s.pool.M * s.fee * (D2 * cap * boost + D3 * s3) * v2;
+      let cash;
+      if (s.pool.kind === "usdat") {
+        const days = !s.pool.reward ? 0 : vv < 0.4 ? s.T : vv < 0.75 ? D2 : 0;
+        cash = yld(s.N, 0.03, days, s.fee);
+      } else if (s.pool.kind === "susdat") {
+        cash = zero ? 0 : yld(s.N, ysus, s.T, s.fee);
+      } else {
+        cash = yld(s.N, ysr, s.T, s.fee);
+      }
+      out[i] = (tok + cash - p.capital) / p.capital;
+    }
+    const sorted = Array.from(out).sort((a, b) => a - b);
+    let sum = 0, loss = 0, loss50 = 0;
+    for (const r of sorted) { sum += r; if (r < 0) loss++; if (r < -0.5) loss50++; }
+    return {
+      sorted,
+      mean: sum / n,
+      median: sorted[Math.floor(n / 2)],
+      ploss: loss / n,
+      p50: loss50 / n,
+      p10: sorted[Math.floor(n / 10)],
+      p90: sorted[Math.floor(n * 0.9)]
+    };
+  }
+  /*CORE-END*/
+
+  /* ---------- calculator UI ---------- */
+  const DEFAULTS = {
+    pool: "eth-usdat", capital: 1000, buyDate: "2026-09-28", snapDate: "2026-12-08",
+    reward: "snap", rewardApr: 3, alloc: 5, pcur: 153, emis: 3.4, cap: 100, fee: 5,
+    fdv: 150, hair: 30, pz: 15, s3: 30, boost: false
+  };
+  const FIELDS = ["pool", "capital", "apy", "impact", "buyDate", "reward", "rewardApr", "uapy", "boost", "snapDate", "alloc", "pcur", "emis", "cap", "fee", "fdv", "hair", "pz", "s3"];
+  const STORE_KEY = "saturn-yt-calc-v1";
+
+  function poolDefaults(id) {
+    const pl = POOLS[id];
+    const d = Object.assign({}, DEFAULTS, { pool: id, apy: pl.apy, impact: pl.impact });
+    d.reward = pl.kind === "usdat" ? (pl.reward ? "snap" : "none") : "snap";
+    d.uapy = pl.uapy != null ? pl.uapy : 8;
+    return d;
+  }
+  function writeForm(d) {
+    FIELDS.forEach((k) => {
+      const n = $(k);
+      if (!n || d[k] == null) return;
+      if (n.type === "checkbox") n.checked = !!d[k];
+      else n.value = d[k];
+    });
+    syncKind();
+  }
+  function readForm() {
+    const d = {};
+    FIELDS.forEach((k) => {
+      const n = $(k);
+      if (n.type === "checkbox") d[k] = n.checked;
+      else if (n.type === "number") d[k] = parseFloat(n.value);
+      else d[k] = n.value;
+    });
+    return d;
+  }
+  function valid(d) {
+    const nums = ["capital", "apy", "impact", "rewardApr", "uapy", "alloc", "pcur", "emis", "cap", "fee", "fdv", "hair", "pz", "s3"];
+    for (const k of nums) if (!isFinite(d[k])) return false;
+    if (d.capital <= 0 || d.apy <= 0 || d.impact >= 100 || d.fdv <= 0) return false;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d.buyDate) || !/^\d{4}-\d{2}-\d{2}$/.test(d.snapDate)) return false;
+    return true;
+  }
+  function syncKind() {
+    const kind = POOLS[$("pool").value].kind;
+    document.querySelectorAll("[data-kind]").forEach((n) => {
+      n.hidden = n.getAttribute("data-kind") === "usdat" ? kind !== "usdat" : kind === "usdat";
+    });
+  }
+
+  function setText(id, s) { $(id).textContent = s; }
+  function beText(v) {
+    if (!isFinite(v)) return "không đạt";
+    if (v <= 0) return "≤ $0";
+    return fmtUSD(v);
+  }
+
+  let mcTimer = null;
+  function update() {
+    const d = readForm();
+    if (!valid(d)) return;
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(d)); } catch (e) { /* storage unavailable */ }
+    const r = compute(d);
+    const roiEl = $("o-roi");
+    roiEl.textContent = fmtPct(r.roi, true);
+    roiEl.className = "tile-value " + (r.roi >= 0 ? "up" : "down");
+    setText("o-ev", "Giá trị kỳ vọng " + fmtUSD(r.ev) + " trên " + fmtUSD(d.capital));
+    setText("o-be", beText(r.beAdj));
+    setText("o-beraw", "Thô (chỉ S2, không chiết khấu): " + beText(r.beRaw));
+    setText("o-yt", "$" + r.s.yt.toFixed(5) + " · " + fmtInt(r.s.N));
+    setText("o-ppd", fmtPts(r.ppd));
+    setText("o-d2l", "Điểm S2 đến snapshot (" + r.D2.toFixed(1) + " ngày)");
+    setText("o-pts2", fmtPts(r.pts2));
+    setText("o-d3l", "Điểm S3 thô đến đáo hạn (" + r.D3.toFixed(1) + " ngày)");
+    setText("o-pts3", fmtPts(r.pts3));
+    setText("o-cash", fmtUSD(r.cash));
+    setText("o-net", fmtUSD(r.net));
+    setText("o-cpm", isFinite(r.cpm) ? "$" + r.cpm.toFixed(2) : "—");
+    setText("o-vpm", "$" + r.vpm.toFixed(2));
+    renderSens(r, d);
+    clearTimeout(mcTimer);
+    mcTimer = setTimeout(() => runMC(d), 200);
+  }
+
+  function runMC(d) {
+    const res = monteCarlo(d, 40000);
+    const put = (id, v) => { const n = $(id); n.textContent = fmtPct(v, true); n.className = "tile-value " + (v >= 0 ? "up" : "down"); };
+    put("mc-mean", res.mean); put("mc-med", res.median); put("mc-p10", res.p10); put("mc-p90", res.p90);
+    setText("mc-ploss", Math.round(res.ploss * 100) + "%");
+    setText("mc-p50", Math.round(res.p50 * 100) + "%");
+    renderHist(res);
+  }
+
+  function renderSens(r, d) {
+    const host = $("chart-sens");
+    const W = Math.max(280, host.clientWidth);
+    const H = 210;
+    const m = { l: 46, r: 12, t: 12, b: 30 };
+    const x = logScale(25, 1000, m.l, W - m.r);
+    const pts = [];
+    for (let i = 0; i <= 60; i++) { const f = 25 * Math.pow(40, i / 60); pts.push([f, r.roiAt(f)]); }
+    let lo = Math.min(-1, ...pts.map((p) => p[1])), hi = Math.max(0.5, ...pts.map((p) => p[1]));
+    hi = Math.min(hi, 10);
+    const step = hi - lo > 4 ? 1 : 0.5;
+    lo = Math.floor(lo / step) * step; hi = Math.ceil(hi / step) * step;
+    const y = linScale(lo, hi, H - m.b, m.t);
+    const svg = el("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H });
+    for (let v = lo; v <= hi + 1e-9; v += step) {
+      el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: Math.abs(v) < 1e-9 ? "var(--axis)" : "var(--grid)", "stroke-width": Math.abs(v) < 1e-9 ? 1.5 : 1 }, svg);
+      txt(svg, m.l - 8, y(v) + 4, (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(Math.round(v * 100)) + "%", { "text-anchor": "end", "font-size": 11, fill: "var(--muted)" });
+    }
+    [[25, "$25M"], [50, "$50M"], [100, "$100M"], [250, "$250M"], [500, "$500M"], [1000, "$1B"]].forEach(([v, l]) => {
+      txt(svg, x(v), H - m.b + 18, l, { "text-anchor": "middle", "font-size": 11, fill: "var(--muted)" });
+    });
+    const clampY = (v) => y(Math.max(lo, Math.min(hi, v)));
+    el("path", { d: pts.map((p, i) => (i ? "L" : "M") + x(p[0]).toFixed(1) + " " + clampY(p[1]).toFixed(1)).join(""), fill: "none", stroke: "var(--s1)", "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+    const beM = r.beAdj / 1e6;
+    if (isFinite(beM) && beM > 25 && beM < 1000) {
+      el("line", { x1: x(beM), x2: x(beM), y1: m.t, y2: H - m.b, stroke: "var(--ink-2)", "stroke-width": 1 }, svg);
+      const nr = x(beM) > W - 110;
+      txt(svg, x(beM) + (nr ? -5 : 5), m.t + 10, "hòa vốn " + fmtM(beM), { "font-size": 10.5, fill: "var(--ink-2)", "text-anchor": nr ? "end" : "start" });
+    }
+    if (d.fdv >= 25 && d.fdv <= 1000) {
+      el("circle", { cx: x(d.fdv), cy: clampY(r.roi), r: 5, fill: "var(--accent)", stroke: "var(--surface)", "stroke-width": 2 }, svg);
+    }
+    const cross = el("line", { x1: 0, x2: 0, y1: m.t, y2: H - m.b, stroke: "var(--axis)", "stroke-width": 1, visibility: "hidden" }, svg);
+    const dot = el("circle", { r: 4, fill: "var(--s1)", stroke: "var(--surface)", "stroke-width": 2, visibility: "hidden" }, svg);
+    const hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.b - m.t, fill: "transparent", tabindex: 0 }, svg);
+    const inv = (px) => 25 * Math.pow(40, (px - m.l) / (W - m.r - m.l));
+    bindTip(hit, (e) => {
+      let f = d.fdv;
+      if (e) { const rc = svg.getBoundingClientRect(); f = Math.min(1000, Math.max(25, inv((e.clientX - rc.left) * (W / rc.width)))); }
+      const v = r.roiAt(f);
+      cross.setAttribute("x1", x(f)); cross.setAttribute("x2", x(f)); cross.setAttribute("visibility", "visible");
+      dot.setAttribute("cx", x(f)); dot.setAttribute("cy", clampY(v)); dot.setAttribute("visibility", "visible");
+      return { title: "FDV " + fmtM(f), rows: [{ label: "ROI kỳ vọng", value: fmtPct(v, true), color: "var(--s1)" }] };
+    });
+    const off = () => { cross.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); };
+    hit.addEventListener("pointerleave", off);
+    hit.addEventListener("blur", off);
+    host.replaceChildren(svg);
+  }
+
+  let lastMC = null;
+  function renderHist(res) {
+    lastMC = res;
+    const host = $("chart-mc");
+    const W = Math.max(280, host.clientWidth);
+    const H = 190;
+    const m = { l: 38, r: 10, t: 14, b: 30 };
+    const edges = [];
+    for (let v = -1; v < 4 - 1e-9; v += 0.2) edges.push(v);
+    const counts = new Array(edges.length).fill(0);
+    for (const r of res.sorted) {
+      let k = Math.floor((r + 1) / 0.2 + 1e-9);
+      if (k < 0) k = 0;
+      if (k >= edges.length) k = edges.length - 1;
+      counts[k]++;
+    }
+    const n = res.sorted.length;
+    const maxShare = Math.max(...counts) / n;
+    const yMax = Math.ceil(maxShare * 20) / 20 || 0.05;
+    const bw = (W - m.l - m.r) / edges.length;
+    const y = linScale(0, yMax, H - m.b, m.t);
+    const x = (v) => m.l + ((v + 1) / 5) * (W - m.l - m.r);
+    const svg = el("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H });
+    for (let v = 0; v <= yMax + 1e-9; v += yMax / 2) {
+      el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: v === 0 ? "var(--axis)" : "var(--grid)", "stroke-width": 1 }, svg);
+      txt(svg, m.l - 6, y(v) + 4, Math.round(v * 100) + "%", { "text-anchor": "end", "font-size": 10.5, fill: "var(--muted)" });
+    }
+    [[-1, "−100%"], [0, "0%"], [1, "+100%"], [2, "+200%"], [3, "+300%"], [4, "≥+400%"]].forEach(([v, l], i, arr) => {
+      txt(svg, x(v), H - m.b + 17, l, { "text-anchor": i === 0 ? "start" : i === arr.length - 1 ? "end" : "middle", "font-size": 10.5, fill: "var(--muted)" });
+    });
+    edges.forEach((e0, k) => {
+      const share = counts[k] / n;
+      const bx = m.l + k * bw + 1, bwid = Math.max(1, bw - 2);
+      const top = y(share), base = y(0);
+      const hgt = Math.max(0, base - top);
+      const col = e0 < 0 ? "var(--neg)" : "var(--pos)";
+      const r = Math.min(4, bwid / 2, hgt);
+      const g = el("g", { tabindex: 0 }, svg);
+      el("rect", { x: m.l + k * bw, y: m.t, width: bw, height: H - m.b - m.t, fill: "transparent" }, g);
+      if (hgt > 0) {
+        el("path", { d: "M" + bx + " " + base + "V" + (top + r) + "Q" + bx + " " + top + " " + (bx + r) + " " + top + "H" + (bx + bwid - r) + "Q" + (bx + bwid) + " " + top + " " + (bx + bwid) + " " + (top + r) + "V" + base + "Z", fill: col }, g);
+      }
+      const last = k === edges.length - 1;
+      const lab = last ? "≥ +" + Math.round(e0 * 100) + "%" : (e0 < 0 ? "−" : "+") + Math.abs(Math.round(e0 * 100)) + "% đến " + ((e0 + 0.2) < 0 ? "−" : (e0 + 0.2) > 0.001 ? "+" : "") + Math.abs(Math.round((e0 + 0.2) * 100)) + "%";
+      bindTip(g, () => ({ title: "ROI " + lab, rows: [{ label: "Tỷ lệ kết quả", value: (share * 100).toFixed(1) + "%" }] }));
+    });
+    const mark = (v, label, dy) => {
+      const vv = Math.max(-1, Math.min(4, v));
+      el("line", { x1: x(vv), x2: x(vv), y1: m.t - 2, y2: H - m.b, stroke: "var(--ink)", "stroke-width": 1.5 }, svg);
+      const nearRight = x(vv) > W - 80;
+      txt(svg, x(vv) + (nearRight ? -4 : 4), m.t + dy, label, { "font-size": 10.5, fill: "var(--ink)", "font-weight": 600, "text-anchor": nearRight ? "end" : "start" });
+    };
+    mark(res.median, "trung vị", 8);
+    mark(res.mean, "trung bình", 22);
+    host.replaceChildren(svg);
+  }
+
+  function init() {
+    fillCompsTable();
+    fillFdvTable();
+    renderHeat();
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); } catch (e) { saved = null; }
+    const start = saved && POOLS[saved.pool] ? Object.assign(poolDefaults(saved.pool), saved) : poolDefaults("eth-usdat");
+    writeForm(start);
+    $("pool").addEventListener("change", () => {
+      const cur = readForm();
+      const pd = poolDefaults(cur.pool);
+      ["apy", "impact", "reward", "uapy"].forEach((k) => { cur[k] = pd[k]; });
+      writeForm(cur);
+      update();
+    });
+    $("calc-form").addEventListener("input", (e) => { if (e.target.id !== "pool") { syncKind(); update(); } });
+    $("calc-form").addEventListener("submit", (e) => e.preventDefault());
+    $("reset").addEventListener("click", () => { writeForm(poolDefaults($("pool").value)); update(); });
+    renderComps();
+    renderFdv();
+    update();
+    let rt = null;
+    const ro = new ResizeObserver(() => {
+      clearTimeout(rt);
+      rt = setTimeout(() => {
+        renderComps(); renderFdv();
+        const d = readForm();
+        if (valid(d)) { renderSens(compute(d), d); if (lastMC) renderHist(lastMC); }
+      }, 120);
+    });
+    ro.observe(document.querySelector("main"));
+
+    const links = Array.from(document.querySelectorAll(".toc a"));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
+        }
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    document.querySelectorAll("main section").forEach((s) => io.observe(s));
+  }
+  init();
+})();
+</script>
