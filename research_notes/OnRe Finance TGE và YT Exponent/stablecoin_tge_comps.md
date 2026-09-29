@@ -35,3 +35,28 @@
 - Binance HODLer Airdrops (#46/49?) 150M FF = 1.5% supply; Binance spot 2025-09-29 13:00 UTC; Buidlpad sale $350M FDV (tier 1) / $450M FDV — [CryptoNewsZ](https://www.cryptonewsz.com/binance-falcon-finance-as-49th-hodler-airdrop/), [Dropstab](https://dropstab.com/research/alpha/falcon-finance-ff-token-sale-what-participants-need-to-know)
 ### XPL (Plasma)
 - TGE 2025-09-25; sale $500M FDV ($0.05); 25M XPL split equally among verified pre-depositors (9,304 XPL each); 19% of supply at TGE (10% sale, 8% eco, 1% airdrop); early trading high $1.54, then $0.90–1.10 ($8.6–10.4B FDV) — [The Defiant](https://thedefiant.io/news/blockchains/plasma-mainnet-beta-xpl-token-launch), [Bitget Academy](https://www.bitget.com/academy/plasma-tge-september-25-2025-xpl-token-mainnet-beta-launch), [KuCoin Square](https://www.kucoin.com/square/post/content_6ab808fc003e86000766b240)
+
+### DefiLlama TVL / stablecoin supply at TGE (pulled via api.llama.fi & stablecoins.llama.fi on 2026-09-29) — [DefiLlama API](https://api.llama.fi/protocol/onre), [DefiLlama stablecoins](https://stablecoins.llama.fi/stablecoins)
+Format: TVL at TGE | TGE-30d | TGE+90d | peak (date) | latest 2026-09-29
+- Ethena (protocol) TGE 2024-04-02: $1.56B | $0.67B | $3.60B | $14.98B (2025-10-03) | $5.34B. USDe supply at TGE $1.56B; now $4.90B
+- Usual (protocol) TGE 2024-11-19: $379M | $333M | $1.14B | $1.87B (2025-01-07) | $91M (USD0 supply now $547M)
+- Falcon USDf supply TGE 2025-09-29: $1.90B | $1.23B | $2.11B | $2.15B (2025-10-15) | $1.21B
+- Resolv (protocol) TGE 2025-06-10: $351M | $352M | $535M | $685M (2025-02-20) | $14M; USR supply at TGE $220M, now $6.1M
+- Elixir TGE 2024-11-26: $136M | $108M | $67M | $343M (2024-07-31) | ~$0 (deUSD wound down)
+- Avalon Labs TGE 2025-02-07: $1.82B | $1.85B | $1.15B | $2.05B (2025-01-31) | $251M
+- Cap TGE 2026-06-26: $221M | $300M | $340M | $484M (2026-01-28) | $292M
+- Solstice (USX) TGE 2026-05-25: $401M | $379M | $404M | $523M (2026-07-17) | $215M
+- Reservoir TGE 2025-08-18: $54M | $34M | $18M | $390M (2025-10-26) | $72M
+- Maple TGE (SYRUP) ~2024-11-13: $316M | $206M | $302M | $3.25B (2025-10-30) | $3.02B
+- Spark TGE 2025-06-17: $6.27B | $5.08B | $8.15B | $8.67B (2025-10-28) | $7.27B
+- Treehouse TGE 2025-07-29: $560M | $319M | $453M | $614M | $77M
+- Yield Basis TGE 2025-10-15: $153M | n/a | $233M | $247M | $138M
+- Unitas TGE 2026-03-13: $81M | $104M | $60M | $106M (2026-04-21) | $58M
+- USD.AI (USDai supply) TGE 2026-04-21: $281M | $333M | $202M | $663M (2026-01-20) | $226M
+- Re Protocol reUSD supply TGE 2026-06-18: $155M | $163M | $233M (+90d) | $254M (peak = now, 2026-09-29) | $254M
+- OpenEden USDO supply TGE 2025-09-30: $235M | $288M | $77M | $299M (2025-07-21) | $14.6M
+- Level (lvlUSD protocol) 2025-06: $150M -> peak $189M (2025-05-22) -> $0.46M now (no token TGE found)
+- Plasma chain: stablecoins on chain at TGE 2025-09-25 $2.05B; peak $6.35B (2025-10-09); now $1.48B; chain DeFi TVL now $543M
+- Stable chain: stablecoins peak $706M (2025-12-16) right after 2025-12-08 TGE; now $24.8M
+- Sky USDS supply now $6.6B; Avant avUSD $125M; Neutrl NUSD $40M (peak $231M 2026-02-16; pre-TGE); Noon USN $39M; apxUSD $317M (peak $525M 2026-05-28; TGE Oct 13 2026)
+- OnRe (ONyc) TVL now $294.8M (peak $309.5M on 2026-09-11; $16.2M on 2025-07-14 first datapoint); Exponent TVL $80M (peak $136M 2026-08-19); Perena $13.9M; Hylo $65.8M; infiniFi $45.2M

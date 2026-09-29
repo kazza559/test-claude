@@ -60,7 +60,7 @@ As of 2026-09-29 there are exactly two ACTIVE Exponent yield markets on OnRe ass
 ## Q2. What points do YT holders get; does YT receive full underlying points (leverage = 1/YT price)? Caps?
 
 ### Takeaway
-Exponent's live config shows ONyc YT (and LP) earn **8x OnRe Points** (srONyc YT: 4x), computed on the YT's notional exposure, so points leverage vs simply holding ONyc ≈ 8 × 30.4 ≈ **~243x per dollar**. OnRe's own docs still list a generic "Yield tokens 5x" tier — a conflict to flag. PT earns no points. No caps disclosed.
+Exponent's live config shows ONyc YT (and LP) earn **8x OnRe Points** (srONyc YT: 4x), computed on the YT's notional exposure. That gives ≈ 8 × 30.4 ≈ **243 points per $1 of YT per day** (211 if points are counted per ONyc rather than per USD), vs 0.87 points per $1 per day for just holding ONyc, so roughly **240–280x more points per dollar**. OnRe's own docs still list a generic "Yield tokens 5x" tier — a conflict to flag. PT earns no points. No caps disclosed.
 
 ### Cited Findings
 - OnRe base rate: "1 point per ONyc, per day"; tiers: wallet 1x, LP 2x, lending 3x–4x, **yield tokens 5x (Exponent YT named)**, leveraged looping 6x; "ONyc Points are not earned on PT tokens within fixed rate markets"; no caps disclosed ("certain campaigns or strategies may have limits"); points "do not represent any entitlement to tokens"; referral 10% / 5% bonus — [OnRe docs: Points Program](https://docs.onre.finance/onyc-in-defi/onre-points-program)
@@ -172,18 +172,37 @@ srONyc-10JAN27 ([same API, vault y5UF...](https://app.exponent.finance/api/impli
 ### Gaps
 - Implied APY history for expired v1 markets (25JAN26/13MAY26/10SEP26) not pulled.
 
-## Q6. Other Solana venues (RateX etc.) for ONyc YT; Exponent's own points/token
+## Q6. Other Solana venues (RateX etc.) for ONyc YT; Exponent's own points/token; extra rewards
 
 ### Takeaway
-(Pending — see below; to be updated.)
+Exponent is now the **only live venue** for ONyc YT: RateX ran three ONyc maturities (2601, 2605, 2609) with OnRe 5x + RateX 8x boosts, but its last one (ONyc-2609) matured on 2026-09-29 00:00 and no newer ONyc term is listed. Exponent pays **no token emissions to plain YT holders** on ONyc; the only extra rewards are **ONyc-denominated maker incentives for resting buyYT/sellYT limit orders** on the ONyc order book (~4,357 ONyc for 23 Sep–23 Oct, reward APY capped at 80%). Exponent Finance has no live token; claims about an "XPN" token appear to refer to a different project and are unverified.
 
 ### Cited Findings
-- Search results reference RateX as a Solana PT/YT venue but I found no primary source showing a live ONyc market on RateX (search snippets about "YT-ONyc" originate from OnRe's Exponent blog) — [RateX X account](https://x.com/RateX_Dex); [OnRe blog](https://www.onre.finance/blog/onyc-meets-exponent-real-world-yield-gets-a-defi-upgrade)
-- Exponent v2 launched late May 2026 with a ">$200,000" 30-day rewards campaign; XPN token "contract is finalized and awaiting audit", no TGE date — [DL News](https://www.dlnews.com/articles/defi/five-upcoming-crypto-airdrops-to-watch-for-in-2026/) (search snippet; not independently verified)
-- ONyc YT markets show `ytHolderRewardsApy` 0 / no campaigns → no Exponent token emissions for YT holders on ONyc as of snapshot — [Exponent markets API](https://app.exponent.finance/api/markets?include_frontend_hidden=true)
+**RateX** (queried via RateX's public API `POST https://api.rate-x.io/` `{"serverName":"AdminSvr","method":"querySymbol"}`, 2026-09-29 11:55 UTC; front end [app.rate-x.io](https://app.rate-x.io/))
+- 91 symbols total; ONyc-related: **ONyc-2601** (due 2026-01-29), **ONyc-2605** (due 2026-05-29), **ONyc-2609** (due **2026-09-29 00:00**). All three show `expiration: "1"`. No ONyc-2612/2701 term listed → no live RateX ONyc market as of 2026-09-29.
+- Each ONyc term: `partners` "OnRe Multiplier;RateX Multiplier", `partners_reward_boost` "5;8" (OnRe **5x**, RateX points **8x**), `protocol_fee_rate` 0.5, `trade_commission` 0.01, `earn_w` 0.95.
+- RateX's front-end bundle lists ONYC under its "Points" and "Stablecoin" categories (app.rate-x.io main JS, fetched 2026-09-29).
+- A search-engine summary claimed "ONyc… has $28 million in market activity on RateX" — no primary source found; treat as unverified ([search result context: solanacompass](https://solanacompass.com/projects/ratex)).
+
+**Exponent emissions / own token**
+- ONyc-10JAN27 and srONyc-10JAN27: `ytHolderRewardsApy` 0, `ytHolderRewardCampaigns` [] → no Exponent/partner token emissions to passive YT holders — [Exponent markets API](https://app.exponent.finance/api/markets?include_frontend_hidden=true)
+- Orderbook maker campaigns ([Exponent orderbook-emissions API](https://app.exponent.finance/api/orderbook-emissions/campaigns), fetched 2026-09-29): 
+  - ONyc book `imv1h6xg…`: campaign 2026-08-24→2026-09-23 funded **4,395.03 ONyc** (4,301.74 distributed); campaign 2026-09-23→2026-10-23 funded **4,356.98 ONyc** (617.11 distributed so far), `currentRewardsApy` 80 (i.e., at the 8000-bps cap), incentivized order types **buyYT / sellYT**, price band 600 bps around market (market implied 11.74%), weekly epochs (Thursdays 10:00 UTC).
+  - srONyc book `ndAp6RJ1…`: 08-24→09-23 funded 4,930.44 srONyc (3,594.27 distributed); 09-23→10-23 funded 3,919.28 srONyc (138.68 distributed); same parameters.
+- srONyc CLMM LP farm emits srONyc through ~2026-10-23 — [Exponent CLMM API](https://app.exponent.finance/api/clmm)
+- Exponent v2 is live (app links to "exponent.finance/blog/exponent-v2-is-live"); a DL News roundup reports a v2 rewards campaign of ">$200,000" over 30 days after the late-May-2026 launch — [DL News](https://www.dlnews.com/articles/defi/five-upcoming-crypto-airdrops-to-watch-for-in-2026/) (seen as search snippet only)
+- "XPN… ERC-20 governance token for Exponent… 1,000,000,000 supply… distribution over 48 months" — [docs.exponent.cx tokenomics](https://docs.exponent.cx/token/tokenomics). **Caution:** this is a different domain (exponent.cx) and an ERC-20; it is very likely a different project, not Exponent Finance on Solana. The claim that Exponent's "XPN token contract is finalized and awaiting audit, no TGE date" came from a search summary that seems to blend these; unverified.
+
+**Live refresh (2026-09-29 11:55 UTC, [Exponent markets API](https://app.exponent.finance/api/markets?include_frontend_hidden=true))**
+- ONyc-10JAN27: 103.04 days, YT **0.03274**, PT 0.96726, implied **12.516%**, underlying 7d 11.02% / 30d 11.356%, liquidity $2,998,408, market size $20,255,838, yt_multiplier 8. (Essentially unchanged from 06:13 UTC: YT 0.03291, implied 12.555%.)
+- srONyc-10JAN27: 102.96 days, YT 0.02162, PT 0.97838, implied 8.057%, underlying 7.114% / 7.407%, liquidity $300,648, yt_multiplier 4.
 
 ### Inferences
-- (pending)
+- For points-per-dollar, Exponent ONyc YT (8x OnRe) is richer than RateX's past ONyc YT (5x OnRe + 8x RateX points). RateX's extra value came from RateX's own points; it's no longer available for ONyc.
+- A YT buyer who enters through **limit orders on the Rate Order Book** (buyYT inside the ±6% band) can also earn the ONyc maker rewards, lowering effective cost; a market-order buyer via the CLMM gets none.
+- No Exponent-native points are credited to ONyc YT buyers in the API data; any "Exponent airdrop" value is speculative and should be treated as zero in the base case.
 
 ### Gaps
-- (pending)
+- RateX ONyc historical YT prices/implied APYs not pulled (markets expired). RateX market-data method names exist (`queryMarketTrade` on "MDSvr") if needed.
+- Whether Exponent Finance has a live points program for users (the app has `/api/points/user/` endpoints, but these seem to track partner points) — not confirmed.
+- Exponent Finance token (name, TGE) — no primary-source confirmation found.
