@@ -41,7 +41,7 @@ TOTAL_ALLOCATION = 50_000_000  # official S2 size (KNTQ); cross-checked against 
 # The five EOAs the genesis deployer split its 730M into at TGE (2025-11-27 12:07 UTC). None of them is
 # a contract, so there is no on-chain vesting: any outflow here is discretionary supply. Balances are
 # read every run and the snapshot flags a change, since an insider transfer is the most bearish signal
-# available and precedes exchange deposits. Expected (2026-10-04 00:05 UTC) vs allocation table:
+# available and precedes exchange deposits. Expected (2026-10-03 23:42 UTC) vs allocation table:
 ALLOC = {
     "team":       ("0x373e0b6b57818ac2bb3a3e55e31128d5f880d90e", 235_000_000),  # core contributors 23.5%
     "investors":  ("0x9ef3b3a49ee9a2fd28a10f6e9407219e7ceca1a2",  75_000_000),  # investors 7.5%

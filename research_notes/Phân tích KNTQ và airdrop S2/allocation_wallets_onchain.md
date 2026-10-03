@@ -1,6 +1,6 @@
 # Where the 730M non-airdrop KNTQ actually sits — and whether it is locked
 
-Measured by the coordinator on 2026-10-04 ~00:05 UTC, read-only on HyperEVM
+Measured by the coordinator on 2026-10-03 ~23:42 UTC, read-only on HyperEVM
 (`rpc.purroofgroup.com`: `eth_getLogs`, `eth_getCode`, `eth_call`). Tag **[V-ME]**.
 This closes the gap the fundamentals research flagged as unresolved ("I cannot say whether the 310M
 insider allocation sits in a verifiable on-chain vesting contract or in a multisig the team can move

@@ -68,7 +68,7 @@ Deployer `0x51172933b60847085e2a959e860e2ec9e240ac09` chia 730M KNTQ vào đúng
 lúc TGE (2025-11-27 12:07 UTC). Cả 5 đều là **EOA, không có code** — nghĩa là **không có vesting
 contract hay timelock on-chain**, lịch unlock (cliff ~2026-11-27 + 24 tháng) chỉ là cam kết trong docs.
 
-| Ví | Phân bổ | Số dư (2026-10-04 00:05 UTC) |
+| Ví | Phân bổ | Số dư (2026-10-03 23:42 UTC) |
 |---|---|---|
 | `0x373e0b6b57818ac2bb3a3e55e31128d5f880d90e` | core contributors 23.5% | 235,000,000 (nguyên) |
 | `0x9ef3b3a49ee9a2fd28a10f6e9407219e7ceca1a2` | investors 7.5% | 75,000,000 (nguyên) |
