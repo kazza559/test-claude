@@ -38,6 +38,18 @@ SPOT_PAIR      = "@334"                                         # HyperCore KNTQ
 ELIGIBLE_WALLETS = None    # denominator: set to the official eligible-wallet count once published
 TOTAL_ALLOCATION = 50_000_000  # official S2 size (KNTQ); cross-checked against funding transfers
 
+# The five EOAs the genesis deployer split its 730M into at TGE (2025-11-27 12:07 UTC). None of them is
+# a contract, so there is no on-chain vesting: any outflow here is discretionary supply. Balances are
+# read every run and the snapshot flags a change, since an insider transfer is the most bearish signal
+# available and precedes exchange deposits. Expected (2026-10-04 00:05 UTC) vs allocation table:
+ALLOC = {
+    "team":       ("0x373e0b6b57818ac2bb3a3e55e31128d5f880d90e", 235_000_000),  # core contributors 23.5%
+    "investors":  ("0x9ef3b3a49ee9a2fd28a10f6e9407219e7ceca1a2",  75_000_000),  # investors 7.5%
+    "foundation": ("0xf50ad63714f10f4e96eeabd43d549c8232992b36", 100_000_000),  # foundation 10%
+    "growth":     ("0x5bd9e766c0151dcfbc4246e5f8b3193c4beeaae4", 250_000_000),  # 300M growth, 50M -> claim
+    "liquidity":  ("0x4664b0453c7c483e2e262ca54351ade71b6be734",   4_523_810),  # 20M liquidity, deployed
+}
+
 T_CLAIMED   = "0x987d620f307ff6b94d58743cb7a7509f24071586a77759b77c2d4e29f75a2f9a"  # Claimed(address,uint256,uint256)
 T_WITHDRAWN = "0xd1c19fbcd4551a5edfb66d43d2e337c04837afda3482b42bdf569a8fccdae5fb"  # Withdrawn(address,address,uint256)
 T_BRIDGED   = "0x74fb16e5070973b8b25c03b8e789b5102782e16d3d3843b8b6cbaafbca1108a7"  # Bridged(address,uint64)
@@ -186,6 +198,16 @@ def main():
 
     kntq_left = balance_of(rpc, KNTQ, CLAIM) / 1e18
     usdc_held = balance_of(rpc, USDC, CLAIM) / 1e6
+
+    alloc_now, alloc_moved = {}, []
+    for name, (addr, expect) in ALLOC.items():
+        try:
+            bal = balance_of(rpc, KNTQ, addr) / 1e18
+        except Exception:
+            continue
+        alloc_now[name] = round(bal, 2)
+        if abs(bal - expect) > 1:
+            alloc_moved.append(f"{name} {bal - expect:+,.0f} KNTQ (now {bal:,.0f}, {addr})")
     try:
         evm_px = pool_price(rpc)
     except Exception:
@@ -220,6 +242,8 @@ def main():
         "premium_vs_claim_pct": round(100 * (core_px / CLAIM_PRICE - 1), 2) if core_px else None,
         "hours_left": round(max(0, CLAIM_END - now.timestamp()) / 3600, 2),
         "rpc_calls_this_run": rpc.calls,
+        "alloc_balances": alloc_now,
+        "alloc_moved": alloc_moved or None,
     }
 
     # deltas vs the previous snapshot row, so a 2-hourly run is directly readable
@@ -252,12 +276,17 @@ def main():
               "kntq_px_core_mid", "kntq_px_evm_pool", "claim_price", "premium_vs_claim_pct", "hours_left",
               "rpc_calls_this_run", "since_prev_hours", "new_wallets", "new_kntq_claimed",
               "claim_pace_kntq_per_h", "projected_pct_at_deadline", "px_chg_pct_since_prev"]
+    FIELDS += ["alloc_" + n for n in ALLOC] + ["alloc_moved"]
+    row = dict(snap, alloc_moved="; ".join(alloc_moved))
+    row.pop("alloc_balances", None)
+    for n, v in alloc_now.items():
+        row["alloc_" + n] = v
     new = not os.path.exists(a.csv)
     with open(a.csv, "a", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction="ignore")
         if new:
             w.writeheader()
-        w.writerow(snap)
+        w.writerow(row)
 
 
 if __name__ == "__main__":

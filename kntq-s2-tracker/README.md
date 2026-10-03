@@ -27,7 +27,8 @@ Pool được nạp đúng 50,000,000 KNTQ trong 2 giao dịch từ `0x5bd9e766c
 
 - `tracker.py` — snapshot tăng dần (incremental): quét `eth_getLogs` từ block đã lưu trong `state.json`,
   cộng ví/claim/KNTQ/USDC, đọc `balanceOf` của contract, lấy giá spot HyperCore + giá pool HyperEVM,
-  in JSON và ghi thêm một dòng vào `snapshots.csv` (kèm delta so với lần chạy trước).
+  kiểm tra số dư 5 ví allocation (xem dưới), in JSON và ghi thêm một dòng vào `snapshots.csv`
+  (kèm delta so với lần chạy trước).
 - `series.py` — dựng lại toàn bộ đường cong claim theo giờ từ đầu (ghi `claim_series.json`).
 - `state.json` — checkpoint (block cuối + bảng ví → [KNTQ, USDC, số lần claim]).
 - `snapshots.csv` — chuỗi snapshot mỗi 2h; dòng đầu (12:16 UTC) được backfill từ `claim_series.json`
@@ -58,5 +59,24 @@ Giá: `POST https://api.hyperliquid.xyz/info` (`allMids` → `@334`) và `slot0(
   hết giá trị và lực bán cơ học biến mất.
 - `new_wallets` / `claim_pace_kntq_per_h` / `projected_pct_at_deadline` — tốc độ claim trong 2h gần nhất
   và suy chiếu tuyến tính tới deadline.
+- `alloc_*` / `alloc_moved` — số dư 5 ví allocation. Cột `alloc_moved` trống là bình thường; có chữ
+  nghĩa là insider đã chuyển token, tín hiệu bearish mạnh nhất có thể đo được.
+
+## Canh 5 ví allocation (không có vesting contract)
+
+Deployer `0x51172933b60847085e2a959e860e2ec9e240ac09` chia 730M KNTQ vào đúng 5 địa chỉ trong 1 phút
+lúc TGE (2025-11-27 12:07 UTC). Cả 5 đều là **EOA, không có code** — nghĩa là **không có vesting
+contract hay timelock on-chain**, lịch unlock (cliff ~2026-11-27 + 24 tháng) chỉ là cam kết trong docs.
+
+| Ví | Phân bổ | Số dư (2026-10-04 00:05 UTC) |
+|---|---|---|
+| `0x373e0b6b57818ac2bb3a3e55e31128d5f880d90e` | core contributors 23.5% | 235,000,000 (nguyên) |
+| `0x9ef3b3a49ee9a2fd28a10f6e9407219e7ceca1a2` | investors 7.5% | 75,000,000 (nguyên) |
+| `0xf50ad63714f10f4e96eeabd43d549c8232992b36` | foundation 10% | 100,000,000 (nguyên) |
+| `0x5bd9e766c0151dcfbc4246e5f8b3193c4beeaae4` | growth 30% | 250,000,000 (đã chuyển 50M sang claim contract) |
+| `0x4664b0453c7c483e2e262ca54351ade71b6be734` | liquidity 2% | 4,523,810 (đã deploy 15.48M) |
+
+Tổng 660M = 66% supply nằm ở 5 EOA này. Mọi lệnh chuyển ra từ ví team/investor sẽ đi trước lệnh nạp
+sàn vài phút đến vài giờ, nên đây là tín hiệu sớm đáng giá nhất.
 
 Không phải lời khuyên đầu tư.
