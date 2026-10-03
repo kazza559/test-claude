@@ -56,10 +56,8 @@ batch=[{"jsonrpc":"2.0","id":i,"method":"eth_call",
         "params":[{"to":KNTQ,"data":"0x70a08231"+a[2:].rjust(64,"0")},"latest"]} for i,(a,_) in enumerate(top)]
 res={r["id"]:int(r.get("result","0x0"),16)/1e18 for r in post(RPC,batch)}
 core=json.loads(urllib.request.urlopen(urllib.request.Request("https://api.hypurrscan.io/holders/KNTQ",
-      headers={"user-agent":"kntq-tracker"}),timeout=60).read().decode())
-corebal={}
-it=core.items() if isinstance(core,dict) else ((x[0],x[1]) for x in core)
-for a,v in it: corebal[a.lower()]=float(v)/1e8 if float(v)>1e12 else float(v)
+      headers={"user-agent":"kntq-tracker"}),timeout=60).read().decode())["holders"]
+corebal={a.lower(): float(v) for a,v in core.items()}
 claimed=sum(x[1] for x in top); held_evm=sum(res.values())
 held_core=sum(corebal.get(a.lower(),0) for a,_ in top)
 print(f"\nTop 100 claimers: claimed {claimed:,.0f} KNTQ")
