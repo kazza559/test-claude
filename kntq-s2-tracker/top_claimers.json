@@ -1,0 +1,1002 @@
+{
+ "0x9794bbbc222b6b93c1417d01aa1ff06d42e5333b": {
+  "claimed": 1422137.39,
+  "evm": 1422137.39,
+  "core": 0
+ },
+ "0x63af859d7b4717bd4d3705f15b6d4caad6cf4b36": {
+  "claimed": 1063938.12,
+  "evm": 1063938.12,
+  "core": 0
+ },
+ "0xbd8c75a0f55b5dc4df64297d6f67626e247d971d": {
+  "claimed": 996417.97,
+  "evm": 996417.97,
+  "core": 0
+ },
+ "0x9f58a3c3c5adb4513f7606c999a75ebb15691dfb": {
+  "claimed": 919443.29,
+  "evm": 9975283.69,
+  "core": 0
+ },
+ "0x0b83821bb8b9d19582af26122556be7408313140": {
+  "claimed": 612530.89,
+  "evm": 0.0,
+  "core": 57.5
+ },
+ "0xd507eeef2152d54b8c00cba499340f7b7a59c948": {
+  "claimed": 586495.62,
+  "evm": 0.0,
+  "core": 0.02
+ },
+ "0xcc6bf6bf938bdbe1aaa6bc936494b1eee5037c75": {
+  "claimed": 520731.93,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x64b3bf0cec2e37ae6dbca5919c90b83c6800d0d4": {
+  "claimed": 460263.16,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xbb0b246f7f7c301da8484252e366b2349165e110": {
+  "claimed": 371821.55,
+  "evm": 0.0,
+  "core": 100263.5
+ },
+ "0x418769f79771aae38d7cd4911543b03976b2c925": {
+  "claimed": 362115.64,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xd782059de58ebe238592198b97f10e77a1eb6ca7": {
+  "claimed": 359697.09,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xb2e27551c7895e35acd1a6b2957d71a89eb9377c": {
+  "claimed": 326454.08,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x8c35b0b65fc680dac8719b79d01b4c46590d4d8b": {
+  "claimed": 292212.22,
+  "evm": 0.0,
+  "core": 101757.68
+ },
+ "0xc6877a65349b0fa45cc61a267ee682c7abf2b369": {
+  "claimed": 230145.52,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x8dea9139b0e84d5cc2933072f5ba43c2b043f6db": {
+  "claimed": 215542.71,
+  "evm": 0.0,
+  "core": 894230.64
+ },
+ "0x0bf30ce317c09d8d1415dbae993b216ee1bfa09a": {
+  "claimed": 202735.23,
+  "evm": 736.72,
+  "core": 19627.55
+ },
+ "0xc2d8102dc87335c90fbd57bfc7361951b3e554fb": {
+  "claimed": 191328.24,
+  "evm": 1531.3,
+  "core": 38712.3
+ },
+ "0xb8fb427a45c832c5dac625aa7bfad720ca8c28a6": {
+  "claimed": 188788.88,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xaf0fdd39e5d92499b0ed9f68693da99c0ec1e92e": {
+  "claimed": 167981.82,
+  "evm": 0.0,
+  "core": 18674443.71
+ },
+ "0x37de2f99bf85ebc078cfcfe6bbc6b58f5d8c0b65": {
+  "claimed": 166245.87,
+  "evm": 266245.87,
+  "core": 0
+ },
+ "0x6e93ebc8302890ff1d1befd779d1db131ef30d4d": {
+  "claimed": 162146.19,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x9ea9f8d0697672dd2a504c3ae4f85eee67c5b4e4": {
+  "claimed": 154643.77,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x57f2819c959abbcf22623d5ec1d3164b213e9711": {
+  "claimed": 149136.48,
+  "evm": 149136.48,
+  "core": 402.87
+ },
+ "0x2e4a4d6736ae0487b85ada66210e3d889b3e02fa": {
+  "claimed": 147786.52,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x8f8b4759dc93ca55bd6997df719f20f581f10f5c": {
+  "claimed": 144078.0,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x7b14dc7d87b2ab9f54ac54553efd8b32c29f2ece": {
+  "claimed": 138159.36,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xe2cc27bf177079fd13dfe86cef913b77224ddc4a": {
+  "claimed": 135645.53,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x468fb194f44259ec10c016eb8eeaccef1d35ffbe": {
+  "claimed": 117477.47,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xed01eec66dbbbd05fd43f2b340614dc7b62786ce": {
+  "claimed": 105415.71,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x1da722cfa8b0dfda57cf8d787689039c7a63f049": {
+  "claimed": 105089.93,
+  "evm": 105089.93,
+  "core": 718582.08
+ },
+ "0x8fdbd50e88ab3624263ff888861f202e0dd0b9c2": {
+  "claimed": 104729.77,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xaf1dfdd58edbb7fdf18315db5bfcfd2c8a261e22": {
+  "claimed": 102600.58,
+  "evm": 0.0,
+  "core": 2314.22
+ },
+ "0x8aed145c9206808766ad816112f9ae6d9ba31849": {
+  "claimed": 101846.88,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x05e6ffff89d05b7ed820dfedb665e430252c8132": {
+  "claimed": 101467.68,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x6d7823cd5c3d9dcd63e6a8021b475e0c7c94b291": {
+  "claimed": 99529.78,
+  "evm": 99529.78,
+  "core": 33118.87
+ },
+ "0x1140321cce279b4a2158571eb377669def562ac4": {
+  "claimed": 96672.83,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x7258d00a24d6829ac4bf355127bfbc9e2303aed4": {
+  "claimed": 89492.68,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x789b89e6d58d7f6b08212bda6a7d8e62b39ff866": {
+  "claimed": 88794.92,
+  "evm": 0.0,
+  "core": 28915.74
+ },
+ "0xf332644ad212251bac9b27134416e790167552fd": {
+  "claimed": 85691.86,
+  "evm": 0.0,
+  "core": 426.98
+ },
+ "0x2a6e295228e86044053ff77bdefea82dbb2a4f30": {
+  "claimed": 81132.24,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x3c446431dd0fa13af97f904c00dc34fb7a198dba": {
+  "claimed": 80688.06,
+  "evm": 0.0,
+  "core": 12515.89
+ },
+ "0x69423c20cb04da697996534507f8541fdb3e9aa9": {
+  "claimed": 80239.56,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x380feea870db5edd638a8fe78a271fa6e707826f": {
+  "claimed": 78410.57,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x0871deb34bfd2052b1c10dc4f6c0912a2a47e927": {
+  "claimed": 78168.53,
+  "evm": 0.0,
+  "core": 1000005.01
+ },
+ "0x6b3fdc549c3253a14bcbc6789e1eabd742162647": {
+  "claimed": 77989.13,
+  "evm": 0.0,
+  "core": 0.01
+ },
+ "0x74195b12c91f89cbcad71501d14a03760f4aad76": {
+  "claimed": 77158.85,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xd418224ae3c510b645112fd9275ccfd50f996ee4": {
+  "claimed": 76753.77,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x69906b0ed626ca01a4b7c001e5711e5714ccf207": {
+  "claimed": 74452.31,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x75ec3ba266176e733f1b1fdaa15052f5eff724b8": {
+  "claimed": 74202.09,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x16be0743c09f9d3a8075b386034c067b322e50af": {
+  "claimed": 73981.58,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x6891ed9ee6a9d0649ffac2bcee814e6899a0e075": {
+  "claimed": 73538.11,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x015e39316feeee42f363d69e2c0b438c2206a0f4": {
+  "claimed": 73097.74,
+  "evm": 0.0,
+  "core": 13000.58
+ },
+ "0x84a73d875b79332b278f1785628d1a2381580be4": {
+  "claimed": 69927.25,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xf763d7c28ce6a5df1068fdda9627ae19dff65dee": {
+  "claimed": 67128.67,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x4bdfd3ce7bfb07b75a2a59a8f723910dd7147b9c": {
+  "claimed": 66988.22,
+  "evm": 0.0,
+  "core": 0.02
+ },
+ "0x1f213c8a5683b22579d7fac320b49466ce7f020f": {
+  "claimed": 64370.08,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x702d5cbdd54d16a25b8db4c4ddcd096720944c4b": {
+  "claimed": 61939.55,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x2a3f493d1511cf2ff501e266f373a4ceb1769ac3": {
+  "claimed": 60667.85,
+  "evm": 0.0,
+  "core": 0.03
+ },
+ "0xff4645d7898436fca56e4ad5840a06442366698a": {
+  "claimed": 60593.93,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xc0bdfc57abba5537f30ce2bb2d52abf39f5109ee": {
+  "claimed": 58385.52,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x4f979e912d035d9ad0abdf8c17e5b7a5a180762b": {
+  "claimed": 55920.2,
+  "evm": 0.0,
+  "core": 2570.05
+ },
+ "0x6f58f37e1a6cdc2cdf1ba85c706923b9d5f8efb0": {
+  "claimed": 54870.61,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x64784f0b0114a4ef466803ac810d95257f3aa009": {
+  "claimed": 53236.41,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x75632aaf83120eae9b0618f8f50773ce347de2ad": {
+  "claimed": 52276.65,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x6b8704e714203e4d35035ff81f70f60dec021e86": {
+  "claimed": 52184.47,
+  "evm": 0.47,
+  "core": 0
+ },
+ "0x28c01b64f2492d82fd58feecf8c71603c769bb4a": {
+  "claimed": 51832.23,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xff2396a671e58c0eced4cadb78ff72da18b0527f": {
+  "claimed": 50042.77,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xceec48581b3145a575508719f45da07dc57fa7ce": {
+  "claimed": 49615.5,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xa38f19c4ccbcfd64cff676d72c436f7e6239dccf": {
+  "claimed": 49414.17,
+  "evm": 0.18,
+  "core": 0
+ },
+ "0x736dde3e0f5c588ddc53ad7f0f65667c0cca2801": {
+  "claimed": 48709.08,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x64570f1f0252804fbc51739d94167c7bc9045730": {
+  "claimed": 46710.6,
+  "evm": 46710.6,
+  "core": 0
+ },
+ "0xd293647d38164b194abdaf9491ea57ee8b5d9191": {
+  "claimed": 46406.22,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xfe583de50797790a47b6ab63b13f206629b4e5e4": {
+  "claimed": 45952.34,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x4e33df7c45aa6c2e4ea254addab56018bd503faa": {
+  "claimed": 45676.95,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x8e50ef6fe3d9c1f7579f1b68347fe0e8f275d047": {
+  "claimed": 45629.37,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xa57393d206c0e20e7f0c6883975ec8b8a33ddc48": {
+  "claimed": 44442.27,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x788917ba6afcd730662745146ea0fc74b466d2ea": {
+  "claimed": 43941.48,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xa8d189023f544735ec2d5cc41d83ac0410ffa284": {
+  "claimed": 43489.64,
+  "evm": 0.0,
+  "core": 0.01
+ },
+ "0x0fffab764a78d2cf36a9f6079ad0e8361fa2eb94": {
+  "claimed": 42947.99,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x7b3a2e795ea70cb58ce5a16f5db9284e5116b59e": {
+  "claimed": 42466.06,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x9be9efd548b3aa64676941ff7c3be4cde93c522f": {
+  "claimed": 41673.9,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x3927af597c09774f91ef84bf765ded4109e9f8ea": {
+  "claimed": 41537.36,
+  "evm": 0.0,
+  "core": 9996.6
+ },
+ "0x7b29f8c0ea709b96b72214b3de5d85c3d9570794": {
+  "claimed": 39637.73,
+  "evm": 0.0,
+  "core": 0.04
+ },
+ "0x914e175924379010635f6f7072d99925ad6aba26": {
+  "claimed": 39479.54,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x6a5ef320c39aa45b3c4780a30dcb498dbcef6216": {
+  "claimed": 39116.26,
+  "evm": 39116.26,
+  "core": 415941.62
+ },
+ "0xf482d8aba834789f5c7fabb0b48a1168c1466d43": {
+  "claimed": 38722.73,
+  "evm": 0.0,
+  "core": 0.02
+ },
+ "0x931caffff52f1b280b90992f36c3630fb1f05219": {
+  "claimed": 38252.61,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x64bac0fc115ef0bb3e49eacafe89a8404dbb4c8a": {
+  "claimed": 37387.77,
+  "evm": 0.0,
+  "core": 0.04
+ },
+ "0x19ba9fd03a472594d0a318f36629fa90d5b96fae": {
+  "claimed": 37116.76,
+  "evm": 0.0,
+  "core": 51366.54
+ },
+ "0x5c70e5c5d26ec4d3edf7419a5211a291a175452f": {
+  "claimed": 36410.18,
+  "evm": 24.88,
+  "core": 2756.29
+ },
+ "0x3d89bcea338f35edfaeb313b1c713978c6dceb14": {
+  "claimed": 36368.76,
+  "evm": 0.0,
+  "core": 0.01
+ },
+ "0xa28ae105f60b9ddf4bbcc67ad1b1bc760d0d8925": {
+  "claimed": 36148.59,
+  "evm": 36148.59,
+  "core": 0.21
+ },
+ "0x0c6265f92cb7ed2cd52f54d1a404c90489a24a6a": {
+  "claimed": 35676.12,
+  "evm": 0.0,
+  "core": 132.28
+ },
+ "0xbb0681e131d704cb86bda625a730c7866e262a3a": {
+  "claimed": 35004.35,
+  "evm": 125.42,
+  "core": 0
+ },
+ "0x7b8e9b448ac82a04ba4d605e5ac01326847e84b2": {
+  "claimed": 34676.59,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x145dcfb47920325d5bb44d239cb9fd0dcada8bc7": {
+  "claimed": 33748.79,
+  "evm": 0.0,
+  "core": 76172.79
+ },
+ "0xb6f6bc3a1cd32e549199be771c387edfc53ece9e": {
+  "claimed": 32733.52,
+  "evm": 0.0,
+  "core": 0.03
+ },
+ "0x417c1e38b30e4eea20ddbc64e12f11c581b7ba85": {
+  "claimed": 32531.07,
+  "evm": 0.0,
+  "core": 0.03
+ },
+ "0x136ea1a4965fbe2587cfdb26d08c7afdee0da608": {
+  "claimed": 32464.01,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x7d86979c74911419bc5630e1b5c6eba839045eaf": {
+  "claimed": 31704.78,
+  "evm": 0.0,
+  "core": 519.42
+ },
+ "0xa4a436bc988e893cf5135f18cb4b186600433d53": {
+  "claimed": 31457.87,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x6a64167f066117eae736226b3b132fa925169a35": {
+  "claimed": 31368.85,
+  "evm": 41000.0,
+  "core": 0
+ },
+ "0x0272f3ebd901f4417c2ae5d0ce52b9ec18e9c6d2": {
+  "claimed": 31175.03,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x716d91d3e7bc19a8b33e7cee02963fa04ec7f0b8": {
+  "claimed": 30694.77,
+  "evm": 0.0,
+  "core": 0.04
+ },
+ "0xd02d23e3aaebabd36c8253a38e80c4dddfcff127": {
+  "claimed": 30295.54,
+  "evm": 0.0,
+  "core": 9990.94
+ },
+ "0x462b2006ecdd7933425a582cb0d82266613204fc": {
+  "claimed": 30049.02,
+  "evm": 0.0,
+  "core": 0.64
+ },
+ "0x3e91ea006f8b2394a6db8ab0225309ad6e7ed9cb": {
+  "claimed": 30006.19,
+  "evm": 0.0,
+  "core": 0.03
+ },
+ "0xf4ccb44456b731c7cc520668dc6ce1532808179f": {
+  "claimed": 29966.53,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xd70c9e61ba506a8cf1c25b54d14b25abdc048fd4": {
+  "claimed": 29821.92,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x86a8c6ad0e90d3a3c25fcadcbf20ab9e89013137": {
+  "claimed": 29676.02,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x797c03e5baec0e948054b8d030e3b138674150cb": {
+  "claimed": 29175.78,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xa8e03bddc6d7676bc9aa98212a0179c14253805e": {
+  "claimed": 29057.18,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xff8e9a7e6e8a4991122c90d2cce3fab386d2e25b": {
+  "claimed": 28990.9,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x108ed1f3956d581477b599c1ddf9d5f5439b848c": {
+  "claimed": 28815.55,
+  "evm": 28815.55,
+  "core": 0.02
+ },
+ "0x44fc015d08f6ecba0455b8d6bb4d5623c763dfd3": {
+  "claimed": 28156.8,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x335db137f5ee57402d3a45898fbe4658cdbe60a1": {
+  "claimed": 28097.53,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x13c50dcdee4bbcba71baf578b345cdd35c7928be": {
+  "claimed": 27919.78,
+  "evm": 0.0,
+  "core": 794936.79
+ },
+ "0xce6a3cdc3528f5f649a8d0fe27dfd49e9da58baa": {
+  "claimed": 27699.66,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xf16a8b7e7729cb5d1f8cecfbf0b3f403177fde21": {
+  "claimed": 27689.45,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xed62616a7c1dd354801f4e72389299a81493e004": {
+  "claimed": 26720.38,
+  "evm": 0.0,
+  "core": 481701.69
+ },
+ "0x040d5a5c26580c50f894bc118b7c550b853516bf": {
+  "claimed": 26478.38,
+  "evm": 0.0,
+  "core": 0.03
+ },
+ "0x2057d4f2b6ea957b63371980775b0a5505a438f0": {
+  "claimed": 25904.27,
+  "evm": 0.0,
+  "core": 372005.45
+ },
+ "0x82c1692b2b770b3bcc18b5260e1b00cde4a50025": {
+  "claimed": 25660.63,
+  "evm": 0.0,
+  "core": 0.03
+ },
+ "0x98abb17006aaa4f29f60cb8c9c3db70b174eba24": {
+  "claimed": 25623.6,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x01c539365b4f802691768195d41ed9798b609164": {
+  "claimed": 25187.27,
+  "evm": 0.0,
+  "core": 0.02
+ },
+ "0xc328dfcd2c8450e2487a91daa9b75629075b7a43": {
+  "claimed": 24733.59,
+  "evm": 0.0,
+  "core": 6514.32
+ },
+ "0xe1353d918cfcbd7b9501c542bbee365aa533655d": {
+  "claimed": 24717.29,
+  "evm": 0.0,
+  "core": 10069.76
+ },
+ "0xdce25dca41e419209abc28006bd3392280c823b2": {
+  "claimed": 24601.62,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x155f95f575e10a44eca3b3d9eeb0a19ba8834b82": {
+  "claimed": 24329.54,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xa55c14cd3b2b11bf854a4191c028cc1ad6e9de6e": {
+  "claimed": 23871.26,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xb4ccea3d17bf0da57df4958b154f440793140713": {
+  "claimed": 23609.58,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x513aedace44cc9a0724ca276a8ceeee950903576": {
+  "claimed": 23260.47,
+  "evm": 225537.52,
+  "core": 0
+ },
+ "0xd2d5350ff66766bee1ae5b4c5216b8ee7ae819b2": {
+  "claimed": 22923.29,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x73ff94a3809ad151162de2efc6ebf2552028bbc6": {
+  "claimed": 22917.06,
+  "evm": 0.0,
+  "core": 0.01
+ },
+ "0xd8e51fc9a41c19bca7646dc054f03c40bc5ec6a8": {
+  "claimed": 22679.27,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x187cfabdfee59f5f808bb5b584109c5bb2f812cb": {
+  "claimed": 22640.84,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x6a55e165cdb23443f03a53608abf586c1e76af3a": {
+  "claimed": 22569.58,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xfffc8583ad0d3decd276f172ea3876dd7c6f31e0": {
+  "claimed": 22357.29,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x314da7afdd8793afeafded812d43ccc7a32adac0": {
+  "claimed": 22339.87,
+  "evm": 0.0,
+  "core": 0.01
+ },
+ "0x7eef6f6affb8d30dbfc332e9f3065b27ae80d5e1": {
+  "claimed": 21996.17,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xb70b35791b17e5c999313e104fc46c1600eae0ed": {
+  "claimed": 21768.88,
+  "evm": 0.0,
+  "core": 9446.6
+ },
+ "0x083cf4249610cffda029be60e9ad9299319ed661": {
+  "claimed": 21743.99,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x81c8f7dcb682b5da60e5926e6a2f885f662c661a": {
+  "claimed": 21707.35,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xf18e30936b6144b36cac59913d43eafc71f255ec": {
+  "claimed": 21008.98,
+  "evm": 21008.99,
+  "core": 0
+ },
+ "0x76c2164fc79492401db1890db0d17d16b9155aa0": {
+  "claimed": 20916.05,
+  "evm": 0.0,
+  "core": 0.0
+ },
+ "0x3340d8df32802932ce54d71b9f90695b081b858e": {
+  "claimed": 20741.75,
+  "evm": 20741.75,
+  "core": 0
+ },
+ "0x1858987516bef70d9c3d9208ff7bfc65f00320b4": {
+  "claimed": 20676.85,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xfab55ef34f04cabea3fed37abbcc7f377967e159": {
+  "claimed": 20537.55,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xddecac71688c3e3491da361a87951f8dbd37b24e": {
+  "claimed": 20494.51,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xb56a69894eb3bc01a949618f695f9fb752c60740": {
+  "claimed": 20280.79,
+  "evm": 0.0,
+  "core": 0.04
+ },
+ "0xe6c87789a9decab41024026811c9590f78d16639": {
+  "claimed": 20249.13,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x91cdf7a34ecae2fa3b9894753707ab5bcfbfe53d": {
+  "claimed": 20240.32,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xb1cfa380ab0e8a8354189397840f5679b4360bf3": {
+  "claimed": 20052.04,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xffe5d2f0b7aabd40ec7df235b11e2c0e10800462": {
+  "claimed": 19966.91,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x960c81f60d8bd7dc10c220d470a7cce99b9887f7": {
+  "claimed": 19939.66,
+  "evm": 19939.66,
+  "core": 0
+ },
+ "0x5b66a9735a39d14fe85af418f8973007cc5fa772": {
+  "claimed": 19889.14,
+  "evm": 0.14,
+  "core": 0
+ },
+ "0x80fb5880f38185661962e475ac1557817dc9faea": {
+  "claimed": 19823.52,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x4941903e504321615f51c77e5399cf23db6a84d6": {
+  "claimed": 19807.63,
+  "evm": 0.0,
+  "core": 0.06
+ },
+ "0xee3a07c76c16e3a79713cb31a6888dac8fc84fbe": {
+  "claimed": 19764.9,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xfc9931a1c642ad0dd5e261b59b5cd46d00e5f2f8": {
+  "claimed": 19645.08,
+  "evm": 0.0,
+  "core": 3000.01
+ },
+ "0x416aa75c6742ab3126bbf60cfa395f2cc8b06fed": {
+  "claimed": 19642.8,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x29b653ad9b1be2db4b1c0fa8eb102e665478dd73": {
+  "claimed": 19629.3,
+  "evm": 19629.3,
+  "core": 112995.07
+ },
+ "0x459387334728fc26b61939b2f27c738f53f88bd8": {
+  "claimed": 19536.73,
+  "evm": 0.0,
+  "core": 1086397.54
+ },
+ "0xb3db8d23a98780002b10da5fb082e47b2d22e4f3": {
+  "claimed": 19489.3,
+  "evm": 36.4,
+  "core": 0
+ },
+ "0x9c7035f6c578f0d0372155d23da1c9345e8c89d9": {
+  "claimed": 19246.09,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xeaec8baf3e545180f9603ddec8c634f26b417f2b": {
+  "claimed": 19207.19,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x30c2c8f1ded4f17873aa625b21cf1b7f31829cbe": {
+  "claimed": 19132.82,
+  "evm": 0.0,
+  "core": 67476.64
+ },
+ "0xe4cc23c54ae4974edfc7d15c712e1f74f8cbc04c": {
+  "claimed": 19132.82,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xe4db6d1fae5b0f4e6f197784daa1b735d5b96a22": {
+  "claimed": 18965.66,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x2e32935bfd5b2718f99bc8fdf8b37c16811f7d97": {
+  "claimed": 18697.99,
+  "evm": 0.0,
+  "core": 1107111.58
+ },
+ "0x8224f7aa699ce6cfba25c077f3351889ac093fb1": {
+  "claimed": 18602.2,
+  "evm": 0.0,
+  "core": 0.02
+ },
+ "0x57ad914b4e56f7e7935e9b45a068ec8eb50e8c74": {
+  "claimed": 18577.28,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xf3115b8641808c85544c36cac4024b7de58ef575": {
+  "claimed": 18486.24,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x32486baa4610534c1eda43194add5108b3bb4c26": {
+  "claimed": 18427.63,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x6a407b7c2dccd7fdf56ff2fbc71e42931dad799e": {
+  "claimed": 18229.17,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x515debda7fe8ce1f3d7e04b9f95e2e8f3ac90b89": {
+  "claimed": 18192.7,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0xb2a0cdbb46acb87e794fe09aa2925fa9667ddba8": {
+  "claimed": 18112.92,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x8177b8dae5b3ce7de2ca6e5449ffc6aab2f626ba": {
+  "claimed": 17788.72,
+  "evm": 17788.72,
+  "core": 0
+ },
+ "0x1649b26eae366218f774286c38a167c1c69afeca": {
+  "claimed": 17626.22,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x1047010c23473735c046815611c3f5e8cd5a8c08": {
+  "claimed": 17605.55,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x84bb8f4998527aaf4cf5633bb2743533310600bb": {
+  "claimed": 17599.07,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x2b79cc6239b8928d73e1d74267542123c6eda2a4": {
+  "claimed": 17193.28,
+  "evm": 0.82,
+  "core": 0
+ },
+ "0x80d48372c7802eec1659991537461b1a78aed93c": {
+  "claimed": 17171.52,
+  "evm": 17171.52,
+  "core": 0
+ },
+ "0x38fd1481afe2423ed5260711ea52093a9f259110": {
+  "claimed": 17083.01,
+  "evm": 9397933.31,
+  "core": 0
+ },
+ "0x10baad2baeca823267fa42043a81ab8b8d2410c4": {
+  "claimed": 17081.98,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x67bf34e82fad5fa01adf3f55b986fdd05623d0ee": {
+  "claimed": 17070.88,
+  "evm": 0.0,
+  "core": 2.41
+ },
+ "0xcb15941180ed7cff8b3547117eca6b78cbdeaf9c": {
+  "claimed": 17027.66,
+  "evm": 0.0,
+  "core": 0.01
+ },
+ "0xfa787c4f75315f5c02bfd163f1065aceec46afdd": {
+  "claimed": 17025.82,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x28839a9fc4a6465000c5c5775983742545ce5ca5": {
+  "claimed": 16947.35,
+  "evm": 160.92,
+  "core": 0
+ },
+ "0xa8da06619f2d7211f9625b57f37016f42a4bf105": {
+  "claimed": 16652.52,
+  "evm": 0.0,
+  "core": 3500.0
+ },
+ "0x91c757689e6f5a96af72e8efa25204ad57219f8e": {
+  "claimed": 16556.81,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x1cb14303566200a81221dd47843f60290b9901c2": {
+  "claimed": 16418.66,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x1d2b1bcdd51b9d2e20c284020ea0ff6ea32c9d02": {
+  "claimed": 16395.12,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x6cd68e8f04490cd1a5a21cc97cc8bc15b47dc9eb": {
+  "claimed": 16371.42,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x0087188d27ac73b715ad38dff9b99554861a2b55": {
+  "claimed": 15943.31,
+  "evm": 0.0,
+  "core": 0.0
+ },
+ "0x11b6ccc31cb488f491e57d8f2d4e1b549a2442a4": {
+  "claimed": 15812.42,
+  "evm": 0.0,
+  "core": 428641.35
+ },
+ "0xb23aede3428059140fea09f1db8606c7462f2049": {
+  "claimed": 15762.86,
+  "evm": 0.0,
+  "core": 0
+ },
+ "0x9c89ca0ae208e30a1996ef637a73631f673dd911": {
+  "claimed": 15704.37,
+  "evm": 0.0,
+  "core": 3657.64
+ },
+ "0xf4f2407bd5b0411d83fe4f27f14e1446395fc0a6": {
+  "claimed": 15704.22,
+  "evm": 0.0,
+  "core": 1596.8
+ },
+ "0xc56c3bc08e372ad3a71017c191ca0148184e672b": {
+  "claimed": 15696.82,
+  "evm": 0.0,
+  "core": 0
+ }
+}

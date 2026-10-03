@@ -1,0 +1,3 @@
+utc,block,unique_claimers,claim_txs,kntq_claimed,usdc_paid,kntq_funded,pct_of_pool_claimed,kntq_left_in_contract,usdc_held_by_contract,check_funded_minus_claimed_minus_left,eligible_wallets,pct_wallets_claimed,kntq_px_core_mid,kntq_px_evm_pool,claim_price,premium_vs_claim_pct,hours_left,rpc_calls_this_run,since_prev_hours,new_wallets,new_kntq_claimed,claim_pace_kntq_per_h,projected_pct_at_deadline,px_chg_pct_since_prev
+2026-10-03T12:16:00Z,47395562,2955,3560,21894239.5,5721643.5,50000000.0,43.788,28105760.5,,,,,0.30225,,0.261331,15.66,191.73,,,,,,,
+2026-10-03T23:22:51Z,47593005,3059,3666,22046575.54,5761453.63,50000000.0,44.093,27953424.46,5761453.63,0.0,,,0.302835,0.304524,0.261331,15.88,180.62,404,,,,,,
