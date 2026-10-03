@@ -1,0 +1,740 @@
+{
+ "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+ "identity": {
+  "kind": "unknown",
+  "symbol": "NET",
+  "name": null
+ },
+ "market": {
+  "priceUsd": 276.03711242816496,
+  "priceTime": "2026-10-03T23:12:36.000Z",
+  "h1": {
+   "trades": 88,
+   "buys": 34,
+   "sells": 54,
+   "buyUsd": 10224.10322874101,
+   "sellUsd": 16504.805452338012
+  },
+  "h24": {
+   "trades": 3641,
+   "buys": 1739,
+   "sells": 1902,
+   "buyUsd": 925668.5349010896,
+   "sellUsd": 986464.1514187469,
+   "buyers": 817,
+   "sellers": 939
+  },
+  "d7": {
+   "trades": 27602,
+   "buys": 13884,
+   "sells": 13718,
+   "buyUsd": 8350121.951118559,
+   "sellUsd": 8644626.700791843
+  },
+  "topProfit": [
+   {
+    "trader": "0xad0659223184b884615e7c1e6c6d4aa6149697f7",
+    "realizedUsd": 4920.79,
+    "qty": 8.479668906999997,
+    "buys": 7,
+    "sells": 4
+   },
+   {
+    "trader": "0xc57943ce0f9d7d181c33b6875639ef7a4208fc70",
+    "realizedUsd": 2257.71,
+    "qty": 13.160409032,
+    "buys": 4,
+    "sells": 1
+   },
+   {
+    "trader": "0x3821c23b51515086e0aa91400b5fe00199b47e4a",
+    "realizedUsd": 1908.43,
+    "qty": 338.22427199500004,
+    "buys": 12,
+    "sells": 4
+   },
+   {
+    "trader": "0xd246c518244a6e41f71d89d3f6aeb81b837565cc",
+    "realizedUsd": 1432.91,
+    "qty": 4.351806846999999,
+    "buys": 28,
+    "sells": 26
+   },
+   {
+    "trader": "0xfca78e50737bc30274a567446a363fb8e5b9814a",
+    "realizedUsd": 1404.3,
+    "qty": 27.231998874999995,
+    "buys": 8,
+    "sells": 2
+   },
+   {
+    "trader": "0x943d0591155f74efcd4bc58dd6024f596d45b340",
+    "realizedUsd": 1383.37,
+    "qty": 0,
+    "buys": 3,
+    "sells": 1
+   },
+   {
+    "trader": "0xbb95bfb954ef39b7118923e30ff6b7fae33718e8",
+    "realizedUsd": 1297.85,
+    "qty": 0,
+    "buys": 1,
+    "sells": 16
+   },
+   {
+    "trader": "0xd6cbcba99bc931d40f1490f93a4bd8a7abf29ea5",
+    "realizedUsd": 1290.6,
+    "qty": 10.713939709000002,
+    "buys": 3,
+    "sells": 2
+   },
+   {
+    "trader": "0xcbcfb5360f1bf7d55d9e529e298ecd439fd353fc",
+    "realizedUsd": 1211.05,
+    "qty": 0.06846897300000032,
+    "buys": 1,
+    "sells": 2
+   },
+   {
+    "trader": "0x797ad3c073b9fef2a27d4ff718a4b036dea2888f",
+    "realizedUsd": 1174.35,
+    "qty": 1.519328717,
+    "buys": 4,
+    "sells": 18
+   }
+  ],
+  "topHolders": [
+   {
+    "trader": "0xe7e867518c5b3d929ca63622f314ff9dc60e96f6",
+    "qty": 2551.7322468660004,
+    "costUsd": 1022026.87,
+    "buys": 42,
+    "sells": 0
+   },
+   {
+    "trader": "0x5a0c868eb0f70b03b44c795fba92a7ee3bb230c7",
+    "qty": 345.71515059800004,
+    "costUsd": 101435.66,
+    "buys": 15,
+    "sells": 0
+   },
+   {
+    "trader": "0x3821c23b51515086e0aa91400b5fe00199b47e4a",
+    "qty": 338.22427199500004,
+    "costUsd": 87484.94,
+    "buys": 12,
+    "sells": 4
+   },
+   {
+    "trader": "0xf70da97812cb96acdf810712aa562db8dfa3dbef",
+    "qty": 271.943983805,
+    "costUsd": 74093.09,
+    "buys": 5,
+    "sells": 0
+   },
+   {
+    "trader": "0x555ce236c0220695b68341bc48c68d52210cc35b",
+    "qty": 264.09905439600004,
+    "costUsd": 100100.56,
+    "buys": 8,
+    "sells": 0
+   },
+   {
+    "trader": "0xcdf005548f0e36b85e422a09e0ddbd1e4054e2bd",
+    "qty": 243.437180076,
+    "costUsd": 97611.35,
+    "buys": 18,
+    "sells": 0
+   },
+   {
+    "trader": "0xdb93342558502d4f522e774eac55d71bff8e6130",
+    "qty": 185.01736576399995,
+    "costUsd": 57365.32,
+    "buys": 22,
+    "sells": 0
+   },
+   {
+    "trader": "0x72e5dc60d7f7009e4df877dc924ec02a9e580066",
+    "qty": 125.77367067600002,
+    "costUsd": 44327.71,
+    "buys": 5,
+    "sells": 3
+   },
+   {
+    "trader": "0x942b41d990133d8d9989bf3bb2f89f9aa1d127fd",
+    "qty": 117.84934677799998,
+    "costUsd": 31101.41,
+    "buys": 41,
+    "sells": 135
+   },
+   {
+    "trader": "0x6f97b7de6be7b7771e975e46bae96c35e332e172",
+    "qty": 113.15190807899998,
+    "costUsd": 30428.43,
+    "buys": 5,
+    "sells": 2
+   }
+  ],
+  "recentSwaps": [
+   {
+    "time": "2026-10-03T23:12:36.000Z",
+    "tx": "0x905d109b2467d44eab5bc19fa3b3f60f9c94bab3666d1d4d2f15e8626c025c7d",
+    "trader": "0x8529e9b7799339ddf2f70e2adf4ad9aec1b0dd54",
+    "venue": "DEX pool",
+    "side": "sell",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountIn": 0.088919,
+    "tokenOut": {
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "symbol": "USDG",
+     "decimals": 6
+    },
+    "amountOut": 24.544944,
+    "usd": 24.54
+   },
+   {
+    "time": "2026-10-03T23:11:25.000Z",
+    "tx": "0x5eec41546c41e8341a14a0ed1731ea9ec8fd0eb86ea6a4bf2b5f39452389df7e",
+    "trader": "0x2bb27b73c602643f42471d4751fe4fc4eebefbd1",
+    "venue": "DEX pool",
+    "side": "buy",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
+     "symbol": "WETH",
+     "decimals": 18
+    },
+    "amountIn": 0.005185444281532484,
+    "tokenOut": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountOut": 0.050007529,
+    "usd": 13.89
+   },
+   {
+    "time": "2026-10-03T23:11:25.000Z",
+    "tx": "0x55903988bb6166187f78744b807dfb97c30ee7937c2e2c97fbd98c32c1b2e83b",
+    "trader": "0xb6f96c790668b78a88f74fbbf88756ef01a84d9a",
+    "venue": "DEX pool",
+    "side": "sell",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountIn": 1.9466e-05,
+    "tokenOut": {
+     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
+     "symbol": "WETH",
+     "decimals": 18
+    },
+    "amountOut": 1.874994564937e-06,
+    "usd": 0.01
+   },
+   {
+    "time": "2026-10-03T23:11:25.000Z",
+    "tx": "0xa156b13884184c83116f889b370d91a414b4adbe2ecffb200d02daf78ec06f30",
+    "trader": "0xe84541e4808d05ea9d6beb6652290244b820da47",
+    "venue": "DEX pool",
+    "side": "sell",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountIn": 0.000920738,
+    "tokenOut": {
+     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
+     "symbol": "WETH",
+     "decimals": 18
+    },
+    "amountOut": 8.2787250329678e-05,
+    "usd": 0.22
+   },
+   {
+    "time": "2026-10-03T23:10:59.000Z",
+    "tx": "0x4028b98fa48d14a7db673fb877656c1c40ad96e058637d54d6b9aa90f3424d9d",
+    "trader": "0x1c961346cad3bcaec571358bb1d6c9eee9414a88",
+    "venue": "fomo",
+    "side": "sell",
+    "fomo": true,
+    "tokenIn": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountIn": 1.395238865,
+    "tokenOut": {
+     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
+     "symbol": "WETH",
+     "decimals": 18
+    },
+    "amountOut": 0.1149370267747722,
+    "usd": 307.95
+   },
+   {
+    "time": "2026-10-03T23:10:43.000Z",
+    "tx": "0xaa804c4b753280629edadbd0933d1cf73ffe9c8f373541b3edb0bdc911afcf39",
+    "trader": "0x34d4075d46291e0b5c673cc58a96a6602e94ce08",
+    "venue": "KyberSwap",
+    "side": "buy",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "symbol": "USDG",
+     "decimals": 6
+    },
+    "amountIn": 2338.005566,
+    "tokenOut": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountOut": 8.26787771,
+    "usd": 2338.01
+   },
+   {
+    "time": "2026-10-03T23:10:35.000Z",
+    "tx": "0xf584ef4fe23dbd3264b55cf34dd020acf865a3ab5b461c60204398db73181ccb",
+    "trader": "0x7d53aba3ddf599e25e6eea406cc09fb745141196",
+    "venue": "DEX pool",
+    "side": "buy",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "symbol": "USDG",
+     "decimals": 6
+    },
+    "amountIn": 200,
+    "tokenOut": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountOut": 0.720646245,
+    "usd": 200
+   },
+   {
+    "time": "2026-10-03T23:10:13.000Z",
+    "tx": "0xde3b0e6245dfb157d8ae5e2841023351a9faa2e3235283adc3aed8bdb0cab238",
+    "trader": "0x80c3015ebcc817df083c0990c7d9c925e87f8a15",
+    "venue": "Relay",
+    "side": "buy",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "symbol": "USDG",
+     "decimals": 6
+    },
+    "amountIn": 170.919011,
+    "tokenOut": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountOut": 0.614961209,
+    "usd": 170.92
+   },
+   {
+    "time": "2026-10-03T23:10:05.000Z",
+    "tx": "0x30cb5badabbe86f7f2502e33759c28747f1ba35480d86cb0df628f81b6299b48",
+    "trader": "0x9ffed0908b209d3791bc59835e74df40eeb85ac3",
+    "venue": "DEX pool",
+    "side": "sell",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountIn": 0.001013363,
+    "tokenOut": {
+     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
+     "symbol": "WETH",
+     "decimals": 18
+    },
+    "amountOut": 9.5447653090193e-05,
+    "usd": 0.26
+   },
+   {
+    "time": "2026-10-03T23:10:04.000Z",
+    "tx": "0x1f4bc04383093ef65c08ed5f5d6e0e3bdbefc5e2ac6e3b95aaca92cd0b737c66",
+    "trader": "0xac8eea6b0b8d8842bf9cb61e8100b8a90814610c",
+    "venue": "DEX pool",
+    "side": "sell",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountIn": 2.601984213,
+    "tokenOut": {
+     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
+     "symbol": "WETH",
+     "decimals": 18
+    },
+    "amountOut": 0.267908766072812,
+    "usd": 717.8
+   }
+  ],
+  "pools": [
+   {
+    "id": "0x64b5d51dcd053199b89db33d43acaea91833cfae",
+    "kind": 2,
+    "token0": {
+     "address": "0x058e7b30200d001130232e8fbfdf900590e0baa9",
+     "symbol": "0x058e\u2026baa9",
+     "decimals": 18
+    },
+    "token1": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "fee": 3000,
+    "hooks": null,
+    "block": 62158454,
+    "createdTs": null
+   },
+   {
+    "id": "0x6655975143ac17544fe9b1406da2dab448df5b9b",
+    "kind": 2,
+    "token0": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "token1": {
+     "address": "0xd7321938718672614a81b6239b9d6a6b268a9a8e",
+     "symbol": "HorseMeat",
+     "decimals": 9
+    },
+    "fee": 3000,
+    "hooks": null,
+    "block": 49372048,
+    "createdTs": null
+   },
+   {
+    "id": "0x5c890e2537bc43428d3ede9715eec17200db36fb",
+    "kind": 2,
+    "token0": {
+     "address": "0x0145acbccefbed6f303c420beeaaac72e905430b",
+     "symbol": "PACK",
+     "decimals": 18
+    },
+    "token1": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "fee": 3000,
+    "hooks": null,
+    "block": 48359298,
+    "createdTs": null
+   },
+   {
+    "id": "0x4d7dccf061e6f7f8ac74bf5cd823115c017f1580",
+    "kind": 2,
+    "token0": {
+     "address": "0x2b1c6953ca01a5d098d2e22ab606467b15e5f9f0",
+     "symbol": "CHEF",
+     "decimals": 18
+    },
+    "token1": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "fee": 3000,
+    "hooks": null,
+    "block": 48358071,
+    "createdTs": null
+   },
+   {
+    "id": "0x571b47509023e42e8ff8e3207158057306c0e0e4",
+    "kind": 2,
+    "token0": {
+     "address": "0x5f62c57e5c537887117eef828b7e3ad41c009feb",
+     "symbol": "GOOD",
+     "decimals": 18
+    },
+    "token1": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "fee": 3000,
+    "hooks": null,
+    "block": 46819689,
+    "createdTs": null
+   },
+   {
+    "id": "0xe4832f6b2f9f8a97bcfa2fe31c92ab4c07ff8948",
+    "kind": 2,
+    "token0": {
+     "address": "0x0145acbccefbed6f303c420beeaaac72e905430b",
+     "symbol": "PACK",
+     "decimals": 18
+    },
+    "token1": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "fee": 3000,
+    "hooks": null,
+    "block": 46314913,
+    "createdTs": null
+   },
+   {
+    "id": "0x1fd07b1975c9360ad84bb5b25e9e5a3d363808e1",
+    "kind": 2,
+    "token0": {
+     "address": "0x0977fa2139b773732da455926660b3d22c8cab7f",
+     "symbol": "1B",
+     "decimals": 18
+    },
+    "token1": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "fee": 3000,
+    "hooks": null,
+    "block": 42980867,
+    "createdTs": null
+   },
+   {
+    "id": "0x34920706f5cc83a44899254592748ed09e72707a",
+    "kind": 2,
+    "token0": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "token1": {
+     "address": "0xe934e36a439c94017b64a3fece66af12099abf50",
+     "symbol": "STONKBROKER",
+     "decimals": 18
+    },
+    "fee": 3000,
+    "hooks": null,
+    "block": 41145502,
+    "createdTs": null
+   },
+   {
+    "_truncated": "92 more not shown"
+   }
+  ],
+  "note": "holders, profit and counters cover the last 7 days of indexed DEX swaps; transfers and airdrops are not included"
+ },
+ "stories": [
+  {
+   "id": "moves-942b41d9-0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+   "kind": "moves",
+   "text": "This wallet sold 72.05 $NET for $18,376 on October 3, 2026. It has lost $121,281 on the token.",
+   "short": "Sold $18K of $NET on Oct 3.",
+   "trader": "0x942b41d990133d8d9989bf3bb2f89f9aa1d127fd",
+   "token": {
+    "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "symbol": "NET"
+   },
+   "priceUsd": 252.054,
+   "boughtUsd": 838974.94,
+   "soldUsd": 717694.22,
+   "heldQty": 0,
+   "heldWorthUsd": 0,
+   "realizedUsd": -121280.71,
+   "worthNowUsd": null,
+   "firstBuy": "2026-09-06T05:17:21.000Z",
+   "lastSell": null,
+   "move": {
+    "side": "sell",
+    "usd": 18376.334308,
+    "qty": 72.053661925,
+    "ts": 1790994282,
+    "tx": "0x6d21929d106312abbbf83abeec41bbe4dac53eab79e47e8bc11c350f9e11809c",
+    "time": "2026-10-03T02:24:42.000Z"
+   },
+   "verified": false,
+   "url": "https://hoodscan.co/stories/moves-942b41d9-0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+  },
+  {
+   "id": "moves-342744fc-0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+   "kind": "moves",
+   "text": "This wallet sold 295.58 $NET for $79,453 on October 3, 2026. It has lost $121,198 on the token.",
+   "short": "Sold $79K of $NET on Oct 3.",
+   "trader": "0x342744fcdfa9742bb17773f7caf60f75f83b8125",
+   "token": {
+    "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "symbol": "NET"
+   },
+   "priceUsd": 252.054,
+   "boughtUsd": 219483.45,
+   "soldUsd": 98285.82,
+   "heldQty": 0,
+   "heldWorthUsd": 0,
+   "realizedUsd": -121197.63,
+   "worthNowUsd": null,
+   "firstBuy": "2026-08-26T13:59:54.000Z",
+   "lastSell": null,
+   "move": {
+    "side": "sell",
+    "usd": 79452.811809,
+    "qty": 295.584468045,
+    "ts": 1791045072,
+    "tx": "0x60f24a0180f6b88322c68c93d1cfc0d3b774685bb0f0d19b19aca07c00193718",
+    "time": "2026-10-03T16:31:12.000Z"
+   },
+   "verified": false,
+   "url": "https://hoodscan.co/stories/moves-342744fc-0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+  },
+  {
+   "id": "diamond-6cd4f015-0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+   "kind": "diamond",
+   "text": "This wallet has held 233.35 $NET since July 22, 2026, bought for $8,374. It is worth $58,817 today.",
+   "short": "Holding 233.35 $NET since Jul 22. Bought for $8K, worth $59K now.",
+   "trader": "0x6cd4f015fa7dd37e015629fb6922814fa1bf6b11",
+   "token": {
+    "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "symbol": "NET"
+   },
+   "priceUsd": 252.054,
+   "boughtUsd": 13521.29,
+   "soldUsd": 109642.5,
+   "heldQty": 233.35087409999997,
+   "heldWorthUsd": 58817.02,
+   "realizedUsd": 104494.87,
+   "worthNowUsd": 36157.28,
+   "firstBuy": "2026-07-22T12:45:17.000Z",
+   "lastSell": "2026-09-08T16:41:17.000Z",
+   "verified": false,
+   "url": "https://hoodscan.co/stories/diamond-6cd4f015-0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+  },
+  {
+   "id": "diamond-82608cb7-0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+   "kind": "diamond",
+   "text": "This wallet has held 183.91 $NET since July 17, 2026, bought for $6,940. It is worth $46,354 today.",
+   "short": "Holding 183.91 $NET since Jul 17. Bought for $7K, worth $46K now.",
+   "trader": "0x82608cb7ba84322a7a0d4cc0df8f1d2d065877ef",
+   "token": {
+    "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "symbol": "NET"
+   },
+   "priceUsd": 252.054,
+   "boughtUsd": 11084.58,
+   "soldUsd": 109650.91,
+   "heldQty": 183.90646477899998,
+   "heldWorthUsd": 46354.36,
+   "realizedUsd": 105505.87,
+   "worthNowUsd": 27687.77,
+   "firstBuy": "2026-07-17T16:36:54.000Z",
+   "lastSell": "2026-08-26T10:35:13.000Z",
+   "verified": false,
+   "url": "https://hoodscan.co/stories/diamond-82608cb7-0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+  },
+  {
+   "id": "wins-a8ab5a83-0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+   "kind": "wins",
+   "text": "This wallet made $225,633 on $NET: bought $298,957, sold $431,407, last sale September 30, 2026.",
+   "short": "Turned $299K into $431K on $NET. +$226K.",
+   "trader": "0xa8ab5a838b50c14cfc5c3e788c37c77140481c41",
+   "token": {
+    "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "symbol": "NET"
+   },
+   "priceUsd": 252.054,
+   "boughtUsd": 298956.82,
+   "soldUsd": 431406.65,
+   "heldQty": 312.716446711,
+   "heldWorthUsd": 78821.43,
+   "realizedUsd": 225632.83,
+   "worthNowUsd": 174059.54,
+   "firstBuy": "2026-07-19T11:31:21.000Z",
+   "lastSell": "2026-09-30T09:39:50.000Z",
+   "verified": false,
+   "url": "https://hoodscan.co/stories/wins-a8ab5a83-0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+  },
+  {
+   "id": "wins-124cef73-0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+   "kind": "wins",
+   "text": "This wallet made $154,241 on $NET: bought $27,889, sold $170,420, last sale August 26, 2026.",
+   "short": "Turned $28K into $170K on $NET. +$154K.",
+   "trader": "0x124cef73f47627f3f919bbab725b5fe924445d69",
+   "token": {
+    "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "symbol": "NET"
+   },
+   "priceUsd": 252.054,
+   "boughtUsd": 27889.31,
+   "soldUsd": 170419.97,
+   "heldQty": 94.48478237700002,
+   "heldWorthUsd": 23815.27,
+   "realizedUsd": 154240.99,
+   "worthNowUsd": 32903.18,
+   "firstBuy": "2026-08-11T17:09:47.000Z",
+   "lastSell": "2026-08-26T12:01:48.000Z",
+   "verified": false,
+   "url": "https://hoodscan.co/stories/wins-124cef73-0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+  },
+  {
+   "id": "losses-34cd5642-0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+   "kind": "losses",
+   "text": "This wallet lost $278,810 on $NET: bought $370,389, sold $91,579, last sale October 2, 2026.",
+   "short": "Bought $370K of $NET, sold for $92K. \u2212$279K.",
+   "trader": "0x34cd5642843355d18c63e5b5820c773839135184",
+   "token": {
+    "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "symbol": "NET"
+   },
+   "priceUsd": 252.054,
+   "boughtUsd": 370388.58,
+   "soldUsd": 91578.73,
+   "heldQty": 0,
+   "heldWorthUsd": 0,
+   "realizedUsd": -278809.85,
+   "worthNowUsd": 72146.35,
+   "firstBuy": "2026-09-01T03:04:40.000Z",
+   "lastSell": "2026-10-02T14:07:16.000Z",
+   "verified": false,
+   "url": "https://hoodscan.co/stories/losses-34cd5642-0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+  },
+  {
+   "id": "losses-7e3ba68c-0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+   "kind": "losses",
+   "text": "This wallet lost $209,891 on $NET: bought $565,626, sold $79,427, last sale September 11, 2026.",
+   "short": "Bought $566K of $NET, sold for $79K. \u2212$210K.",
+   "trader": "0x7e3ba68c49561aae7c23c1d20fef0f1d7615a3ad",
+   "token": {
+    "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+    "symbol": "NET"
+   },
+   "priceUsd": 252.054,
+   "boughtUsd": 565625.81,
+   "soldUsd": 79427.45,
+   "heldQty": 71.56131551499999,
+   "heldWorthUsd": 18037.32,
+   "realizedUsd": -209891.32,
+   "worthNowUsd": 18886.72,
+   "firstBuy": "2026-08-26T11:31:13.000Z",
+   "lastSell": "2026-09-11T13:50:25.000Z",
+   "verified": false,
+   "url": "https://hoodscan.co/stories/losses-7e3ba68c-0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+  }
+ ],
+ "urls": {
+  "token": "https://hoodscan.co/token/0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+  "evidence": "https://hoodscan.co/discover/token/0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+  "stories": "https://hoodscan.co/stories?token=0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+ }
+}

@@ -1,0 +1,1602 @@
+{
+ "available": true,
+ "apiVersion": 2,
+ "generatedAt": "2026-10-03T23:29:45.000Z",
+ "windowMinutes": 1440,
+ "token": {
+  "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+  "symbol": "NET"
+ },
+ "item": {
+  "token": {
+   "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+   "symbol": "NET"
+  },
+  "score": 55.1,
+  "signals": [
+   "risk"
+  ],
+  "evidence": [
+   "163 wallets opened positions",
+   "18 quality wallets buying",
+   "-$68,978 net flow",
+   "-12.4% price"
+  ],
+  "confidence": {
+   "level": "high",
+   "score": 1
+  },
+  "risk": {
+   "level": "high",
+   "score": 19.3,
+   "suspicious": false,
+   "flags": [
+    "thin_liquidity"
+   ]
+  },
+  "metrics": {
+   "trades": 3645,
+   "buys": 1741,
+   "sells": 1904,
+   "buyUsd": 874109.9957614029,
+   "sellUsd": 943088.4152246732,
+   "buyers": 817,
+   "sellers": 938,
+   "baselineTrades": 3462,
+   "smartBuyers": 18,
+   "smartNetUsd": -960.9686082533108,
+   "qualityWeightedNetUsd": -847.854164194991,
+   "smartOpened": 0,
+   "smartAdded": 36,
+   "smartExited": 1,
+   "newPositions": 163,
+   "additions": 654,
+   "exits": 27,
+   "topWalletShare": 0.04425065660012198,
+   "priceChange": -0.12429091561141806,
+   "liquidityUsd": 427758.49,
+   "marketCapUsd": 1354977,
+   "firstSeenTs": 1784306013,
+   "tokenAgeHours": 1878.7,
+   "grossFlowUsd": 1817198.41,
+   "netFlowUsd": -68978.42,
+   "netFlowRatio": -0.038,
+   "activityMultiple": 1.05,
+   "buyerPressure": 0.466,
+   "tradesPerWallet": 2.08
+  },
+  "price": {
+   "openUsd": 278.03815067026625,
+   "closeUsd": 243.48053434855345,
+   "highUsd": 1150.6788990204457,
+   "lowUsd": 115.49229751689494
+  },
+  "market": {
+   "priceUsd": 280.86,
+   "liquidityUsd": 427758.49,
+   "marketCapUsd": 1354977,
+   "fdvUsd": 37059214,
+   "source": "dexscreener",
+   "observedAt": 1791067909
+  },
+  "participantMix": {
+   "smart": {
+    "wallets": 26,
+    "buyUsd": 21774.91200194674,
+    "sellUsd": 22735.880610200056,
+    "qualityWeightedNetUsd": -847.854164194991,
+    "opened": 0,
+    "added": 36,
+    "exited": 1
+   },
+   "whale": {
+    "wallets": 13,
+    "buyUsd": 202748.96038521078,
+    "sellUsd": 356029.4775004538
+   },
+   "retail": {
+    "wallets": 1491,
+    "buyUsd": 649572.2301427238,
+    "sellUsd": 564312.7320380198
+   },
+   "fomoShare": 0.030727023319615913
+  },
+  "rank": 1
+ },
+ "confidence": {
+  "available": true,
+  "score": 98,
+  "level": "solid",
+  "pDead": 0.024,
+  "lens": "current",
+  "lensFrom": 1790983535,
+  "lensTo": 1791069935,
+  "features": {
+   "trades": 3648,
+   "buys": 1742,
+   "sells": 1906,
+   "wallets": 1530,
+   "buyers": 818,
+   "sellers": 940,
+   "holders": 732,
+   "grossUsd": 1917565,
+   "buyUsd": 931199,
+   "sellUsd": 986366,
+   "netFlowRatio": -0.029,
+   "buyerSellerRatio": 0.87,
+   "tradesPerWallet": 2.38,
+   "oneTradeWalletShare": 0.671,
+   "top1Share": 0.042,
+   "top5Share": 0.161,
+   "top10HolderShare": 0.325,
+   "largestBuyerSoldFrac": 0,
+   "earlyExitRate": 0.4,
+   "earlyCohort": 20,
+   "earlyExited": 8,
+   "first5mShare": 0.001,
+   "activeBucketShare": 0.997,
+   "buyerMomentum": 1.74,
+   "priceChange": -0.074,
+   "drawdownFromPeak": 0.114,
+   "pricedShare": 1,
+   "fomoShare": 0.031,
+   "venues": 19,
+   "topVenue": "DEX pool",
+   "minutesSinceLastTrade": 1,
+   "lensHours": 24,
+   "ageHours": 1878.9
+  },
+  "jev": null,
+  "reasons": [
+   {
+    "text": "1878.9 hours old",
+    "against": false,
+    "weight": -2.28
+   },
+   {
+    "text": "ten wallets hold 33% of what was bought",
+    "against": true,
+    "weight": 0.71
+   },
+   {
+    "text": "67% of wallets traded once",
+    "against": false,
+    "weight": -0.65
+   },
+   {
+    "text": "price 11% below its peak",
+    "against": true,
+    "weight": 0.62
+   },
+   {
+    "text": "732 observed holders",
+    "against": false,
+    "weight": -0.6
+   }
+  ],
+  "model": {
+   "set": "code",
+   "bucket": "mature",
+   "version": "confidence-v2"
+  }
+ },
+ "timeline": [
+  {
+   "ts": 1790724600,
+   "trades": 24,
+   "buys": 18,
+   "sells": 6,
+   "wallets": 14,
+   "buyUsd": 16765.156063061437,
+   "sellUsd": 882.790346176828,
+   "openUsd": 430.9817878537308,
+   "closeUsd": 389.4671100865372,
+   "highUsd": 435.4254709694677,
+   "lowUsd": 375.3583238728089
+  },
+  {
+   "ts": 1790724900,
+   "trades": 20,
+   "buys": 13,
+   "sells": 7,
+   "wallets": 17,
+   "buyUsd": 17716.479846,
+   "sellUsd": 1338.461642,
+   "openUsd": 348.37999969821226,
+   "closeUsd": 236.2650225858546,
+   "highUsd": 448.50250737646024,
+   "lowUsd": 236.2650225858546
+  },
+  {
+   "ts": 1790725200,
+   "trades": 36,
+   "buys": 16,
+   "sells": 20,
+   "wallets": 30,
+   "buyUsd": 27018.068769872825,
+   "sellUsd": 1400.7163936422335,
+   "openUsd": 450.2988297261655,
+   "closeUsd": 457.7476735947208,
+   "highUsd": 457.7476735947208,
+   "lowUsd": 341.7796627058587
+  },
+  {
+   "ts": 1790725500,
+   "trades": 28,
+   "buys": 12,
+   "sells": 16,
+   "wallets": 24,
+   "buyUsd": 7810.202031895826,
+   "sellUsd": 146.90924970114054,
+   "openUsd": 447.4945408136594,
+   "closeUsd": 383.0908062145606,
+   "highUsd": 460.19751151006284,
+   "lowUsd": 221.12419157111063
+  },
+  {
+   "ts": 1790725800,
+   "trades": 19,
+   "buys": 12,
+   "sells": 7,
+   "wallets": 19,
+   "buyUsd": 1783.4100968810878,
+   "sellUsd": 1283.4181310024057,
+   "openUsd": 456.7458250453322,
+   "closeUsd": 456.8158793000353,
+   "highUsd": 465.1663469275488,
+   "lowUsd": 31.139222800842774
+  },
+  {
+   "ts": 1790726100,
+   "trades": 14,
+   "buys": 12,
+   "sells": 2,
+   "wallets": 12,
+   "buyUsd": 7948.716297999999,
+   "sellUsd": 1.52794,
+   "openUsd": 457.02291761529386,
+   "closeUsd": 466.9967433272269,
+   "highUsd": 466.9967433272269,
+   "lowUsd": 266.97605882700174
+  },
+  {
+   "ts": 1790726400,
+   "trades": 17,
+   "buys": 8,
+   "sells": 9,
+   "wallets": 15,
+   "buyUsd": 1457.1503277329666,
+   "sellUsd": 4397.310495328191,
+   "openUsd": 459.7268025988652,
+   "closeUsd": 457.23539125,
+   "highUsd": 467.1963023756548,
+   "lowUsd": 418.158158589551
+  },
+  {
+   "ts": 1790726700,
+   "trades": 16,
+   "buys": 12,
+   "sells": 4,
+   "wallets": 12,
+   "buyUsd": 4769.267426437101,
+   "sellUsd": 3.6700126319145805,
+   "openUsd": 416.7176915088697,
+   "closeUsd": 466.0717472913586,
+   "highUsd": 466.82470577721364,
+   "lowUsd": 337.0441719461931
+  },
+  {
+   "ts": 1790727000,
+   "trades": 18,
+   "buys": 12,
+   "sells": 6,
+   "wallets": 15,
+   "buyUsd": 7307.44550501455,
+   "sellUsd": 235.2670334719379,
+   "openUsd": 466.85256229305816,
+   "closeUsd": 468.2335837503292,
+   "highUsd": 470.4664452424411,
+   "lowUsd": 409.9179322686447
+  },
+  {
+   "ts": 1790727300,
+   "trades": 24,
+   "buys": 12,
+   "sells": 12,
+   "wallets": 21,
+   "buyUsd": 5626.6533553251,
+   "sellUsd": 20334.28536956157,
+   "openUsd": 463.55087020211835,
+   "closeUsd": 462.48551784263253,
+   "highUsd": 494.4995810394086,
+   "lowUsd": 425.63429736282933
+  },
+  {
+   "ts": 1790727600,
+   "trades": 21,
+   "buys": 10,
+   "sells": 11,
+   "wallets": 19,
+   "buyUsd": 1815.791791689117,
+   "sellUsd": 300.8909675025789,
+   "openUsd": 437.1490707193225,
+   "closeUsd": 424.0081654838234,
+   "highUsd": 466.17920686484376,
+   "lowUsd": 290.06311152504423
+  },
+  {
+   "ts": 1790727900,
+   "trades": 23,
+   "buys": 11,
+   "sells": 12,
+   "wallets": 13,
+   "buyUsd": 166.8668791948831,
+   "sellUsd": 169.21797618404,
+   "openUsd": 460.89661646410445,
+   "closeUsd": 450.643788939838,
+   "highUsd": 465.3667329223401,
+   "lowUsd": 442.2755464402833
+  },
+  {
+   "_truncated": "1137 more not shown"
+  }
+ ],
+ "smartMoneyTimeline": [
+  {
+   "ts": 1790724900,
+   "buyers": 1,
+   "sellers": 2,
+   "buyUsd": 304.74767599999996,
+   "sellUsd": 0,
+   "netUsd": 304.74767599999996,
+   "qualityWeightedNetUsd": 211.61684015533385,
+   "opened": 0,
+   "added": 0,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790725200,
+   "buyers": 1,
+   "sellers": 2,
+   "buyUsd": 713.74181,
+   "sellUsd": 0,
+   "netUsd": 713.74181,
+   "qualityWeightedNetUsd": 495.6224391976944,
+   "opened": 0,
+   "added": 0,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790725500,
+   "buyers": 0,
+   "sellers": 2,
+   "buyUsd": 0,
+   "sellUsd": 0,
+   "netUsd": 0,
+   "qualityWeightedNetUsd": 0,
+   "opened": 0,
+   "added": 0,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790725800,
+   "buyers": 1,
+   "sellers": 0,
+   "buyUsd": 740.366651,
+   "sellUsd": 0,
+   "netUsd": 740.366651,
+   "qualityWeightedNetUsd": 514.1107335007433,
+   "opened": 0,
+   "added": 0,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790727300,
+   "buyers": 1,
+   "sellers": 0,
+   "buyUsd": 429.59401,
+   "sellUsd": 0,
+   "netUsd": 429.59401,
+   "qualityWeightedNetUsd": 283.5718031867714,
+   "opened": 0,
+   "added": 1,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790728200,
+   "buyers": 0,
+   "sellers": 1,
+   "buyUsd": 0,
+   "sellUsd": 237.406544,
+   "netUsd": -237.406544,
+   "qualityWeightedNetUsd": -157.67522473785522,
+   "opened": 0,
+   "added": 0,
+   "exited": 1,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790729100,
+   "buyers": 1,
+   "sellers": 1,
+   "buyUsd": 0,
+   "sellUsd": 1058.443401,
+   "netUsd": -1058.443401,
+   "qualityWeightedNetUsd": -734.9832850009493,
+   "opened": 1,
+   "added": 0,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790730600,
+   "buyers": 0,
+   "sellers": 1,
+   "buyUsd": 0,
+   "sellUsd": 566.4874270524809,
+   "netUsd": -566.4874270524809,
+   "qualityWeightedNetUsd": -393.3689696146238,
+   "opened": 0,
+   "added": 0,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790730900,
+   "buyers": 0,
+   "sellers": 1,
+   "buyUsd": 0,
+   "sellUsd": 1920.380316,
+   "netUsd": -1920.380316,
+   "qualityWeightedNetUsd": -1450.930899976117,
+   "opened": 0,
+   "added": 0,
+   "exited": 1,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790731800,
+   "buyers": 1,
+   "sellers": 0,
+   "buyUsd": 57.93395103764488,
+   "sellUsd": 0,
+   "netUsd": 57.93395103764488,
+   "qualityWeightedNetUsd": 40.22934585496309,
+   "opened": 0,
+   "added": 1,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790734800,
+   "buyers": 0,
+   "sellers": 1,
+   "buyUsd": 0,
+   "sellUsd": 935.251017,
+   "netUsd": -935.251017,
+   "qualityWeightedNetUsd": -649.4384717460566,
+   "opened": 0,
+   "added": 0,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790736900,
+   "buyers": 0,
+   "sellers": 1,
+   "buyUsd": 0,
+   "sellUsd": 15.722186,
+   "netUsd": -15.722186,
+   "qualityWeightedNetUsd": -11.363217368447113,
+   "opened": 0,
+   "added": 0,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "_truncated": "352 more not shown"
+  }
+ ],
+ "notableTraders": [
+  {
+   "trader": "0x17e9aa8f8277e99aceb1c123734f7e14c594413a",
+   "action": "added",
+   "buyUsd": 371.3475228568678,
+   "sellUsd": 0,
+   "buys": 3,
+   "sells": 0,
+   "firstBuyTs": 1790801100,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 0.11003492799999992,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 78.83619,
+    "confidence": 1,
+    "realizedPnl": 1536.393701255941,
+    "sampleTrades": 196,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 177.33457694573457,
+    "maxDrawdownPct": 0.019712029,
+    "avgHoldSeconds": 1323484.1935483871,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x58e327d64fc77fa36f698989623c3e4f058c8a89",
+   "action": "added",
+   "buyUsd": 51.065494,
+   "sellUsd": 0,
+   "buys": 1,
+   "sells": 0,
+   "firstBuyTs": 1785347400,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 2.8827039850000062,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 77.547,
+    "confidence": 0.997844,
+    "realizedPnl": 2870.9532025720655,
+    "sampleTrades": 99,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 0,
+    "maxDrawdownPct": 0,
+    "avgHoldSeconds": 3211794.8273615637,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x75aa584bef3a942b8b50f34ab56a15f47768f36a",
+   "action": "added",
+   "buyUsd": 15212.503364,
+   "sellUsd": 6266.181296,
+   "buys": 21,
+   "sells": 18,
+   "firstBuyTs": 1790449800,
+   "observedPosition": {
+    "status": "exited",
+    "quantity": 0,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 77.35519,
+    "confidence": 1,
+    "realizedPnl": 1342.8842371585267,
+    "sampleTrades": 140,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 0,
+    "maxDrawdownPct": 0,
+    "avgHoldSeconds": 3296479.5,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x1af69c824e0b8c0e433b744a674fcbb1ea67ce60",
+   "action": "reduced",
+   "buyUsd": 0,
+   "sellUsd": 15821.430533916473,
+   "buys": 0,
+   "sells": 6,
+   "firstBuyTs": 1788797700,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 49.64524538299999,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 74.58032,
+    "confidence": 1,
+    "realizedPnl": 8291.582780911482,
+    "sampleTrades": 109,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 2423.541515226707,
+    "maxDrawdownPct": 0.033234395,
+    "avgHoldSeconds": 1510660.6666666667,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x37346bb1ca6723c6d3999c81f6ec6a480b3502c2",
+   "action": "added",
+   "buyUsd": 27.195981,
+   "sellUsd": 0,
+   "buys": 3,
+   "sells": 1,
+   "firstBuyTs": 1789926000,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 1.1395898219999978,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 73.13802,
+    "confidence": 1,
+    "realizedPnl": 1582.2718253571488,
+    "sampleTrades": 111,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 60.62685318027471,
+    "maxDrawdownPct": 0.0037771827,
+    "avgHoldSeconds": 1445538.294117647,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x282726548bfbd21fb96683ffc402789dedcd861a",
+   "action": "added",
+   "buyUsd": 151.640455,
+   "sellUsd": 20.635721,
+   "buys": 2,
+   "sells": 1,
+   "firstBuyTs": null,
+   "observedPosition": {
+    "status": null,
+    "quantity": 0,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 72.68396,
+    "confidence": 1,
+    "realizedPnl": 121.0162300912983,
+    "sampleTrades": 187,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 0,
+    "maxDrawdownPct": 0,
+    "avgHoldSeconds": 1034440.5,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0xfad4c8f1e71e4c56b87733bd916ff7cff46c6c29",
+   "action": "exited",
+   "buyUsd": 0,
+   "sellUsd": 81.145898,
+   "buys": 0,
+   "sells": 7,
+   "firstBuyTs": 1788235200,
+   "observedPosition": {
+    "status": "exited",
+    "quantity": 0,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 71.423676,
+    "confidence": 1,
+    "realizedPnl": 132.00907276452838,
+    "sampleTrades": 2613,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 10.959024508523438,
+    "maxDrawdownPct": 0.009118106,
+    "avgHoldSeconds": 3412519.090909091,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x84d0f74d21a89f86b67e9a38d8559d0b4e10f12d",
+   "action": "reduced",
+   "buyUsd": 0,
+   "sellUsd": 7.362176,
+   "buys": 0,
+   "sells": 1,
+   "firstBuyTs": null,
+   "observedPosition": {
+    "status": "untracked_reduction",
+    "quantity": 0,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 70.50576,
+    "confidence": 1,
+    "realizedPnl": 192.28772827472523,
+    "sampleTrades": 113,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 11.770385773777054,
+    "maxDrawdownPct": 0.017391924,
+    "avgHoldSeconds": 1738855.0833333333,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0xd71212365401aa8c623cd2a9ca466152989070fd",
+   "action": "exited",
+   "buyUsd": 0,
+   "sellUsd": 5.902544,
+   "buys": 0,
+   "sells": 1,
+   "firstBuyTs": 1787841600,
+   "observedPosition": {
+    "status": "exited",
+    "quantity": 0,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 70.43648,
+    "confidence": 1,
+    "realizedPnl": 421.7349898404152,
+    "sampleTrades": 236,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 29.29238076134798,
+    "maxDrawdownPct": 0.0030148083,
+    "avgHoldSeconds": 2603524.2752293576,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x8e2a9d954e7c88a00d3571eeab3d5e733a309426",
+   "action": "reduced",
+   "buyUsd": 0,
+   "sellUsd": 2.239801,
+   "buys": 0,
+   "sells": 1,
+   "firstBuyTs": null,
+   "observedPosition": {
+    "status": "untracked_reduction",
+    "quantity": 0,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 70.189384,
+    "confidence": 1,
+    "realizedPnl": 1.5149573634596671,
+    "sampleTrades": 621,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 0,
+    "maxDrawdownPct": 0,
+    "avgHoldSeconds": 1284501.7692307692,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x4122f18804aca3a66f6ccecdc29edc6789772eca",
+   "action": "added",
+   "buyUsd": 99.5,
+   "sellUsd": 0,
+   "buys": 1,
+   "sells": 0,
+   "firstBuyTs": 1787684700,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 1.07612403,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 69.36062,
+    "confidence": 0.96006525,
+    "realizedPnl": 232.5864819321311,
+    "sampleTrades": 83,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 26.599039791806604,
+    "maxDrawdownPct": 0.013738678,
+    "avgHoldSeconds": 2233448.0825688075,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0xcd6b980029e6e6e0733ac8ec3e02be9410d09799",
+   "action": "exited",
+   "buyUsd": 0,
+   "sellUsd": 110.36557200000001,
+   "buys": 0,
+   "sells": 8,
+   "firstBuyTs": 1788234000,
+   "observedPosition": {
+    "status": "exited",
+    "quantity": 0,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 69.263596,
+    "confidence": 1,
+    "realizedPnl": 2.2714703670783303,
+    "sampleTrades": 1398,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 0.38880172252853207,
+    "maxDrawdownPct": 0.00025277404,
+    "avgHoldSeconds": 2591814.5280898875,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "_truncated": "8 more not shown"
+  }
+ ],
+ "walletClusters": [],
+ "relatedTokens": [
+  {
+   "token": {
+    "address": "0x20024e485c0b22b42855589700721b28320a7777",
+    "symbol": "PRISM"
+   },
+   "sharedWallets": 404,
+   "similarity": 0.10640604
+  },
+  {
+   "token": {
+    "address": "0x56910d4409f3a0c78c64dd8d0545ff0705389870",
+    "symbol": "Index"
+   },
+   "sharedWallets": 305,
+   "similarity": 0.07852027
+  },
+  {
+   "token": {
+    "address": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
+    "symbol": "HOOKR"
+   },
+   "sharedWallets": 263,
+   "similarity": 0.07527072
+  },
+  {
+   "token": {
+    "address": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
+    "symbol": "CASHCAT"
+   },
+   "sharedWallets": 402,
+   "similarity": 0.067563616
+  },
+  {
+   "token": {
+    "address": "0xe934e36a439c94017b64a3fece66af12099abf50",
+    "symbol": "STONKBROKER"
+   },
+   "sharedWallets": 180,
+   "similarity": 0.06317569
+  },
+  {
+   "token": {
+    "address": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18",
+    "symbol": "AI"
+   },
+   "sharedWallets": 422,
+   "similarity": 0.050812025
+  },
+  {
+   "token": {
+    "address": "0x1b0e319c6a659f002271b69db8a7df2f911c153e",
+    "symbol": "GME"
+   },
+   "sharedWallets": 140,
+   "similarity": 0.047538675
+  },
+  {
+   "token": {
+    "address": "0x42afa2124ca5a2b83898e46b2da9a190995b1e18",
+    "symbol": "SCHIFFY"
+   },
+   "sharedWallets": 143,
+   "similarity": 0.047443565
+  },
+  {
+   "token": {
+    "address": "0xaa07a0e9209e16ac99708c3ec70159c6ef3128a3",
+    "symbol": "ORBIO"
+   },
+   "sharedWallets": 296,
+   "similarity": 0.046737276
+  },
+  {
+   "token": {
+    "address": "0x91a2dae9699f0b82540b5886b0d8759c22820ba3",
+    "symbol": "musebook"
+   },
+   "sharedWallets": 253,
+   "similarity": 0.04565715
+  },
+  {
+   "token": {
+    "address": "0x812486eaea648819853f8e372dc9f1516c7868bd",
+    "symbol": "UBIK"
+   },
+   "sharedWallets": 150,
+   "similarity": 0.044906523
+  },
+  {
+   "token": {
+    "address": "0xd9db30bb0d2b8d2eae3826a1372117e058791e18",
+    "symbol": "MOO"
+   },
+   "sharedWallets": 170,
+   "similarity": 0.044192262
+  },
+  {
+   "_truncated": "8 more not shown"
+  }
+ ],
+ "buyerCohorts": [
+  {
+   "ts": 1788393600,
+   "buyers": 1069,
+   "repeatBuyers": 350,
+   "active7d": 68,
+   "repeatRate": 0.3274087932647334,
+   "active7dRate": 0.06361085126286249
+  },
+  {
+   "ts": 1788480000,
+   "buyers": 740,
+   "repeatBuyers": 255,
+   "active7d": 45,
+   "repeatRate": 0.34459459459459457,
+   "active7dRate": 0.060810810810810814
+  },
+  {
+   "ts": 1788566400,
+   "buyers": 682,
+   "repeatBuyers": 215,
+   "active7d": 48,
+   "repeatRate": 0.3152492668621701,
+   "active7dRate": 0.07038123167155426
+  },
+  {
+   "ts": 1788652800,
+   "buyers": 631,
+   "repeatBuyers": 237,
+   "active7d": 59,
+   "repeatRate": 0.375594294770206,
+   "active7dRate": 0.09350237717908082
+  },
+  {
+   "ts": 1788739200,
+   "buyers": 655,
+   "repeatBuyers": 229,
+   "active7d": 70,
+   "repeatRate": 0.34961832061068704,
+   "active7dRate": 0.10687022900763359
+  },
+  {
+   "ts": 1788825600,
+   "buyers": 1027,
+   "repeatBuyers": 244,
+   "active7d": 64,
+   "repeatRate": 0.23758519961051608,
+   "active7dRate": 0.062317429406037
+  },
+  {
+   "ts": 1788912000,
+   "buyers": 593,
+   "repeatBuyers": 193,
+   "active7d": 56,
+   "repeatRate": 0.3254637436762226,
+   "active7dRate": 0.09443507588532883
+  },
+  {
+   "ts": 1788998400,
+   "buyers": 434,
+   "repeatBuyers": 178,
+   "active7d": 33,
+   "repeatRate": 0.41013824884792627,
+   "active7dRate": 0.07603686635944701
+  },
+  {
+   "ts": 1789084800,
+   "buyers": 545,
+   "repeatBuyers": 201,
+   "active7d": 69,
+   "repeatRate": 0.3688073394495413,
+   "active7dRate": 0.12660550458715597
+  },
+  {
+   "ts": 1789171200,
+   "buyers": 507,
+   "repeatBuyers": 184,
+   "active7d": 51,
+   "repeatRate": 0.3629191321499014,
+   "active7dRate": 0.10059171597633136
+  },
+  {
+   "ts": 1789257600,
+   "buyers": 458,
+   "repeatBuyers": 144,
+   "active7d": 40,
+   "repeatRate": 0.314410480349345,
+   "active7dRate": 0.08733624454148471
+  },
+  {
+   "ts": 1789344000,
+   "buyers": 419,
+   "repeatBuyers": 114,
+   "active7d": 50,
+   "repeatRate": 0.2720763723150358,
+   "active7dRate": 0.11933174224343675
+  },
+  {
+   "_truncated": "19 more not shown"
+  }
+ ],
+ "signalHistory": [
+  {
+   "id": "3fa37e33-b7a9-41ab-8e2b-fad11e561a66",
+   "detected_at": 1790659029,
+   "window_minutes": 15,
+   "signal": "accumulating",
+   "score": 60.6,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "1.6x normal trade activity",
+    "3 quality wallets buying",
+    "+$9,316 net flow",
+    "-42.2% price"
+   ],
+   "metrics": {
+    "trades": 70,
+    "buys": 48,
+    "sells": 22,
+    "buyUsd": 14209.301939802734,
+    "sellUsd": 4892.848373017967,
+    "buyers": 39,
+    "sellers": 15,
+    "baselineTrades": 42.79315476190476,
+    "smartBuyers": 3,
+    "smartNetUsd": 2419.391474217466,
+    "qualityWeightedNetUsd": 1798.3411630538637,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 0,
+    "additions": 39,
+    "exits": 0,
+    "topWalletShare": 0.0971444116296447,
+    "priceChange": -0.4215619792629117,
+    "liquidityUsd": 481290.76,
+    "marketCapUsd": 1685823,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1764.7,
+    "grossFlowUsd": 19102.15,
+    "netFlowUsd": 9316.45,
+    "netFlowRatio": 0.488,
+    "activityMultiple": 1.64,
+    "buyerPressure": 0.722,
+    "tradesPerWallet": 1.3
+   },
+   "outcomes": []
+  },
+  {
+   "id": "c1a15ba3-ce1d-438d-b131-9a8e044b44a9",
+   "detected_at": 1790659029,
+   "window_minutes": 15,
+   "signal": "smart_money",
+   "score": 60.6,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "1.6x normal trade activity",
+    "3 quality wallets buying",
+    "+$9,316 net flow",
+    "-42.2% price"
+   ],
+   "metrics": {
+    "trades": 70,
+    "buys": 48,
+    "sells": 22,
+    "buyUsd": 14209.301939802734,
+    "sellUsd": 4892.848373017967,
+    "buyers": 39,
+    "sellers": 15,
+    "baselineTrades": 42.79315476190476,
+    "smartBuyers": 3,
+    "smartNetUsd": 2419.391474217466,
+    "qualityWeightedNetUsd": 1798.3411630538637,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 0,
+    "additions": 39,
+    "exits": 0,
+    "topWalletShare": 0.0971444116296447,
+    "priceChange": -0.4215619792629117,
+    "liquidityUsd": 481290.76,
+    "marketCapUsd": 1685823,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1764.7,
+    "grossFlowUsd": 19102.15,
+    "netFlowUsd": 9316.45,
+    "netFlowRatio": 0.488,
+    "activityMultiple": 1.64,
+    "buyerPressure": 0.722,
+    "tradesPerWallet": 1.3
+   },
+   "outcomes": []
+  },
+  {
+   "id": "9b3d44dc-fec9-4baa-b9db-556e3d86c85e",
+   "detected_at": 1790587123,
+   "window_minutes": 15,
+   "signal": "accumulating",
+   "score": 66.8,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "4x normal trade activity",
+    "4 wallets opened positions",
+    "1 quality wallet buying",
+    "+$9,436 net flow",
+    "+7.2% price"
+   ],
+   "metrics": {
+    "trades": 164,
+    "buys": 124,
+    "sells": 40,
+    "buyUsd": 51846.36313496109,
+    "sellUsd": 42410.39828893984,
+    "buyers": 88,
+    "sellers": 33,
+    "baselineTrades": 41.229166666666664,
+    "smartBuyers": 1,
+    "smartNetUsd": 598.5010421368308,
+    "qualityWeightedNetUsd": 415.29611030018907,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 4,
+    "additions": 84,
+    "exits": 0,
+    "topWalletShare": 0.18741230665199438,
+    "priceChange": 0.07188407987704183,
+    "liquidityUsd": 493392.82,
+    "marketCapUsd": 1774377,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1744.8,
+    "grossFlowUsd": 94256.76,
+    "netFlowUsd": 9435.96,
+    "netFlowRatio": 0.1,
+    "activityMultiple": 3.98,
+    "buyerPressure": 0.727,
+    "tradesPerWallet": 1.36
+   },
+   "outcomes": []
+  },
+  {
+   "id": "e13f229d-170f-4c35-826c-cb19bb449800",
+   "detected_at": 1790587123,
+   "window_minutes": 15,
+   "signal": "popping",
+   "score": 66.8,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "4x normal trade activity",
+    "4 wallets opened positions",
+    "1 quality wallet buying",
+    "+$9,436 net flow",
+    "+7.2% price"
+   ],
+   "metrics": {
+    "trades": 164,
+    "buys": 124,
+    "sells": 40,
+    "buyUsd": 51846.36313496109,
+    "sellUsd": 42410.39828893984,
+    "buyers": 88,
+    "sellers": 33,
+    "baselineTrades": 41.229166666666664,
+    "smartBuyers": 1,
+    "smartNetUsd": 598.5010421368308,
+    "qualityWeightedNetUsd": 415.29611030018907,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 4,
+    "additions": 84,
+    "exits": 0,
+    "topWalletShare": 0.18741230665199438,
+    "priceChange": 0.07188407987704183,
+    "liquidityUsd": 493392.82,
+    "marketCapUsd": 1774377,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1744.8,
+    "grossFlowUsd": 94256.76,
+    "netFlowUsd": 9435.96,
+    "netFlowRatio": 0.1,
+    "activityMultiple": 3.98,
+    "buyerPressure": 0.727,
+    "tradesPerWallet": 1.36
+   },
+   "outcomes": []
+  },
+  {
+   "id": "26630879-05ef-45ce-bff1-6577cb9fa92f",
+   "detected_at": 1790518576,
+   "window_minutes": 15,
+   "signal": "smart_money",
+   "score": 50.3,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "1.7x normal trade activity",
+    "1 wallet opened positions",
+    "2 quality wallets buying",
+    "-$10,798 net flow",
+    "-8.4% price"
+   ],
+   "metrics": {
+    "trades": 69,
+    "buys": 35,
+    "sells": 34,
+    "buyUsd": 35002.796960380234,
+    "sellUsd": 45800.75961928847,
+    "buyers": 29,
+    "sellers": 28,
+    "baselineTrades": 40.32142857142857,
+    "smartBuyers": 2,
+    "smartNetUsd": 403.8980232148796,
+    "qualityWeightedNetUsd": 310.2264588223002,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 1,
+    "additions": 28,
+    "exits": 0,
+    "topWalletShare": 0.2927073934952607,
+    "priceChange": -0.08438549087293871,
+    "liquidityUsd": 533430.38,
+    "marketCapUsd": 2113281,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1725.7,
+    "grossFlowUsd": 80803.56,
+    "netFlowUsd": -10797.96,
+    "netFlowRatio": -0.134,
+    "activityMultiple": 1.71,
+    "buyerPressure": 0.509,
+    "tradesPerWallet": 1.21
+   },
+   "outcomes": []
+  },
+  {
+   "id": "6a8d4f00-f708-4f8d-a9a6-d5c24bf469e7",
+   "detected_at": 1790513290,
+   "window_minutes": 15,
+   "signal": "accumulating",
+   "score": 58.9,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "2 wallets opened positions",
+    "2 quality wallets buying",
+    "+$31,214 net flow",
+    "+60.1% price"
+   ],
+   "metrics": {
+    "trades": 49,
+    "buys": 35,
+    "sells": 14,
+    "buyUsd": 32298.930926503825,
+    "sellUsd": 1084.841320835234,
+    "buyers": 28,
+    "sellers": 14,
+    "baselineTrades": 40.21875,
+    "smartBuyers": 2,
+    "smartNetUsd": 925.049682276345,
+    "qualityWeightedNetUsd": 639.9215124084958,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 2,
+    "additions": 26,
+    "exits": 0,
+    "topWalletShare": 0.3123147860808646,
+    "priceChange": 0.6012984107280854,
+    "liquidityUsd": 537672.15,
+    "marketCapUsd": 2146750,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1724.2,
+    "grossFlowUsd": 33383.77,
+    "netFlowUsd": 31214.09,
+    "netFlowRatio": 0.935,
+    "activityMultiple": 1.22,
+    "buyerPressure": 0.667,
+    "tradesPerWallet": 1.17
+   },
+   "outcomes": []
+  },
+  {
+   "id": "b29cc18b-21a1-4b79-867a-50952f87fab9",
+   "detected_at": 1790513290,
+   "window_minutes": 15,
+   "signal": "smart_money",
+   "score": 58.9,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "2 wallets opened positions",
+    "2 quality wallets buying",
+    "+$31,214 net flow",
+    "+60.1% price"
+   ],
+   "metrics": {
+    "trades": 49,
+    "buys": 35,
+    "sells": 14,
+    "buyUsd": 32298.930926503825,
+    "sellUsd": 1084.841320835234,
+    "buyers": 28,
+    "sellers": 14,
+    "baselineTrades": 40.21875,
+    "smartBuyers": 2,
+    "smartNetUsd": 925.049682276345,
+    "qualityWeightedNetUsd": 639.9215124084958,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 2,
+    "additions": 26,
+    "exits": 0,
+    "topWalletShare": 0.3123147860808646,
+    "priceChange": 0.6012984107280854,
+    "liquidityUsd": 537672.15,
+    "marketCapUsd": 2146750,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1724.2,
+    "grossFlowUsd": 33383.77,
+    "netFlowUsd": 31214.09,
+    "netFlowRatio": 0.935,
+    "activityMultiple": 1.22,
+    "buyerPressure": 0.667,
+    "tradesPerWallet": 1.17
+   },
+   "outcomes": []
+  },
+  {
+   "id": "4d19cac1-fa85-4a89-a04e-6ff524af8da5",
+   "detected_at": 1790510491,
+   "window_minutes": 15,
+   "signal": "accumulating",
+   "score": 66.5,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "2.8x normal trade activity",
+    "5 wallets opened positions",
+    "2 quality wallets buying",
+    "+$46,358 net flow",
+    "+19.9% price"
+   ],
+   "metrics": {
+    "trades": 109,
+    "buys": 76,
+    "sells": 33,
+    "buyUsd": 105735.47384773286,
+    "sellUsd": 59376.98642488205,
+    "buyers": 51,
+    "sellers": 25,
+    "baselineTrades": 39.601190476190474,
+    "smartBuyers": 2,
+    "smartNetUsd": 1192.6141101582916,
+    "qualityWeightedNetUsd": 824.4832047018984,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 5,
+    "additions": 46,
+    "exits": 0,
+    "topWalletShare": 0.2937932593573348,
+    "priceChange": 0.19892908781628432,
+    "liquidityUsd": 530470.34,
+    "marketCapUsd": 2091334,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1723.5,
+    "grossFlowUsd": 165112.46,
+    "netFlowUsd": 46358.49,
+    "netFlowRatio": 0.281,
+    "activityMultiple": 2.75,
+    "buyerPressure": 0.671,
+    "tradesPerWallet": 1.43
+   },
+   "outcomes": []
+  },
+  {
+   "id": "ca053128-8b79-4a1b-b0a6-2946800e25f2",
+   "detected_at": 1790510491,
+   "window_minutes": 15,
+   "signal": "popping",
+   "score": 66.5,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "2.8x normal trade activity",
+    "5 wallets opened positions",
+    "2 quality wallets buying",
+    "+$46,358 net flow",
+    "+19.9% price"
+   ],
+   "metrics": {
+    "trades": 109,
+    "buys": 76,
+    "sells": 33,
+    "buyUsd": 105735.47384773286,
+    "sellUsd": 59376.98642488205,
+    "buyers": 51,
+    "sellers": 25,
+    "baselineTrades": 39.601190476190474,
+    "smartBuyers": 2,
+    "smartNetUsd": 1192.6141101582916,
+    "qualityWeightedNetUsd": 824.4832047018984,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 5,
+    "additions": 46,
+    "exits": 0,
+    "topWalletShare": 0.2937932593573348,
+    "priceChange": 0.19892908781628432,
+    "liquidityUsd": 530470.34,
+    "marketCapUsd": 2091334,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1723.5,
+    "grossFlowUsd": 165112.46,
+    "netFlowUsd": 46358.49,
+    "netFlowRatio": 0.281,
+    "activityMultiple": 2.75,
+    "buyerPressure": 0.671,
+    "tradesPerWallet": 1.43
+   },
+   "outcomes": []
+  },
+  {
+   "id": "b42da440-ec4c-4dd8-b955-1f631bbe3948",
+   "detected_at": 1790510491,
+   "window_minutes": 15,
+   "signal": "smart_money",
+   "score": 66.5,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "2.8x normal trade activity",
+    "5 wallets opened positions",
+    "2 quality wallets buying",
+    "+$46,358 net flow",
+    "+19.9% price"
+   ],
+   "metrics": {
+    "trades": 109,
+    "buys": 76,
+    "sells": 33,
+    "buyUsd": 105735.47384773286,
+    "sellUsd": 59376.98642488205,
+    "buyers": 51,
+    "sellers": 25,
+    "baselineTrades": 39.601190476190474,
+    "smartBuyers": 2,
+    "smartNetUsd": 1192.6141101582916,
+    "qualityWeightedNetUsd": 824.4832047018984,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 5,
+    "additions": 46,
+    "exits": 0,
+    "topWalletShare": 0.2937932593573348,
+    "priceChange": 0.19892908781628432,
+    "liquidityUsd": 530470.34,
+    "marketCapUsd": 2091334,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1723.5,
+    "grossFlowUsd": 165112.46,
+    "netFlowUsd": 46358.49,
+    "netFlowRatio": 0.281,
+    "activityMultiple": 2.75,
+    "buyerPressure": 0.671,
+    "tradesPerWallet": 1.43
+   },
+   "outcomes": []
+  },
+  {
+   "id": "5b01dc04-ea7c-4a46-9843-1323470a287b",
+   "detected_at": 1790510471,
+   "window_minutes": 60,
+   "signal": "smart_money",
+   "score": 73.5,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "3.1x normal trade activity",
+    "29 wallets opened positions",
+    "6 quality wallets buying",
+    "-$8,190 net flow",
+    "-1.5% price"
+   ],
+   "metrics": {
+    "trades": 490,
+    "buys": 324,
+    "sells": 166,
+    "buyUsd": 265068.3867663341,
+    "sellUsd": 273258.3630013057,
+    "buyers": 188,
+    "sellers": 84,
+    "baselineTrades": 158.4047619047619,
+    "smartBuyers": 6,
+    "smartNetUsd": 524.1272337893677,
+    "qualityWeightedNetUsd": 359.10637301588804,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 29,
+    "additions": 159,
+    "exits": 0,
+    "topWalletShare": 0.09011056553466475,
+    "priceChange": -0.015192638413717615,
+    "liquidityUsd": 530470.34,
+    "marketCapUsd": 2091334,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1723.5,
+    "grossFlowUsd": 538326.75,
+    "netFlowUsd": -8189.98,
+    "netFlowRatio": -0.015,
+    "activityMultiple": 3.09,
+    "buyerPressure": 0.691,
+    "tradesPerWallet": 1.8
+   },
+   "outcomes": []
+  },
+  {
+   "id": "48e2f78e-396d-41f6-aa45-af9113ab89b6",
+   "detected_at": 1790497120,
+   "window_minutes": 15,
+   "signal": "accumulating",
+   "score": 49.3,
+   "confidence": 1,
+   "risk": "low",
+   "evidence": [
+    "1.3x normal trade activity",
+    "10 wallets opened positions",
+    "+$10,870 net flow",
+    "+12.7% price"
+   ],
+   "metrics": {
+    "trades": 52,
+    "buys": 45,
+    "sells": 7,
+    "buyUsd": 11623.050632237475,
+    "sellUsd": 753.2702140929966,
+    "buyers": 24,
+    "sellers": 6,
+    "baselineTrades": 39.47172619047619,
+    "smartBuyers": 0,
+    "smartNetUsd": 0,
+    "qualityWeightedNetUsd": 0,
+    "smartOpened": 0,
+    "smartAdded": 0,
+    "smartExited": 0,
+    "newPositions": 10,
+    "additions": 14,
+    "exits": 0,
+    "topWalletShare": 0.2421738653364553,
+    "priceChange": 0.12716852254730918,
+    "liquidityUsd": 573776.85,
+    "marketCapUsd": 2409290,
+    "firstSeenTs": 1784306013,
+    "tokenAgeHours": 1719.8,
+    "grossFlowUsd": 12376.32,
+    "netFlowUsd": 10869.78,
+    "netFlowRatio": 0.878,
+    "activityMultiple": 1.32,
+    "buyerPressure": 0.8,
+    "tradesPerWallet": 1.73
+   },
+   "outcomes": []
+  },
+  {
+   "_truncated": "38 more not shown"
+  }
+ ],
+ "url": "https://hoodscan.co/discover/token/0xca9c78dd337a67f6e0077f65f5e9218719d30edf"
+}

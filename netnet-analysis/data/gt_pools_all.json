@@ -1,0 +1,362 @@
+{
+ "0x99e70a5b06215e5d2f3bec773b4f59c008fc1673": {
+  "name": "NET / USDG 1%",
+  "dex": "up-v3",
+  "reserve": 263509.8622,
+  "vol24": 829548.194193823
+ },
+ "0x59f95461e68e0c77605299791e1449f175165b54": {
+  "name": "NET / USDG",
+  "dex": "uniswap-v2-robinhood",
+  "reserve": 426286.0283,
+  "vol24": 503575.292898835
+ },
+ "0x0d662a58507a46cd6a22632228306dc0d9c26f5fce90c37ced3b8358db33deb3": {
+  "name": "NET / USDG 0.9%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 264190.864,
+  "vol24": 295875.881861712
+ },
+ "0x4030f646babe7643c33ee0b9a5123e04ee97a8820a26d0d9dec8b0265f31170d": {
+  "name": "NET / USDG",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 59400.7005,
+  "vol24": 403004.748090367
+ },
+ "0x813fbef16e3d3529b6339ccaa03af4df803e3862": {
+  "name": "NET / USDG 1%",
+  "dex": "ramses-v3-robinhood",
+  "reserve": 95792.2898,
+  "vol24": 236841.061392967
+ },
+ "0x146a67caa3ff12cb019b2e46d5fb8a1beddc18d3": {
+  "name": "NET / USDG 0.5%",
+  "dex": "alandale-cl",
+  "reserve": 14528.3971,
+  "vol24": 135516.313181377
+ },
+ "0x7eee2452354eb8cfc233f380e0f5da8e385f743c": {
+  "name": "NET / WETH 0.5%",
+  "dex": "alandale-cl",
+  "reserve": 9241.976,
+  "vol24": 160530.231645577
+ },
+ "0xdbe41dc9d12ae4ad528fd2f9b2bd5736ba5fb7eaf7ebb1fca86ff1646430a301": {
+  "name": "NET / USDG 3.2%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 29835.8697,
+  "vol24": 12927.6085742232
+ },
+ "0xfe0381e7e48d5b9fb5c2ac3fa7950abdaa0eb22b5ef73fc686b5c18e77b99e9f": {
+  "name": "TEN / NET 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 19289.0626,
+  "vol24": 4338.8539816381
+ },
+ "0x04263541986025755033c507d2c02863354abe64236878f3455b7d72ad9cce27": {
+  "name": "NET / USDG 1.5%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 9943.9055,
+  "vol24": 5796.248638941
+ },
+ "0xcf8c89ea2d7d717a59e3676a024a3fb7ed598290": {
+  "name": "NET / USDG 1%",
+  "dex": "giga-v3",
+  "reserve": 9034.8859,
+  "vol24": 1078.6856954567
+ },
+ "0xd1ac85b1912b8ef1288a7ce001029ebcffce7516dbf25182c4f3ba3e50f58e15": {
+  "name": "NET / WETH 0.85%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 6123.6829,
+  "vol24": 716.5331915613
+ },
+ "0xd5866ecf2733446c41e31ea04b504b0f99b9a61463c53434336e3565857aa481": {
+  "name": "NET / WETH 1.5%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 2335.1322,
+  "vol24": 938.9414242006
+ },
+ "0x224d80f47dbe4ef85fd287be40138f26e830eb33c7db50e1c547786b88edcb8e": {
+  "name": "SYNC / NET 2%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 3077.2748,
+  "vol24": 487.7388241378
+ },
+ "0x4dbee3dafb1d146f044b8759c7e6b5368eab0f573b70644d3902fa37daa7268e": {
+  "name": "NET / USDG",
+  "dex": "orvex-v4",
+  "reserve": 2356.3363,
+  "vol24": 484.0713611278
+ },
+ "0x7f816e4eb1a076c296531c2b3232481caf9ee8fb7f900fff147b5f5b2801190c": {
+  "name": "EI / NET 2%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 868.2934,
+  "vol24": 167.9179797971
+ },
+ "0x6a161a0d1649feec9e24cf4db52bfb3f12b76099a9616571406e9d153c7c2788": {
+  "name": "MUTT / NET 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 838.7688,
+  "vol24": 122.5129604631
+ },
+ "0x68f861ec91b9e5e35c98777bc31a8a3161a5ce998c76b63211b688b810ec2c2e": {
+  "name": "NET / USDG 4.01%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 1184.7441,
+  "vol24": 38.5057872082
+ },
+ "0x89558beb885d84185ef7624e460688d811eb80a20c46f02c215a1095040ca8b0": {
+  "name": "MOFO / NET",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 348.1226,
+  "vol24": 46.1569250399
+ },
+ "0xc5b4d8e39bf90eb71ced642b9a678cc94f3ff74fe25537de772c798d41fec1a9": {
+  "name": "MEGA5 / NET 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 551.7954,
+  "vol24": 19.9621708152
+ },
+ "0x6604281d0271574d6e1691bb3bb37e42e8fe74b87a08922eb54fa8ddc2afa404": {
+  "name": "NET / WETH 1.3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 8190.9004,
+  "vol24": 0.0
+ },
+ "0xe224d71ac94b6dc86764cb66620624c92c984c3883f5864551b8838a044dc5d0": {
+  "name": "NET / WETH 1.26%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 6834.1259,
+  "vol24": 0.0
+ },
+ "0xbabed015d6f4b4bbb8cdbda530dd443bd369ff50": {
+  "name": "NC / NET 5%",
+  "dex": "abyss",
+  "reserve": 4051.8307,
+  "vol24": 0.0
+ },
+ "0x0cf5837b4b76bd89e727bfe11b103b36257dd1ab3ded3c5cc910cd1f0024a316": {
+  "name": "DUNLAP / NET 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 3524.7532,
+  "vol24": 0.0
+ },
+ "0xfd6c58f575422613d5ee789762752009f2a56ac4cbeebc5632af2b70653b0ae5": {
+  "name": "TEN / NET 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 3376.6111,
+  "vol24": 0.0
+ },
+ "0xf441658f6f35a33bf71e91adfb9a1c248298db0aefbc0e522693e5afaf5a1643": {
+  "name": "NET / USDG 1.45%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 2478.0047,
+  "vol24": 0.0
+ },
+ "0x812cf33d495f743da202aec264073cbb9dd329df394597c4438165b6f97295a4": {
+  "name": "SPY / NET 0.9%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 2154.5538,
+  "vol24": 0.0
+ },
+ "0xfd24c59a88798c9fdfef9a573dabb78bb37f92942eb74d3f1ca695173bf07ba8": {
+  "name": "USDG / NET 77%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 1956.7047,
+  "vol24": 0.0
+ },
+ "0x41b5361708084aed39d724f3db9206108804bd95a764955005f36dc4fcd3d783": {
+  "name": "ON / NET 2%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 1132.8117,
+  "vol24": 0.0
+ },
+ "0x957debd6f1f0761c38e47358543fb7db20b5a855afaeeb2fd3cc5a4e0ffd83f2": {
+  "name": "NET / USDG 3.5%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 1025.5011,
+  "vol24": 0.0
+ },
+ "0x00000000000014aa86c5d3c41765bb24e11bd701-0x7c9c77c22357b10bf90237aea6e5f2c0797a9c82ba891d81da2ef8bacc063bd4": {
+  "name": "NET / USDG 1%",
+  "dex": "ekubo-v3-robinhood",
+  "reserve": 989.3492,
+  "vol24": 0.0
+ },
+ "0x8f0140fc5a41bd456a46c123785498089fb739463863d424a923eb1be6f4f1e2": {
+  "name": "PNT / NET 3.5%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 910.3551,
+  "vol24": 0.0
+ },
+ "0xe184bbbd23705f60e56ed76730f10d96529f865bfd40bbb9ed1d124b25b65ab6": {
+  "name": "CASHNET / NET 2.1%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 891.5489,
+  "vol24": 0.0
+ },
+ "0xb729919f0aa7d0df012edea8296331fcf884325e442c8b43dbd81d1c90be2bb7": {
+  "name": "ARTIDEX / NET 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 748.4866,
+  "vol24": 0.0
+ },
+ "0xc0f4911989bd731283a26772128f5ba25733847f245b57e54df024e3dc53f757": {
+  "name": "PARI / NET 1.8%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 744.4944,
+  "vol24": 0.0
+ },
+ "0x2824a69b057221ea0110e8780612e2c738bd828f18242cb80ce55a62a0e3dfcc": {
+  "name": "RUGD / NET 2.9%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 730.3057,
+  "vol24": 0.0
+ },
+ "0xe31492af56dd99e8ea8d291a30b2de41e6b4c51fa3dc42e2590ffcc1a5e263b0": {
+  "name": "alfa / NET 1.5%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 729.8347,
+  "vol24": 0.0
+ },
+ "0x07919b775592304f68301fed2955669851d8c906044b85be2cdcd223926c9fb0": {
+  "name": "S&amp;P5 / NET 3.5%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 727.2009,
+  "vol24": 0.0
+ },
+ "0xc36728cfb78f2aa0461041b3a139d29ea9a9ae02024c334d34c009db12bdc1ee": {
+  "name": "RIALTO / NET 1.5%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 711.841,
+  "vol24": 0.0
+ },
+ "0x39ec9baee988bfca3e7363f4b7b9e0e1d5c26ddf23bb01cfa87b78f1379cc78b": {
+  "name": "NET / PARI 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 727.1976,
+  "vol24": 0.0
+ },
+ "0x6a925839c43f73f886511229bbce1e9982e3a4d63f946afd2d20dc6b0c2f999a": {
+  "name": "SIDEFX / NET 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 702.6267,
+  "vol24": 0.0
+ },
+ "0x6735488715c181b0a94352c0977e05b3018601cbb431762fbdaa73a325b06085": {
+  "name": "MANGA / NET 3.5%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 695.0986,
+  "vol24": 0.0
+ },
+ "0x0cf7fc07c121d2914ad7c7caa0203e78a0a9a6851f329df4a97f75a15d2195c7": {
+  "name": "NET / WETH 1.25%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 640.531,
+  "vol24": 0.0
+ },
+ "0xab40422fe5e2db39a9d291f81491c29876b0801cfba2096135362d79d876a5ee": {
+  "name": "Index / NET 1.5%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 621.6625,
+  "vol24": 0.0
+ },
+ "0x2ae95c3321d0a186c4ece6e015ee804e01075821e4454fdaa795eee1fe7478b8": {
+  "name": "NET / USDG 2.42%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 523.7641,
+  "vol24": 0.0
+ },
+ "0xa9a424578d52e34208a81bbe41ac59b1b5e2db7e8d6fc2d539cbaac2a8eb9e8a": {
+  "name": "NET / USDG 2%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 511.6218,
+  "vol24": 0.0
+ },
+ "0x2e76ecf28ef7ddfe959b729c708779cb8924bb749581bf6baaf0214415a76a1d": {
+  "name": "HEDGE / NET 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 551.4809,
+  "vol24": 0.0
+ },
+ "0xb57d7720ac1589629be9f2bec03c56708868c776f91970fe8021a266f6c85b1d": {
+  "name": "PR5 / NET 2%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 511.2464,
+  "vol24": 0.0
+ },
+ "0xd373bae1fca4351a713494d7ca9fea16f6c5def5308346c8dc2820ffa894b4e4": {
+  "name": "NET / WETH 79%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 313.4492,
+  "vol24": 0.0
+ },
+ "0xe24341907a44b88b3b8f142f0ee458148f8b938c33b0d1c7455640e5bfd9d1d5": {
+  "name": "ORBIO / NET 3%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 418.7411,
+  "vol24": 0.0
+ },
+ "0x3b46b4f0036a718329aa25bf1238392527a0800b": {
+  "name": "NET / WETH",
+  "dex": "ramses-dlmm-robinhood",
+  "reserve": 352.5871,
+  "vol24": 0.0
+ },
+ "0x287475478304b4a41646e278b2bef909126bf160651c0bf60b551f68bfa914ed": {
+  "name": "NET / WETH 78.787%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 246.6816,
+  "vol24": 0.0
+ },
+ "0x812c9945a67e9072efd9a4270016850828bd1a7960cca2e5daf4dec7b8256e6f": {
+  "name": "NET / WETH",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 252.2921,
+  "vol24": 0.0
+ },
+ "0x266667066c4ba6da1eec933be06d9616bd3fd444752377824f9ffb3f5d1ac998": {
+  "name": "NET / USDG 0.74%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 254.7581,
+  "vol24": 0.0
+ },
+ "0x7bae6ef2d5f5b34ff413f5f1f7ed3541525a1fa459a02d9276278b2107d0091d": {
+  "name": "NET / USDG 3.69%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 244.0342,
+  "vol24": 0.0
+ },
+ "0x4e131b5be01bbd9f02afeadf162b4e5bf2fbd3c34f5e1d5728be3be73752424c": {
+  "name": "NET / WETH 1.289%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 238.0947,
+  "vol24": 0.0
+ },
+ "0xcb46b73a06bd183b92f9c7535e0faeaf7fc0c7b8b5386e48725c0fc6df122f9a": {
+  "name": "NET / USDG 0.735%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 203.4757,
+  "vol24": 0.0
+ },
+ "0x17abf5021b14704ed69388dc7a45bacc2103509d027a4b221f2f0b123500c667": {
+  "name": "NET / USDG 0.184%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 211.4316,
+  "vol24": 0.0
+ },
+ "0x6411e648da6195890168c6036fd2b971ab8d5b0e4b55b8f05004cc6d2567e3ab": {
+  "name": "NET / USDG 0.765%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 183.8936,
+  "vol24": 0.0
+ },
+ "0xec2151916ec6c02e0240bfdb360f9df29f53e43ec87a45f5a38ab6fc93b28ee1": {
+  "name": "NET / WETH 1.2%",
+  "dex": "uniswap-v4-robinhood",
+  "reserve": 178.7584,
+  "vol24": 0.0
+ }
+}
