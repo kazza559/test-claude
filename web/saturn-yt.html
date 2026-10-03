@@ -159,6 +159,7 @@ strong { font-weight: 650; }
   width: fit-content; white-space: nowrap;
 }
 .pill.caution { color: var(--accent-ink); background: var(--accent-wash); }
+.verdict-head .pill { white-space: normal; max-width: 100%; }
 .pill.avoid { color: var(--bad); }
 .pill.ok { color: var(--good); }
 
@@ -328,24 +329,24 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
           <circle cx="17" cy="11" r="6.5" fill="var(--ink)"/>
           <path d="M3.3 13.9 C 8 17.5, 26 13, 30.7 8.1" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
         </svg>
-        <span class="eyebrow">Báo cáo nghiên cứu · Saturn · STRN · dữ liệu chốt 28–29/9/2026</span>
+        <span class="eyebrow">Báo cáo nghiên cứu · Saturn · STRN · cập nhật 3/10/2026 · phân tích gốc 28–29/9</span>
       </div>
       <h1>Saturn YT: cược nhỏ, đợi giá rẻ hơn</h1>
       <p class="lede">Saturn (saturn.credit) phát hành stablecoin USDat và vault sUSDat nắm cổ phiếu ưu đãi STRC của Strategy. Ngày 25/9, dự án công bố token STRN với TGE trong Q4/2026. Trang này định giá các pool YT của Saturn trên Pendle bằng dữ liệu Merkl, Pendle API và on-chain, đặt cạnh 12 dự án stablecoin đã TGE. Các tham số được đặt rộng và cố ý nghiêng về phía bi quan.</p>
-      <p class="note">Dùng dấu chấm thập phân và dấu phẩy hàng nghìn, ngày viết theo ngày/tháng. Các phép tính, kịch bản và xác suất không kèm nguồn là ước tính của báo cáo.</p>
+      <p class="note">Dùng dấu chấm thập phân và dấu phẩy hàng nghìn, ngày viết theo ngày/tháng. Các phép tính, kịch bản và xác suất không kèm nguồn là ước tính của báo cáo. Mục "Cập nhật 3/10" dùng số liệu ngày 3/10; các mục sau giữ phân tích gốc ngày 28–29/9.</p>
     </div>
     <aside class="verdict" aria-label="Kết luận">
       <div class="verdict-head">
-        <span class="pill caution">◐ Khuyến nghị: vị thế nhỏ</span>
-        <p class="verdict-call">Chỉ mua YT-USDat (Ethereum hoặc Monad), và chỉ khi implied APY ≤ 7%.</p>
-        <p class="tile-sub">Hiện tại 8.98%, mức đắt nhất trong lịch sử pool. Tránh YT-sUSDat, YT-USDat trên BNB và YT-srUSDat.</p>
+        <span class="pill caution">◐ Khuyến nghị 3/10: vị thế nhỏ</span>
+        <p class="verdict-call">Mua thử Monad YT-USDat khi implied APY ≤ 8%, vào đủ quy mô khi ≤ 7%.</p>
+        <p class="tile-sub">Hiện 8.83% (đỉnh 9.9% ngày 1–2/10). "Yield ~5.6%" gồm 3% USDC và 2.63% MON, nhưng MON mới chắc chắn đến 15/10. ETH YT-USDat (9.23%, không có MON) kém hơn. Tránh YT-sUSDat, BNB và srUSDat.</p>
       </div>
       <div class="tiles">
-        <div class="tile"><span class="tile-label">TGE dự kiến</span><span class="tile-value">Đầu–giữa 12/2026</span><span class="tile-sub">~45% trước 8/12 · ~25% trượt sang 2027</span></div>
-        <div class="tile"><span class="tile-label">FDV ngày TGE, kịch bản cơ sở</span><span class="tile-value">$150M</span><span class="tile-sub">Bi quan $50–80M · lạc quan $250–350M · Polymarket ~$207M</span></div>
-        <div class="tile"><span class="tile-label">Chi phí điểm, ETH YT-USDat</span><span class="tile-value">$8.4–12.5</span><span class="tile-sub">cho mỗi 1M điểm, tùy thưởng USDC 3% kéo dài bao lâu</span></div>
-        <div class="tile"><span class="tile-label">FDV hòa vốn, đã điều chỉnh rủi ro</span><span class="tile-value">$98–145M</span><span class="tile-sub">Nếu TGE giữa tháng 11: $122–180M</span></div>
-        <div class="tile wide"><span class="tile-label">Monte Carlo, $1,000 ETH YT-USDat ở giá hiện tại (200,000 lượt)</span><span class="tile-value">Trung vị −17% · trung bình +15%</span><span class="tile-sub">Xác suất lỗ 59%. Nếu vào ở implied APY 7%: trung bình +46%, trung vị +5%.</span></div>
+        <div class="tile"><span class="tile-label">TGE dự kiến</span><span class="tile-value">12/2026 hoặc trễ hơn</span><span class="tile-sub">~35% trượt sang 2027 · Polymarket trước 31/12: ~0.62 (29/9: 0.74)</span></div>
+        <div class="tile"><span class="tile-label">FDV ngày TGE, kịch bản cơ sở</span><span class="tile-value">$150M</span><span class="tile-sub">Bi quan $50–80M · lạc quan $250–350M · Polymarket ~$190–250M</span></div>
+        <div class="tile"><span class="tile-label">Chi phí điểm, Monad YT-USDat</span><span class="tile-value">$8.3–12.5</span><span class="tile-sub">cho mỗi 1M điểm; cơ sở $9.76 (USDC đến snapshot, MON đến 15/10)</span></div>
+        <div class="tile"><span class="tile-label">FDV hòa vốn, đã điều chỉnh rủi ro</span><span class="tile-value">$109–164M</span><span class="tile-sub">Nếu TGE giữa tháng 11: $137–206M</span></div>
+        <div class="tile wide"><span class="tile-label">Monte Carlo, $1,000 Monad YT-USDat ở giá 3/10 (200,000 lượt)</span><span class="tile-value">Trung vị −14% · trung bình +14%</span><span class="tile-sub">Xác suất lỗ 58%. Ở implied APY 8%: trung bình +25%, trung vị −5%. Ở 7%: +42%, trung vị +8%.</span></div>
       </div>
     </aside>
   </div>
@@ -354,6 +355,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
 <div class="wrap layout">
   <nav class="toc" aria-label="Mục lục">
     <span class="eyebrow">Mục lục</span>
+    <a href="#cap-nhat">Cập nhật 3/10</a>
     <a href="#du-an">Dự án</a>
     <a href="#so-sanh">So sánh TGE</a>
     <a href="#boi-canh">Bối cảnh thị trường</a>
@@ -370,6 +372,83 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
   </nav>
 
   <main>
+    <!-- CẬP NHẬT 3/10 -->
+    <section id="cap-nhat">
+      <div class="section-head">
+        <span class="eyebrow">Cập nhật 3/10/2026 · dữ liệu 10:30 UTC</span>
+        <h2>Monad YT-USDat rẻ hơn ~7%, nhưng điểm bị pha loãng thêm ~14%: kết luận gần như không đổi</h2>
+      </div>
+      <div class="prose">
+        <p>Implied APY của Monad YT-USDat lên đỉnh 9.9% ngày 1–2/10 rồi về 8.83%. $1,000 giờ mua được 40,786 YT, nhiều hơn 7% so với 28/9. Nhưng Season 2 cũng còn ít ngày hơn 7% (66.8 ngày), nên số điểm mỗi đô gần như đứng yên. Trong cùng lúc, Saturn airdrop thêm 24.8 tỷ điểm và nguồn cung YT tăng nhanh. Vì vậy mỗi điểm đáng ít hơn khoảng 12%. Pool Monad nay tốt hơn Ethereum nhờ thưởng MON và implied APY thấp hơn, nên Monad thành lựa chọn ưu tiên.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><span class="l">Implied APY, Monad YT-USDat</span><span class="v">8.83%</span><span class="s">28/9: 9.13% · đỉnh 9.91% ngày 2/10 · ETH: 9.23%</span></div>
+        <div class="stat"><span class="l">Giá YT Monad</span><span class="v">$0.02349</span><span class="s">−7.2% từ $0.02532; ~4.5 điểm % do thời gian trôi</span></div>
+        <div class="stat"><span class="l">Lợi suất trả cho YT Monad</span><span class="v">5.63%</span><span class="s">3% USDC + 2.63% MON (chỉ YT, đến 15/10)</span></div>
+        <div class="stat"><span class="l">Tổng Orbital Points của người dùng</span><span class="v">192.8 tỷ</span><span class="s">28/9: 150.2 tỷ; gồm 24.8 tỷ airdrop "make-good"</span></div>
+        <div class="stat"><span class="l">Nguồn cung YT-USDat</span><span class="v">47.2M · 23.7M</span><span class="s">Monad +9.7% · Ethereum +17.9% so với 28/9</span></div>
+        <div class="stat"><span class="l">TVL · USDat lưu hành</span><span class="v">$152.8M · $90.2M</span><span class="s">+4% · +6%; STRC $99.41, tỷ giá sUSDat 1.0398</span></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>$1,000 mua ngày 3/10</th><th class="r">Monad YT-USDat</th><th class="r">ETH YT-USDat</th></tr></thead>
+          <tbody>
+            <tr><td>Implied APY · YT mua được (báo giá thật)</td><td class="r">8.83% · 40,786</td><td class="r">9.23% · 39,243</td></tr>
+            <tr><td>Chi phí khớp so với giá giữa</td><td class="r">+4.4%</td><td class="r">+4.0%</td></tr>
+            <tr><td>Điểm S2 đến 8/12 (66.8 ngày, sau phí Pendle 5%)</td><td class="r">77.6M</td><td class="r">74.7M</td></tr>
+            <tr><td>Nhận lại: USDC đến snapshot + MON đến 15/10</td><td class="r">$210 + $32</td><td class="r">$202</td></tr>
+            <tr class="hl"><td>Chi phí cho mỗi 1M điểm (khoảng)</td><td class="r">$9.76 ($8.30–12.47)</td><td class="r">$10.68 ($9.23–13.39)</td></tr>
+            <tr><td>Giá trị 1M điểm ở FDV $100M (tổng S2 453 tỷ)</td><td class="r">$11.03</td><td class="r">$11.03</td></tr>
+            <tr><td>FDV hòa vốn thô</td><td class="r">$75–113M</td><td class="r">$84–121M</td></tr>
+            <tr class="hl"><td>FDV hòa vốn điều chỉnh rủi ro: đủ S2 / TGE 15/11</td><td class="r">$109–164M / $137–206M</td><td class="r">$121–176M / $153–222M</td></tr>
+            <tr><td>Bi quan / cơ sở / lạc quan</td><td class="r"><span class="down">−89%</span> / <span class="up">+13%</span> / <span class="up">+262%</span></td><td class="r"><span class="down">−92%</span> / <span class="up">+6%</span> / <span class="up">+226%</span></td></tr>
+            <tr class="hl"><td>Monte Carlo: trung bình / trung vị / P(lỗ)</td><td class="r"><span class="up">+14%</span> / <span class="down">−14%</span> / 58%</td><td class="r">0% / <span class="down">−27%</span> / 65%</td></tr>
+            <tr><td>Trượt giá lệnh $10k · $50k</td><td class="r">+5.8% · +37%</td><td class="r">+7.8% · +14%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">So với 28/9, Monad $1k: cơ sở +22% → +13%, Monte Carlo trung vị −19% → −14%. Trung vị khá hơn chủ yếu vì phân phối TGE được dời về sau (đủ Season 2), không phải vì YT rẻ hơn.</p>
+      <div class="cols-3">
+        <div class="card">
+          <h3>"Yield gần 6%" gồm những gì</h3>
+          <p class="tile-sub">Pendle trả cho riêng YT Monad USDat 1,508,348 MON (~$47.7k) từ 1/10 đến 15/10, tương đương 2.63%/năm, cộng 3% USDC của USDat. Với $1,000, phần MON đã xác nhận chỉ đáng ~$32; nếu gia hạn đến 8/12 hoặc 14/1 ở ~2% thì thêm ~$115–190. Bạn vẫn trả implied APY 8.83% cộng ~4.4% chi phí khớp; chưa tính điểm, Pendle ghi long-yield APY là −77.7%/năm.</p>
+        </div>
+        <div class="card">
+          <h3>Airdrop "loyalty make-good" 24.8 tỷ điểm</h3>
+          <p class="tile-sub">Tạo ngày 30/9 cho 2,680 ví, tất cả đều có trên 1M điểm S1, mỗi ví nhận ~20% số điểm S2 của mình. Đây là boost +20% cho người giữ S1, trả bù hồi tố. Nếu boost tiếp tục được trả, tổng S2 tại 8/12 lên ~453 tỷ (biên độ 420–553 tỷ), thay vì 397 tỷ như dự phóng ngày 28/9.</p>
+        </div>
+        <div class="card">
+          <h3>Ngân sách Merkl là trần tính dồn</h3>
+          <p class="tile-sub">Theo tài liệu Merkl, hết ngân sách thì chiến dịch kết thúc sớm, nên trần không áp theo từng ngày như báo cáo 28/9 viết. Phần còn lại đủ trả 30× cho trung bình ~71.8M YT trên Monad và ~39.0M YT trên Ethereum đến 8/12. Nếu nguồn cung YT tăng như 5 ngày qua, ngân sách Ethereum có thể cạn khoảng 30/11, Monad khoảng 6/12.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-title">ROI của $1,000 Monad YT-USDat (3/10) theo FDV × ngày snapshot × mức pha loãng</span>
+          <div class="scale" aria-hidden="true"><span>Lỗ</span><span class="scale-bar"></span><span>Lãi</span></div>
+        </div>
+        <div class="table-wrap">
+          <table class="heat" id="heat2"></table>
+        </div>
+        <p class="note">Cố định: chiết khấu vesting 30%, xác suất không có token 15%, điểm S3 bằng 30% S2, USDC đến snapshot, MON đến 15/10, phân bổ 5%. Ô viền vàng là kịch bản cơ sở (+13%).</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Implied APY, Monad YT-USDat</th><th class="r">Giá YT</th><th class="r">YT / $1k</th><th class="r">MC trung bình</th><th class="r">MC trung vị</th><th class="r">P(lỗ)</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>5%</td><td class="r">$0.0136</td><td class="r">70,374</td><td class="r up">+97%</td><td class="r up">+49%</td><td class="r">29%</td><td></td></tr>
+            <tr><td>6%</td><td class="r">$0.0162</td><td class="r">59,004</td><td class="r up">+65%</td><td class="r up">+25%</td><td class="r">38%</td><td></td></tr>
+            <tr class="hl"><td>7%</td><td class="r">$0.0188</td><td class="r">50,883</td><td class="r up">+42%</td><td class="r up">+8%</td><td class="r">46%</td><td><span class="pill ok">Vào đủ quy mô</span></td></tr>
+            <tr><td>8%</td><td class="r">$0.0214</td><td class="r">44,791</td><td class="r up">+25%</td><td class="r down">−5%</td><td class="r">53%</td><td><span class="pill caution">Mua thử</span></td></tr>
+            <tr><td>8.83%</td><td class="r">$0.0235</td><td class="r">40,782</td><td class="r up">+14%</td><td class="r down">−14%</td><td class="r">58%</td><td><span class="pill caution">Hiện tại</span></td></tr>
+            <tr><td>10%</td><td class="r">$0.0264</td><td class="r">36,260</td><td class="r up">+1%</td><td class="r down">−23%</td><td class="r">64%</td><td><span class="pill avoid">Không mua</span></td></tr>
+            <tr><td>12%</td><td class="r">$0.0313</td><td class="r">30,572</td><td class="r down">−14%</td><td class="r down">−35%</td><td class="r">73%</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Monte Carlo ngày 3/10 dùng: tổng điểm hiện tại 192.8 tỷ; phát hành đều 3.4–5.4 tỷ/ngày; snapshot 5% ~1/11, 15% ~15/11, 15% ~1/12, 30% 8/12, 35% 8/12 nhưng TGE sang 2027 (thêm −20% giá trị); hệ số ngân sách 0.92–1.0; MON luôn đến 15/10, sau đó 50% dừng, 30% kéo dài đến snapshot, 20% đến đáo hạn ở 1.5–2.6%. Các tham số khác giữ như mục Kịch bản. Nguồn: <a href="https://api-v2.pendle.finance/core/v1/markets/all?limit=100">Pendle API</a>, <a href="https://api.merkl.xyz/v4/rewards/token/total?chainId=1&amp;address=0x10710501778b7FAf9e478f36FaE0B286C028eDE8">Merkl</a>, <a href="https://gamma-api.polymarket.com/public-search?q=saturn">Polymarket</a>, <a href="https://docs.merkl.xyz/merkl-mechanisms/distributions">Merkl docs</a>.</p>
+    </section>
+
     <!-- DỰ ÁN -->
     <section id="du-an">
       <div class="section-head">
@@ -497,28 +576,29 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
     <section id="tge">
       <div class="section-head">
         <span class="eyebrow">Thời điểm</span>
-        <h2>TGE nhiều khả năng rơi vào đầu tháng 12, nhưng Season 2 có ~45% khả năng bị cắt sớm</h2>
+        <h2>TGE nhiều khả năng rơi vào tháng 12 hoặc trễ hơn; ~20% khả năng Season 2 bị cắt trước 15/11</h2>
       </div>
       <div class="prose">
-        <p>Thông tin chính thức duy nhất là thread của @saturn_credit ngày 25/9: "$STRN / TGE: Q4 2026"; tối đa 5% tổng cung cho Season 2; nếu TGE trước 8/12 thì Season 2 kết thúc ngay trước đó và phần phân bổ bị cắt theo tỷ lệ số ngày đã chạy; Season 3 bắt đầu ngay sau snapshot; tokenomics sẽ công bố sau. Polymarket phản ứng mạnh: xác suất ra token trước 31/12/2026 tăng từ ~0.20 lên <strong>0.74</strong>, và trước 30/6/2027 là 0.90.</p>
+        <p>Thông tin chính thức duy nhất là thread của @saturn_credit ngày 25/9: "$STRN / TGE: Q4 2026"; tối đa 5% tổng cung cho Season 2; nếu TGE trước 8/12 thì Season 2 kết thúc ngay trước đó và phần phân bổ bị cắt theo tỷ lệ số ngày đã chạy; Season 3 bắt đầu ngay sau snapshot; tokenomics sẽ công bố sau. Polymarket phản ứng mạnh: xác suất ra token trước 31/12/2026 tăng từ ~0.20 lên 0.74 (29/9). Đến 3/10, khi vẫn chưa có tokenomics, mức này lùi về <strong>~0.62</strong> (giá giữa; mua 0.55 / bán 0.68; giao dịch gần nhất 0.78), còn trước 30/6/2027 là 0.795.</p>
       </div>
       <div class="panel">
-        <div class="panel-head"><span class="panel-title">Phân phối thời điểm TGE (ước tính)</span><span class="panel-sub">Tổng trong năm 2026: 75%, khớp mức 74% trên Polymarket</span></div>
+        <div class="panel-head"><span class="panel-title">Phân phối thời điểm TGE (ước tính)</span><span class="panel-sub">Cập nhật 3/10. Tổng trong năm 2026: 65%, gần mức ~0.62 trên Polymarket (29/9: 75%)</span></div>
         <div class="prob-rows">
-          <div class="prob-row"><span class="prob-label">Trước 15/11</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:30%"></div></div><span class="prob-val">30%</span></div><span class="prob-note">Snapshot khoảng 1–15/11. Người mua YT hôm nay chỉ nhận 32–48 ngày điểm S2 thay vì 71.7 ngày; pool S2 còn 68–80% của 5%.</span></div>
+          <div class="prob-row"><span class="prob-label">Trước 15/11</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:20%"></div></div><span class="prob-val">20%</span></div><span class="prob-note">Snapshot khoảng 1–15/11. Mua ngày 3/10 chỉ nhận 29–43 ngày điểm S2 thay vì 66.8 ngày; pool S2 còn 69–80% của 5%.</span></div>
           <div class="prob-row"><span class="prob-label">16/11–7/12</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:15%"></div></div><span class="prob-val">15%</span></div><span class="prob-note">Mất tới ~23 ngày điểm; pool còn khoảng 81–99%.</span></div>
           <div class="prob-row"><span class="prob-label">8/12–31/12</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:30%"></div></div><span class="prob-val">30%</span></div><span class="prob-note">Đủ Season 2 và đủ 5%; thêm ~36 ngày điểm S3 trước khi YT đáo hạn 14/1/2027.</span></div>
-          <div class="prob-row"><span class="prob-label">Trượt sang 2027</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:25%"></div></div><span class="prob-val">25%</span></div><span class="prob-note">Vẫn đủ S2 (kết thúc 8/12), nhưng chờ token lâu hơn, rủi ro định giá và thay đổi luật cao hơn.</span></div>
+          <div class="prob-row"><span class="prob-label">Trượt sang 2027</span><div class="prob-bar"><div class="prob-track"><div class="prob-fill" style="width:35%"></div></div><span class="prob-val">35%</span></div><span class="prob-note">Vẫn đủ S2 (kết thúc 8/12), nhưng chờ token lâu hơn, rủi ro định giá và thay đổi luật cao hơn.</span></div>
         </div>
       </div>
       <div class="prose">
         <ul>
           <li>Việc tự đưa điều khoản cắt sớm vào thông báo cho thấy đội ngũ nghiêm túc giữ lựa chọn TGE trước 8/12.</li>
           <li>Đến 25/9 tokenomics, tổng cung và cơ chế claim đều chưa công bố. Chuỗi tokenomics → sàn → claim thường mất 4–8 tuần, nên TGE sớm nhất thực tế là đầu đến giữa tháng 11.</li>
-          <li>Apyx, dự án tương đồng nhất vì cũng dựa vào STRC, đã hoãn TGE. STRC vẫn dưới mệnh giá và chương trình ATM của Strategy đang tạm dừng.</li>
+          <li>Apyx, dự án tương đồng nhất vì cũng dựa vào STRC, đã hoãn TGE. STRC đã hồi về $99.41 ngày 2/10, gần mệnh giá, nên rủi ro hoãn vì STRC giảm bớt.</li>
+          <li>Đến 3/10 Saturn vẫn chưa công bố tokenomics hay ngày TGE cụ thể, nên một TGE trước giữa tháng 11 ngày càng khó.</li>
           <li>Năm 2026 có nhiều vụ hoãn TGE vì điều kiện thị trường (Avant, Apyx, OpenSea).</li>
         </ul>
-        <p>Báo cáo cố ý đặt trọng số cao cho TGE sớm, vì đây là kịch bản bất lợi nhất với người mua YT: YT đã trả tiền cho quyền lợi đến 14/1, nhưng điểm Season 2 dừng sớm.</p>
+        <p>Ngày 28/9 báo cáo đặt trọng số cao (45%) cho TGE trước 8/12, vì đây là kịch bản bất lợi nhất với người mua YT: YT đã trả tiền cho quyền lợi đến 14/1, nhưng điểm Season 2 dừng sớm. Ngày 3/10, vì chưa có tokenomics và Polymarket hạ kỳ vọng, trọng số được dời về tháng 12 và 2027. Điều này tốt cho số điểm của YT nhưng làm tăng rủi ro chờ đợi.</p>
       </div>
     </section>
 
@@ -531,12 +611,12 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
       <div class="panel">
         <div class="panel-head">
           <span class="panel-title">Xác suất FDV ngày đầu vượt mỗi mốc, với điều kiện có token</span>
-          <span class="panel-sub">Polymarket (29/9, 06:00 UTC, chia cho ~0.89 xác suất ra token) so với phân phối của báo cáo</span>
+          <span class="panel-sub">Polymarket (3/10, giá giữa, chia cho ~0.85 xác suất ra token trước hết 2027) so với phân phối của báo cáo</span>
         </div>
         <div class="legend" aria-hidden="true">
           <span><i class="key-line" style="background:var(--s1)"></i>Polymarket</span>
           <span><i class="key-line" style="background:var(--s2)"></i>Mô hình báo cáo (lognormal, trung vị $140M)</span>
-          <span><i class="key-band"></i>Vùng FDV hòa vốn của ETH YT-USDat, $98–145M</span>
+          <span><i class="key-band"></i>Vùng FDV hòa vốn của Monad YT-USDat (3/10), $109–164M</span>
         </div>
         <div class="chart" id="chart-fdv" role="img" aria-label="Đường xác suất FDV vượt các mốc: Polymarket so với mô hình báo cáo"></div>
         <details class="table-toggle">
@@ -548,7 +628,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
             </table>
           </div>
         </details>
-        <p class="note">Tổng khối lượng giao dịch của thị trường Polymarket này chỉ ~$21.6k, nên vài nghìn đô có thể kéo lệch một mốc. Các mốc >$200M và >$300M đã giảm 6 và 12 điểm trong tháng qua.</p>
+        <p class="note">Tổng khối lượng giao dịch của thị trường Polymarket này chỉ ~$22.5k, nên vài nghìn đô có thể kéo lệch một mốc. Trong tuần đến 3/10, các mốc >$200M và >$300M tăng 9.5 và 8.5 điểm theo giá giữa, nhưng giao dịch gần nhất thấp hơn nhiều (0.40 và 0.24). Ngày 29/9 trung vị có điều kiện là ~$207M; ngày 3/10 là ~$250M theo giá giữa và ~$186M theo giao dịch gần nhất.</p>
       </div>
       <div class="cols-3">
         <div class="card"><span class="pill avoid">▼ Bi quan</span><span class="big">$50–80M</span><p class="tile-sub">TVL tiếp tục co sau snapshot, STRC chưa về mệnh giá, niêm yết sàn nhỏ. Tương đương 0.35–0.55× TVL, như Unitas lúc TGE.</p></div>
@@ -556,7 +636,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
         <div class="card"><span class="pill ok">▲ Lạc quan</span><span class="big">$250–350M</span><p class="tile-sub">Niêm yết Binance Alpha/HODLer, nguồn cung tăng lại nhờ PYUSDx và STRCon của Ondo, STRC trở lại mệnh giá.</p></div>
       </div>
       <div class="prose">
-        <p>Ba nguồn được đối chiếu. <strong>Polymarket</strong> ngụ ý trung vị ~$207M, khoảng tứ phân vị $96–331M. <strong>Bội số so sánh</strong>: $147M TVL × trung vị FDV/TVL 1.27× cho ~$186–192M, biên độ $53–315M. <strong>Yếu tố riêng của Saturn</strong> kéo xuống. Mô phỏng dùng lognormal trung vị $140M, tứ phân vị $79–247M, trung bình ~$200M. Sau TGE còn áp lực bán: trung vị giá sau 30 ngày của 12 dự án 2025–2026 là −20%, của rổ token được farm là −41%.</p>
+        <p>Ba nguồn được đối chiếu. <strong>Polymarket</strong> ngụ ý trung vị ~$207M ngày 29/9 (khoảng tứ phân vị $96–331M) và ~$190–250M ngày 3/10. <strong>Bội số so sánh</strong>: $147M TVL × trung vị FDV/TVL 1.27× cho ~$186–192M, biên độ $53–315M. <strong>Yếu tố riêng của Saturn</strong> kéo xuống. Mô phỏng dùng lognormal trung vị $140M, tứ phân vị $79–247M, trung bình ~$200M. Sau TGE còn áp lực bán: trung vị giá sau 30 ngày của 12 dự án 2025–2026 là −20%, của rổ token được farm là −41%.</p>
       </div>
     </section>
 
@@ -592,12 +672,13 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
           <dl class="out-list">
             <dt>Season 1 (Gravity, 8/4–8/8), tối đa 5% "nguồn cung ban đầu"</dt><dd>474–497 tỷ</dd>
             <dt>Season 2 (Orbital, 9/8–8/12) đến 28/9, tối đa 5% "tổng cung"</dt><dd>150–156 tỷ</dd>
-            <dt>Tốc độ phát hành S2 hiện tại, gồm boost</dt><dd>2.8–3.4 tỷ/ngày</dd>
-            <dt>Dự phóng tổng S2 tại 8/12</dt><dd>350–400 tỷ</dd>
+            <dt>Season 2 đến 3/10, gồm 24.8 tỷ airdrop "make-good"</dt><dd>192.8 tỷ</dd>
+            <dt>Tốc độ phát hành hiệu dụng (3/10, gồm boost S1)</dt><dd>3.6–4.3 tỷ/ngày</dd>
+            <dt>Dự phóng tổng S2 tại 8/12 (28/9 → 3/10)</dt><dd>350–400 → 420–553 tỷ</dd>
             <dt>Phần điểm S2 do YT-USDat tạo ra</dt><dd>60.7%</dd>
             <dt>10 ví lớn nhất nắm</dt><dd>41.4%</dd>
           </dl>
-          <p class="tile-sub">Boost: +20% cho ví có hơn 1M điểm S1 (3,480 trên 8,100 ví), +10% cho người giới thiệu, +5% cho người được giới thiệu. Người mua mới không có boost S1 bị pha loãng bởi người cày lâu năm.</p>
+          <p class="tile-sub">Boost: +20% cho ví có hơn 1M điểm S1 (3,480 trên 8,100 ví), +10% cho người giới thiệu, +5% cho người được giới thiệu. Boost S1 được trả bù bằng airdrop "make-good" (24.8 tỷ ngày 30/9). Người mua mới không có boost S1 bị pha loãng bởi người cày lâu năm.</p>
         </div>
       </div>
       <div class="cols-3">
@@ -606,8 +687,8 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
           <p class="tile-sub">Pool token và tổng điểm cùng co theo tỷ lệ. Ở FDV $100M, 1M điểm đáng $12.87 nếu snapshot 1/11, $12.74 nếu 15/11 và $12.60 nếu 8/12. Thứ bị cắt là số điểm của người mua: TGE giữa tháng 11 cho 53M thay vì 80M điểm mỗi $1,000.</p>
         </div>
         <div class="card">
-          <h3>Hạn mức ngân sách Merkl</h3>
-          <p class="tile-sub">Ngân sách chỉ đủ trả 30× cho ~26.6M YT trên Ethereum (đang ở 76%) và ~53.0M YT trên Monad (81%). Ba chiến dịch YT kỳ hạn tháng 8 đã chạm trần. Vượt hạn mức thì điểm mỗi YT giảm tỷ lệ thuận.</p>
+          <h3>Ngân sách Merkl (sửa ngày 3/10)</h3>
+          <p class="tile-sub">Ngày 28/9 báo cáo coi ngân sách là trần theo ngày (~26.6M YT trên Ethereum, ~53.0M trên Monad). Theo tài liệu Merkl, đây là trần tính dồn: hết ngân sách thì chiến dịch kết thúc sớm. Phần còn lại ngày 3/10 đủ cho trung bình ~39.0M YT trên Ethereum và ~71.8M trên Monad đến 8/12. Ba chiến dịch YT kỳ hạn tháng 8 từng dùng hết ngân sách và được Saturn bơm thêm.</p>
         </div>
         <div class="card">
           <h3>Season 3 khó định giá nhất</h3>
@@ -622,7 +703,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
         <span class="eyebrow">Pendle</span>
         <h2>YT-USDat cho điểm rẻ hơn YT-sUSDat 4–6 lần</h2>
       </div>
-      <div class="prose"><p>Bảy pool, tất cả đáo hạn 14/1/2027 (107.5 ngày tính từ 28/9). Số liệu dưới dùng báo giá khớp thật từ API convert của Pendle cho lệnh $1,000 (đã gồm phí swap và trượt giá), phí Pendle 5%, người mua không có boost.</p></div>
+      <div class="prose"><p><strong>Số liệu ngày 28/9.</strong> Số liệu ngày 3/10 cho Monad và Ethereum YT-USDat nằm ở mục <a href="#cap-nhat">Cập nhật 3/10</a>. Bảy pool, tất cả đáo hạn 14/1/2027 (107.5 ngày tính từ 28/9). Số liệu dưới dùng báo giá khớp thật từ API convert của Pendle cho lệnh $1,000 (đã gồm phí swap và trượt giá), phí Pendle 5%, người mua không có boost.</p></div>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Pool (hệ số)</th><th class="r">Thanh khoản</th><th class="r">Implied APY</th><th class="r">Giá YT</th><th class="r">YT / $1k</th><th class="r">Điểm/ngày / $1k</th><th class="r">Điểm đến 8/12</th><th class="r">Điểm nếu snapshot 15/11</th></tr></thead>
@@ -675,6 +756,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
       <div class="section-head">
         <span class="eyebrow">Kịch bản</span>
         <h2>Ma trận kịch bản cho kỳ vọng dương mỏng nhưng trung vị lỗ</h2>
+        <p class="note">Tham số và kết quả trong mục này là của ngày 28/9. Ngày 3/10 có ba thay đổi: tổng điểm hiện tại 192.8 tỷ và phát hành 3.4–5.4 tỷ/ngày; phân phối TGE dời về sau (35% sang 2027); và thêm thưởng MON cho Monad. Kết quả mới ở mục <a href="#cap-nhat">Cập nhật 3/10</a>.</p>
       </div>
       <div class="prose">
         <p>Tham số lấy từ lịch sử các chương trình điểm cày qua Pendle: 88% airdrop giảm giá (Keyrock), điểm Renzo chỉ hiện thực hóa ~27% giá trước TGE, Ethena S4 chỉ cho claim ngay 1.5% trong 3.5%, Cap cắt stabledrop từ $12M xuống $4.2M, Level đóng cửa không có token, Resolv bị hack. Một vị thế $10k YT-USDat kiếm ~0.76 tỷ điểm, đủ vào nhóm ~100 ví đầu S2, nên có thể bị xếp vào nhóm "cá voi" nếu Saturn vesting theo tầng.</p>
@@ -699,7 +781,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
 
       <div class="panel">
         <div class="panel-head">
-          <span class="panel-title">ROI của $1,000 ETH YT-USDat theo FDV × ngày snapshot × mức pha loãng</span>
+          <span class="panel-title">ROI của $1,000 ETH YT-USDat (28/9) theo FDV × ngày snapshot × mức pha loãng</span>
           <div class="scale" aria-hidden="true"><span>Lỗ</span><span class="scale-bar"></span><span>Lãi</span></div>
         </div>
         <div class="table-wrap">
@@ -732,6 +814,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
       <div class="section-head">
         <span class="eyebrow">Điểm vào</span>
         <h2>Ngưỡng implied APY: ≤ 7% mới đáng vào đủ quy mô</h2>
+        <p class="note">Bảng dưới là ETH YT-USDat ngày 28/9. Bảng ngưỡng cho Monad YT-USDat ngày 3/10 nằm ở mục <a href="#cap-nhat">Cập nhật 3/10</a>: mua thử ≤ 8%, vào đủ quy mô ≤ 7%.</p>
       </div>
       <div class="table-wrap">
         <table>
@@ -755,7 +838,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
       <div class="section-head">
         <span class="eyebrow">Công cụ</span>
         <h2>Máy tính YT Saturn</h2>
-        <p class="note">Mặc định là số liệu của báo cáo ngày 28/9. Cập nhật implied APY, ngày mua và tổng điểm hiện tại theo Pendle và Merkl để tính lại. Mô hình giống hệt báo cáo; các giá trị bạn nhập chỉ lưu trong trình duyệt của bạn.</p>
+        <p class="note">Mặc định là số liệu ngày 3/10 cho Monad YT-USDat. Khi dùng về sau, cập nhật implied APY, trượt giá, ngày mua và tổng điểm hiện tại theo Pendle và Merkl để tính lại. Mô hình giống hệt báo cáo; các giá trị bạn nhập chỉ lưu trong trình duyệt của bạn.</p>
       </div>
       <div class="calc">
         <form class="form" id="calc-form" autocomplete="off">
@@ -765,8 +848,8 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
               <div class="field full">
                 <label for="pool">Pool</label>
                 <select id="pool">
-                  <option value="eth-usdat">ETH YT-USDat (30×)</option>
                   <option value="monad-usdat">Monad YT-USDat (30×)</option>
+                  <option value="eth-usdat">ETH YT-USDat (30×)</option>
                   <option value="bnb-usdat">BNB YT-USDat (30×)</option>
                   <option value="eth-susdat">ETH YT-sUSDat (10×)</option>
                   <option value="monad-susdat">Monad YT-sUSDat (10×)</option>
@@ -775,11 +858,14 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
               </div>
               <div class="field"><label for="capital">Vốn ($)</label><input id="capital" type="number" min="1" step="100" inputmode="decimal"></div>
               <div class="field"><label for="apy">Implied APY (%)</label><input id="apy" type="number" min="0.1" step="0.01" inputmode="decimal"><span class="hint">Giá YT suy ra từ APY và số ngày đến 14/1/2027</span></div>
-              <div class="field"><label for="impact">Trượt giá + phí swap (%)</label><input id="impact" type="number" min="0" max="90" step="0.1" inputmode="decimal"><span class="hint">ETH USDat: 2.1% ở $1k, 7.4% ở $10k</span></div>
+              <div class="field"><label for="impact">Trượt giá + phí swap (%)</label><input id="impact" type="number" min="0" max="90" step="0.1" inputmode="decimal"><span class="hint">3/10: Monad 4.2% ở $1k, 5.5% ở $10k; ETH 3.9% / 7.3%</span></div>
               <div class="field"><label for="buyDate">Ngày mua</label><input id="buyDate" type="date" min="2026-08-09" max="2027-01-13"></div>
               <div class="field" data-kind="usdat"><label for="reward">Thưởng USDC cho YT kéo dài</label>
                 <select id="reward"><option value="none">Dừng ngay</option><option value="snap">Đến snapshot</option><option value="expiry">Đến đáo hạn 14/1</option></select></div>
               <div class="field" data-kind="usdat"><label for="rewardApr">APR thưởng USDC (%)</label><input id="rewardApr" type="number" min="0" step="0.1" inputmode="decimal"></div>
+              <div class="field" data-kind="mon"><label for="monMode">Thưởng MON cho YT (2.63%, đến 15/10)</label>
+                <select id="monMode"><option value="to1015">Chỉ đến 15/10 (đã xác nhận)</option><option value="snap">Gia hạn đến snapshot</option><option value="expiry">Gia hạn đến đáo hạn 14/1</option></select></div>
+              <div class="field" data-kind="mon"><label for="monAfter">APR MON sau 15/10 nếu gia hạn (%)</label><input id="monAfter" type="number" min="0" step="0.1" inputmode="decimal"><span class="hint">Đợt 1–15/10 là 2.63%; sẽ giảm nếu nguồn cung YT tăng</span></div>
               <div class="field" data-kind="yield"><label for="uapy">Lợi suất underlying cho YT (%/năm)</label><input id="uapy" type="number" min="0" step="0.1" inputmode="decimal"><span class="hint">sUSDat thực tế ~6.4%/năm; từng 0% cả quý</span></div>
               <div class="field full"><label class="check" for="boost"><input id="boost" type="checkbox">Ví có hơn 1M điểm Season 1 (boost +20% điểm S2)</label></div>
             </div>
@@ -789,9 +875,9 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
             <div class="fields">
               <div class="field"><label for="snapDate">Ngày snapshot S2</label><input id="snapDate" type="date" min="2026-08-09" max="2026-12-08"><span class="hint">Tối đa 8/12; TGE sớm thì cắt theo tỷ lệ</span></div>
               <div class="field"><label for="alloc">Phân bổ S2 (% tổng cung)</label><input id="alloc" type="number" min="0" step="0.1" inputmode="decimal"></div>
-              <div class="field"><label for="pcur">Tổng điểm S2 tại ngày mua (tỷ)</label><input id="pcur" type="number" min="0" step="1" inputmode="decimal"><span class="hint">153 tỷ ngày 28/9 (Merkl)</span></div>
-              <div class="field"><label for="emis">Phát hành S2 (tỷ điểm/ngày)</label><input id="emis" type="number" min="0" step="0.1" inputmode="decimal"><span class="hint">Hiện 2.8–3.4; bi quan 4.5+</span></div>
-              <div class="field"><label for="cap">Hệ số hạn mức Merkl (%)</label><input id="cap" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
+              <div class="field"><label for="pcur">Tổng điểm S2 tại ngày mua (tỷ)</label><input id="pcur" type="number" min="0" step="1" inputmode="decimal"><span class="hint">192.8 tỷ ngày 3/10 (gồm 24.8 tỷ make-good); 153 tỷ ngày 28/9</span></div>
+              <div class="field"><label for="emis">Phát hành S2 (tỷ điểm/ngày)</label><input id="emis" type="number" min="0" step="0.1" inputmode="decimal"><span class="hint">3/10: ~3.6–4.3 gồm boost S1; bi quan 5+</span></div>
+              <div class="field"><label for="cap">Hệ số ngân sách Merkl (%)</label><input id="cap" type="number" min="0" max="100" step="1" inputmode="decimal"></div>
               <div class="field"><label for="fee">Phí Pendle trên YT (%)</label><input id="fee" type="number" min="0" max="100" step="0.5" inputmode="decimal"></div>
             </div>
           </fieldset>
@@ -852,11 +938,11 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
     <section id="khuyen-nghi">
       <div class="section-head">
         <span class="eyebrow">Hành động</span>
-        <h2>Khuyến nghị: chỉ vào vị thế nhỏ YT-USDat khi implied APY ≤ 7%</h2>
+        <h2>Khuyến nghị (3/10): vị thế nhỏ Monad YT-USDat, mua thử ≤ 8%, vào đủ ≤ 7%</h2>
       </div>
       <div class="verdicts">
-        <div class="verdict-row"><b>ETH YT-USDat</b><span class="pill caution">◐ Vị thế nhỏ, ưu tiên</span><span class="why">Pool sâu nhất ($1.96M), điểm rẻ nhất, còn dư 24% hạn mức Merkl.</span></div>
-        <div class="verdict-row"><b>Monad YT-USDat</b><span class="pill caution">◐ Vị thế nhỏ, thay thế</span><span class="why">Tương đương Ethereum; dùng để chia nhỏ lệnh. Chú ý ~95% USDat trên Monad nằm trong Pendle.</span></div>
+        <div class="verdict-row"><b>Monad YT-USDat</b><span class="pill caution">◐ Vị thế nhỏ, ưu tiên</span><span class="why">Implied 8.83%, thấp hơn Ethereum, có thêm MON (đến 15/10) và còn nhiều ngân sách Merkl. Monte Carlo ở giá hiện tại: trung bình +14%, trung vị −14%. Chú ý ~95% USDat trên Monad nằm trong Pendle.</span></div>
+        <div class="verdict-row"><b>ETH YT-USDat</b><span class="pill caution">◐ Chờ giá</span><span class="why">Implied 9.23%, không có MON; Monte Carlo trung bình ~0%, trung vị −27%. Chỉ đáng mua khi implied ≤ 7%.</span></div>
         <div class="verdict-row"><b>YT-sUSDat (ETH, Monad)</b><span class="pill avoid">✕ Tránh</span><span class="why">Kỳ vọng −36% đến −50%, điểm đắt gấp 4–6 lần, chịu rủi ro STRC trực tiếp.</span></div>
         <div class="verdict-row"><b>BNB YT-USDat</b><span class="pill avoid">✕ Tránh</span><span class="why">Không khớp được lệnh $1k, không có thưởng USDC.</span></div>
         <div class="verdict-row"><b>YT-srUSDat</b><span class="pill avoid">✕ Tránh</span><span class="why">Pool quá mỏng, trượt 10.7% ở $1k; Monad chưa chắc có điểm.</span></div>
@@ -867,7 +953,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
           <ul>
             <li>Kelly tối ưu trong mô hình là ~16% vốn ở giá hiện tại và ~30% ở 7%, nhưng tham số chủ quan nên chỉ dùng ~1/10 Kelly.</li>
             <li>Tổng vị thế YT Saturn không quá <strong>1–2% danh mục</strong>, chỉ dùng tiền chấp nhận mất 100%.</li>
-            <li>Mỗi pool tối đa <strong>$5–10k</strong> để trượt giá dưới ~7%; lớn hơn thì chia giữa Ethereum và Monad.</li>
+            <li>Mỗi lệnh tối đa <strong>$5–10k</strong>: ngày 3/10 trượt giá Monad là 4.2% ở $1k và 5.5% ở $10k, nhưng 27% ở $50k.</li>
             <li>Vốn trên ~$20k: dùng LP Curve USDC/USDat hoặc giữ USDat, chi phí điểm tương đương hoặc rẻ hơn mà giữ được gốc.</li>
             <li>Có boost S1 (+20%): chi phí mỗi 1M điểm giảm từ $12.50 xuống ~$10.42, FDV hòa vốn giảm ~17%.</li>
           </ul>
@@ -875,8 +961,9 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
         <div class="panel">
           <span class="panel-title">Điều kiện vào lệnh và kế hoạch thoát</span>
           <ul>
-            <li>Vào khi đủ: implied APY ≤ 7%; Pendle vẫn hiển thị thưởng USDC 3%; nguồn cung YT dưới hạn mức Merkl; chưa có thông báo TGE trước giữa tháng 11.</li>
-            <li>TGE chốt trước 15/11: FDV hòa vốn lên $122–180M, dừng mua thêm.</li>
+            <li>Đặt lệnh giới hạn Monad YT-USDat: phần thử ở implied ≤ 8% (giá YT ≤ ~$0.0214), phần chính ở ≤ 7% (≤ ~$0.0188). Pool từng giao dịch quanh 7.0% trong 20–24/9, trước thông báo TGE.</li>
+            <li>Chỉ vào khi Pendle vẫn hiển thị thưởng USDC 3%, ngân sách Merkl còn đủ và chưa có thông báo TGE trước giữa tháng 11.</li>
+            <li>TGE chốt trước 15/11: FDV hòa vốn (Monad, 3/10) lên $137–206M, dừng mua thêm.</li>
             <li>Tại snapshot S2: nếu Season 3 có phân bổ rõ, giữ YT đến 14/1; nếu không, bán YT nếu còn giá mua.</li>
             <li>Sau TGE: bán phần lớn token trong vài ngày đầu nếu không bị vesting. Lứa 2025 đạt đỉnh ngay giờ giao dịch đầu; trung vị token được farm sau 30 ngày là −41%.</li>
           </ul>
@@ -886,10 +973,12 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
         <table>
           <thead><tr><th>Tín hiệu cần theo dõi</th><th>Nguồn</th><th>Ngưỡng hành động</th></tr></thead>
           <tbody>
-            <tr><td>Implied APY của YT-USDat</td><td><a href="https://api-v2.pendle.finance/core/v1/1/markets/0x4ccf6deb3d1895373f604b418ff55d8adae8b846">Pendle API</a></td><td>≤ 7% (≤ 6.5% từ giữa tháng 10): mua; &gt; 10%: không mua</td></tr>
+            <tr><td>Implied APY của Monad YT-USDat</td><td><a href="https://api-v2.pendle.finance/core/v1/143/markets/0x88c5d8a908834e44b421cb67aec9a931782f9538">Pendle API</a></td><td>≤ 8%: mua thử; ≤ 7%: vào đủ quy mô; &gt; 10%: không mua</td></tr>
+            <tr><td>Thưởng MON cho YT Monad sau 15/10</td><td><a href="https://api-v2.pendle.finance/core/v1/markets/all?limit=100">Pendle markets/all</a> (ytApyBreakdown)</td><td>Được gia hạn: chọn "Gia hạn" trong máy tính; không gia hạn: yield cho YT về 3%</td></tr>
+            <tr><td>Airdrop điểm ngoài lịch (kiểu "make-good")</td><td><a href="https://api.merkl.xyz/v4/campaigns?creatorAddress=0x80c6a512B548229226C0676d6fdbAfF81d325990&amp;items=100&amp;page=0">Merkl campaigns</a></td><td>Mỗi đợt mới làm tăng tổng điểm; cập nhật ô "Tổng điểm S2" trong máy tính</td></tr>
             <tr><td>Ngày TGE, snapshot</td><td><a href="https://x.com/saturn_credit/status/2103290807847645584">@saturn_credit</a></td><td>TGE trước 15/11: giảm quy mô, dừng mua</td></tr>
             <tr><td>Tokenomics: tổng cung, % S2, vesting cho ví lớn</td><td>@saturn_credit</td><td>S2 &lt; 5% hoặc vesting nặng: không mua thêm, cân nhắc bán</td></tr>
-            <tr><td>Nguồn cung YT so với hạn mức Merkl (ETH 26.6M, Monad 53M)</td><td><a href="https://etherscan.io/token/0x480c3c9470fa4bbda030f6396fa4b17adefc1ce0">Etherscan</a>, <a href="https://monadscan.com/token/0x5aff25c86c7cb739e554be8904b32047738b7440">Monadscan</a></td><td>Vượt hạn mức mà không bơm thêm ngân sách: điểm/YT &lt; 30</td></tr>
+            <tr><td>Nguồn cung YT so với ngân sách Merkl còn lại (3/10: đủ cho trung bình ~71.8M YT Monad, ~39.0M YT ETH đến 8/12)</td><td><a href="https://etherscan.io/token/0x480c3c9470fa4bbda030f6396fa4b17adefc1ce0">Etherscan</a>, <a href="https://monadscan.com/token/0x5aff25c86c7cb739e554be8904b32047738b7440">Monadscan</a></td><td>Nếu ngân sách cạn trước 8/12 mà không được bơm thêm: điểm dừng sớm</td></tr>
             <tr><td>Tổng Orbital Points, tốc độ phát hành</td><td><a href="https://api.merkl.xyz/v4/rewards/token/total?chainId=1&amp;address=0x10710501778b7FAf9e478f36FaE0B286C028eDE8">Merkl API</a></td><td>&gt; 4.5 tỷ/ngày kéo dài: dùng cột pha loãng cao</td></tr>
             <tr><td>Thưởng USDC 3% trên YT</td><td><a href="https://api-v2.pendle.finance/core/v3/1/markets/0x4ccf6deb3d1895373f604b418ff55d8adae8b846/historical-data?time_frame=day">Pendle history</a></td><td>Về 0: chi phí ròng thành $1,000 mỗi $1k</td></tr>
             <tr><td>Giá và cổ tức STRC</td><td><a href="https://www.sec.gov/Archives/edgar/data/0001050446/000119312526377583/mstr-20260831.htm">SEC 8-K</a></td><td>STRC &lt; $95 hoặc cắt cổ tức: rủi ro hoãn TGE kiểu Apyx</td></tr>
@@ -917,7 +1006,9 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
             <tr><td>Thưởng USDC 3% cho YT-USDat</td><td>Chương trình $32k (27/8–27/9) so với APR 3% của USDat từ 9/9</td><td>Nhiều khả năng là APR 3% của USDat chảy qua YT (bắt đầu 9/9, có ở cả ETH và Monad, vẫn hiển thị 3.00% ngày 28/9). Chưa xác nhận thời hạn nên mô hình ba nhánh 25% / 35% / 40%.</td></tr>
             <tr><td>Đỉnh TVL</td><td>$214.1M (DefiLlama), ~$248M (Saturn tự báo cáo)</td><td>$214.1M vì kiểm chứng được.</td></tr>
             <tr><td>Phí YT của Pendle</td><td>5% (tài liệu Pendle) so với 3% (nguồn thứ cấp)</td><td>5% theo tài liệu gốc. Nếu thực tế 3%, chi phí mỗi điểm giảm ~2%.</td></tr>
-            <tr><td>Tổng điểm S2 hiện tại</td><td>150.2 tỷ so với 156.1 tỷ</td><td>153 tỷ, điểm giữa.</td></tr>
+            <tr><td>Tổng điểm S2 hiện tại</td><td>28/9: 150.2 tỷ so với 156.1 tỷ; 3/10: 192.8 tỷ</td><td>28/9 dùng 153 tỷ, điểm giữa. 3/10 dùng 192.8 tỷ (cấp token, đã trừ ví creator), gồm 24.8 tỷ airdrop "make-good".</td></tr>
+            <tr><td>Hạn mức ngân sách Merkl</td><td>28/9: trần theo ngày (26.6M / 53.0M YT); 3/10: trần tính dồn</td><td>Trần tính dồn, theo tài liệu Merkl: hết ngân sách thì chiến dịch kết thúc sớm. Ngày 3/10 ngân sách còn đủ cho trung bình ~39.0M YT (ETH) và ~71.8M YT (Monad) đến 8/12.</td></tr>
+            <tr><td>"Yield ~6%" của YT Monad</td><td>Giao diện Pendle hiển thị ~5.6% so với implied APY 8.83%</td><td>5.6% là phần YT nhận (3% USDC + 2.63% MON, MON chỉ chắc chắn đến 15/10). Giá YT phản ánh implied 8.83%; chưa tính điểm, long-yield APY là −77.7%.</td></tr>
             <tr><td>APY của sUSDat</td><td>13.6–16.4% quảng bá so với 6.3–6.4%/năm thực tế</td><td>Kịch bản 0% / 8% / 12%; con số quảng bá bị thổi phồng bởi đợt STRC hồi về mệnh giá.</td></tr>
           </tbody>
         </table>
@@ -968,7 +1059,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
 
 <footer>
   <div class="wrap">
-    <span>Dữ liệu thị trường Pendle, Merkl và on-chain chốt ngày 28–29/9/2026. Giá trị thực tế sẽ thay đổi; dùng máy tính để cập nhật.</span>
+    <span>Mục "Cập nhật 3/10" và máy tính dùng dữ liệu Pendle, Merkl, Polymarket và on-chain lúc ~10:30 UTC ngày 3/10/2026; các mục còn lại giữ dữ liệu 28–29/9. Giá trị thực tế sẽ thay đổi; dùng máy tính để cập nhật.</span>
     <span>Phân tích mang tính tham khảo. Các xác suất, kịch bản và mức FDV là ước tính của báo cáo, không phải cam kết của dự án.</span>
   </div>
 </footer>
@@ -1162,8 +1253,8 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
   }
 
   /* ---------- FDV survival chart ---------- */
-  const PM = [[50, 0.885], [100, 0.65], [200, 0.46], [300, 0.26], [400, 0.14], [500, 0.075], [1000, 0.024]];
-  const PLAUNCH = 0.89;
+  const PM = [[50, 0.885], [100, 0.675], [200, 0.50], [300, 0.37], [400, 0.145], [500, 0.095], [1000, 0.0205]];
+  const PLAUNCH = 0.85;
   function erf(x) {
     const s = x < 0 ? -1 : 1; x = Math.abs(x);
     const t = 1 / (1 + 0.3275911 * x);
@@ -1211,8 +1302,8 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
     [[50, "$50M"], [100, "$100M"], [200, "$200M"], [500, "$500M"], [1000, "$1B"]].forEach(([v, l]) => {
       txt(svg, x(v), H - m.b + 18, l, { "text-anchor": "middle", "font-size": 11, fill: "var(--muted)" });
     });
-    el("rect", { x: x(98), y: m.t, width: x(145) - x(98), height: H - m.b - m.t, fill: "var(--accent-wash)" }, svg);
-    txt(svg, x(119), m.t + 12, "hòa vốn", { "text-anchor": "middle", "font-size": 10.5, fill: "var(--accent-ink)" });
+    el("rect", { x: x(109), y: m.t, width: x(164) - x(109), height: H - m.b - m.t, fill: "var(--accent-wash)" }, svg);
+    txt(svg, x(134), m.t + 12, "hòa vốn", { "text-anchor": "middle", "font-size": 10.5, fill: "var(--accent-ink)" });
     let dModel = "";
     for (let i = 0; i <= 80; i++) {
       const v = 40 * Math.pow(1200 / 40, i / 80);
@@ -1222,7 +1313,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
     const pmPts = PM.map(([v, p]) => [x(v), y(pmCond(p))]);
     el("path", { d: pmPts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(""), fill: "none", stroke: "var(--s1)", "stroke-width": 2, "stroke-linejoin": "round" }, svg);
     pmPts.forEach((p) => el("circle", { cx: p[0], cy: p[1], r: 4, fill: "var(--s1)", stroke: "var(--surface)", "stroke-width": 2 }, svg));
-    txt(svg, x(200) + 6, y(pmCond(0.46)) - 8, "Polymarket", { "font-size": 11.5, fill: "var(--ink-2)", "font-weight": 600 });
+    txt(svg, x(200) + 6, y(pmCond(0.50)) - 8, "Polymarket", { "font-size": 11.5, fill: "var(--ink-2)", "font-weight": 600 });
     txt(svg, x(200) - 6, y(modelSurv(200)) + 16, "Mô hình", { "font-size": 11.5, fill: "var(--ink-2)", "font-weight": 600, "text-anchor": "end" });
     const cross = el("line", { x1: 0, x2: 0, y1: m.t, y2: H - m.b, stroke: "var(--axis)", "stroke-width": 1, visibility: "hidden" }, svg);
     const hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.b - m.t, fill: "transparent", tabindex: 0 }, svg);
@@ -1260,14 +1351,26 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
     [300, [51, 81, 154, 129, 94, 62]],
     [400, [98, 136, 231, 197, 152, 109]]
   ];
-  function renderHeat() {
-    const t = $("heat");
+  const HEAT2_COLS = [
+    ["Snapshot 15/11", "360 tỷ điểm"], ["8/12, pha loãng thấp", "420 tỷ"], ["8/12, cơ sở", "453 tỷ"],
+    ["8/12, pha loãng cao", "500 tỷ"], ["8/12, rất cao", "553 tỷ"]
+  ];
+  const HEAT2 = [
+    [50, [-60, -44, -46, -49, -52]],
+    [75, [-48, -28, -31, -36, -39]],
+    [100, [-36, -12, -17, -22, -27]],
+    [150, [-13, 20, 13, 5, -3]],
+    [200, [10, 52, 43, 31, 21]],
+    [300, [57, 116, 102, 85, 70]],
+    [400, [104, 180, 161, 139, 118]]
+  ];
+  function renderHeat(t, cols, data, baseCol) {
     const thead = document.createElement("thead");
     const hr = document.createElement("tr");
     const h0 = document.createElement("th");
     h0.textContent = "FDV ngày TGE";
     hr.appendChild(h0);
-    HEAT_COLS.forEach(([a, b]) => {
+    cols.forEach(([a, b]) => {
       const th = document.createElement("th");
       th.className = "r";
       th.appendChild(document.createTextNode(a));
@@ -1280,7 +1383,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
     });
     thead.appendChild(hr);
     const tb = document.createElement("tbody");
-    HEAT.forEach(([fdv, vals]) => {
+    data.forEach(([fdv, vals]) => {
       const tr = document.createElement("tr");
       const th = document.createElement("th");
       th.className = "rowh";
@@ -1295,9 +1398,9 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
         td.style.color = pct > 52 ? "var(--on-strong)" : "var(--ink)";
         td.textContent = (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v) + "%";
         td.tabIndex = 0;
-        if (fdv === 150 && j === 3) td.classList.add("base");
-        bindTip(td, () => ({ title: "FDV $" + fdv + "M · " + HEAT_COLS[j][0], rows: [
-          { label: "Tổng điểm S2", value: HEAT_COLS[j][1].replace(" điểm", "") },
+        if (fdv === 150 && j === baseCol) td.classList.add("base");
+        bindTip(td, () => ({ title: "FDV $" + fdv + "M · " + cols[j][0], rows: [
+          { label: "Tổng điểm S2", value: cols[j][1].replace(" điểm", "") },
           { label: "ROI kỳ vọng", value: (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v) + "%" }
         ] }));
         tr.appendChild(td);
@@ -1313,14 +1416,17 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
   const S2_END = Date.UTC(2026, 11, 9, 4, 59);
   const EXPIRY = Date.UTC(2027, 0, 14, 0, 0);
   const S2LEN = (S2_END - S2_START) / DAY;
+  const MON_END = Date.UTC(2026, 9, 15, 0, 0);
+  const MON_APR = 0.02634;
 
+  /* Pendle data 2026-10-03 10:30 UTC; impact = loss vs mid price on a $1k quote */
   const POOLS = {
-    "eth-usdat":   { name: "ETH YT-USDat",   M: 30, kind: "usdat",   apy: 8.98,  impact: 2.05, reward: true },
-    "monad-usdat": { name: "Monad YT-USDat", M: 30, kind: "usdat",   apy: 9.10,  impact: 3.5,  reward: true },
-    "bnb-usdat":   { name: "BNB YT-USDat",   M: 30, kind: "usdat",   apy: 8.29,  impact: 10,   reward: false },
-    "eth-susdat":  { name: "ETH YT-sUSDat",  M: 10, kind: "susdat",  apy: 12.92, impact: 3.45, uapy: 8 },
-    "monad-susdat":{ name: "Monad YT-sUSDat",M: 10, kind: "susdat",  apy: 17.41, impact: 2.1,  uapy: 8 },
-    "eth-srusdat": { name: "ETH YT-srUSDat", M: 15, kind: "srusdat", apy: 10.20, impact: 10.8, uapy: 7.5 }
+    "monad-usdat": { name: "Monad YT-USDat", M: 30, kind: "usdat",   apy: 8.83,  impact: 4.2,  reward: true, mon: true },
+    "eth-usdat":   { name: "ETH YT-USDat",   M: 30, kind: "usdat",   apy: 9.23,  impact: 3.9,  reward: true },
+    "bnb-usdat":   { name: "BNB YT-USDat",   M: 30, kind: "usdat",   apy: 8.11,  impact: 10,   reward: false },
+    "eth-susdat":  { name: "ETH YT-sUSDat",  M: 10, kind: "susdat",  apy: 14.63, impact: 3.5,  uapy: 8 },
+    "monad-susdat":{ name: "Monad YT-sUSDat",M: 10, kind: "susdat",  apy: 17.48, impact: 2.1,  uapy: 8 },
+    "eth-srusdat": { name: "ETH YT-srUSDat", M: 15, kind: "srusdat", apy: 10.71, impact: 10.8, uapy: 7.5 }
   };
 
   function dateMs(s, hourUTC, minUTC, addDays) {
@@ -1339,6 +1445,14 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
     return { pool, buy, T, yt, N, fee, elapsed };
   }
   function yld(N, apy, days, fee) { return days > 0 ? N * (Math.pow(1 + apy, days / 365) - 1) * fee : 0; }
+  function monCash(s, mode, aprAfter, D2) {
+    if (!s.pool.mon) return 0;
+    const d1 = Math.max(0, Math.min(s.T, (MON_END - s.buy) / DAY));
+    let v = s.N * MON_APR * d1 / 365 * s.fee;
+    if (mode === "snap") v += s.N * aprAfter * Math.max(0, D2 - d1) / 365 * s.fee;
+    if (mode === "expiry") v += s.N * aprAfter * Math.max(0, s.T - d1) / 365 * s.fee;
+    return v;
+  }
 
   function compute(p) {
     const s = setup(p);
@@ -1356,7 +1470,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
     let cash = 0;
     if (s.pool.kind === "usdat") {
       const days = p.reward === "none" ? 0 : p.reward === "snap" ? D2 : s.T;
-      cash = yld(s.N, p.rewardApr / 100, days, s.fee);
+      cash = yld(s.N, p.rewardApr / 100, days, s.fee) + monCash(s, p.monMode, p.monAfter / 100, D2);
     } else {
       cash = yld(s.N, p.uapy / 100, s.T, s.fee);
     }
@@ -1389,11 +1503,12 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
 
   function monteCarlo(p, n) {
     const s = setup(p);
-    const R = rng(20260928);
+    const R = rng(20261003);
     const gauss = () => { let u = 0; while (u === 0) u = R(); const v = R(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+    /* TGE timing as of 2026-10-03: ~1/11 5%, ~15/11 15%, ~1/12 15%, 8/12 30%, 8/12 but TGE in 2027 35% */
     const snaps = [
-      [0.10, Date.UTC(2026, 9, 31, 16, 48), 0], [0.30, Date.UTC(2026, 10, 14, 16, 48), 0],
-      [0.45, Date.UTC(2026, 10, 30, 16, 48), 0], [0.75, S2_END, 0], [1.0, S2_END, 0.2]
+      [0.05, Date.UTC(2026, 10, 1, 4, 59), 0], [0.20, Date.UTC(2026, 10, 15, 4, 59), 0],
+      [0.35, Date.UTC(2026, 11, 1, 4, 59), 0], [0.65, S2_END, 0], [1.0, S2_END, 0.2]
     ];
     const SUS = [0, 0, 0.064, 0.08, 0.08, 0.12, 0.12];
     const boost = p.boost ? 1.2 : 1;
@@ -1405,15 +1520,18 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
       const D2 = Math.max(0, Math.min(s.T, (snapMs - s.buy) / DAY));
       const D3 = s.T - D2;
       const fdv = Math.min(2e9, Math.exp(Math.log(140e6) + 0.85 * gauss()));
-      const e = 2.8e9 + R() * 2.2e9;
+      const e = 3.4e9 + R() * 2.0e9;
       const A2 = R() < 0.8 ? 0.05 : 0.04;
-      const cap = 0.9 + R() * 0.1;
+      const cap = 0.92 + R() * 0.08;
       const hair = 0.15 + R() * 0.35;
       const zero = R() < 0.15;
       const s3 = R() * 0.5;
       const vv = R();
       const ysus = SUS[Math.floor(R() * SUS.length)];
       const ysr = 0.05 + R() * 0.031;
+      const w = R();
+      const monMode = w < 0.5 ? "to1015" : w < 0.8 ? "snap" : "expiry";
+      const monAfter = 0.015 + R() * 0.011;
       const frac = Math.min(1, Math.max(0, (s.elapsed + D2) / S2LEN));
       const P2 = p.pcur * 1e9 + e * D2;
       const v2 = A2 * frac * fdv * (1 - hair) * (1 - slip) / P2;
@@ -1421,7 +1539,7 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
       let cash;
       if (s.pool.kind === "usdat") {
         const days = !s.pool.reward ? 0 : vv < 0.4 ? s.T : vv < 0.75 ? D2 : 0;
-        cash = yld(s.N, 0.03, days, s.fee);
+        cash = yld(s.N, 0.03, days, s.fee) + monCash(s, monMode, monAfter, D2);
       } else if (s.pool.kind === "susdat") {
         cash = zero ? 0 : yld(s.N, ysus, s.T, s.fee);
       } else {
@@ -1446,12 +1564,12 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
 
   /* ---------- calculator UI ---------- */
   const DEFAULTS = {
-    pool: "eth-usdat", capital: 1000, buyDate: "2026-09-28", snapDate: "2026-12-08",
-    reward: "snap", rewardApr: 3, alloc: 5, pcur: 153, emis: 3.4, cap: 100, fee: 5,
+    pool: "monad-usdat", capital: 1000, buyDate: "2026-10-03", snapDate: "2026-12-08",
+    reward: "snap", rewardApr: 3, monMode: "to1015", monAfter: 2, alloc: 5, pcur: 192.8, emis: 3.9, cap: 100, fee: 5,
     fdv: 150, hair: 30, pz: 15, s3: 30, boost: false
   };
-  const FIELDS = ["pool", "capital", "apy", "impact", "buyDate", "reward", "rewardApr", "uapy", "boost", "snapDate", "alloc", "pcur", "emis", "cap", "fee", "fdv", "hair", "pz", "s3"];
-  const STORE_KEY = "saturn-yt-calc-v1";
+  const FIELDS = ["pool", "capital", "apy", "impact", "buyDate", "reward", "rewardApr", "monMode", "monAfter", "uapy", "boost", "snapDate", "alloc", "pcur", "emis", "cap", "fee", "fdv", "hair", "pz", "s3"];
+  const STORE_KEY = "saturn-yt-calc-v2";
 
   function poolDefaults(id) {
     const pl = POOLS[id];
@@ -1480,16 +1598,17 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
     return d;
   }
   function valid(d) {
-    const nums = ["capital", "apy", "impact", "rewardApr", "uapy", "alloc", "pcur", "emis", "cap", "fee", "fdv", "hair", "pz", "s3"];
+    const nums = ["capital", "apy", "impact", "rewardApr", "monAfter", "uapy", "alloc", "pcur", "emis", "cap", "fee", "fdv", "hair", "pz", "s3"];
     for (const k of nums) if (!isFinite(d[k])) return false;
     if (d.capital <= 0 || d.apy <= 0 || d.impact >= 100 || d.fdv <= 0) return false;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(d.buyDate) || !/^\d{4}-\d{2}-\d{2}$/.test(d.snapDate)) return false;
     return true;
   }
   function syncKind() {
-    const kind = POOLS[$("pool").value].kind;
+    const pool = POOLS[$("pool").value];
     document.querySelectorAll("[data-kind]").forEach((n) => {
-      n.hidden = n.getAttribute("data-kind") === "usdat" ? kind !== "usdat" : kind === "usdat";
+      const k = n.getAttribute("data-kind");
+      n.hidden = k === "usdat" ? pool.kind !== "usdat" : k === "mon" ? !pool.mon : pool.kind === "usdat";
     });
   }
 
@@ -1646,10 +1765,11 @@ footer .wrap { padding-block: 24px 40px; font-size: var(--t-sm); color: var(--mu
   function init() {
     fillCompsTable();
     fillFdvTable();
-    renderHeat();
+    renderHeat($("heat"), HEAT_COLS, HEAT, 3);
+    renderHeat($("heat2"), HEAT2_COLS, HEAT2, 2);
     let saved = null;
     try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); } catch (e) { saved = null; }
-    const start = saved && POOLS[saved.pool] ? Object.assign(poolDefaults(saved.pool), saved) : poolDefaults("eth-usdat");
+    const start = saved && POOLS[saved.pool] ? Object.assign(poolDefaults(saved.pool), saved) : poolDefaults(DEFAULTS.pool);
     writeForm(start);
     $("pool").addEventListener("change", () => {
       const cur = readForm();

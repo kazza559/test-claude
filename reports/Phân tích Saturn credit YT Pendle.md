@@ -1,5 +1,58 @@
 # Saturn YT: cược nhỏ, đợi giá rẻ hơn
 
+## Cập nhật 3/10/2026: Monad YT-USDat rẻ hơn, nhưng point cũng bị pha loãng hơn
+
+**Kết luận không đổi về hướng: vẫn chỉ đáng một vị thế nhỏ, nhưng pool ưu tiên chuyển sang Monad YT-USDat.** Ở implied APY 8.83% hiện tại, $1,000 Monad YT-USDat cho kỳ vọng +14%, trung vị −14% và xác suất lỗ 58% (28/9: +12% / −19% / 60%). Mua thử được khi implied APY ≤ 8% (trung vị −5%). Vào đủ quy mô khi ≤ 7% (trung bình +42%, trung vị +8%). ETH YT-USDat (9.23%, không có MON) giờ kém hơn: kỳ vọng ~0%, trung vị −27%. Dữ liệu chi tiết nằm trong [ghi chú cập nhật](../research_notes/Phân%20tích%20Saturn%20credit%20YT%20Pendle/update_2026-10-03.md). Phần phân tích gốc ngày 28–29/9 giữ nguyên bên dưới.
+
+**Những gì đã thay đổi trong 5 ngày:**
+
+- **Giá YT Monad giảm, nhưng số point mỗi đô gần như không đổi.**
+  - Implied APY lên đỉnh 9.89–9.91% ngày 1–2/10 rồi về 8.83%. Giá YT giảm từ $0.02532 (28/9) xuống $0.02349, tức −7.2%; khoảng 4.5% trong đó là do thời gian trôi.
+  - Báo giá thật cho $1,000 ra 40,786 YT, nhiều hơn 7% so với 28/9. Nhưng cửa sổ point S2 cũng ngắn đi 6.9% (còn 66.8 ngày), nên số point mỗi đô gần như đứng yên: ~77.6M point cho $1,000 đến 8/12 ([Pendle API](https://api-v2.pendle.finance/core/v1/143/markets/0x88c5d8a908834e44b421cb67aec9a931782f9538)).
+- **"Yield gần 6%" là 3% USDC cộng 2.63% MON, và phần MON hiện chỉ chắc chắn đến 15/10.**
+  - Pendle trả thêm cho riêng YT Monad USDat 1,508,348 MON (~$47.7k) trong 14 ngày (1/10–15/10). Đợt trước là 1.02M MON (17/9–1/10) ([Pendle markets/all](https://api-v2.pendle.finance/core/v1/markets/all?limit=100)).
+  - Với $1,000, phần MON đã xác nhận chỉ đáng ~$32. Nếu được gia hạn đến 8/12 hoặc 14/1 ở APR ~2%, thêm ~$115–190.
+  - Người mua YT vẫn trả implied APY 8.83% cộng ~4.4% chi phí khớp lệnh. Chưa tính point, Pendle ghi long-yield APY là −77.7%/năm.
+- **Point bị pha loãng mạnh hơn dự kiến.**
+  - Ngày 30/9 Saturn airdrop 24.8 tỷ Orbital Points ("Season 2 loyalty make-good") cho 2,680 ví. Tất cả đều có trên 1 triệu điểm S1, và mỗi ví nhận đúng ~20% số điểm S2 của mình. Đây là boost +20% cho người giữ S1, trả bù hồi tố ([Merkl](https://api.merkl.xyz/v4/campaigns?creatorAddress=0x80c6a512B548229226C0676d6fdbAfF81d325990&items=100&page=0)).
+  - Tổng điểm người dùng S2 lên 192.8 tỷ (28/9: 150.2 tỷ). Nguồn cung YT-USDat tăng lên 47.2M trên Monad (+9.7%) và 23.7M trên Ethereum (+17.9%).
+  - Dự phóng tổng S2 tại 8/12 nâng từ 397 lên **~453 tỷ** (biên độ 420–553 tỷ). Do đó 1M điểm chỉ còn đáng ~$11.0 ở FDV $100M, thay vì $12.6.
+- **Rủi ro hạn mức ngân sách nhẹ hơn mình đã viết.**
+  - Theo tài liệu Merkl, ngân sách chiến dịch FIX_APR là trần tính dồn: hết thì kết thúc sớm ([Merkl docs](https://docs.merkl.xyz/merkl-mechanisms/distributions)).
+  - Phần còn lại đủ trả 30× cho trung bình ~71.8M YT trên Monad và ~39.0M YT trên Ethereum đến 8/12. Nếu nguồn cung YT tăng như 5 ngày qua, ngân sách Ethereum có thể cạn khoảng 30/11 và Monad khoảng 6/12.
+- **Thị trường dự đoán dời kỳ vọng TGE ra sau.**
+  - Polymarket "ra token trước 31/12/2026" giảm từ 0.74 xuống ~0.62 (mua 0.55 / bán 0.68). Mức "trước 30/6/2027" là 0.795.
+  - Thang FDV nhích lên: >$200M 0.50, >$300M 0.37 theo giá giữa, thanh khoản mỏng ([Polymarket](https://gamma-api.polymarket.com/public-search?q=saturn)).
+  - Mình chỉnh phân phối TGE thành ~20% trước 15/11, 15% từ 16/11 đến 7/12, 30% trong khoảng 8–31/12 và **35% trượt sang 2027**. FDV cơ sở giữ ở ~$150M.
+- **Nền tảng nhích lên.** TVL $152.8M (+4%), USDat $90.2M (+6%). STRC về $99.41, gần mệnh giá, và tỷ giá sUSDat lên 1.0398. Chưa có thông báo tokenomics.
+
+| $1,000, ngày 3/10 | Monad YT-USDat | ETH YT-USDat |
+|---|---|---|
+| Implied APY · số YT mua được | 8.83% · 40,786 | 9.23% · 39,243 |
+| Point S2 đến 8/12 | 77.6M | 74.7M |
+| Chi phí ròng (USDC đến snapshot, MON đến 15/10) | $758 | $798 |
+| $ / 1M point (khoảng) | $9.76 ($8.30–12.47) | $10.68 ($9.23–13.39) |
+| FDV hòa vốn thô | $75–113M | $84–121M |
+| FDV hòa vốn điều chỉnh rủi ro, đủ S2 / TGE 15/11 | $109–164M / $137–206M | $121–176M / $153–222M |
+| Bi quan / cơ sở / lạc quan | −89% / +13% / +262% | −92% / +6% / +226% |
+| Monte Carlo: trung bình / trung vị / P(lỗ) | +14% / −14% / 58% | 0% / −27% / 65% |
+
+| Implied APY Monad YT-USDat | 6% | 7% | 8% | 8.83% (hiện tại) | 10% |
+|---|---|---|---|---|---|
+| MC trung bình / trung vị | +65% / +25% | +42% / +8% | +25% / −5% | +14% / −14% | +1% / −23% |
+
+**Hành động đề xuất:**
+- Đặt lệnh giới hạn mua Monad YT-USDat ở implied APY ≤ 8% (giá YT ≤ ~$0.0214) cho phần thử. Phần chính đặt ở ≤ 7% (≤ ~$0.0188).
+- Giữ tổng vị thế ≤ 1–2% danh mục, mỗi lệnh ≤ $10k (trượt giá $10k ~5.8%; $50k ~37%).
+- Theo dõi ba tín hiệu:
+  - MON có được gia hạn sau 15/10 không.
+  - Nguồn cung YT so với ngân sách Merkl còn lại.
+  - Saturn có công bố tokenomics/ngày TGE không. TGE trước 15/11 làm FDV hòa vốn lên $137–206M.
+
+---
+
+## Phân tích gốc (dữ liệu 28–29/9/2026)
+
 Trong bảy pool YT của Saturn trên Pendle, chỉ có **YT-USDat (Ethereum hoặc Monad)** có chi phí điểm đủ rẻ để cân nhắc, và ngay cả pool này cũng chỉ đáng một **vị thế nhỏ**. Ở implied APY hiện tại là 8.98%, mức cao nhất trong lịch sử pool, $1,000 mua được khoảng 39,150 YT. Số YT đó kiếm khoảng **1.12 triệu Orbital Points mỗi ngày**, tức **~80 triệu điểm** đến khi Season 2 kết thúc vào 8/12/2026. Chi phí ròng là $675–1,000 tùy khoản thưởng USDC 3% còn kéo dài bao lâu, tương đương **$8.4–12.5 cho mỗi 1 triệu điểm**. Sau khi trừ phí Pendle 5%, trượt giá, áp lực bán và vesting, cùng xác suất không có token, FDV hòa vốn thực tế là **$98–145 triệu** nếu Season 2 chạy đủ. Nếu TGE rơi vào giữa tháng 11 và Season 2 bị cắt sớm theo tỷ lệ, con số này lên **$122–180 triệu**. Kịch bản cơ sở của tôi, vốn nghiêng về phía bi quan, đặt FDV ngày TGE quanh **$150 triệu**; trung vị trên Polymarket là khoảng $207 triệu. Mô phỏng Monte Carlo cho $1,000 YT-USDat trên Ethereum cho **lợi nhuận kỳ vọng +15%, nhưng trung vị là −17% và xác suất lỗ là 59%**. Đây là một tấm vé số có kỳ vọng dương mỏng chứ không phải cơ hội rõ ràng. Nếu vào lệnh ở implied APY ≤7%, kỳ vọng tăng lên +46% và trung vị lên +5%. TGE của token STRN được công bố là "Q4 2026". Kịch bản trung tâm của tôi là **đầu đến giữa tháng 12/2026**, với khoảng 45% khả năng TGE trước 8/12 và khoảng 25% khả năng trượt sang 2027. Bối cảnh chung không thuận lợi. Nguồn cung stablecoin đi ngang, không có TGE stablecoin nào trong Q3/2026, và bốn trong năm dự án so sánh chính đã mất 71–96% so với giá mở cửa. Bản thân Saturn chỉ có TVL $147 triệu, giảm 31% từ đỉnh, và khoảng ba phần tư lượng USDat lưu hành đang nằm trong Pendle. Nên tránh YT-sUSDat, YT-USDat trên BNB và YT-srUSDat.
 
 *Quy ước: số liệu dùng dấu chấm thập phân và dấu phẩy phân cách hàng nghìn; ngày viết theo ngày/tháng. Dữ liệu thị trường Pendle, Merkl và on-chain được chốt vào 28–29/9/2026. Các phép tính, kịch bản và xác suất không kèm nguồn là ước tính của tôi, được dựng từ các số liệu có trích dẫn.*
