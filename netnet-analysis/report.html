@@ -1,0 +1,876 @@
+<title>NetNet & Robinhood Chain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (max 1120px). Verdict header -> KPI strip -> lettered report sections, each chart a figure with its own data-table twin. */
+:root{
+  --bg:#f4f6f8; --surface:#ffffff; --surface-2:#f7f9fa;
+  --ink:#101418; --ink-2:#47505b; --muted:#77818c;
+  --grid:#e6eaee; --axis:#c4ccd4; --line:rgba(16,20,24,.10);
+  --accent:#2a78d6;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --pos:#2a78d6; --neg:#e34948; --mid:#d9dee3;
+  --good-ink:#006300; --warn:#fab219; --crit:#d03b3b;
+  --sans:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c0f12; --surface:#151a1f; --surface-2:#1a2027;
+    --ink:#eef1f4; --ink-2:#b5bdc6; --muted:#808a95;
+    --grid:#232a31; --axis:#38424c; --line:rgba(255,255,255,.10);
+    --accent:#3987e5;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    --pos:#3987e5; --neg:#e66767; --mid:#39424b;
+    --good-ink:#0ca30c;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c0f12; --surface:#151a1f; --surface-2:#1a2027;
+  --ink:#eef1f4; --ink-2:#b5bdc6; --muted:#808a95;
+  --grid:#232a31; --axis:#38424c; --line:rgba(255,255,255,.10);
+  --accent:#3987e5;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --pos:#3987e5; --neg:#e66767; --mid:#39424b;
+  --good-ink:#0ca30c;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 56px;display:grid;gap:28px}
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25}
+h1{font-size:clamp(26px,4vw,36px);font-weight:700;letter-spacing:-.015em}
+h2{font-size:22px;font-weight:700;letter-spacing:-.01em}
+h3{font-size:15px;font-weight:600}
+p{margin:0;max-width:72ch}
+a{color:var(--accent);text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.ink2{color:var(--ink-2)}
+.small{font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+
+/* header */
+header.top{display:grid;gap:14px}
+header.top .lead{font-size:17px;color:var(--ink-2);max-width:68ch}
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px;margin-top:4px}
+.scn{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:4px;min-width:0}
+.scn .k{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-2)}
+.scn .v{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.scn .d{font-size:13px;color:var(--muted)}
+.sw{width:10px;height:10px;border-radius:3px;flex:none}
+.trend{display:inline-flex;gap:8px;align-items:center;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:600;width:max-content;max-width:100%}
+.trend svg{width:14px;height:14px;flex:none}
+
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;padding-block:10px;border-block:1px solid var(--line)}
+nav.toc a{color:var(--ink-2);text-decoration:none}
+nav.toc a:hover{color:var(--accent);text-decoration:underline}
+
+/* KPI strip */
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+@media (min-width:600px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.kpis.four{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1000px){.kpis{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.kpi{background:var(--surface);padding:12px 14px;display:grid;gap:2px;min-width:0}
+.kpi .k{font-size:13px;color:var(--ink-2)}
+.kpi .v{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.kpi .s{font-size:12.5px;color:var(--muted)}
+
+/* sections */
+section{display:grid;gap:16px;scroll-margin-top:16px}
+.sec-head{display:grid;gap:6px}
+.sec-head .eyebrow{color:var(--accent)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:12px;min-width:0;align-content:start}
+ul.notes{margin:0;padding-left:20px;display:grid;gap:6px;max-width:80ch}
+ul.notes li::marker{color:var(--muted)}
+
+/* figures */
+figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:10px;min-width:0;align-content:start}
+figcaption{display:grid;gap:2px}
+figcaption .t{font-weight:600}
+figcaption .sub{font-size:13px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.key-line{width:14px;height:2px;border-radius:1px;display:inline-block}
+.key-box{width:10px;height:10px;border-radius:2px;display:inline-block}
+.chart{position:relative;min-width:0}
+.chart svg{display:block;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);box-shadow:0 6px 20px rgba(0,0,0,.14);border-radius:8px;padding:8px 10px;font-size:12.5px;min-width:150px;z-index:5}
+.tip .d{color:var(--muted);font-family:var(--mono);font-size:11.5px;margin-bottom:4px}
+.tip .r{display:flex;justify-content:space-between;gap:14px;align-items:center}
+.tip .r span:first-child{display:inline-flex;gap:6px;align-items:center;color:var(--ink-2)}
+.tip .r b{font-weight:600;font-variant-numeric:tabular-nums}
+
+/* svg classes */
+.gl{stroke:var(--grid);stroke-width:1}
+.ax{stroke:var(--axis);stroke-width:1}
+.tk{fill:var(--muted);font-size:11.5px;font-family:var(--sans);font-variant-numeric:tabular-nums}
+.lb{fill:var(--ink-2);font-size:12px;font-family:var(--sans);font-variant-numeric:tabular-nums}
+.lbs{fill:var(--ink);font-size:12px;font-weight:600;font-family:var(--sans);font-variant-numeric:tabular-nums}
+.ref{stroke:var(--muted);stroke-width:1}
+.xh{stroke:var(--axis);stroke-width:1}
+.ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.f-s1{fill:var(--s1)} .f-s2{fill:var(--s2)} .f-s3{fill:var(--s3)} .f-s4{fill:var(--s4)}
+.f-pos{fill:var(--pos)} .f-neg{fill:var(--neg)} .f-mid{fill:var(--mid)} .f-ink{fill:var(--ink)}
+.st-s1{stroke:var(--s1)} .st-s2{stroke:var(--s2)} .st-s3{stroke:var(--s3)} .st-s4{stroke:var(--s4)} .st-ink{stroke:var(--ink)} .st-muted{stroke:var(--muted)}
+.bg-s1{background:var(--s1)} .bg-s2{background:var(--s2)} .bg-s3{background:var(--s3)} .bg-s4{background:var(--s4)} .bg-pos{background:var(--pos)} .bg-neg{background:var(--neg)} .bg-mid{background:var(--mid)}
+.dot{stroke:var(--surface);stroke-width:2}
+.area{opacity:.10}
+.hit{fill:transparent;cursor:crosshair}
+.bar-g.dim{opacity:.45}
+.bar-g{transition:opacity .12s}
+@media (prefers-reduced-motion:reduce){.bar-g{transition:none}}
+
+/* tables */
+details.tbl summary{cursor:pointer;font-size:13px;color:var(--ink-2);width:max-content;max-width:100%}
+details.tbl summary:hover{color:var(--accent)}
+.tablewrap{overflow-x:auto;margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+table.wide{min-width:640px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--ink-2);font-size:12.5px;white-space:nowrap}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.addr{font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.tbl-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 6px;min-width:0}
+.tbl-card .tablewrap{margin-top:0}
+.tbl-card caption{text-align:left;padding:8px 10px 4px;font-weight:600;font-size:14px;color:var(--ink)}
+.pill{display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+.pill svg{width:12px;height:12px}
+
+footer{display:grid;gap:10px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:18px}
+footer p{max-width:90ch}
+code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow" id="asof">Robinhood Chain · chainId 4663</div>
+    <h1>NetNet (NET) và dòng tiền Robinhood Chain</h1>
+    <p class="lead">Thị trường crypto chung đang tốt, nhưng dòng tiền đầu cơ đang rời Robinhood Chain. Với NET, người mua lớn nhất là chính team và họ gần hết tiền để mua tiếp, trong khi lượng bán từ bond và rebase vẫn đều đặn.</p>
+    <span class="trend"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4 L7 9 L10 6 L14 11" fill="none" stroke="var(--crit)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11 H14 V7" fill="none" stroke="var(--crit)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Xu hướng NET 1–3 tuần: nghiêng giảm</span>
+    <div class="verdict" id="verdict"></div>
+  </header>
+
+  <nav class="toc" aria-label="Mục lục">
+    <a href="#tongquan">Tổng quan NET</a><a href="#thitruong">Thị trường chung</a><a href="#dongtien">Dòng tiền Robinhood Chain</a>
+    <a href="#gianav">Giá và NAV</a><a href="#aiban">Ai đang bán</a><a href="#aimua">Ai đang mua</a><a href="#dubao">Dự báo</a><a href="#ruiro">Theo dõi và rủi ro</a><a href="#phuongphap">Phương pháp</a>
+  </nav>
+
+  <section id="tongquan" aria-labelledby="h-tq">
+    <div class="sec-head"><div class="eyebrow">Tổng quan</div><h2 id="h-tq">NET hôm nay</h2></div>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section id="thitruong" aria-labelledby="h-a">
+    <div class="sec-head"><div class="eyebrow">A · Thị trường chung</div><h2 id="h-a">Crypto đang risk-on, token gốc Robinhood Chain đi ngược</h2>
+      <p class="ink2">BTC và ETH ở sát đỉnh 90 ngày, chỉ số Fear &amp; Greed ở vùng Greed. Token gốc của Robinhood Chain lại giảm 15–75% trong 30 ngày. Đây là pha hạ nhiệt sau hype ra mắt chain, không phải thị trường chung đi xuống, nên nếu chain có câu chuyện mới thì tiền vẫn có sẵn để quay lại.</p></div>
+    <div class="kpis four" id="macro"></div>
+    <figure>
+      <figcaption><span class="t">Biến động giá 30 ngày</span><span class="sub">Token gốc Robinhood Chain so với BTC và ETH (CoinGecko)</span></figcaption>
+      <div class="chart" id="c-eco"></div>
+      <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-eco"></div></details>
+    </figure>
+  </section>
+
+  <section id="dongtien" aria-labelledby="h-b">
+    <div class="sec-head"><div class="eyebrow">B · Dòng tiền vào Robinhood Chain</div><h2 id="h-b">Tiền vẫn nằm trên chain, nhưng đã thôi đuổi theo đầu cơ</h2>
+      <p class="ink2">Mainnet chạy từ 1/7/2026. TVL và stablecoin ở đỉnh, nhưng volume DEX, phí và lượng ETH bridge đều đã quay đầu từ giữa tháng 9. Số liệu theo tuần, tuần cuối kết thúc ngày 6/10.</p></div>
+    <div class="grid3">
+      <figure>
+        <figcaption><span class="t">Volume DEX mỗi tuần</span><span class="sub">USD, DefiLlama</span></figcaption>
+        <div class="chart" id="c-dex"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-dex"></div></details>
+      </figure>
+      <figure>
+        <figcaption><span class="t">TVL và stablecoin</span><span class="sub">USD cuối tuần, DefiLlama</span></figcaption>
+        <div class="legend"><span><i class="key-line bg-s1"></i>Stablecoin</span><span><i class="key-line bg-s2"></i>TVL DeFi</span></div>
+        <div class="chart" id="c-tvl"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-tvl"></div></details>
+      </figure>
+      <figure>
+        <figcaption><span class="t">ETH khoá trong bridge L1</span><span class="sub">Bridge chính thức trên Ethereum (<span class="mono">0xDf87…64b3</span>)</span></figcaption>
+        <div class="chart" id="c-eth"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-eth"></div></details>
+      </figure>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Đọc các con số</h3>
+        <ul class="notes">
+          <li><b>Tiền vẫn đậu trên chain.</b> Stablecoin $1,113 tỷ là đỉnh mới: USDG (Paxos) $713M và USDe (Ethena) $361M, cả hai tăng 11–13% trong 30 ngày. Phần lớn là tiền gửi lấy lãi trong vault Steakhouse USDG trên Morpho.</li>
+          <li><b>Đầu cơ hạ nhiệt.</b> Volume DEX tuần −55% và phí −81% so với đỉnh tuần 2–8/9. Lượng meme mới trên Pons giảm 72%, phí meme giảm 78% (KuCoin, 4/10).</li>
+          <li><b>ETH bắt đầu rút ra.</b> Từ đỉnh 313,6K ETH (17/9) còn 276K ETH, tức khoảng −$100M; riêng 24 giờ qua −11,8K ETH. Rút về L1 có thời gian chờ, nên đây là quyết định từ khoảng một tuần trước.</li>
+          <li><b>Cổ phiếu token hoá còn nhỏ:</b> <span id="stock-note">191 mã</span>. Người dùng Mỹ chưa giao dịch được stock token.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Tin tức và chất xúc tác</h3>
+        <ul class="notes">
+          <li>HOOD Summit (cuối tháng 9): AI trading agent, giao dịch cổ phiếu cuối tuần, perps qua Bitstamp. Không có gì trực tiếp cho token gốc trên chain.</li>
+          <li><b>Robinhood công bố kết quả quý 3 ngày 27/10/2026</b> (sau giờ đóng cửa). Đây là dịp có thể công bố số liệu chain hoặc kế hoạch mới.</li>
+          <li>Robinhood Chain chiếm 53% doanh thu tháng 9 của Uniswap. Ví Robinhood đã mở hơn 190 stock token, nhưng chỉ chiếm 1–2% giao dịch on-chain.</li>
+          <li>Có trường hợp một nhóm phát hành 56 token meme và thu lời khoảng $15,5M từ người mua.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="gianav" aria-labelledby="h-c">
+    <div class="sec-head"><div class="eyebrow">C · NET: giá và NAV</div><h2 id="h-c">Premium co từ 21× về 1,33× NAV</h2>
+      <p class="ink2">NAV là lượng USDG thật trong treasury chia cho tổng supply. Premium (giá/NAV) quyết định tốc độ rebase: dưới 1× thì không mint, từ 1,75× trở lên thì mint tối đa 0,45% mỗi 8 giờ, trên 2× thì PremiumSeller tự bán ra. NAV đạt đỉnh $175,5 ngày 27/9 và đang giảm dần vì rebase pha loãng nhanh hơn lượng USDG mà bond mang vào.</p></div>
+    <figure>
+      <figcaption><span class="t">Giá NET và NAV</span><span class="sub">USD, mỗi 12 giờ, trục log, pool Uniswap v2 canonical và Treasury on-chain</span></figcaption>
+      <div class="legend"><span><i class="key-line bg-s1"></i>Giá NET</span><span><i class="key-line bg-s2"></i>NAV (backing / NET)</span></div>
+      <div class="chart" id="c-price"></div>
+      <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-price"></div></details>
+    </figure>
+    <div class="grid2">
+      <figure>
+        <figcaption><span class="t">Premium (giá ÷ NAV)</span><span class="sub">Lần, trục log, mỗi 12 giờ; các đường mốc là ngưỡng trong contract</span></figcaption>
+        <div class="chart" id="c-prem"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-prem"></div></details>
+      </figure>
+      <div class="tbl-card"><div class="tablewrap"><table id="t-proto"><caption>Cơ chế và trạng thái hiện tại</caption></table></div></div>
+    </div>
+    <div class="tbl-card"><div class="tablewrap"><table id="t-pools"><caption>Pool thanh khoản lớn nhất (chỉ Uniswap v2 bị đánh thuế 5%)</caption></table></div></div>
+  </section>
+
+  <section id="aiban" aria-labelledby="h-d">
+    <div class="sec-head"><div class="eyebrow">D · Ai đang bán</div><h2 id="h-d">Bond, rebase và desk của team liên tục đưa NET mới ra thị trường</h2>
+      <p class="ink2">Bond bán NET rẻ hơn TWAP 3%, vest 2 ngày, và capacity 0,25% supply mỗi epoch gần như luôn bị mua hết. Phần lớn NET claim từ bond được bán ngay. Rebase mint thêm cho staker mỗi 8 giờ, không có cooldown khi rút stake.</p></div>
+    <figure>
+      <figcaption><span class="t">NET mới mint mỗi tuần theo nguồn</span><span class="sub">Tuần bắt đầu thứ Sáu; tuần cuối chỉ có 5 ngày (2–6/10)</span></figcaption>
+      <div class="legend"><span><i class="key-box bg-s1"></i>Rebase cho staker</span><span><i class="key-box bg-s2"></i>Bond</span><span><i class="key-box bg-s3"></i>pTEAM (team, giá $1)</span><span><i class="key-box bg-s4"></i>PremiumSeller</span></div>
+      <div class="chart" id="c-mint"></div>
+      <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-mint"></div></details>
+    </figure>
+    <div class="grid2">
+      <div class="card">
+        <h3>Team bán qua "bond desk"</h3>
+        <ul class="notes" id="team-notes"></ul>
+      </div>
+      <div class="tbl-card"><div class="tablewrap"><table id="t-desks"><caption>USDG người đăng ký trả vào các desk</caption></table></div></div>
+    </div>
+    <div class="tbl-card"><div class="tablewrap"><table id="t-sellers"><caption>Bán ròng nhiều nhất 7 ngày (gần như toàn bonder)</caption></table></div></div>
+  </section>
+
+  <section id="aimua" aria-labelledby="h-e">
+    <div class="sec-head"><div class="eyebrow">E · Ai đang mua</div><h2 id="h-e">Người mua lớn nhất là team, và họ gần hết tiền</h2>
+      <p class="ink2">RWA Sleeve là một Safe do team giữ. Owner duy nhất của nó là EOA <span class="mono">0xe7e8…96f6</span>, cũng là owner 1-of-1 của Team Safe; HoodScan liệt kê ví này là "holder lớn nhất". Sleeve mua NET qua LiFi bằng USDG vay thế chấp cổ phiếu token hoá trên Morpho.</p></div>
+    <div class="grid2">
+      <figure>
+        <figcaption><span class="t">RWA Sleeve mua NET mỗi ngày</span><span class="sub">USD theo giá đóng cửa nến 4 giờ; ngày không mua tính là 0</span></figcaption>
+        <div class="chart" id="c-sleeve"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-sleeve"></div></details>
+      </figure>
+      <div class="tbl-card"><div class="tablewrap"><table id="t-book"><caption>Bảng cân đối của RWA Sleeve</caption></table></div></div>
+    </div>
+    <div class="grid2">
+      <figure>
+        <figcaption><span class="t">Dòng tiền ròng 30 ngày trên DEX theo nhóm ví</span><span class="sub">USD; dương là mua ròng, âm là bán ròng</span></figcaption>
+        <div class="chart" id="c-cat"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-cat"></div></details>
+      </figure>
+      <div class="card">
+        <h3>Các nhóm mua khác</h3>
+        <ul class="notes" id="buyer-notes"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="dubao" aria-labelledby="h-f">
+    <div class="sec-head"><div class="eyebrow">F · Dự báo 1–3 tuần</div><h2 id="h-f">Cung vẫn lớn hơn cầu, sàn cơ chế ở vùng NAV</h2>
+      <p class="ink2">Supply đang tăng khoảng 1,3% mỗi ngày, nên cần khoảng $400K tiền mới ròng mỗi ngày chỉ để giữ giá đứng yên. Ở vùng NAV, InverseBond tự mua lại và rebase cùng bond tự dừng, nên vùng $160–170 là sàn theo cơ chế. Xác suất bên dưới là đánh giá chủ quan.</p></div>
+    <figure>
+      <figcaption><span class="t">Bậc giá và kịch bản</span><span class="sub">USD; các mốc tính từ NAV hiện tại và ngưỡng trong contract</span></figcaption>
+      <div class="chart" id="c-ladder"></div>
+    </figure>
+    <div class="tbl-card"><div class="tablewrap"><table id="t-scn" class="wide"><caption>Kịch bản</caption></table></div></div>
+    <div class="grid2">
+      <div class="tbl-card"><div class="tablewrap"><table id="t-sim" class="wide"><caption>Mô phỏng pha loãng (hằng số contract, trạng thái 6/10)</caption></table></div></div>
+      <div class="card">
+        <h3>Robinhood Chain 2–4 tuần tới</h3>
+        <ul class="notes">
+          <li><b>Cơ sở:</b> tiếp tục bình thường hoá sau hype. Volume DEX quanh $0,8–1,2 tỷ/ngày, phí thấp, token gốc dao động hoặc giảm tiếp với những nhịp pump ngắn. Stablecoin đi ngang hoặc tăng nhẹ nhờ tiền gửi lấy lãi; ETH tiếp tục rút dần.</li>
+          <li><b>Có thể đảo chiều nếu</b> Robinhood công bố số liệu hoặc ưu đãi mới cho chain (27/10), stock token mở thêm thị trường, có chương trình incentive mới, hoặc tiền risk-on từ BTC/ETH tràn sang.</li>
+          <li><b>Tín hiệu xác nhận:</b> volume DEX tuần quay lại trên $10 tỷ và stablecoin tăng tiếp.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="ruiro" aria-labelledby="h-g">
+    <div class="sec-head"><div class="eyebrow">G · Theo dõi và rủi ro</div><h2 id="h-g">Những gì cần xem on-chain</h2></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Tín hiệu nên theo dõi</h3>
+        <ul class="notes">
+          <li>Số dư USDG và giao dịch của RWA Sleeve <span class="mono">0x4987…c7cb</span>: mua lại, bán NET, rút wsNET hay trả nợ Morpho.</li>
+          <li><span class="mono">pTEAM.exercised()</span> (đang 13.320) và NET chuyển vào các desk <span class="mono">0x99b6…</span>, <span class="mono">0xa84e…</span>, <span class="mono">0x70ea…</span>, <span class="mono">0x2f2f…</span>, <span class="mono">0x732b…</span>.</li>
+          <li><span class="mono">Distributor.premium()</span>: dưới 1,1 thì rebase gần như dừng; trên 1,75 thì rebase tối đa.</li>
+          <li><span class="mono">InverseBond.capacityRemaining()</span>: giảm tức là đã có người bán xuống dưới NAV.</li>
+          <li>ETH trong bridge L1 và stablecoin trên chain.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Rủi ro chính</h3>
+        <ul class="notes">
+          <li><b>Tập trung vào team:</b> một EOA ký 1-of-1 cho cả Team Safe và RWA Sleeve. Option pTEAM không hết hạn, team luôn mint được 15% float với giá $1.</li>
+          <li><b>Docs chưa khớp với chain:</b> NET trong các desk đến từ pTEAM chứ không phải mua trên thị trường, và ít nhất 4 desk do Team Safe quản lý không được công bố địa chỉ.</li>
+          <li><b>Thanh khoản mỏng</b> (~$1,1M) so với FDV ~$31M; 92% supply có thể rút stake ngay.</li>
+          <li><b>Đòn bẩy của team:</b> Sleeve nợ $1,58M trên các market Morpho đã dùng 100% vốn.</li>
+          <li><b>Phản xạ kiểu OHM:</b> premium thường co về NAV sau giai đoạn hưng phấn. NAV là USDG thật, phần vốn hoá phía trên NAV thì không có gì bảo chứng.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer id="phuongphap">
+    <h2>Phương pháp và nguồn</h2>
+    <p>Đọc trực tiếp từ chain: RPC <code>rpc.mainnet.chain.robinhood.com</code> (log Transfer) và <code>robinhood.drpc.org</code> (eth_call lịch sử qua Multicall3), contract verified trên Sourcify, số dư bridge trên Ethereum qua <code>eth.drpc.org</code>. Đối chiếu DefiLlama, DexScreener, GeckoTerminal, CoinGecko, alternative.me và HoodScan. Dòng tiền gom khoảng 587K transaction NET/sNET/wsNET của khoảng 42K ví; pool, contract protocol và router được loại ra, phần còn lại là ví người dùng.</p>
+    <p>Tin tức: <a href="https://kucoin.com/news/flash/robinhood-chain-meme-and-stock-token-prices-drop-sharply-amid-cooling-speculation" target="_blank" rel="noopener">KuCoin, 4/10</a> · <a href="https://coingabbar.com/en/robinhood-chain-news-dex-volume-falls-from-record-high" target="_blank" rel="noopener">Coingabbar</a> · <a href="https://www.globenewswire.com/news-release/2026/10/01/3373375/0/en/robinhood-markets-inc-to-announce-third-quarter-2026-results-on-october-27-2026.html" target="_blank" rel="noopener">GlobeNewswire</a>. Mã nguồn và dữ liệu: thư mục <code>netnet-analysis/</code> trong repo <code>kazza559/test-claude</code>, branch <code>claude/coin-analysis-0xca9c78dd-hpdrb6</code>.</p>
+    <p><b>Đây là phân tích dữ liệu, không phải lời khuyên đầu tư.</b> NET là token rebase kiểu OlympusDAO trên một chain mới; bạn có thể mất phần lớn số vốn bỏ vào.</p>
+  </footer>
+</div>
+
+<script>
+const D = {"asof":"2026-10-06 11:34 UTC","state":{"spot":224.040958384845,"twap":222.79168462411823,"nav":167.75767413858634,"premium":1.3280565897692864,"rate":0.001968339538615718,"supply":137554.464057563,"staked":126880.387066171,"rfv":23075816.95767654,"liquid":7235351.365387,"morpho":16138227.047178,"pteam_ex":13320.0,"pteam_now":7065.605269682,"inv_price":165.24130902650757,"inv_cap":72353.51365387,"bd_net":1602.944142254,"pool_net":854.310831358,"pool_usdg":191400.617416,"index":4.195712253},"history":[{"t":"2026-07-18T00:00","price":39.06,"nav":2.61,"premium":15.047,"supply":21695.0},{"t":"2026-07-18T12:00","price":17.71,"nav":2.67,"premium":7.359,"supply":21918.0},{"t":"2026-07-19T00:00","price":22.54,"nav":2.82,"premium":8.048,"supply":22048.0},{"t":"2026-07-19T12:00","price":32.36,"nav":2.95,"premium":10.024,"supply":22288.0},{"t":"2026-07-20T00:00","price":24.8,"nav":3.02,"premium":8.276,"supply":22419.0},{"t":"2026-07-20T12:00","price":33.32,"nav":3.08,"premium":9.753,"supply":22647.0},{"t":"2026-07-21T00:00","price":22.04,"nav":3.2,"premium":6.931,"supply":22833.0},{"t":"2026-07-21T12:00","price":46.03,"nav":3.36,"premium":14.42,"supply":23113.0},{"t":"2026-07-22T00:00","price":92.22,"nav":3.69,"premium":18.893,"supply":23300.0},{"t":"2026-07-22T12:00","price":80.53,"nav":4.36,"premium":19.733,"supply":23644.0},{"t":"2026-07-23T00:00","price":102.95,"nav":4.73,"premium":22.046,"supply":23806.0},{"t":"2026-07-23T12:00","price":67.14,"nav":4.96,"premium":14.06,"supply":24102.0},{"t":"2026-07-24T00:00","price":58.35,"nav":5.03,"premium":13.06,"supply":24232.0},{"t":"2026-07-24T12:00","price":82.27,"nav":5.28,"premium":15.684,"supply":24504.0},{"t":"2026-07-25T00:00","price":44.35,"nav":5.39,"premium":7.534,"supply":24776.0},{"t":"2026-07-25T12:00","price":45.99,"nav":5.48,"premium":8.803,"supply":25173.0},{"t":"2026-07-26T00:00","price":34.23,"nav":5.58,"premium":6.643,"supply":25308.0},{"t":"2026-07-26T12:00","price":37.61,"nav":5.66,"premium":6.707,"supply":25564.0},{"t":"2026-07-27T00:00","price":28.81,"nav":5.74,"premium":5.047,"supply":25704.0},{"t":"2026-07-27T12:00","price":31.56,"nav":5.82,"premium":5.396,"supply":25972.0},{"t":"2026-07-28T00:00","price":22.59,"nav":5.97,"premium":4.038,"supply":26192.0},{"t":"2026-07-28T12:00","price":25.35,"nav":5.98,"premium":4.257,"supply":26613.0},{"t":"2026-07-29T00:00","price":25.78,"nav":6.05,"premium":4.415,"supply":26974.0},{"t":"2026-07-29T12:00","price":24.36,"nav":6.1,"premium":4.026,"supply":27276.0},{"t":"2026-07-30T00:00","price":40.86,"nav":6.23,"premium":5.53,"supply":27496.0},{"t":"2026-07-30T12:00","price":38.88,"nav":6.33,"premium":6.164,"supply":28067.0},{"t":"2026-07-31T00:00","price":48.02,"nav":6.5,"premium":7.694,"supply":28552.0},{"t":"2026-07-31T12:00","price":33.83,"nav":6.57,"premium":5.234,"supply":28842.0},{"t":"2026-08-01T00:00","price":27.89,"nav":6.76,"premium":4.103,"supply":29214.0},{"t":"2026-08-01T12:00","price":34.9,"nav":6.93,"premium":4.878,"supply":29544.0},{"t":"2026-08-02T00:00","price":31.69,"nav":7.03,"premium":4.507,"supply":29717.0},{"t":"2026-08-02T12:00","price":53.8,"nav":7.04,"premium":6.329,"supply":30029.0},{"t":"2026-08-03T00:00","price":40.71,"nav":7.04,"premium":5.777,"supply":30331.0},{"t":"2026-08-03T12:00","price":34.76,"nav":7.04,"premium":5.21,"supply":30633.0},{"t":"2026-08-04T00:00","price":44.84,"nav":7.09,"premium":6.333,"supply":30937.0},{"t":"2026-08-04T12:00","price":49.43,"nav":7.18,"premium":6.882,"supply":31250.0},{"t":"2026-08-05T00:00","price":38.98,"nav":7.46,"premium":5.255,"supply":31503.0},{"t":"2026-08-05T12:00","price":35.14,"nav":7.54,"premium":4.793,"supply":31965.0},{"t":"2026-08-06T00:00","price":38.37,"nav":7.72,"premium":5.818,"supply":32297.0},{"t":"2026-08-06T12:00","price":38.07,"nav":7.88,"premium":4.854,"supply":32617.0},{"t":"2026-08-07T00:00","price":48.26,"nav":8.19,"premium":5.985,"supply":32822.0},{"t":"2026-08-07T12:00","price":57.58,"nav":8.25,"premium":7.083,"supply":33140.0},{"t":"2026-08-08T00:00","price":85.86,"nav":8.77,"premium":9.912,"supply":33550.0},{"t":"2026-08-08T12:00","price":88.58,"nav":9.16,"premium":9.665,"supply":33946.0},{"t":"2026-08-09T00:00","price":88.79,"nav":9.29,"premium":8.312,"supply":34151.0},{"t":"2026-08-09T12:00","price":87.16,"nav":9.31,"premium":9.402,"supply":34480.0},{"t":"2026-08-10T00:00","price":115.39,"nav":10.01,"premium":11.986,"supply":34777.0},{"t":"2026-08-10T12:00","price":108.36,"nav":10.13,"premium":11.253,"supply":35277.0},{"t":"2026-08-11T00:00","price":80.56,"nav":10.26,"premium":8.005,"supply":35450.0},{"t":"2026-08-11T12:00","price":94.63,"nav":10.39,"premium":9.469,"supply":35815.0},{"t":"2026-08-12T00:00","price":132.75,"nav":10.88,"premium":11.295,"supply":36175.0},{"t":"2026-08-12T12:00","price":133.04,"nav":11.15,"premium":11.413,"supply":36579.0},{"t":"2026-08-13T00:00","price":93.77,"nav":11.5,"premium":8.604,"supply":36768.0},{"t":"2026-08-13T12:00","price":98.24,"nav":11.77,"premium":8.561,"supply":37201.0},{"t":"2026-08-14T00:00","price":148.4,"nav":12.68,"premium":12.194,"supply":37836.0},{"t":"2026-08-14T12:00","price":124.89,"nav":13.25,"premium":9.384,"supply":38442.0},{"t":"2026-08-15T00:00","price":128.63,"nav":13.72,"premium":9.769,"supply":38859.0},{"t":"2026-08-15T12:00","price":174.94,"nav":14.34,"premium":12.286,"supply":39363.0},{"t":"2026-08-16T00:00","price":157.9,"nav":14.91,"premium":11.19,"supply":39820.0},{"t":"2026-08-16T12:00","price":202.68,"nav":15.8,"premium":12.464,"supply":40540.0},{"t":"2026-08-17T00:00","price":202.43,"nav":16.73,"premium":12.332,"supply":41129.0},{"t":"2026-08-17T12:00","price":199.51,"nav":17.73,"premium":10.508,"supply":41721.0},{"t":"2026-08-18T00:00","price":198.44,"nav":18.34,"premium":11.181,"supply":42315.0},{"t":"2026-08-18T12:00","price":216.68,"nav":19.21,"premium":11.387,"supply":43014.0},{"t":"2026-08-19T00:00","price":241.99,"nav":20.11,"premium":11.784,"supply":43533.0},{"t":"2026-08-19T12:00","price":269.11,"nav":21.22,"premium":13.003,"supply":44351.0},{"t":"2026-08-20T00:00","price":326.88,"nav":22.49,"premium":14.746,"supply":45021.0},{"t":"2026-08-20T12:00","price":408.32,"nav":24.1,"premium":16.885,"supply":45730.0},{"t":"2026-08-21T00:00","price":319.68,"nav":25.29,"premium":13.158,"supply":46190.0},{"t":"2026-08-21T12:00","price":333.33,"nav":26.45,"premium":12.64,"supply":46833.0},{"t":"2026-08-22T00:00","price":436.34,"nav":27.66,"premium":15.739,"supply":47342.0},{"t":"2026-08-22T12:00","price":620.48,"nav":30.47,"premium":18.398,"supply":48356.0},{"t":"2026-08-23T00:00","price":604.53,"nav":32.42,"premium":19.652,"supply":48953.0},{"t":"2026-08-23T12:00","price":599.02,"nav":34.47,"premium":18.206,"supply":49605.0},{"t":"2026-08-24T00:00","price":661.27,"nav":37.23,"premium":15.941,"supply":50158.0},{"t":"2026-08-24T12:00","price":524.77,"nav":38.52,"premium":13.799,"supply":50850.0},{"t":"2026-08-25T00:00","price":679.54,"nav":40.68,"premium":15.525,"supply":51490.0},{"t":"2026-08-25T12:00","price":621.11,"nav":43.04,"premium":14.238,"supply":52251.0},{"t":"2026-08-26T00:00","price":813.29,"nav":45.59,"premium":17.969,"supply":53052.0},{"t":"2026-08-26T12:00","price":1262.61,"nav":50.48,"premium":26.619,"supply":53906.0},{"t":"2026-08-27T00:00","price":1081.14,"nav":54.4,"premium":18.996,"supply":54642.0},{"t":"2026-08-27T12:00","price":919.57,"nav":58.69,"premium":16.036,"supply":55348.0},{"t":"2026-08-28T00:00","price":1174.84,"nav":62.36,"premium":16.812,"supply":56014.0},{"t":"2026-08-28T12:00","price":1032.85,"nav":65.44,"premium":15.187,"supply":56774.0},{"t":"2026-08-29T00:00","price":1422.18,"nav":69.84,"premium":20.029,"supply":57463.0},{"t":"2026-08-29T12:00","price":1143.32,"nav":74.01,"premium":15.533,"supply":58313.0},{"t":"2026-08-30T00:00","price":1741.84,"nav":79.18,"premium":20.861,"supply":58893.0},{"t":"2026-08-30T12:00","price":1527.33,"nav":84.43,"premium":18.206,"supply":59746.0},{"t":"2026-08-31T00:00","price":1154.99,"nav":89.07,"premium":13.289,"supply":60349.0},{"t":"2026-08-31T12:00","price":1205.17,"nav":94.07,"premium":12.553,"supply":61250.0},{"t":"2026-09-01T00:00","price":1088.47,"nav":96.75,"premium":11.278,"supply":61840.0},{"t":"2026-09-01T12:00","price":1105.59,"nav":101.35,"premium":11.37,"supply":62763.0},{"t":"2026-09-02T00:00","price":1621.35,"nav":105.07,"premium":14.047,"supply":63307.0},{"t":"2026-09-02T12:00","price":1328.46,"nav":109.36,"premium":12.218,"supply":64199.0},{"t":"2026-09-03T00:00","price":1423.51,"nav":114.19,"premium":12.351,"supply":64861.0},{"t":"2026-09-03T12:00","price":1303.88,"nav":117.83,"premium":11.224,"supply":65705.0},{"t":"2026-09-04T00:00","price":1127.1,"nav":121.64,"premium":9.644,"supply":66298.0},{"t":"2026-09-04T12:00","price":951.16,"nav":125.73,"premium":7.314,"supply":67239.0},{"t":"2026-09-05T00:00","price":1009.61,"nav":127.53,"premium":7.828,"supply":67768.0},{"t":"2026-09-05T12:00","price":787.36,"nav":129.81,"premium":6.314,"supply":68718.0},{"t":"2026-09-06T00:00","price":798.43,"nav":131.97,"premium":5.925,"supply":69320.0},{"t":"2026-09-06T12:00","price":895.72,"nav":133.62,"premium":6.617,"supply":70273.0},{"t":"2026-09-07T00:00","price":800.14,"nav":136.19,"premium":5.89,"supply":70910.0},{"t":"2026-09-07T12:00","price":781.76,"nav":138.34,"premium":5.885,"supply":71931.0},{"t":"2026-09-08T00:00","price":710.43,"nav":139.96,"premium":5.029,"supply":72631.0},{"t":"2026-09-08T12:00","price":619.75,"nav":141.09,"premium":4.564,"supply":73671.0},{"t":"2026-09-09T00:00","price":748.8,"nav":142.99,"premium":5.276,"supply":74441.0},{"t":"2026-09-09T12:00","price":606.92,"nav":144.19,"premium":4.201,"supply":75614.0},{"t":"2026-09-10T00:00","price":588.88,"nav":145.39,"premium":4.149,"supply":76342.0},{"t":"2026-09-10T12:00","price":646.71,"nav":146.06,"premium":4.455,"supply":77388.0},{"t":"2026-09-11T00:00","price":658.46,"nav":147.2,"premium":4.52,"supply":78231.0},{"t":"2026-09-11T12:00","price":510.98,"nav":148.49,"premium":3.617,"supply":79392.0},{"t":"2026-09-12T00:00","price":486.68,"nav":149.02,"premium":3.345,"supply":80062.0},{"t":"2026-09-12T12:00","price":567.78,"nav":149.69,"premium":3.802,"supply":81197.0},{"t":"2026-09-13T00:00","price":704.42,"nav":149.82,"premium":4.532,"supply":81935.0},{"t":"2026-09-13T12:00","price":633.91,"nav":150.51,"premium":4.247,"supply":83030.0},{"t":"2026-09-14T00:00","price":658.27,"nav":151.8,"premium":4.363,"supply":83793.0},{"t":"2026-09-14T12:00","price":615.79,"nav":152.47,"premium":4.132,"supply":85123.0},{"t":"2026-09-15T00:00","price":607.09,"nav":153.0,"premium":3.941,"supply":85794.0},{"t":"2026-09-15T12:00","price":785.08,"nav":153.93,"premium":5.074,"supply":87147.0},{"t":"2026-09-16T00:00","price":917.79,"nav":155.54,"premium":6.087,"supply":88039.0},{"t":"2026-09-16T12:00","price":845.41,"nav":156.19,"premium":5.553,"supply":89137.0},{"t":"2026-09-17T00:00","price":893.44,"nav":158.3,"premium":5.62,"supply":90118.0},{"t":"2026-09-17T12:00","price":983.46,"nav":159.82,"premium":6.226,"supply":91332.0},{"t":"2026-09-18T00:00","price":924.77,"nav":161.9,"premium":5.762,"supply":92284.0},{"t":"2026-09-18T12:00","price":812.63,"nav":163.41,"premium":4.958,"supply":93607.0},{"t":"2026-09-19T00:00","price":805.64,"nav":164.6,"premium":4.927,"supply":94321.0},{"t":"2026-09-19T12:00","price":744.38,"nav":165.79,"premium":4.491,"supply":95726.0},{"t":"2026-09-20T00:00","price":717.96,"nav":166.77,"premium":4.535,"supply":96591.0},{"t":"2026-09-20T12:00","price":655.9,"nav":167.45,"premium":3.901,"supply":97870.0},{"t":"2026-09-21T00:00","price":765.17,"nav":168.45,"premium":4.536,"supply":98629.0},{"t":"2026-09-21T12:00","price":713.43,"nav":168.94,"premium":4.254,"supply":100001.0},{"t":"2026-09-22T00:00","price":692.23,"nav":170.34,"premium":4.069,"supply":100951.0},{"t":"2026-09-22T12:00","price":714.05,"nav":170.75,"premium":4.173,"supply":102337.0},{"t":"2026-09-23T00:00","price":834.93,"nav":172.01,"premium":4.798,"supply":103465.0},{"t":"2026-09-23T12:00","price":712.79,"nav":172.91,"premium":4.105,"supply":104947.0},{"t":"2026-09-24T00:00","price":621.39,"nav":173.63,"premium":3.66,"supply":105931.0},{"t":"2026-09-24T12:00","price":625.41,"nav":174.34,"premium":3.598,"supply":107537.0},{"t":"2026-09-25T00:00","price":542.44,"nav":174.61,"premium":3.19,"supply":108404.0},{"t":"2026-09-25T12:00","price":620.08,"nav":175.06,"premium":3.575,"supply":110095.0},{"t":"2026-09-26T00:00","price":533.34,"nav":175.07,"premium":3.042,"supply":111081.0},{"t":"2026-09-26T12:00","price":552.35,"nav":175.1,"premium":3.163,"supply":112539.0},{"t":"2026-09-27T00:00","price":503.09,"nav":175.64,"premium":2.856,"supply":113460.0},{"t":"2026-09-27T12:00","price":438.59,"nav":175.44,"premium":2.388,"supply":115224.0},{"t":"2026-09-28T00:00","price":499.02,"nav":175.02,"premium":2.855,"supply":116351.0},{"t":"2026-09-28T12:00","price":396.25,"nav":174.71,"premium":2.277,"supply":118105.0},{"t":"2026-09-29T00:00","price":422.59,"nav":174.57,"premium":2.448,"supply":118948.0},{"t":"2026-09-29T12:00","price":419.54,"nav":173.9,"premium":2.451,"supply":120485.0},{"t":"2026-09-30T00:00","price":463.18,"nav":174.07,"premium":2.482,"supply":121500.0},{"t":"2026-09-30T12:00","price":433.98,"nav":173.52,"premium":2.507,"supply":123075.0},{"t":"2026-10-01T00:00","price":436.11,"nav":173.78,"premium":2.493,"supply":124103.0},{"t":"2026-10-01T12:00","price":394.56,"nav":173.11,"premium":2.298,"supply":125738.0},{"t":"2026-10-02T00:00","price":351.34,"nav":173.07,"premium":2.006,"supply":126758.0},{"t":"2026-10-02T12:00","price":278.36,"nav":172.13,"premium":1.684,"supply":128542.0},{"t":"2026-10-03T00:00","price":313.55,"nav":171.83,"premium":1.825,"supply":129374.0},{"t":"2026-10-03T12:00","price":279.66,"nav":170.85,"premium":1.634,"supply":131038.0},{"t":"2026-10-04T00:00","price":280.39,"nav":170.45,"premium":1.643,"supply":131946.0},{"t":"2026-10-04T12:00","price":281.31,"nav":169.37,"premium":1.664,"supply":133404.0},{"t":"2026-10-05T00:00","price":236.46,"nav":168.97,"premium":1.479,"supply":134112.0},{"t":"2026-10-05T12:00","price":245.83,"nav":168.38,"premium":1.476,"supply":135438.0},{"t":"2026-10-06T00:00","price":243.64,"nav":168.24,"premium":1.419,"supply":136229.0},{"t":"2026-10-06T11:34","price":224.04,"nav":167.76,"premium":1.328,"supply":137554.0}],"weekly_mints":[{"week":"2026-07-17","days":7,"rebase":1849.0,"bond":414.0,"pteam":0.0,"premium":302.0,"bond_claim":281.0},{"week":"2026-07-24","days":7,"rebase":2460.0,"bond":342.0,"pteam":1125.0,"premium":395.0,"bond_claim":362.0},{"week":"2026-07-31","days":7,"rebase":2887.0,"bond":289.0,"pteam":729.0,"premium":368.0,"bond_claim":343.0},{"week":"2026-08-07","days":7,"rebase":3312.0,"bond":725.0,"pteam":725.0,"premium":255.0,"bond_claim":540.0},{"week":"2026-08-14","days":7,"rebase":3933.0,"bond":2063.0,"pteam":2190.0,"premium":169.0,"bond_claim":1851.0},{"week":"2026-08-21","days":7,"rebase":4792.0,"bond":2622.0,"pteam":2301.0,"premium":110.0,"bond_claim":2555.0},{"week":"2026-08-28","days":7,"rebase":5753.0,"bond":3222.0,"pteam":1250.0,"premium":62.0,"bond_claim":3103.0},{"week":"2026-09-04","days":7,"rebase":6773.0,"bond":3788.0,"pteam":1250.0,"premium":123.0,"bond_claim":3621.0},{"week":"2026-09-11","days":7,"rebase":8001.0,"bond":4406.0,"pteam":1500.0,"premium":148.0,"bond_claim":4399.0},{"week":"2026-09-18","days":7,"rebase":9417.0,"bond":5208.0,"pteam":1350.0,"premium":146.0,"bond_claim":4897.0},{"week":"2026-09-25","days":7,"rebase":11070.0,"bond":6195.0,"pteam":900.0,"premium":191.0,"bond_claim":6002.0},{"week":"2026-10-02","days":5,"rebase":6417.0,"bond":4379.0,"pteam":0.0,"premium":2.0,"bond_claim":4098.0}],"categories":[{"key":"bond_claimers","net":-5887317,"buy":4169503,"sell":-10056820,"wallets_buy":401,"wallets_sell":353},{"key":"other_wallets","net":3720311,"buy":15430179,"sell":-11709868,"wallets_buy":11430,"wallets_sell":7941},{"key":"team_rwa_sleeve","net":2095152,"buy":2095152,"sell":0,"wallets_buy":1,"wallets_sell":0}],"sleeve_daily":[{"date":"2026-09-18","net":0.5,"usd":403.0},{"date":"2026-09-19","net":126.7,"usd":95403.0},{"date":"2026-09-21","net":149.3,"usd":110213.0},{"date":"2026-09-22","net":116.5,"usd":83182.0},{"date":"2026-09-23","net":0.1,"usd":68.0},{"date":"2026-09-24","net":0.7,"usd":427.0},{"date":"2026-09-25","net":315.9,"usd":187222.0},{"date":"2026-09-26","net":0.1,"usd":34.0},{"date":"2026-09-27","net":412.6,"usd":202429.0},{"date":"2026-09-28","net":834.5,"usd":377656.0},{"date":"2026-09-29","net":323.6,"usd":135970.0},{"date":"2026-09-30","net":227.7,"usd":104136.0},{"date":"2026-10-01","net":549.6,"usd":208644.0},{"date":"2026-10-02","net":654.4,"usd":199724.0},{"date":"2026-10-03","net":429.2,"usd":121101.0},{"date":"2026-10-04","net":315.3,"usd":88618.0},{"date":"2026-10-05","net":651.7,"usd":159956.0},{"date":"2026-10-06","net":0.1,"usd":20.0}],"sleeve":{"net":651.773115189,"wsnet":813.5203247241694,"index":4.195712253,"usdg":10271.267197,"wallet_stocks_usd":135154.542406964,"morpho_collateral_usd":4101107.6980000003,"morpho_debt_usd":1579502.925568254,"markets":{"NVDA":{"collateral_usd":1562390.5522,"debt_usd":609536.6428470062,"util":0.9999999997084699},"SPCX":{"collateral_usd":1398944.8495,"debt_usd":512980.84417418746,"util":1.0},"AAPL":{"collateral_usd":482107.49990000005,"debt_usd":197309.30388406495,"util":1.0},"GOOGL":{"collateral_usd":657664.7964,"debt_usd":259676.13466299532,"util":1.0}},"bought_net":5108.4171,"bought_usd":2075206.4,"pteam_exercised":13320.0,"pteam_now":7065.758130093,"pteam_same_tx":192,"pteam_txs":200,"desk_sale_est_usd":7078008.84,"owners":{"TeamSafe":{"owners":["0xe7e867518c5b3d929ca63622f314ff9dc60e96f6"],"threshold":1},"RWASleeve":{"owners":["0xe7e867518c5b3d929ca63622f314ff9dc60e96f6"],"threshold":1}}},"desks":[{"addr":"0x99b6ee6ede47d9a8a9bfd03f728a99b789df1961","name":"RwaDesk (listed)","usdg_in":1882424.0,"to_treasury":139103.0,"to_router":1743321.0},{"addr":"0xa84efc3136bf1bb89ade9e5be6ab32cb1a04f08d","name":"RwaDesk (unlisted 0xa84e)","usdg_in":3246298.0,"to_treasury":541054.0,"to_router":2705244.0},{"addr":"0x2f2f215b810fa692304cb0095804ab3c8e4cef78","name":"RwaDesk (unlisted 0x2f2f)","usdg_in":0.0,"to_treasury":0.0,"to_router":0.0},{"addr":"0x70eaeec20c39df48509f1f3fab01f7dde207947b","name":"Desk (unlisted 0x70ea)","usdg_in":137500.0,"to_treasury":0.0,"to_router":137500.0},{"addr":"0x732b3d1d3e8912cae75164fa14a6e1c4c64615b3","name":"Desk (unlisted 0x732b)","usdg_in":191987.0,"to_treasury":0.0,"to_router":191987.0}],"traders7":{"sellers":[{"addr":"0xf3572a5e3c65b9c655d29c8d48fcab4b9425401d","label":"","net":-247205.0,"buy":0.0,"sell":247205.0,"bond_claim":824.6},{"addr":"0x7c9457a775015eee6e098cb1a4ba6cf9b0fdf3c0","label":"","net":-163623.0,"buy":468900.0,"sell":632523.0,"bond_claim":605.0},{"addr":"0x708d67244898b3bf7283b4a496f22c6e88f0b1a9","label":"","net":-106628.0,"buy":6275.0,"sell":112903.0,"bond_claim":246.2},{"addr":"0x480c5a37ca5e82483de68481698cd109fdd3c033","label":"","net":-101417.0,"buy":0.0,"sell":101417.0,"bond_claim":0.0},{"addr":"0x587c43e3f008f432366f6c3c2aaf9fbbb05e9da6","label":"","net":-95557.0,"buy":0.0,"sell":95557.0,"bond_claim":60.9},{"addr":"0x6175e7a985caeac2db12fada99e626ebd6fe7bcc","label":"","net":-91518.0,"buy":0.0,"sell":91518.0,"bond_claim":0.0},{"addr":"0x1ab48085ac8f27403e344a52e6a18b8c78b2c308","label":"","net":-83885.0,"buy":23567.0,"sell":107452.0,"bond_claim":0.0},{"addr":"0x11acd401e769c4ea69bd7bfe2599c41f5d689ce2","label":"","net":-83215.0,"buy":0.0,"sell":83215.0,"bond_claim":280.3}],"buyers":[{"addr":"0x498752d5fa0600cbd613074c151abe15b3fec7cb","label":"RWASleeve","net":954116.0,"buy":954116.0,"sell":0.0,"bond_claim":0.0},{"addr":"0x71affd3da39f3e2fa09ac0edb4b7850c3d00cdad","label":"","net":104862.0,"buy":225816.0,"sell":120953.0,"bond_claim":0.0},{"addr":"0x3821c23b51515086e0aa91400b5fe00199b47e4a","label":"","net":94769.0,"buy":163092.0,"sell":68323.0,"bond_claim":0.0},{"addr":"0xcdf005548f0e36b85e422a09e0ddbd1e4054e2bd","label":"","net":94580.0,"buy":94580.0,"sell":0.0,"bond_claim":0.0},{"addr":"0x76be31380e9dec409a3614f254b71ad63c9ab522","label":"","net":44254.0,"buy":44254.0,"sell":0.0,"bond_claim":0.0},{"addr":"0xed3ad83572cce1e7db2ea644f19abf98fc096684","label":"","net":42121.0,"buy":67713.0,"sell":25592.0,"bond_claim":0.0},{"addr":"0x3b6db380305e57076a25621d8de6b6a51a148976","label":"","net":36765.0,"buy":36765.0,"sell":0.0,"bond_claim":0.0},{"addr":"0xcd57368b792e0a7cff2066a82425e2d7d4645d9f","label":"","net":36363.0,"buy":46203.0,"sell":9841.0,"bond_claim":37.0}]},"traders30":{"sellers":[{"addr":"0x08698a396418f0c4bdde0d32652c90b405bdd331","label":"","net":-1247444.0,"buy":9752.0,"sell":1257196.0,"bond_claim":1883.5},{"addr":"0xf3572a5e3c65b9c655d29c8d48fcab4b9425401d","label":"","net":-785065.0,"buy":8601.0,"sell":793666.0,"bond_claim":1685.7},{"addr":"0x397c1f28f9ec7401c9d721af23b663503d7c58cd","label":"","net":-628207.0,"buy":154980.0,"sell":783187.0,"bond_claim":1050.0},{"addr":"0x7c9457a775015eee6e098cb1a4ba6cf9b0fdf3c0","label":"","net":-591737.0,"buy":1223218.0,"sell":1814955.0,"bond_claim":1237.7},{"addr":"0xb0fb47f9dc321d851a8e1cc977c918ff4b0b2461","label":"","net":-568793.0,"buy":5906.0,"sell":574698.0,"bond_claim":800.0},{"addr":"0x11acd401e769c4ea69bd7bfe2599c41f5d689ce2","label":"","net":-495714.0,"buy":3412.0,"sell":499126.0,"bond_claim":907.2},{"addr":"0x797ad3c073b9fef2a27d4ff718a4b036dea2888f","label":"","net":-464340.0,"buy":167128.0,"sell":631468.0,"bond_claim":700.9},{"addr":"0x776893049ed7c9d6f571fa42ba02c08ad78fc962","label":"","net":-309069.0,"buy":0.0,"sell":309069.0,"bond_claim":435.1}],"buyers":[{"addr":"0x498752d5fa0600cbd613074c151abe15b3fec7cb","label":"RWASleeve","net":2095152.0,"buy":2095152.0,"sell":0.0,"bond_claim":0.0},{"addr":"0xec261ec757c0483b811a0bfa990be46bafb5b064","label":"","net":585603.0,"buy":585603.0,"sell":0.0,"bond_claim":22.7},{"addr":"0x36cd75f8d0dcb4574013568f7a560ee03a2fd195","label":"","net":505184.0,"buy":505184.0,"sell":0.0,"bond_claim":302.2},{"addr":"0x4fbcbcb45a3df6b6a7f83ebe452f6b9bc15cd717","label":"","net":438425.0,"buy":472540.0,"sell":34115.0,"bond_claim":0.0},{"addr":"0x1effd55a8646f7dc67c7578c20ce575cefeb1120","label":"","net":244147.0,"buy":264375.0,"sell":20228.0,"bond_claim":42.3},{"addr":"0xc154d503bdfa502342b1a805fd91ae399a3ae3ec","label":"","net":195639.0,"buy":665023.0,"sell":469384.0,"bond_claim":0.0},{"addr":"0xfd19aa328d34fff71a9c635ba9bbe712468678ea","label":"","net":172385.0,"buy":198932.0,"sell":26547.0,"bond_claim":185.6},{"addr":"0xa8ab5a838b50c14cfc5c3e788c37c77140481c41","label":"","net":164392.0,"buy":166485.0,"sell":2094.0,"bond_claim":0.0}]},"chain_weekly":[{"week_start":"2026-07-08","week_end":"2026-07-14","dex":5393.5,"fees":37.3,"tvl":159.9,"stables":327.4,"eth":85494.0,"btc":62279.0},{"week_start":"2026-07-15","week_end":"2026-07-21","dex":4507.0,"fees":32.24,"tvl":274.1,"stables":432.9,"eth":105325.0,"btc":65185.0},{"week_start":"2026-07-22","week_end":"2026-07-28","dex":3932.3,"fees":32.22,"tvl":330.7,"stables":489.3,"eth":116992.0,"btc":63701.0},{"week_start":"2026-07-29","week_end":"2026-08-04","dex":2651.3,"fees":16.16,"tvl":403.0,"stables":558.7,"eth":127370.0,"btc":63465.0},{"week_start":"2026-08-05","week_end":"2026-08-11","dex":3674.5,"fees":26.15,"tvl":478.5,"stables":610.8,"eth":153448.0,"btc":63916.0},{"week_start":"2026-08-12","week_end":"2026-08-18","dex":3113.1,"fees":17.48,"tvl":537.1,"stables":663.8,"eth":163411.0,"btc":64491.0},{"week_start":"2026-08-19","week_end":"2026-08-25","dex":4214.4,"fees":20.42,"tvl":601.9,"stables":739.3,"eth":177191.0,"btc":78974.0},{"week_start":"2026-08-26","week_end":"2026-09-01","dex":9352.2,"fees":72.98,"tvl":729.2,"stables":796.6,"eth":219405.0,"btc":78553.0},{"week_start":"2026-09-02","week_end":"2026-09-08","dex":18358.6,"fees":153.19,"tvl":900.4,"stables":1001.1,"eth":292200.0,"btc":79093.0},{"week_start":"2026-09-09","week_end":"2026-09-15","dex":13810.8,"fees":88.37,"tvl":930.2,"stables":1087.8,"eth":308982.0,"btc":78173.0},{"week_start":"2026-09-16","week_end":"2026-09-22","dex":10632.8,"fees":51.89,"tvl":994.5,"stables":1106.3,"eth":308955.0,"btc":86597.0},{"week_start":"2026-09-23","week_end":"2026-09-29","dex":9445.5,"fees":36.77,"tvl":1010.4,"stables":1065.2,"eth":297017.0,"btc":83479.0},{"week_start":"2026-09-30","week_end":"2026-10-06","dex":8296.0,"fees":28.67,"tvl":1050.5,"stables":1113.3,"eth":276034.0,"btc":86314.0}],"chain":{"asof":"2026-10-06","tvl":1050497355,"stablecoins":1113344088.03,"stablecoin_breakdown":[{"symbol":"USDG","now":713352738.9380296,"prev_week":685693962.8093985,"prev_month":640627653.3093858},{"symbol":"USDe","now":361400559.5614673,"prev_week":345420695.5425129,"prev_month":319884049.9827207},{"symbol":"U","now":29976357.442062266,"prev_week":29976357.442062266,"prev_month":0},{"symbol":"rwaUSDi","now":3938486.4809261854,"prev_week":3938486.4809261854,"prev_month":3938486.4809261854},{"symbol":"rwaUSD","now":10,"prev_week":10,"prev_month":10}],"dex_24h":1179841586.81,"dex_7d":8891373973.399998,"dex_30d":47907615253.73998,"dex_change_7d_pct":-26.55,"dex_peak_day":"2026-09-04","dex_peak_usd":3674270481.69,"fees_24h":3548366.4899999993,"fees_7d":31162799.4,"fees_change_7d_pct":-28.1,"top_dexs_24h":[["Uniswap V4",419258020],["Uniswap V3",336592219],["Tessera V",68651041],["Fables",68114636],["Ramses CL V2",29564680],["Metric V1",23209163],["0x",23207637],["up v3",16082907]],"l1_bridge_eth_now":276033.9508980592,"l1_bridge_eth_peak":313598.5868746961,"l1_bridge_eth_peak_day":"2026-09-17"},"macro":{"BTC":{"price":86314.42951008352,"chg_7d_pct":3.197423076044359,"chg_30d_pct":7.450678767557761,"chg_90d_pct":38.664110042394604,"high_90d":86596.74004249526,"low_90d":62247.1304822092},"ETH":{"price":2715.3103780400593,"chg_7d_pct":1.416526981077837,"chg_30d_pct":8.007174504277925,"chg_90d_pct":55.850838253328035,"high_90d":2775.1686826711957,"low_90d":1742.2494536901065},"fear_greed":{"now":73,"avg_7d":70.28571428571429,"avg_30d":67.46666666666667},"global":{"mcap_usd":2916530000873.2783,"mcap_chg_24h_pct":-2.63947211166589,"btc_dominance":59.28815414897555}},"stock_tokens":{"count":191,"marketCap":156050001.00998342,"volume24":98630144.65,"liquidity":92152935.61},"memes":{"tracked":1280,"vol24":14476536.467736702,"liquidity":60437656.95667182,"net_flow_24h":-843758,"median_change_24h_pct":2.54,"new_launches_24h":49},"eco":[{"symbol":"NET","chg30":-74.81425,"chg7":-47.16719,"mcap":null},{"symbol":"LIT","chg30":-14.9269,"chg7":-12.1837,"mcap":977333110},{"symbol":"PONS","chg30":-57.1216,"chg7":-26.4448,"mcap":268400920},{"symbol":"NPC","chg30":-4.0019,"chg7":-15.4065,"mcap":159874211},{"symbol":"CASHCAT","chg30":-33.1062,"chg7":-13.6331,"mcap":150769809},{"symbol":"AI","chg30":-43.833,"chg7":-45.6766,"mcap":110604268},{"symbol":"BTC","chg30":7.450678767557761,"chg7":3.197423076044359,"mcap":null},{"symbol":"ETH","chg30":8.007174504277925,"chg7":1.416526981077837,"mcap":null}],"net_cg":{"chg7":-47.16719,"chg30":-74.81425,"ath":1887.55},"hoodscan":{"h24":{"trades":2926,"buys":1354,"sells":1572,"buyUsd":587918.1008791452,"sellUsd":705389.6037130596,"buyers":668,"sellers":915},"d7":{"trades":22773,"buys":10831,"sells":11942,"buyUsd":5650491.317498326,"sellUsd":6238811.595331615},"mix":{"smart":{"wallets":0,"buyUsd":0,"sellUsd":0,"qualityWeightedNetUsd":0,"opened":0,"added":0,"exited":0},"whale":{"wallets":9,"buyUsd":99870.3427363994,"sellUsd":257924.4961490904},"retail":{"wallets":1369,"buyUsd":437414.1419476031,"sellUsd":422071.10003610165}},"net24":-126854.61},"pools":[{"dex":"uniswap","ver":"v2","pair":"0x59F95461E68e0c77605299791E1449f175165B54","quote":"USDG","liq":382752.0,"vol":230105.0},{"dex":"up","ver":"v3","pair":"0x99e70A5b06215e5D2F3BeC773b4f59c008fc1673","quote":"USDG","liq":226428.0,"vol":537340.0},{"dex":"uniswap","ver":"v4","pair":"0x0d662a58507a46cd6a22632228306dc0d9c26f5fce90c37ced3b8358db33deb3","quote":"USDG","liq":147522.0,"vol":64307.0},{"dex":"uniswap","ver":"v4","pair":"0x4030f646babe7643c33ee0b9a5123e04ee97a8820a26d0d9dec8b0265f31170d","quote":"USDG","liq":103227.0,"vol":257165.0},{"dex":"ramses","ver":"v3","pair":"0x813fBeF16E3D3529b6339ccaa03AF4df803E3862","quote":"USDG","liq":96814.0,"vol":105759.0},{"dex":"uniswap","ver":"v4","pair":"0x888f0592dd8c2f059f1139377183cba51f61ca2d6dd350eb98556587e8734fc1","quote":"USDG","liq":52421.0,"vol":21008.0},{"dex":"alandale","ver":"","pair":"0x146a67CAa3Ff12cB019B2E46d5fb8a1bedDC18D3","quote":"USDG","liq":18217.0,"vol":125767.0},{"dex":"uniswap","ver":"v4","pair":"0xfe0381e7e48d5b9fb5c2ac3fa7950abdaa0eb22b5ef73fc686b5c18e77b99e9f","quote":"NET","liq":16993.0,"vol":5203.0}],"holders_top":[{"addr":"0x63c12667638f2ae6fc6ae09b43d98ec84a8586ea","eq":25793.8,"label":"wsNET"},{"addr":"0x9d53d5e3bd5e8d4cbfa6db1ca238aea02e651010","eq":9350.3,"label":"MorphoBlue"},{"addr":"0x498752d5fa0600cbd613074c151abe15b3fec7cb","eq":4073.6,"label":"RWASleeve"},{"addr":"0x72f273312b253d301b593ca1bbcb740aa500a242","eq":2523.2,"label":""},{"addr":"0x8366a39cc670b4001a1121b8f6a443a643e40951","eq":1678.2,"label":"UniV4 PoolManager"},{"addr":"0xde9df88aba59b644d4d7f6305e52ab982a3cfcac","eq":1620.6,"label":""},{"addr":"0xff32a969a0c567129eecd926d04657728e1980c1","eq":1603.2,"label":"BondDepository"},{"addr":"0x255946be628ace9aeb9ede78c56aea94e51ae73c","eq":1313.9,"label":""},{"addr":"0x0cc7cedb0935ceab0b4a6b38ee7dcfd403b19a7b","eq":1279.5,"label":""},{"addr":"0xb5e8546125709a6072279bf0d6f176f59d115c43","eq":1122.7,"label":""},{"addr":"0x5d446a2be952f4f9ba241b382a73ad3b1819aaf5","eq":1093.0,"label":""},{"addr":"0x33d52f972f8d56c6f7cbc4f8bccc4884799761d4","eq":1038.1,"label":""}]};
+(function(){
+"use strict";
+const NS = "http://www.w3.org/2000/svg";
+const MINUS = "−";
+
+/* ---------- formatting (vi-VN: dấu chấm hàng nghìn, dấu phẩy thập phân) ---------- */
+const nf = (v, d = 0) => (v == null || !isFinite(v)) ? "–" : Number(v).toLocaleString("vi-VN", {minimumFractionDigits: d, maximumFractionDigits: d});
+const sign = v => v < 0 ? MINUS : "";
+const usd = (v, d = 0) => (v == null || !isFinite(v)) ? "–" : sign(v) + "$" + nf(Math.abs(v), d);
+function compact(v, d = 1) {
+  const a = Math.abs(v), s = sign(v);
+  if (a >= 1e12) return s + nf(a / 1e12, d) + "T";
+  if (a >= 1e9) return s + nf(a / 1e9, d) + "B";
+  if (a >= 1e6) return s + nf(a / 1e6, d) + "M";
+  if (a >= 1e3) return s + nf(a / 1e3, a >= 1e4 ? 0 : d) + "K";
+  return s + nf(a, 0);
+}
+const usdc = (v, d = 1) => sign(v) + "$" + compact(Math.abs(v), d);
+const pct = (v, d = 1) => (v > 0 ? "+" : v < 0 ? MINUS : "") + nf(Math.abs(v), d) + "%";
+const dm = s => { const p = s.slice(0, 10).split("-"); return (+p[2]) + "/" + (+p[1]); };
+const dmh = s => dm(s) + (s.length > 10 ? " " + s.slice(11, 16) : "");
+const short = a => a.slice(0, 6) + "…" + a.slice(-4);
+
+/* ---------- DOM helpers (labels go in via textContent) ---------- */
+function svgEl(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function svgText(parent, x, y, s, cls, anchor) {
+  const t = svgEl("text", {x, y, class: cls, "text-anchor": anchor || "start"}, parent);
+  t.textContent = s;
+  return t;
+}
+function h(tag, props, ...kids) {
+  const e = document.createElement(tag);
+  if (props) for (const k in props) { if (k === "class") e.className = props[k]; else if (k === "text") e.textContent = props[k]; else e.setAttribute(k, props[k]); }
+  for (const c of kids) if (c != null) e.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+  return e;
+}
+function table(host, head, rows, numericCols) {
+  const t = host.tagName === "TABLE" ? host : host.appendChild(h("table"));
+  const thead = t.appendChild(h("thead")), tr = thead.appendChild(h("tr"));
+  head.forEach((c, i) => tr.appendChild(h("th", {class: numericCols && numericCols.includes(i) ? "r" : "", text: c})));
+  const tb = t.appendChild(h("tbody"));
+  rows.forEach(r => {
+    const row = tb.appendChild(h("tr"));
+    r.forEach((c, i) => {
+      const td = h("td", {class: (numericCols && numericCols.includes(i) ? "r" : "") + (typeof c === "object" && c && c.cls ? " " + c.cls : "")});
+      if (c && typeof c === "object" && c.node) td.appendChild(c.node); else td.textContent = (c && typeof c === "object") ? c.text : c;
+      row.appendChild(td);
+    });
+  });
+  return t;
+}
+function mount(host, draw) {
+  let w = 0;
+  const go = () => {
+    const nw = Math.floor(host.clientWidth);
+    if (!nw || nw === w) return;
+    w = nw;
+    host.querySelectorAll("svg").forEach(s => s.remove());
+    draw(w);
+  };
+  if ("ResizeObserver" in window) new ResizeObserver(go).observe(host);
+  else window.addEventListener("resize", go);
+  go();
+}
+function tipBox(host) {
+  let t = host.querySelector(".tip");
+  if (!t) { t = h("div", {class: "tip"}); t.hidden = true; host.appendChild(t); }
+  return t;
+}
+function showTip(host, tip, x, y, title, rows) {
+  tip.replaceChildren();
+  tip.appendChild(h("div", {class: "d", text: title}));
+  rows.forEach(([label, cls, val]) => {
+    const key = cls ? h("i", {class: "key-line bg-" + cls}) : null;
+    tip.appendChild(h("div", {class: "r"}, h("span", null, key, label), h("b", {text: val})));
+  });
+  tip.hidden = false;
+  const W = host.clientWidth, tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = x + 14; if (left + tw > W) left = x - tw - 14; if (left < 0) left = 0;
+  let top = y - th - 10; if (top < 0) top = y + 14;
+  tip.style.left = left + "px"; tip.style.top = top + "px";
+}
+function niceStep(span, n) {
+  const raw = span / n, mag = Math.pow(10, Math.floor(Math.log10(raw))), e = raw / mag;
+  return (e >= 7.5 ? 10 : e >= 3.5 ? 5 : e >= 1.5 ? 2 : 1) * mag;
+}
+function linTicks(min, max, n) {
+  const st = niceStep(max - min || 1, n), out = [];
+  for (let v = Math.floor(min / st) * st; v <= max + st * 0.001; v += st) out.push(+v.toFixed(10));
+  return out;
+}
+const LOGT = [0.5, 1, 2, 3, 5, 10, 20, 30, 50, 100, 200, 300, 500, 1000, 2000, 3000];
+function roundTop(x, y, w, hgt, r) {
+  r = Math.max(0, Math.min(r, w / 2, hgt));
+  return `M${x},${y + hgt}V${y + r}Q${x},${y} ${x + r},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + hgt}Z`;
+}
+function roundEnd(x0, x1, y, hgt, r) { // horizontal bar from baseline x0 to data end x1, rounded at x1
+  const w = Math.abs(x1 - x0); r = Math.max(0, Math.min(r, hgt / 2, w));
+  if (x1 >= x0) return `M${x0},${y}H${x1 - r}Q${x1},${y} ${x1},${y + r}V${y + hgt - r}Q${x1},${y + hgt} ${x1 - r},${y + hgt}H${x0}Z`;
+  return `M${x0},${y}H${x1 + r}Q${x1},${y} ${x1},${y + r}V${y + hgt - r}Q${x1},${y + hgt} ${x1 + r},${y + hgt}H${x0}Z`;
+}
+
+/* ---------- line chart: time x, one y axis (linear or log), crosshair tooltip, end labels ---------- */
+function lineChart(host, o) {
+  const tip = tipBox(host);
+  const xs = o.x.map(s => Date.parse(s.length === 10 ? s + "T00:00:00Z" : s + ":00Z"));
+  mount(host, W => {
+    const H = o.height || 260;
+    const narrow = W < 520;
+    const m = {t: 14, r: o.endLabels === false ? 16 : (narrow ? 16 : 96), b: 26, l: o.left || 50};
+    const iw = W - m.l - m.r, ih = H - m.t - m.b;
+    const svg = svgEl("svg", {width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": o.aria});
+    host.prepend(svg);
+    const vals = o.series.flatMap(s => s.values).filter(v => v != null && (!o.log || v > 0));
+    let lo = o.ymin != null ? o.ymin : Math.min(...vals), hi = o.ymax != null ? o.ymax : Math.max(...vals);
+    let y, ticks;
+    if (o.log) {
+      ticks = LOGT.filter(t => t >= lo / 1.6 && t <= hi * 1.6);
+      const a = Math.log10(Math.min(lo, ticks[0])), b = Math.log10(Math.max(hi, ticks[ticks.length - 1]));
+      y = v => m.t + ih - (Math.log10(v) - a) / (b - a) * ih;
+      if (ticks.length > 7) ticks = ticks.filter(t => [1, 3].includes(+String(t)[0]) || t < 1);
+    } else {
+      ticks = linTicks(Math.min(lo, o.zero === false ? lo : 0), hi, narrow ? 4 : 5);
+      const a = ticks[0], b = ticks[ticks.length - 1];
+      y = v => m.t + ih - (v - a) / (b - a) * ih;
+    }
+    const x0 = xs[0], x1 = xs[xs.length - 1];
+    const x = t => m.l + (t - x0) / (x1 - x0) * iw;
+    const g = svgEl("g", {}, svg);
+    ticks.forEach(t => {
+      const yy = Math.round(y(t)) + 0.5;
+      svgEl("line", {x1: m.l, x2: m.l + iw, y1: yy, y2: yy, class: "gl"}, g);
+      svgText(g, m.l - 8, yy + 4, o.yfmt(t), "tk", "end");
+    });
+    // x ticks: 1st and 15th of each month inside the domain
+    const d0 = new Date(x0), dEnd = new Date(x1), xt = [];
+    for (let d = new Date(Date.UTC(d0.getUTCFullYear(), d0.getUTCMonth(), 1)); d <= dEnd; d = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1))) {
+      [1, 15].forEach(dd => { const t = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), dd); if (t >= x0 && t <= x1) xt.push(t); });
+    }
+    const every = o.xEvery || (narrow ? 2 : 1);
+    xt.filter((_, i) => i % every === 0).forEach(t => {
+      const xx = Math.round(x(t)) + 0.5;
+      svgEl("line", {x1: xx, x2: xx, y1: m.t + ih, y2: m.t + ih + 4, class: "ax"}, g);
+      const d = new Date(t);
+      svgText(g, xx, m.t + ih + 18, d.getUTCDate() + "/" + (d.getUTCMonth() + 1), "tk", "middle");
+    });
+    svgEl("line", {x1: m.l, x2: m.l + iw, y1: m.t + ih + 0.5, y2: m.t + ih + 0.5, class: "ax"}, g);
+    (o.refs || []).forEach(r => {
+      const yy = Math.round(y(r.y)) + 0.5;
+      svgEl("line", {x1: m.l, x2: m.l + iw, y1: yy, y2: yy, class: "ref"}, g);
+      svgText(g, m.l + 6, r.below ? yy + 13 : yy - 5, r.label, "lb");
+    });
+    o.series.forEach(s => {
+      if (s.area) {
+        let p = ""; s.values.forEach((v, i) => { if (v == null) return; p += (p ? "L" : "M") + x(xs[i]).toFixed(1) + "," + y(v).toFixed(1); });
+        p += `L${x(xs[xs.length - 1]).toFixed(1)},${m.t + ih}L${x(xs[0]).toFixed(1)},${m.t + ih}Z`;
+        svgEl("path", {d: p, class: "area f-" + s.cls}, g);
+      }
+      let d = ""; s.values.forEach((v, i) => { if (v == null || (o.log && v <= 0)) return; d += (d ? "L" : "M") + x(xs[i]).toFixed(1) + "," + y(v).toFixed(1); });
+      svgEl("path", {d, class: "ln st-" + s.cls}, g);
+    });
+    // end markers + direct labels (sparing: last point only)
+    const ends = o.series.map(s => { let i = s.values.length - 1; while (i > 0 && s.values[i] == null) i--; return {s, i, yy: y(s.values[i])}; });
+    if (!narrow && o.endLabels !== false) {
+      const sorted = [...ends].sort((a, b) => a.yy - b.yy);
+      for (let k = 1; k < sorted.length; k++) if (sorted[k].yy - sorted[k - 1].yy < 16) sorted[k].ly = sorted[k - 1].yy + 16; // leader if too close
+      sorted.forEach(e => {
+        const ex = x(xs[e.i]), ly = e.ly || e.yy;
+        if (e.ly) svgEl("line", {x1: ex + 5, y1: e.yy, x2: ex + 10, y2: ly, class: "ax"}, g);
+        svgText(g, ex + 12, ly + 4, e.s.endLabel ? e.s.endLabel(e.s.values[e.i]) : o.yfmt(e.s.values[e.i]), "lbs");
+      });
+    }
+    ends.forEach(e => svgEl("circle", {cx: x(xs[e.i]), cy: e.yy, r: 4, class: "dot f-" + e.s.cls}, g));
+    // crosshair layer
+    const xh = svgEl("line", {x1: 0, x2: 0, y1: m.t, y2: m.t + ih, class: "xh", visibility: "hidden"}, svg);
+    const hov = o.series.map(s => svgEl("circle", {r: 4, class: "dot f-" + s.cls, visibility: "hidden"}, svg));
+    const hit = svgEl("rect", {x: m.l, y: m.t, width: iw, height: ih, class: "hit", tabindex: 0, "aria-label": o.aria + ": di chuột hoặc dùng phím mũi tên để xem số liệu"}, svg);
+    let cur = xs.length - 1;
+    function at(i) {
+      cur = Math.max(0, Math.min(xs.length - 1, i));
+      const xx = x(xs[cur]);
+      xh.setAttribute("x1", xx); xh.setAttribute("x2", xx); xh.setAttribute("visibility", "visible");
+      o.series.forEach((s, k) => { const v = s.values[cur]; if (v == null) { hov[k].setAttribute("visibility", "hidden"); return; } hov[k].setAttribute("cx", xx); hov[k].setAttribute("cy", y(v)); hov[k].setAttribute("visibility", "visible"); });
+      const rows = o.tipRows ? o.tipRows(cur) : o.series.map(s => [s.label, s.cls, o.yfmt(s.values[cur])]);
+      showTip(host, tip, xx, Math.min(...o.series.map(s => s.values[cur] != null ? y(s.values[cur]) : m.t + ih)), dmh(o.x[cur]), rows);
+    }
+    function near(px) { const t = x0 + (px - m.l) / iw * (x1 - x0); let b = 0, bd = Infinity; xs.forEach((v, i) => { const dd = Math.abs(v - t); if (dd < bd) { bd = dd; b = i; } }); return b; }
+    hit.addEventListener("pointermove", ev => { const r = svg.getBoundingClientRect(); at(near(ev.clientX - r.left)); });
+    hit.addEventListener("pointerleave", () => { xh.setAttribute("visibility", "hidden"); hov.forEach(c => c.setAttribute("visibility", "hidden")); tip.hidden = true; });
+    hit.addEventListener("focus", () => at(cur));
+    hit.addEventListener("blur", () => { xh.setAttribute("visibility", "hidden"); hov.forEach(c => c.setAttribute("visibility", "hidden")); tip.hidden = true; });
+    hit.addEventListener("keydown", ev => { if (ev.key === "ArrowLeft") { at(cur - 1); ev.preventDefault(); } if (ev.key === "ArrowRight") { at(cur + 1); ev.preventDefault(); } });
+  });
+}
+
+/* ---------- column chart: one baseline, optional stacks, per-bar tooltip ---------- */
+function columnChart(host, o) {
+  const tip = tipBox(host);
+  mount(host, W => {
+    const H = o.height || 240, narrow = W < 520;
+    const m = {t: 22, r: 10, b: 26, l: o.left || 46};
+    const iw = W - m.l - m.r, ih = H - m.t - m.b;
+    const svg = svgEl("svg", {width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": o.aria});
+    host.prepend(svg);
+    const n = o.x.length, totals = o.x.map((_, i) => o.stacks.reduce((a, s) => a + (s.values[i] || 0), 0));
+    const ticks = linTicks(0, Math.max(...totals), narrow ? 3 : 4), top = ticks[ticks.length - 1];
+    const y = v => m.t + ih - v / top * ih;
+    const band = iw / n, bw = Math.max(4, Math.min(24, band * 0.62));
+    ticks.forEach(t => { const yy = Math.round(y(t)) + 0.5; svgEl("line", {x1: m.l, x2: m.l + iw, y1: yy, y2: yy, class: "gl"}, svg); svgText(svg, m.l - 8, yy + 4, o.yfmt(t), "tk", "end"); });
+    const every = Math.max(1, Math.ceil(n / Math.floor(iw / (narrow ? 44 : 52))));
+    o.x.forEach((lab, i) => { if (i % every && i !== n - 1) return; svgText(svg, m.l + band * i + band / 2, m.t + ih + 18, o.xfmt ? o.xfmt(lab) : lab, "tk", "middle"); });
+    const groups = [];
+    o.x.forEach((lab, i) => {
+      const g = svgEl("g", {class: "bar-g"}, svg); groups.push(g);
+      const bx = m.l + band * i + (band - bw) / 2;
+      let acc = 0; const segs = o.stacks.map(s => ({s, v: s.values[i] || 0})).filter(z => z.v > 0);
+      segs.forEach((z, k) => {
+        const yTop = y(acc + z.v), yBot = y(acc);
+        const last = k === segs.length - 1, gap = k > 0 ? 2 : 0;
+        const hh = Math.max(0, yBot - yTop - gap);
+        if (hh > 0) {
+          if (last) svgEl("path", {d: roundTop(bx, yTop, bw, hh, 4), class: "f-" + z.s.cls}, g);
+          else svgEl("rect", {x: bx, y: yTop, width: bw, height: hh, class: "f-" + z.s.cls}, g);
+        }
+        acc += z.v;
+      });
+      if (o.labelAt && o.labelAt.includes(i)) svgText(svg, bx + bw / 2, y(totals[i]) - 6, o.yfmt(totals[i]), "lbs", "middle");
+      const hit = svgEl("rect", {x: m.l + band * i, y: m.t, width: band, height: ih, class: "hit", tabindex: 0, "aria-label": (o.xfmt ? o.xfmt(lab) : lab) + ": " + o.yfmt(totals[i])}, svg);
+      const on = () => { groups.forEach((gg, j) => gg.classList.toggle("dim", j !== i)); const rows = o.tipRows ? o.tipRows(i) : o.stacks.map(s => [s.label, s.cls, o.yfmt(s.values[i] || 0)]); showTip(host, tip, bx + bw / 2, y(totals[i]), o.tipTitle ? o.tipTitle(i) : lab, rows); };
+      const off = () => { groups.forEach(gg => gg.classList.remove("dim")); tip.hidden = true; };
+      hit.addEventListener("pointerenter", on); hit.addEventListener("focus", on);
+      hit.addEventListener("pointerleave", off); hit.addEventListener("blur", off);
+    });
+    svgEl("line", {x1: m.l, x2: m.l + iw, y1: m.t + ih + 0.5, y2: m.t + ih + 0.5, class: "ax"}, svg);
+    (o.notes || []).forEach(nt => {
+      const xx = m.l + band * nt.i + band / 2;
+      svgText(svg, Math.min(xx, m.l + iw - 4), m.t + 10, nt.text, "lb", xx > m.l + iw - 80 ? "end" : "middle");
+    });
+  });
+}
+
+/* ---------- diverging horizontal bars around zero ---------- */
+function hbars(host, o) {
+  const tip = tipBox(host);
+  mount(host, W => {
+    const rowH = 30, narrow = W < 520;
+    const labW = o.labelWidth ? o.labelWidth(narrow) : (narrow ? 84 : 120);
+    const m = {t: 6, r: 12, b: 24, l: labW};
+    const H = m.t + m.b + rowH * o.items.length;
+    const iw = W - m.l - m.r;
+    const svg = svgEl("svg", {width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": o.aria});
+    host.prepend(svg);
+    const vals = o.items.map(d => d.value);
+    let lo = Math.min(0, ...vals), hi = Math.max(0, ...vals);
+    const pad = (hi - lo) * 0.18; lo = lo < 0 ? lo - pad : lo; hi = hi > 0 ? hi + pad : hi;
+    const ticks = linTicks(lo, hi, narrow ? 3 : 5).filter(t => t >= lo - 1e-9 && t <= hi + 1e-9);
+    const x = v => m.l + (v - lo) / (hi - lo) * iw;
+    ticks.forEach(t => { const xx = Math.round(x(t)) + 0.5; svgEl("line", {x1: xx, x2: xx, y1: m.t, y2: H - m.b, class: "gl"}, svg); svgText(svg, xx, H - m.b + 16, o.fmt(t, true), "tk", "middle"); });
+    const zx = Math.round(x(0)) + 0.5;
+    o.items.forEach((d, i) => {
+      const yy = m.t + rowH * i + 7, bh = 16;
+      svgText(svg, m.l - 10, yy + 12, d.label, d.strong ? "lbs" : "lb", "end");
+      const g = svgEl("g", {class: "bar-g"}, svg);
+      svgEl("path", {d: roundEnd(zx, x(d.value), yy, bh, 4), class: d.value >= 0 ? "f-pos" : "f-neg"}, g);
+      const vs = o.fmt(d.value), estW = vs.length * 7.2;
+      let vx = x(d.value) + (d.value >= 0 ? 6 : -6), anc = d.value >= 0 ? "start" : "end";
+      if (d.value < 0 && vx - estW < m.l + 2) { vx = zx + 6; anc = "start"; }
+      if (d.value >= 0 && vx + estW > W - 2) { vx = zx - 6; anc = "end"; }
+      svgText(svg, vx, yy + 12, vs, "lbs", anc);
+      const hit = svgEl("rect", {x: m.l, y: yy - 6, width: iw, height: rowH, class: "hit", tabindex: 0, "aria-label": d.label + ": " + o.fmt(d.value)}, svg);
+      const on = () => showTip(host, tip, x(d.value), yy, d.label, d.tip || [["Giá trị", null, o.fmt(d.value)]]);
+      const off = () => { tip.hidden = true; };
+      hit.addEventListener("pointerenter", on); hit.addEventListener("focus", on); hit.addEventListener("pointerleave", off); hit.addEventListener("blur", off);
+    });
+    svgEl("line", {x1: zx, x2: zx, y1: m.t, y2: H - m.b, class: "ax"}, svg);
+  });
+}
+
+/* ---------- price ladder: scenario ranges + contract levels on one price axis ---------- */
+function ladder(host, o) {
+  const tip = tipBox(host);
+  mount(host, W => {
+    const narrow = W < 560;
+    const labW = narrow ? 70 : 150;
+    const m = {t: narrow ? 92 : 70, r: 18, b: 26, l: labW};
+    const rowH = narrow ? 46 : 34, H = m.t + m.b + rowH * o.ranges.length;
+    const iw = W - m.l - m.r;
+    const svg = svgEl("svg", {width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": o.aria});
+    host.prepend(svg);
+    const x = v => m.l + (v - o.min) / (o.max - o.min) * iw;
+    linTicks(o.min, o.max, narrow ? 4 : 8).filter(t => t >= o.min && t <= o.max).forEach(t => {
+      const xx = Math.round(x(t)) + 0.5;
+      svgEl("line", {x1: xx, x2: xx, y1: m.t - 6, y2: H - m.b, class: "gl"}, svg);
+      svgText(svg, xx, H - m.b + 16, "$" + nf(t), "tk", "middle");
+    });
+    // level markers with staggered labels
+    const lv = [...o.levels].sort((a, b) => a.v - b.v);
+    let lastX = -1e9, row = 0;
+    lv.forEach(l => {
+      const xx = Math.round(x(l.v)) + 0.5;
+      const text = (narrow ? (l.short || l.label) : l.label) + " " + usd(l.v, 0);
+      const w = text.length * 6.6 + 8;
+      row = (xx - lastX < w) ? (row + 1) % (narrow ? 4 : 3) : 0;
+      if (row === 0) lastX = xx;
+      const ly = 14 + row * 18;
+      svgEl("line", {x1: xx, x2: xx, y1: ly + 4, y2: H - m.b, class: l.strong ? "st-ink" : "st-muted", "stroke-width": l.strong ? 2 : 1}, svg);
+      const anchor = xx > W - 120 ? "end" : (xx < m.l + 60 ? "start" : "middle");
+      svgText(svg, anchor === "end" ? xx - 4 : anchor === "start" ? xx + 4 : xx, ly, text, l.strong ? "lbs" : "lb", anchor);
+    });
+    o.ranges.forEach((r, i) => {
+      const yy = m.t + rowH * i + 9, bh = 16;
+      svgText(svg, m.l - 10, yy + 12, narrow ? r.short : r.label, "lbs", "end");
+      const x1 = x(r.lo), x2 = x(r.hi);
+      svgEl("rect", {x: x1, y: yy, width: Math.max(2, x2 - x1), height: bh, rx: 4, class: r.cls}, svg);
+      const lab = "$" + r.lo + "–" + r.hi + " · " + r.p;
+      const inside = (x2 - x1) > lab.length * 6.6 + 12;
+      if (narrow && !inside) svgText(svg, Math.min(Math.max(x1, m.l), W - m.r - lab.length * 6.4), yy + bh + 14, lab, "lb", "start");
+      else if (!inside) svgText(svg, x2 + 8 > W - 150 ? x1 - 8 : x2 + 8, yy + 12, lab, "lb", x2 + 8 > W - 150 ? "end" : "start");
+      else svgText(svg, (x1 + x2) / 2, yy + 12, lab, "lbs", "middle");
+      const hit = svgEl("rect", {x: x1 - 4, y: yy - 8, width: Math.max(10, x2 - x1 + 8), height: rowH, class: "hit", tabindex: 0, "aria-label": r.label + ": " + lab}, svg);
+      const on = () => showTip(host, tip, (x1 + x2) / 2, yy, r.label, [["Vùng giá", null, usd(r.lo) + "–" + usd(r.hi)], ["Xác suất", null, r.p], ["So với giá hiện tại", null, pct((r.lo / o.now - 1) * 100, 0) + " đến " + pct((r.hi / o.now - 1) * 100, 0)]]);
+      const off = () => { tip.hidden = true; };
+      hit.addEventListener("pointerenter", on); hit.addEventListener("focus", on); hit.addEventListener("pointerleave", off); hit.addEventListener("blur", off);
+    });
+  });
+}
+
+/* ================= content ================= */
+const S = D.state;
+document.getElementById("asof").textContent = "Robinhood Chain · chainId 4663 · snapshot " + D.asof.replace(/^(\d{4})-(\d\d)-(\d\d)/, (_, y, mo, d) => d + "/" + mo + "/" + y);
+
+// verdict cards (subjective probabilities, as in README)
+const SCN = [
+  {label: "Cơ sở: trôi xuống / đi ngang", short: "Cơ sở", p: "~50%", lo: 180, hi: 215, cls: "f-mid", sw: "bg-mid", why: "Team ngừng mua vì hết tiền; bond tiếp tục xả ~1.000 NET/ngày; premium co dần làm rebase chậm lại."},
+  {label: "Xấu: về NAV", short: "Xấu", p: "~30%", lo: 160, hi: 168, cls: "f-neg", sw: "bg-neg", why: "Team exercise pTEAM (7K NET) rồi bán, hoặc Sleeve phải bán NET để trả nợ Morpho; ETH tiếp tục rời chain. Tại NAV, InverseBond hấp thụ ~$217K/ngày, rebase và bond tự về 0."},
+  {label: "Tốt: hồi phục", short: "Tốt", p: "~20%", lo: 260, hi: 295, cls: "f-pos", sw: "bg-pos", why: "Dòng tiền mới vào Robinhood Chain (kết quả quý 3 ngày 27/10, thị trường mới cho stock token), BTC/ETH lên tiếp, team nạp tiền mới."},
+];
+const vd = document.getElementById("verdict");
+SCN.forEach(s => vd.appendChild(h("div", {class: "scn"},
+  h("div", {class: "k"}, h("i", {class: "sw " + s.sw}), s.label + " · " + s.p),
+  h("div", {class: "v", text: "$" + s.lo + "–" + s.hi}),
+  h("div", {class: "d", text: pct((s.lo / S.spot - 1) * 100, 0) + " đến " + pct((s.hi / S.spot - 1) * 100, 0) + " so với giá hiện tại"}))));
+
+// KPI strip
+function kpi(host, k, v, s) { host.appendChild(h("div", {class: "kpi"}, h("div", {class: "k", text: k}), h("div", {class: "v", text: v}), h("div", {class: "s", text: s}))); }
+const K = document.getElementById("kpis");
+const p3 = D.history.find(r => r.t.startsWith("2026-10-03T12"));
+kpi(K, "Giá NET", usd(S.spot, 0), (p3 ? pct((S.spot / p3.price - 1) * 100, 0) + " so với 3/10; " : "") + pct(D.net_cg.chg7, 0) + " / 7 ngày");
+kpi(K, "NAV (backing / NET)", usd(S.nav, 2), "Sàn mua lại " + usd(S.inv_price, 2) + "; Treasury " + usdc(S.rfv, 2));
+kpi(K, "Premium", nf(S.premium, 2) + "×", "Đỉnh 21× ngày 30/8");
+const daily = 3 * S.rate * S.staked + 0.0075 * S.supply;
+kpi(K, "Pha loãng mỗi ngày", nf(daily / S.supply * 100, 1) + "%", "≈ " + nf(Math.round(daily / 10) * 10, 0) + " NET; cần " + usdc(daily * S.spot, 0) + " tiền mới/ngày để giữ giá");
+const hd7 = D.hoodscan.d7;
+kpi(K, "Dòng tiền DEX 7 ngày", usdc(hd7.buyUsd - hd7.sellUsd, 2), "Mua " + usdc(hd7.buyUsd, 2) + ", bán " + usdc(hd7.sellUsd, 2) + " (HoodScan)");
+kpi(K, "USDG còn lại của team", usdc(D.sleeve.usdg, 0), "RWA Sleeve; vay Morpho đã kín 100%");
+
+// macro tiles
+const MK = document.getElementById("macro");
+kpi(MK, "BTC", usd(D.macro.BTC.price, 0), pct(D.macro.BTC.chg_30d_pct) + " / 30 ngày, sát đỉnh 90 ngày");
+kpi(MK, "ETH", usd(D.macro.ETH.price, 0), pct(D.macro.ETH.chg_30d_pct) + " / 30 ngày");
+kpi(MK, "Fear & Greed", String(D.macro.fear_greed.now), "Greed; trung bình 30 ngày " + nf(D.macro.fear_greed.avg_30d, 0));
+kpi(MK, "Tổng vốn hoá crypto", usdc(D.macro.global.mcap_usd, 2).replace(/,(\d)0T$/, ",$1T"), pct(D.macro.global.mcap_chg_24h_pct) + " / 24h; BTC dominance " + nf(D.macro.global.btc_dominance, 1) + "%");
+
+// A: ecosystem vs BTC/ETH (30d)
+const eco = [...D.eco].sort((a, b) => a.chg30 - b.chg30);
+hbars(document.getElementById("c-eco"), {
+  aria: "Biến động giá 30 ngày của token gốc Robinhood Chain so với BTC và ETH",
+  items: eco.map(e => ({label: e.symbol, value: e.chg30, strong: e.symbol === "NET", tip: [["30 ngày", null, pct(e.chg30)], ["7 ngày", null, pct(e.chg7)]].concat(e.mcap ? [["Vốn hoá", null, usdc(e.mcap, 0)]] : [])})),
+  fmt: (v, tick) => tick ? (v > 0 ? "+" : v < 0 ? MINUS : "") + nf(Math.abs(v), 0) + "%" : pct(v, 0),
+  labelWidth: n => n ? 70 : 90,
+});
+table(document.getElementById("t-eco"), ["Token", "30 ngày", "7 ngày", "Vốn hoá"], eco.map(e => [e.symbol, pct(e.chg30), pct(e.chg7), e.mcap ? usdc(e.mcap, 0) : "–"]), [1, 2, 3]);
+
+// B: Robinhood Chain weekly
+const CW = D.chain_weekly;
+const wk = c => dm(c.week_start) + "–" + dm(c.week_end);
+columnChart(document.getElementById("c-dex"), {
+  aria: "Volume DEX mỗi tuần trên Robinhood Chain",
+  x: CW.map(c => c.week_end), xfmt: dm,
+  stacks: [{label: "Volume DEX", cls: "s1", values: CW.map(c => c.dex * 1e6)}],
+  yfmt: v => usdc(v, 0), labelAt: [CW.findIndex(c => c.dex === Math.max(...CW.map(z => z.dex))), CW.length - 1],
+  tipTitle: i => "Tuần " + wk(CW[i]), tipRows: i => [["Volume DEX", "s1", usdc(CW[i].dex * 1e6, 2)], ["Phí", null, usdc(CW[i].fees * 1e6, 1)]],
+  height: 230,
+});
+table(document.getElementById("t-dex"), ["Tuần", "Volume DEX", "Phí"], CW.map(c => [wk(c), usdc(c.dex * 1e6, 2), usdc(c.fees * 1e6, 1)]), [1, 2]);
+lineChart(document.getElementById("c-tvl"), {
+  aria: "TVL DeFi và stablecoin trên Robinhood Chain theo tuần",
+  x: CW.map(c => c.week_end),
+  series: [{label: "Stablecoin", cls: "s1", values: CW.map(c => c.stables * 1e6)}, {label: "TVL DeFi", cls: "s2", values: CW.map(c => c.tvl * 1e6)}],
+  yfmt: v => usdc(v, v >= 1e9 ? 1 : 0), endLabels: false, height: 230, xEvery: 2,
+});
+table(document.getElementById("t-tvl"), ["Tuần kết thúc", "Stablecoin", "TVL DeFi"], CW.map(c => [dm(c.week_end), usdc(c.stables * 1e6, 2), usdc(c.tvl * 1e6, 2)]), [1, 2]);
+lineChart(document.getElementById("c-eth"), {
+  aria: "ETH khoá trong bridge L1 của Robinhood Chain theo tuần",
+  x: CW.map(c => c.week_end),
+  series: [{label: "ETH trong bridge", cls: "s1", values: CW.map(c => c.eth), area: true}],
+  yfmt: v => nf(v / 1000, 0) + "K", endLabels: false, height: 230, xEvery: 2,
+  tipRows: i => [["ETH trong bridge", "s1", nf(CW[i].eth, 0) + " ETH"]],
+});
+table(document.getElementById("t-eth"), ["Tuần kết thúc", "ETH trong bridge L1"], CW.map(c => [dm(c.week_end), nf(c.eth, 0)]), [1]);
+document.getElementById("stock-note").textContent = D.stock_tokens.count + " mã, vốn hoá on-chain " + usdc(D.stock_tokens.marketCap, 0) + ", volume 24 giờ " + usdc(D.stock_tokens.volume24, 0) + " (NVDA dẫn đầu)";
+
+// C: price vs NAV (log)
+const HS = D.history;
+lineChart(document.getElementById("c-price"), {
+  aria: "Giá NET và NAV theo thời gian, trục log",
+  x: HS.map(r => r.t), log: true,
+  series: [{label: "Giá NET", cls: "s1", values: HS.map(r => r.price), endLabel: v => "Giá " + usd(v, 0)}, {label: "NAV", cls: "s2", values: HS.map(r => r.nav), endLabel: v => "NAV " + usd(v, 0)}],
+  yfmt: v => "$" + nf(v, v < 1 ? 1 : 0), height: 300,
+  tipRows: i => [["Giá NET", "s1", usd(HS[i].price, 2)], ["NAV", "s2", usd(HS[i].nav, 2)], ["Premium", null, nf(HS[i].premium, 2) + "×"], ["Supply", null, nf(HS[i].supply, 0) + " NET"]],
+});
+table(document.getElementById("t-price"), ["Thời điểm (UTC)", "Giá", "NAV", "Premium", "Supply"], HS.filter((r, i) => i % 2 === 0 || i === HS.length - 1).map(r => [dmh(r.t), usd(r.price, 2), usd(r.nav, 2), nf(r.premium, 2) + "×", nf(r.supply, 0)]), [1, 2, 3, 4]);
+lineChart(document.getElementById("c-prem"), {
+  aria: "Premium giá trên NAV, trục log, với các ngưỡng trong contract",
+  x: HS.map(r => r.t), log: true, ymin: 0.9,
+  series: [{label: "Premium", cls: "s1", values: HS.map(r => r.premium)}],
+  refs: [{y: 1, label: "1× = NAV, rebase dừng"}, {y: 1.75, label: "1,75× rebase tối đa", below: true}, {y: 2, label: "2× PremiumSeller bán"}],
+  yfmt: v => nf(v, v < 1 ? 1 : 0) + "×", endLabels: false, height: 260,
+  tipRows: i => [["Premium", "s1", nf(HS[i].premium, 2) + "×"], ["Giá", null, usd(HS[i].price, 0)], ["NAV", null, usd(HS[i].nav, 1)]],
+});
+table(document.getElementById("t-prem"), ["Thời điểm (UTC)", "Premium"], HS.filter((r, i) => i % 4 === 0 || i === HS.length - 1).map(r => [dmh(r.t), nf(r.premium, 2) + "×"]), [1]);
+table(document.getElementById("t-proto"), ["Thành phần", "Hiện tại"], [
+  ["NAV", usd(S.nav, 2) + "; RFV " + usdc(S.rfv, 2) + " (liquid " + usdc(S.liquid, 2) + " + Morpho " + usdc(S.morpho, 2) + ")"],
+  ["Rebase (mỗi 8 giờ)", nf(S.rate * 100, 3) + "%/epoch ≈ " + nf(3 * S.rate * S.staked, 0) + " NET/ngày"],
+  ["Bond (giảm 3%, vest 2 ngày)", "~" + nf(0.0075 * S.supply, 0) + " NET/ngày; " + nf(S.bd_net, 0) + " NET đang vest"],
+  ["InverseBond (sàn)", usd(S.inv_price, 2) + "; " + usdc(S.inv_cap, 0) + " mỗi epoch"],
+  ["PremiumSeller", "Tắt; bật khi TWAP > " + usd(2 * S.nav, 0)],
+  ["pTEAM (team, giá $1)", "Đã dùng " + nf(S.pteam_ex, 0) + "; mint được ngay " + nf(S.pteam_now, 0) + " NET"],
+  ["Supply / đang stake", nf(S.supply, 0) + " NET / " + nf(S.staked / S.supply * 100, 1) + "%"],
+  ["Pool canonical", nf(S.pool_net, 0) + " NET + " + usdc(S.pool_usdg, 0) + " USDG"],
+]);
+table(document.getElementById("t-pools"), ["DEX", "Pair", "Quote", "Thanh khoản", "Vol 24h", "Thuế 5%"], D.pools.map(p => [p.dex + " " + p.ver, {text: short(p.pair), cls: "addr"}, p.quote, usdc(p.liq, 0), usdc(p.vol, 0), p.pair.toLowerCase() === "0x59f95461e68e0c77605299791e1449f175165b54" ? "Có" : "Không"]), [3, 4]);
+
+// D: weekly mints
+const WM = D.weekly_mints;
+columnChart(document.getElementById("c-mint"), {
+  aria: "NET mới mint mỗi tuần theo nguồn",
+  x: WM.map(w => w.week), xfmt: dm,
+  stacks: [{label: "Rebase", cls: "s1", values: WM.map(w => w.rebase)}, {label: "Bond", cls: "s2", values: WM.map(w => w.bond)}, {label: "pTEAM", cls: "s3", values: WM.map(w => w.pteam)}, {label: "PremiumSeller", cls: "s4", values: WM.map(w => w.premium)}],
+  yfmt: v => nf(v, 0), labelAt: [WM.length - 2],
+  tipTitle: i => "Tuần từ " + dm(WM[i].week) + (WM[i].days < 7 ? " (" + WM[i].days + " ngày)" : ""),
+  tipRows: i => [["Rebase", "s1", nf(WM[i].rebase, 0)], ["Bond", "s2", nf(WM[i].bond, 0)], ["pTEAM", "s3", nf(WM[i].pteam, 0)], ["PremiumSeller", "s4", nf(WM[i].premium, 0)], ["NET claim từ bond", null, nf(WM[i].bond_claim, 0)]],
+  height: 260,
+});
+table(document.getElementById("t-mint"), ["Tuần từ", "Rebase", "Bond", "pTEAM", "PremiumSeller", "Claim từ bond"], WM.map(w => [dm(w.week) + (w.days < 7 ? " (" + w.days + " ngày)" : ""), nf(w.rebase, 0), nf(w.bond, 0), nf(w.pteam, 0), nf(w.premium, 0), nf(w.bond_claim, 0)]), [1, 2, 3, 4, 5]);
+const SL = D.sleeve, dsum = D.desks.reduce((a, d) => ({i: a.i + d.usdg_in, t: a.t + d.to_treasury, r: a.r + d.to_router}), {i: 0, t: 0, r: 0});
+const TN = document.getElementById("team-notes");
+[
+  "Từ 24/7 đến 28/9, Team Safe mint " + nf(SL.pteam_exercised, 0) + " NET bằng option pTEAM với giá $1/NET.",
+  SL.pteam_same_tx + "/" + SL.pteam_txs + " giao dịch exercise chuyển NET thẳng vào desk ngay trong cùng một lệnh; ước tính bán ra khoảng " + usdc(SL.desk_sale_est_usd, 1) + " (TWAP × 0,935).",
+  "Người đăng ký đã trả " + usdc(dsum.i, 2) + " USDG vào các desk: chỉ " + usdc(dsum.t, 2) + " (" + nf(dsum.t / dsum.i * 100, 1) + "%) vào Treasury, còn " + usdc(dsum.r, 2) + " qua router 0xc941… để mua cổ phiếu token hoá cho RWA Sleeve.",
+  "Ngày 5/10, Sleeve nạp thêm 100 NET vào desk 0x732b (không có trong danh sách chính thức). Team vẫn còn quyền mint ngay " + nf(SL.pteam_now, 0) + " NET với giá $1 (~" + usdc(SL.pteam_now * S.spot, 1) + " theo giá thị trường).",
+].forEach(t => TN.appendChild(h("li", {text: t})));
+table(document.getElementById("t-desks"), ["Desk", "USDG vào", "Vào Treasury", "Qua router"], D.desks.filter(d => d.usdg_in > 0).map(d => [d.name.replace("unlisted", "không công bố").replace("listed", "có công bố"), usdc(d.usdg_in, 2), usdc(d.to_treasury, 2), usdc(d.to_router, 2)]).concat([[{text: "Tổng", cls: ""}, usdc(dsum.i, 2), usdc(dsum.t, 2), usdc(dsum.r, 2)]]), [1, 2, 3]);
+table(document.getElementById("t-sellers"), ["Ví", "Bán ròng", "Mua", "Bán", "NET claim từ bond"], D.traders7.sellers.map(r => [{text: short(r.addr), cls: "addr"}, usdc(r.net, 0), usdc(r.buy, 0), usdc(r.sell, 0), nf(r.bond_claim, 0)]), [1, 2, 3, 4]);
+
+// E: Sleeve daily buys (fill missing days with 0)
+const sd = {}; D.sleeve_daily.forEach(r => { sd[r.date] = r; });
+const days = []; for (let d = new Date(Date.UTC(2026, 8, 18)); d <= new Date(Date.UTC(2026, 9, 6)); d = new Date(d.getTime() + 864e5)) days.push(d.toISOString().slice(0, 10));
+const sv = days.map(d => (sd[d] && sd[d].usd > 100) ? sd[d].usd : 0), sn = days.map(d => (sd[d] && sd[d].usd > 100) ? sd[d].net : 0);
+columnChart(document.getElementById("c-sleeve"), {
+  aria: "Lượng NET RWA Sleeve của team mua mỗi ngày",
+  x: days, xfmt: dm,
+  stacks: [{label: "Sleeve mua", cls: "s1", values: sv}],
+  yfmt: v => usdc(v, 0), labelAt: [days.indexOf("2026-09-28"), days.indexOf("2026-10-05")],
+  tipTitle: i => dm(days[i]), tipRows: i => [["USD", "s1", usd(sv[i], 0)], ["NET", null, nf(sn[i], 1)]],
+  notes: [{i: days.length - 1, text: "Dừng mua"}], height: 240,
+});
+table(document.getElementById("t-sleeve"), ["Ngày", "NET", "USD"], days.map((d, i) => [dm(d), nf(sn[i], 1), usd(sv[i], 0)]).concat([["Tổng", nf(SL.bought_net, 0), usd(SL.bought_usd, 0)]]), [1, 2]);
+const netEq = SL.net + SL.wsnet * SL.index;
+table(document.getElementById("t-book"), ["Khoản mục", "Giá trị"], [
+  ["Đã mua trên thị trường (18/9–5/10)", nf(SL.bought_net, 0) + " NET, " + usdc(SL.bought_usd, 2) + " (giá vốn ~" + usd(SL.bought_usd / SL.bought_net, 0) + ")"],
+  ["Đang giữ", nf(SL.net, 0) + " NET + " + nf(SL.wsnet, 1) + " wsNET ≈ " + nf(netEq, 0) + " NET (" + usdc(netEq * S.spot, 2) + ")"],
+  ["USDG trong ví", usd(SL.usdg, 0)],
+  ["Cổ phiếu token hoá trong ví", usdc(SL.wallet_stocks_usd, 0)],
+  ["Thế chấp trên Morpho", usdc(SL.morpho_collateral_usd, 2) + " (NVDA, SPCX, AAPL, GOOGL)"],
+  ["Nợ Morpho", usdc(SL.morpho_debt_usd, 2) + " (LTV " + nf(SL.morpho_debt_usd / SL.morpho_collateral_usd * 100, 1) + "%)"],
+  ["Mức sử dụng vốn các market Morpho", Object.entries(SL.markets).map(([k, v]) => k + " " + nf((v.util || 0) * 100, 0) + "%").join(", ")],
+], []);
+const catName = {bond_claimers: "Ví có claim bond", other_wallets: "Ví khác (nhỏ lẻ, staker)", team_rwa_sleeve: "RWA Sleeve (team)"};
+const cats = [...D.categories].sort((a, b) => b.net - a.net);
+hbars(document.getElementById("c-cat"), {
+  aria: "Dòng tiền ròng 30 ngày trên DEX theo nhóm ví",
+  items: cats.map(c => ({label: catName[c.key] || c.key, value: c.net, tip: [["Ròng", null, usdc(c.net, 2)], ["Ví mua ròng", null, nf(c.wallets_buy, 0) + " ví, " + usdc(c.buy, 1)], ["Ví bán ròng", null, nf(c.wallets_sell, 0) + " ví, " + usdc(c.sell, 1)]]})),
+  fmt: (v, tick) => usdc(v, tick ? 0 : 2), labelWidth: n => n ? 120 : 190,
+});
+table(document.getElementById("t-cat"), ["Nhóm", "Ròng", "Ví mua ròng", "Mua", "Ví bán ròng", "Bán"], cats.map(c => [catName[c.key] || c.key, usdc(c.net, 2), nf(c.wallets_buy, 0), usdc(c.buy, 2), nf(c.wallets_sell, 0), usdc(c.sell, 2)]), [1, 2, 3, 4, 5]);
+const mix = D.hoodscan.mix, h24 = D.hoodscan.h24;
+const BN = document.getElementById("buyer-notes");
+[
+  "Nhỏ lẻ vẫn bắt đáy suốt đà giảm: nhóm \"ví khác\" mua ròng 30 ngày, nhưng 24 giờ qua chỉ mua ròng " + usdc((mix.retail.buyUsd || 0) - (mix.retail.sellUsd || 0), 0) + " và số người bán đông hơn người mua (" + nf(h24.sellers, 0) + " so với " + nf(h24.buyers, 0) + ").",
+  "Cá voi (" + nf(mix.whale.wallets, 0) + " ví) bán ròng " + usdc((mix.whale.buyUsd || 0) - (mix.whale.sellUsd || 0), 0) + " trong 24 giờ; không còn ví \"smart money\" nào mua (HoodScan).",
+  "Bỏ RWA Sleeve ra, dòng tiền ròng 7 ngày trên DEX khoảng −$1M: team gần như là bên mua ròng duy nhất.",
+  "Đòn bẩy Loopback (Morpho, thế chấp wsNET): vay $660K / cung $717K, utilization 92%. Định giá thế chấp có sàn bằng NAV, nên rủi ro thanh lý hàng loạt thấp.",
+].forEach(t => BN.appendChild(h("li", {text: t})));
+
+// F: ladder + scenarios + simulation
+ladder(document.getElementById("c-ladder"), {
+  aria: "Các mốc giá quan trọng và vùng giá của ba kịch bản",
+  min: 140, max: 360, now: S.spot,
+  levels: [
+    {v: S.inv_price, label: "Sàn mua lại", short: "Sàn"}, {v: S.nav, label: "NAV", short: "NAV"}, {v: S.spot, label: "Giá hiện tại", short: "Giá", strong: true},
+    {v: 1.75 * S.nav, label: "1,75× NAV", short: "1,75×"}, {v: 2 * S.nav, label: "2× NAV", short: "2×"},
+  ],
+  ranges: SCN.map(s => ({label: s.label, short: s.short, p: s.p, lo: s.lo, hi: s.hi, cls: s.cls})),
+});
+table(document.getElementById("t-scn"), ["Kịch bản", "Xác suất", "Vùng giá", "So với giá hiện tại", "Điều kiện / dấu hiệu"], SCN.map(s => [s.label, s.p, "$" + s.lo + "–" + s.hi, pct((s.lo / S.spot - 1) * 100, 0) + " đến " + pct((s.hi / S.spot - 1) * 100, 0), s.why]), [1, 2, 3]);
+// dilution simulation, same model as the README (contract constants, current state)
+function sim(path, days) {
+  let s = S.supply, st = S.staked, rfv = S.rfv; const mc = S.supply * S.spot, out = {};
+  const rate = P => 0.0045 * Math.min(Math.max((P - 1) / 0.75, 0), 1);
+  for (let d = 1; d <= days; d++) {
+    const nav = rfv / s, p = path(d, nav, mc, s), P = p / nav;
+    const reb = 3 * rate(P) * st, bond = p * 0.97 > nav ? 0.0075 * s : 0;
+    rfv += bond * p * 0.97 + 15000 * (p / S.spot) + 2100; s += reb + bond; st += reb + bond * 0.9;
+    out[d] = {p, nav: rfv / s};
+  }
+  return out;
+}
+const paths = [
+  ["Market cap giữ nguyên", (d, nav, mc, s) => mc / s],
+  ["Giá đứng yên " + usd(S.spot, 0), () => S.spot],
+  ["Premium co về 1,15× trong 10 ngày", (d, nav) => S.spot + (1.15 * nav - S.spot) * Math.min(d / 10, 1)],
+  ["Giá về NAV (rebase và bond tự dừng)", (d, nav) => nav],
+];
+table(document.getElementById("t-sim"), ["Giả định", "Ngày 7", "Ngày 14", "Ngày 21"], paths.map(([name, f]) => { const r = sim(f, 21); return [name].concat([7, 14, 21].map(d => usd(r[d].p, 0) + " (NAV " + usd(r[d].nav, 0) + ")")); }), [1, 2, 3]);
+})();
+</script>

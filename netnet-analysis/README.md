@@ -5,6 +5,8 @@ Snapshot: **2026-10-06 ~11:40 UTC** (bản trước: 2026-10-03). Số liệu đ
 
 > Đây là phân tích dữ liệu, không phải lời khuyên đầu tư. NET là token rebase kiểu OlympusDAO trên một chain mới. Bạn có thể mất phần lớn số vốn bỏ vào.
 
+Bản HTML có biểu đồ: [`report.html`](report.html) (build bằng `scripts/build_report.py` từ `report.template.html`), cũng được publish tại https://claude.ai/artifact/1s4mmumZGorDN3euAZMLid.
+
 ---
 
 ## TL;DR
