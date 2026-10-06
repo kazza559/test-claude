@@ -11,7 +11,24 @@ def w_csv(name, header, rows):
         w.writerows(rows)
 
 
+def daily_from_4h():
+    """Rebuild data/gt_ohlcv_day.json from the 4h candles (GeckoTerminal's daily endpoint rate-limits hard)."""
+    h4 = sorted(json.load(open(os.path.join(DATA, "gt_ohlcv_4h.json")))["data"]["attributes"]["ohlcv_list"])
+    day = collections.OrderedDict()
+    for t, o, h, l, c, v in h4:
+        d = t - t % 86400
+        if d not in day:
+            day[d] = [d, o, h, l, c, v]
+        else:
+            r = day[d]
+            r[2], r[3], r[4], r[5] = max(r[2], h), min(r[3], l), c, r[5] + v
+    json.dump({"data": {"attributes": {"ohlcv_list": list(day.values())[::-1]}},
+               "meta": {"note": "daily candles aggregated from GeckoTerminal 4h candles (canonical Uniswap v2 NET/USDG pair)"}},
+              open(os.path.join(DATA, "gt_ohlcv_day.json"), "w"))
+
+
 def main():
+    daily_from_4h()
     hist = json.load(open(os.path.join(DATA, "history_12h.json")))
     keys = ["time", "block", "spot", "twap", "nav", "premium", "rate", "supply", "staked", "index", "rfv", "liquid", "morpho", "pool_net", "pool_usdg", "pteam_ex", "pteam_now", "bd_net", "inv_price", "inv_cap", "ps_active"]
     w_csv("protocol_history_12h.csv", keys, [[r.get(k) for k in keys] for r in hist])

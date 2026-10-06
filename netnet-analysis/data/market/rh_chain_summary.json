@@ -1,0 +1,83 @@
+{
+ "asof": "2026-10-06",
+ "tvl": 1050497355,
+ "stablecoins": 1113344088.03,
+ "stablecoin_breakdown": [
+  {
+   "symbol": "USDG",
+   "now": 713352738.9380296,
+   "prev_week": 685693962.8093985,
+   "prev_month": 640627653.3093858
+  },
+  {
+   "symbol": "USDe",
+   "now": 361400559.5614673,
+   "prev_week": 345420695.5425129,
+   "prev_month": 319884049.9827207
+  },
+  {
+   "symbol": "U",
+   "now": 29976357.442062266,
+   "prev_week": 29976357.442062266,
+   "prev_month": 0
+  },
+  {
+   "symbol": "rwaUSDi",
+   "now": 3938486.4809261854,
+   "prev_week": 3938486.4809261854,
+   "prev_month": 3938486.4809261854
+  },
+  {
+   "symbol": "rwaUSD",
+   "now": 10,
+   "prev_week": 10,
+   "prev_month": 10
+  }
+ ],
+ "dex_24h": 1179841586.81,
+ "dex_7d": 8891373973.399998,
+ "dex_30d": 47907615253.73998,
+ "dex_change_7d_pct": -26.55,
+ "dex_peak_day": "2026-09-04",
+ "dex_peak_usd": 3674270481.69,
+ "fees_24h": 3548366.4899999993,
+ "fees_7d": 31162799.4,
+ "fees_change_7d_pct": -28.1,
+ "top_dexs_24h": [
+  [
+   "Uniswap V4",
+   419258020
+  ],
+  [
+   "Uniswap V3",
+   336592219
+  ],
+  [
+   "Tessera V",
+   68651041
+  ],
+  [
+   "Fables",
+   68114636
+  ],
+  [
+   "Ramses CL V2",
+   29564680
+  ],
+  [
+   "Metric V1",
+   23209163
+  ],
+  [
+   "0x",
+   23207637
+  ],
+  [
+   "up v3",
+   16082907
+  ]
+ ],
+ "l1_bridge_eth_now": 276033.9508980592,
+ "l1_bridge_eth_peak": 313598.5868746961,
+ "l1_bridge_eth_peak_day": "2026-09-17"
+}

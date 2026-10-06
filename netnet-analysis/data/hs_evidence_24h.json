@@ -1,7 +1,7 @@
 {
  "available": true,
  "apiVersion": 2,
- "generatedAt": "2026-10-03T23:29:45.000Z",
+ "generatedAt": "2026-10-06T11:46:14.000Z",
  "windowMinutes": 1440,
  "token": {
   "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
@@ -12,94 +12,91 @@
    "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
    "symbol": "NET"
   },
-  "score": 55.1,
+  "score": 41.1,
   "signals": [
    "risk"
   ],
   "evidence": [
-   "163 wallets opened positions",
-   "18 quality wallets buying",
-   "-$68,978 net flow",
-   "-12.4% price"
+   "105 wallets opened positions",
+   "-$126,855 net flow",
+   "-5.6% price"
   ],
   "confidence": {
    "level": "high",
    "score": 1
   },
   "risk": {
-   "level": "high",
-   "score": 19.3,
+   "level": "low",
+   "score": 8.9,
    "suspicious": false,
-   "flags": [
-    "thin_liquidity"
-   ]
+   "flags": []
   },
   "metrics": {
-   "trades": 3645,
-   "buys": 1741,
-   "sells": 1904,
-   "buyUsd": 874109.9957614029,
-   "sellUsd": 943088.4152246732,
-   "buyers": 817,
-   "sellers": 938,
-   "baselineTrades": 3462,
-   "smartBuyers": 18,
-   "smartNetUsd": -960.9686082533108,
-   "qualityWeightedNetUsd": -847.854164194991,
+   "trades": 2928,
+   "buys": 1355,
+   "sells": 1573,
+   "buyUsd": 557728.129852155,
+   "sellUsd": 684582.736501626,
+   "buyers": 669,
+   "sellers": 915,
+   "baselineTrades": 3131.8571428571427,
+   "smartBuyers": 0,
+   "smartNetUsd": 0,
+   "qualityWeightedNetUsd": 0,
    "smartOpened": 0,
-   "smartAdded": 36,
-   "smartExited": 1,
-   "newPositions": 163,
-   "additions": 654,
-   "exits": 27,
-   "topWalletShare": 0.04425065660012198,
-   "priceChange": -0.12429091561141806,
-   "liquidityUsd": 427758.49,
-   "marketCapUsd": 1354977,
+   "smartAdded": 0,
+   "smartExited": 0,
+   "newPositions": 105,
+   "additions": 564,
+   "exits": 165,
+   "topWalletShare": 0.07667993414369129,
+   "priceChange": -0.05550616333729922,
+   "liquidityUsd": 382801.23,
+   "marketCapUsd": 1309295,
    "firstSeenTs": 1784306013,
-   "tokenAgeHours": 1878.7,
-   "grossFlowUsd": 1817198.41,
-   "netFlowUsd": -68978.42,
-   "netFlowRatio": -0.038,
-   "activityMultiple": 1.05,
-   "buyerPressure": 0.466,
-   "tradesPerWallet": 2.08
+   "tokenAgeHours": 1939.1,
+   "grossFlowUsd": 1242310.87,
+   "netFlowUsd": -126854.61,
+   "netFlowRatio": -0.102,
+   "activityMultiple": 0.93,
+   "buyerPressure": 0.422,
+   "tradesPerWallet": 1.85
   },
   "price": {
-   "openUsd": 278.03815067026625,
-   "closeUsd": 243.48053434855345,
-   "highUsd": 1150.6788990204457,
-   "lowUsd": 115.49229751689494
+   "openUsd": 238.72445100348273,
+   "closeUsd": 225.47377263347633,
+   "highUsd": 681.6520074435205,
+   "lowUsd": 114.47736306896952
   },
   "market": {
-   "priceUsd": 280.86,
-   "liquidityUsd": 427758.49,
-   "marketCapUsd": 1354977,
-   "fdvUsd": 37059214,
+   "priceUsd": 224.04,
+   "liquidityUsd": 382801.23,
+   "marketCapUsd": 1309295,
+   "fdvUsd": 30817833,
    "source": "dexscreener",
-   "observedAt": 1791067909
+   "observedAt": 1791286502
   },
   "participantMix": {
    "smart": {
-    "wallets": 26,
-    "buyUsd": 21774.91200194674,
-    "sellUsd": 22735.880610200056,
-    "qualityWeightedNetUsd": -847.854164194991,
+    "wallets": 0,
+    "buyUsd": 0,
+    "sellUsd": 0,
+    "qualityWeightedNetUsd": 0,
     "opened": 0,
-    "added": 36,
-    "exited": 1
+    "added": 0,
+    "exited": 0
    },
    "whale": {
-    "wallets": 13,
-    "buyUsd": 202748.96038521078,
-    "sellUsd": 356029.4775004538
+    "wallets": 9,
+    "buyUsd": 99870.3427363994,
+    "sellUsd": 257924.4961490904
    },
    "retail": {
-    "wallets": 1491,
-    "buyUsd": 649572.2301427238,
-    "sellUsd": 564312.7320380198
+    "wallets": 1369,
+    "buyUsd": 437414.1419476031,
+    "sellUsd": 422071.10003610165
    },
-   "fomoShare": 0.030727023319615913
+   "fomoShare": 0.03381147540983607
   },
   "rank": 1
  },
@@ -107,71 +104,71 @@
   "available": true,
   "score": 98,
   "level": "solid",
-  "pDead": 0.024,
+  "pDead": 0.019,
   "lens": "current",
-  "lensFrom": 1790983535,
-  "lensTo": 1791069935,
+  "lensFrom": 1791200781,
+  "lensTo": 1791287181,
   "features": {
-   "trades": 3648,
-   "buys": 1742,
-   "sells": 1906,
-   "wallets": 1530,
-   "buyers": 818,
-   "sellers": 940,
-   "holders": 732,
-   "grossUsd": 1917565,
-   "buyUsd": 931199,
-   "sellUsd": 986366,
-   "netFlowRatio": -0.029,
-   "buyerSellerRatio": 0.87,
-   "tradesPerWallet": 2.38,
-   "oneTradeWalletShare": 0.671,
-   "top1Share": 0.042,
-   "top5Share": 0.161,
-   "top10HolderShare": 0.325,
+   "trades": 2925,
+   "buys": 1354,
+   "sells": 1571,
+   "wallets": 1421,
+   "buyers": 668,
+   "sellers": 915,
+   "holders": 604,
+   "grossUsd": 1293298,
+   "buyUsd": 587918,
+   "sellUsd": 705380,
+   "netFlowRatio": -0.091,
+   "buyerSellerRatio": 0.73,
+   "tradesPerWallet": 2.06,
+   "oneTradeWalletShare": 0.726,
+   "top1Share": 0.074,
+   "top5Share": 0.187,
+   "top10HolderShare": 0.314,
    "largestBuyerSoldFrac": 0,
-   "earlyExitRate": 0.4,
+   "earlyExitRate": 0.3,
    "earlyCohort": 20,
-   "earlyExited": 8,
-   "first5mShare": 0.001,
-   "activeBucketShare": 0.997,
-   "buyerMomentum": 1.74,
-   "priceChange": -0.074,
-   "drawdownFromPeak": 0.114,
+   "earlyExited": 6,
+   "first5mShare": 0,
+   "activeBucketShare": 0.986,
+   "buyerMomentum": 0.47,
+   "priceChange": -0.088,
+   "drawdownFromPeak": 0.118,
    "pricedShare": 1,
-   "fomoShare": 0.031,
-   "venues": 19,
+   "fomoShare": 0.034,
+   "venues": 20,
    "topVenue": "DEX pool",
-   "minutesSinceLastTrade": 1,
+   "minutesSinceLastTrade": 6,
    "lensHours": 24,
-   "ageHours": 1878.9
+   "ageHours": 1939.2
   },
   "jev": null,
   "reasons": [
    {
-    "text": "1878.9 hours old",
+    "text": "1939.2 hours old",
     "against": false,
-    "weight": -2.28
+    "weight": -2.29
    },
    {
-    "text": "ten wallets hold 33% of what was bought",
+    "text": "73% of wallets traded once",
+    "against": false,
+    "weight": -0.75
+   },
+   {
+    "text": "ten wallets hold 31% of what was bought",
     "against": true,
-    "weight": 0.71
+    "weight": 0.74
    },
    {
-    "text": "67% of wallets traded once",
-    "against": false,
-    "weight": -0.65
-   },
-   {
-    "text": "price 11% below its peak",
+    "text": "price 12% below its peak",
     "against": true,
-    "weight": 0.62
+    "weight": 0.61
    },
    {
-    "text": "732 observed holders",
+    "text": "604 observed holders",
     "against": false,
-    "weight": -0.6
+    "weight": -0.54
    }
   ],
   "model": {
@@ -182,516 +179,412 @@
  },
  "timeline": [
   {
-   "ts": 1790724600,
-   "trades": 24,
-   "buys": 18,
-   "sells": 6,
-   "wallets": 14,
-   "buyUsd": 16765.156063061437,
-   "sellUsd": 882.790346176828,
-   "openUsd": 430.9817878537308,
-   "closeUsd": 389.4671100865372,
-   "highUsd": 435.4254709694677,
-   "lowUsd": 375.3583238728089
+   "ts": 1790941800,
+   "trades": 5,
+   "buys": 2,
+   "sells": 3,
+   "wallets": 5,
+   "buyUsd": 120.740598,
+   "sellUsd": 766.4575842686314,
+   "openUsd": 291.3158612486516,
+   "closeUsd": 292.9380296280399,
+   "highUsd": 292.9380296280399,
+   "lowUsd": 154.25661432661533
   },
   {
-   "ts": 1790724900,
-   "trades": 20,
-   "buys": 13,
-   "sells": 7,
-   "wallets": 17,
-   "buyUsd": 17716.479846,
-   "sellUsd": 1338.461642,
-   "openUsd": 348.37999969821226,
-   "closeUsd": 236.2650225858546,
-   "highUsd": 448.50250737646024,
-   "lowUsd": 236.2650225858546
-  },
-  {
-   "ts": 1790725200,
-   "trades": 36,
-   "buys": 16,
-   "sells": 20,
-   "wallets": 30,
-   "buyUsd": 27018.068769872825,
-   "sellUsd": 1400.7163936422335,
-   "openUsd": 450.2988297261655,
-   "closeUsd": 457.7476735947208,
-   "highUsd": 457.7476735947208,
-   "lowUsd": 341.7796627058587
-  },
-  {
-   "ts": 1790725500,
-   "trades": 28,
-   "buys": 12,
-   "sells": 16,
+   "ts": 1790942100,
+   "trades": 29,
+   "buys": 14,
+   "sells": 15,
    "wallets": 24,
-   "buyUsd": 7810.202031895826,
-   "sellUsd": 146.90924970114054,
-   "openUsd": 447.4945408136594,
-   "closeUsd": 383.0908062145606,
-   "highUsd": 460.19751151006284,
-   "lowUsd": 221.12419157111063
+   "buyUsd": 3386.072564827481,
+   "sellUsd": 33530.42196,
+   "openUsd": 292.270551545024,
+   "closeUsd": 274.1072927458018,
+   "highUsd": 295.4079781460497,
+   "lowUsd": 264.19385748119396
   },
   {
-   "ts": 1790725800,
-   "trades": 19,
-   "buys": 12,
-   "sells": 7,
-   "wallets": 19,
-   "buyUsd": 1783.4100968810878,
-   "sellUsd": 1283.4181310024057,
-   "openUsd": 456.7458250453322,
-   "closeUsd": 456.8158793000353,
-   "highUsd": 465.1663469275488,
-   "lowUsd": 31.139222800842774
-  },
-  {
-   "ts": 1790726100,
-   "trades": 14,
-   "buys": 12,
-   "sells": 2,
-   "wallets": 12,
-   "buyUsd": 7948.716297999999,
-   "sellUsd": 1.52794,
-   "openUsd": 457.02291761529386,
-   "closeUsd": 466.9967433272269,
-   "highUsd": 466.9967433272269,
-   "lowUsd": 266.97605882700174
-  },
-  {
-   "ts": 1790726400,
-   "trades": 17,
-   "buys": 8,
-   "sells": 9,
-   "wallets": 15,
-   "buyUsd": 1457.1503277329666,
-   "sellUsd": 4397.310495328191,
-   "openUsd": 459.7268025988652,
-   "closeUsd": 457.23539125,
-   "highUsd": 467.1963023756548,
-   "lowUsd": 418.158158589551
-  },
-  {
-   "ts": 1790726700,
-   "trades": 16,
-   "buys": 12,
-   "sells": 4,
-   "wallets": 12,
-   "buyUsd": 4769.267426437101,
-   "sellUsd": 3.6700126319145805,
-   "openUsd": 416.7176915088697,
-   "closeUsd": 466.0717472913586,
-   "highUsd": 466.82470577721364,
-   "lowUsd": 337.0441719461931
-  },
-  {
-   "ts": 1790727000,
-   "trades": 18,
-   "buys": 12,
-   "sells": 6,
-   "wallets": 15,
-   "buyUsd": 7307.44550501455,
-   "sellUsd": 235.2670334719379,
-   "openUsd": 466.85256229305816,
-   "closeUsd": 468.2335837503292,
-   "highUsd": 470.4664452424411,
-   "lowUsd": 409.9179322686447
-  },
-  {
-   "ts": 1790727300,
-   "trades": 24,
-   "buys": 12,
-   "sells": 12,
-   "wallets": 21,
-   "buyUsd": 5626.6533553251,
-   "sellUsd": 20334.28536956157,
-   "openUsd": 463.55087020211835,
-   "closeUsd": 462.48551784263253,
-   "highUsd": 494.4995810394086,
-   "lowUsd": 425.63429736282933
-  },
-  {
-   "ts": 1790727600,
+   "ts": 1790942400,
    "trades": 21,
    "buys": 10,
    "sells": 11,
-   "wallets": 19,
-   "buyUsd": 1815.791791689117,
-   "sellUsd": 300.8909675025789,
-   "openUsd": 437.1490707193225,
-   "closeUsd": 424.0081654838234,
-   "highUsd": 466.17920686484376,
-   "lowUsd": 290.06311152504423
+   "wallets": 18,
+   "buyUsd": 9.24821,
+   "sellUsd": 4902.75772193374,
+   "openUsd": 275.7305939864495,
+   "closeUsd": 175.21036294807465,
+   "highUsd": 279.2028271296648,
+   "lowUsd": 144.28919681175108
   },
   {
-   "ts": 1790727900,
-   "trades": 23,
+   "ts": 1790942700,
+   "trades": 9,
+   "buys": 5,
+   "sells": 4,
+   "wallets": 9,
+   "buyUsd": 2831.09885,
+   "sellUsd": 66.96728200000001,
+   "openUsd": 277.12489617796575,
+   "closeUsd": 276.7474263385034,
+   "highUsd": 278.9790646524444,
+   "lowUsd": 182.19106111187168
+  },
+  {
+   "ts": 1790943000,
+   "trades": 11,
+   "buys": 6,
+   "sells": 5,
+   "wallets": 10,
+   "buyUsd": 5947.145783016573,
+   "sellUsd": 801.8846757082798,
+   "openUsd": 279.77778109494085,
+   "closeUsd": 280.50166131120085,
+   "highUsd": 280.50166131120085,
+   "lowUsd": 178.7455484247604
+  },
+  {
+   "ts": 1790943300,
+   "trades": 12,
+   "buys": 8,
+   "sells": 4,
+   "wallets": 11,
+   "buyUsd": 2399.3212122477576,
+   "sellUsd": 306.12152301220397,
+   "openUsd": 183.07627464996443,
+   "closeUsd": 279.4289392635135,
+   "highUsd": 280.2503531952411,
+   "lowUsd": 172.1235745886223
+  },
+  {
+   "ts": 1790943600,
+   "trades": 25,
+   "buys": 14,
+   "sells": 11,
+   "wallets": 18,
+   "buyUsd": 29370.105929966958,
+   "sellUsd": 648.6458698880015,
+   "openUsd": 277.3061177083333,
+   "closeUsd": 292.9530165172005,
+   "highUsd": 294.8688978574601,
+   "lowUsd": 233.281352360984
+  },
+  {
+   "ts": 1790943900,
+   "trades": 9,
+   "buys": 7,
+   "sells": 2,
+   "wallets": 9,
+   "buyUsd": 2622.1915554340694,
+   "sellUsd": 967.425347,
+   "openUsd": 289.0225162789176,
+   "closeUsd": 293.5897825821572,
+   "highUsd": 293.5897825821572,
+   "lowUsd": 187.3564233204449
+  },
+  {
+   "ts": 1790944200,
+   "trades": 16,
    "buys": 11,
-   "sells": 12,
-   "wallets": 13,
-   "buyUsd": 166.8668791948831,
-   "sellUsd": 169.21797618404,
-   "openUsd": 460.89661646410445,
-   "closeUsd": 450.643788939838,
-   "highUsd": 465.3667329223401,
-   "lowUsd": 442.2755464402833
+   "sells": 5,
+   "wallets": 15,
+   "buyUsd": 5874.225822905532,
+   "sellUsd": 64.257143,
+   "openUsd": 285.8774594418983,
+   "closeUsd": 293.8778316584607,
+   "highUsd": 295.63584564627655,
+   "lowUsd": 177.0283554412785
   },
   {
-   "_truncated": "1137 more not shown"
+   "ts": 1790944500,
+   "trades": 23,
+   "buys": 16,
+   "sells": 7,
+   "wallets": 19,
+   "buyUsd": 8253.85393231068,
+   "sellUsd": 1879.5815063515613,
+   "openUsd": 296.7417380637724,
+   "closeUsd": 289.6465165952628,
+   "highUsd": 298.11937426679924,
+   "lowUsd": 146.16762831888488
+  },
+  {
+   "ts": 1790944800,
+   "trades": 22,
+   "buys": 13,
+   "sells": 9,
+   "wallets": 16,
+   "buyUsd": 12531.417318668737,
+   "sellUsd": 540.1206096443165,
+   "openUsd": 297.31520126792816,
+   "closeUsd": 298.0306879106965,
+   "highUsd": 367.13887919708344,
+   "lowUsd": 261.0412836054478
+  },
+  {
+   "ts": 1790945100,
+   "trades": 17,
+   "buys": 10,
+   "sells": 7,
+   "wallets": 16,
+   "buyUsd": 4159.796222745644,
+   "sellUsd": 5183.785194,
+   "openUsd": 297.077638,
+   "closeUsd": 301.415315855813,
+   "highUsd": 302.6930057614758,
+   "lowUsd": 291.67622110547524
+  },
+  {
+   "_truncated": "1125 more not shown"
   }
  ],
  "smartMoneyTimeline": [
   {
-   "ts": 1790724900,
-   "buyers": 1,
-   "sellers": 2,
-   "buyUsd": 304.74767599999996,
-   "sellUsd": 0,
-   "netUsd": 304.74767599999996,
-   "qualityWeightedNetUsd": 211.61684015533385,
-   "opened": 0,
-   "added": 0,
-   "exited": 0,
-   "qualityVersion": "behavior-v3"
-  },
-  {
-   "ts": 1790725200,
-   "buyers": 1,
-   "sellers": 2,
-   "buyUsd": 713.74181,
-   "sellUsd": 0,
-   "netUsd": 713.74181,
-   "qualityWeightedNetUsd": 495.6224391976944,
-   "opened": 0,
-   "added": 0,
-   "exited": 0,
-   "qualityVersion": "behavior-v3"
-  },
-  {
-   "ts": 1790725500,
+   "ts": 1790943000,
    "buyers": 0,
-   "sellers": 2,
+   "sellers": 1,
+   "buyUsd": 0,
+   "sellUsd": 37.398005,
+   "netUsd": -37.398005,
+   "qualityWeightedNetUsd": -25.90320293858261,
+   "opened": 0,
+   "added": 0,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790943300,
+   "buyers": 1,
+   "sellers": 0,
+   "buyUsd": 120.57590486684464,
+   "sellUsd": 0,
+   "netUsd": 120.57590486684464,
+   "qualityWeightedNetUsd": 98.18484011129065,
+   "opened": 0,
+   "added": 1,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790943900,
+   "buyers": 1,
+   "sellers": 0,
+   "buyUsd": 134.715349,
+   "sellUsd": 0,
+   "netUsd": 134.715349,
+   "qualityWeightedNetUsd": 109.69857548826752,
+   "opened": 0,
+   "added": 1,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790944200,
+   "buyers": 1,
+   "sellers": 0,
+   "buyUsd": 243.47175277005775,
+   "sellUsd": 0,
+   "netUsd": 243.47175277005775,
+   "qualityWeightedNetUsd": 167.48522403228512,
+   "opened": 0,
+   "added": 1,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790944500,
+   "buyers": 2,
+   "sellers": 0,
+   "buyUsd": 3542.574836,
+   "sellUsd": 0,
+   "netUsd": 3542.574836,
+   "qualityWeightedNetUsd": 2366.0517797926695,
+   "opened": 0,
+   "added": 2,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790944800,
+   "buyers": 1,
+   "sellers": 0,
+   "buyUsd": 173.489647,
+   "sellUsd": 0,
+   "netUsd": 173.489647,
+   "qualityWeightedNetUsd": 141.27244801082304,
+   "opened": 0,
+   "added": 1,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790946000,
+   "buyers": 1,
+   "sellers": 1,
+   "buyUsd": 197.868919,
+   "sellUsd": 236.58791063816452,
+   "netUsd": -38.71899163816451,
+   "qualityWeightedNetUsd": -26.77196733531031,
+   "opened": 0,
+   "added": 1,
+   "exited": 0,
+   "qualityVersion": "behavior-v3"
+  },
+  {
+   "ts": 1790946600,
+   "buyers": 1,
+   "sellers": 0,
    "buyUsd": 0,
    "sellUsd": 0,
    "netUsd": 0,
    "qualityWeightedNetUsd": 0,
    "opened": 0,
-   "added": 0,
+   "added": 1,
    "exited": 0,
    "qualityVersion": "behavior-v3"
   },
   {
-   "ts": 1790725800,
+   "ts": 1790946900,
    "buyers": 1,
-   "sellers": 0,
-   "buyUsd": 740.366651,
-   "sellUsd": 0,
-   "netUsd": 740.366651,
-   "qualityWeightedNetUsd": 514.1107335007433,
-   "opened": 0,
-   "added": 0,
-   "exited": 0,
-   "qualityVersion": "behavior-v3"
-  },
-  {
-   "ts": 1790727300,
-   "buyers": 1,
-   "sellers": 0,
-   "buyUsd": 429.59401,
-   "sellUsd": 0,
-   "netUsd": 429.59401,
-   "qualityWeightedNetUsd": 283.5718031867714,
+   "sellers": 1,
+   "buyUsd": 265.2482306120484,
+   "sellUsd": 15.965348,
+   "netUsd": 249.2828826120484,
+   "qualityWeightedNetUsd": 204.51652143412298,
    "opened": 0,
    "added": 1,
    "exited": 0,
    "qualityVersion": "behavior-v3"
   },
   {
-   "ts": 1790728200,
-   "buyers": 0,
-   "sellers": 1,
-   "buyUsd": 0,
-   "sellUsd": 237.406544,
-   "netUsd": -237.406544,
-   "qualityWeightedNetUsd": -157.67522473785522,
-   "opened": 0,
-   "added": 0,
-   "exited": 1,
-   "qualityVersion": "behavior-v3"
-  },
-  {
-   "ts": 1790729100,
-   "buyers": 1,
-   "sellers": 1,
-   "buyUsd": 0,
-   "sellUsd": 1058.443401,
-   "netUsd": -1058.443401,
-   "qualityWeightedNetUsd": -734.9832850009493,
-   "opened": 1,
-   "added": 0,
-   "exited": 0,
-   "qualityVersion": "behavior-v3"
-  },
-  {
-   "ts": 1790730600,
-   "buyers": 0,
-   "sellers": 1,
-   "buyUsd": 0,
-   "sellUsd": 566.4874270524809,
-   "netUsd": -566.4874270524809,
-   "qualityWeightedNetUsd": -393.3689696146238,
-   "opened": 0,
-   "added": 0,
-   "exited": 0,
-   "qualityVersion": "behavior-v3"
-  },
-  {
-   "ts": 1790730900,
-   "buyers": 0,
-   "sellers": 1,
-   "buyUsd": 0,
-   "sellUsd": 1920.380316,
-   "netUsd": -1920.380316,
-   "qualityWeightedNetUsd": -1450.930899976117,
-   "opened": 0,
-   "added": 0,
-   "exited": 1,
-   "qualityVersion": "behavior-v3"
-  },
-  {
-   "ts": 1790731800,
+   "ts": 1790947200,
    "buyers": 1,
    "sellers": 0,
-   "buyUsd": 57.93395103764488,
+   "buyUsd": 14.934162415805947,
    "sellUsd": 0,
-   "netUsd": 57.93395103764488,
-   "qualityWeightedNetUsd": 40.22934585496309,
+   "netUsd": 14.934162415805947,
+   "qualityWeightedNetUsd": 10.259790772241459,
    "opened": 0,
    "added": 1,
    "exited": 0,
    "qualityVersion": "behavior-v3"
   },
   {
-   "ts": 1790734800,
-   "buyers": 0,
-   "sellers": 1,
-   "buyUsd": 0,
-   "sellUsd": 935.251017,
-   "netUsd": -935.251017,
-   "qualityWeightedNetUsd": -649.4384717460566,
+   "ts": 1790947500,
+   "buyers": 1,
+   "sellers": 0,
+   "buyUsd": 94.41536162654464,
+   "sellUsd": 0,
+   "netUsd": 94.41536162654464,
+   "qualityWeightedNetUsd": 64.86348741919629,
    "opened": 0,
-   "added": 0,
+   "added": 1,
    "exited": 0,
    "qualityVersion": "behavior-v3"
   },
   {
-   "ts": 1790736900,
-   "buyers": 0,
-   "sellers": 1,
-   "buyUsd": 0,
-   "sellUsd": 15.722186,
-   "netUsd": -15.722186,
-   "qualityWeightedNetUsd": -11.363217368447113,
+   "ts": 1790948400,
+   "buyers": 2,
+   "sellers": 0,
+   "buyUsd": 132.6241153060242,
+   "sellUsd": 0,
+   "netUsd": 132.6241153060242,
+   "qualityWeightedNetUsd": 104.55579856034619,
    "opened": 0,
-   "added": 0,
+   "added": 2,
    "exited": 0,
    "qualityVersion": "behavior-v3"
   },
   {
-   "_truncated": "352 more not shown"
+   "_truncated": "213 more not shown"
   }
  ],
  "notableTraders": [
   {
+   "trader": "0xc0434d511dc3b317e052c9ba01d12eb6f4f1d70d",
+   "action": "added",
+   "buyUsd": 10.6067,
+   "sellUsd": 0,
+   "buys": 1,
+   "sells": 0,
+   "firstBuyTs": 1789340400,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 0.06599095700000002,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 78.8492,
+    "confidence": 1,
+    "realizedPnl": 7656.449332756304,
+    "sampleTrades": 109,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 368.0613819758464,
+    "maxDrawdownPct": 0.029941555,
+    "avgHoldSeconds": 1062122.4054054054,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0xde78a646c581f4b253ab49859590fcd427db2aab",
+   "action": "added",
+   "buyUsd": 0.252191,
+   "sellUsd": 0,
+   "buys": 1,
+   "sells": 0,
+   "firstBuyTs": 1784647800,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 5.9845246510000045,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 77.99222,
+    "confidence": 1,
+    "realizedPnl": 701.3147649804201,
+    "sampleTrades": 150,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 1.9288243139808037,
+    "maxDrawdownPct": 0.0020709962,
+    "avgHoldSeconds": 2373076.5506607927,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
    "trader": "0x17e9aa8f8277e99aceb1c123734f7e14c594413a",
    "action": "added",
-   "buyUsd": 371.3475228568678,
+   "buyUsd": 53.04964612240969,
    "sellUsd": 0,
-   "buys": 3,
+   "buys": 1,
    "sells": 0,
    "firstBuyTs": 1790801100,
    "observedPosition": {
     "status": "open",
-    "quantity": 0.11003492799999992,
+    "quantity": 1.469854214,
     "version": "observed-swaps-v1"
    },
    "quality": {
-    "score": 78.83619,
+    "score": 73.65639,
     "confidence": 1,
-    "realizedPnl": 1536.393701255941,
-    "sampleTrades": 196,
+    "realizedPnl": 1512.3378001944882,
+    "sampleTrades": 174,
     "version": "behavior-v3",
-    "maxDrawdownUsd": 177.33457694573457,
-    "maxDrawdownPct": 0.019712029,
-    "avgHoldSeconds": 1323484.1935483871,
-    "entryAlpha1hPct": null,
-    "entryAlpha24hPct": null
-   }
-  },
-  {
-   "trader": "0x58e327d64fc77fa36f698989623c3e4f058c8a89",
-   "action": "added",
-   "buyUsd": 51.065494,
-   "sellUsd": 0,
-   "buys": 1,
-   "sells": 0,
-   "firstBuyTs": 1785347400,
-   "observedPosition": {
-    "status": "open",
-    "quantity": 2.8827039850000062,
-    "version": "observed-swaps-v1"
-   },
-   "quality": {
-    "score": 77.547,
-    "confidence": 0.997844,
-    "realizedPnl": 2870.9532025720655,
-    "sampleTrades": 99,
-    "version": "behavior-v3",
-    "maxDrawdownUsd": 0,
-    "maxDrawdownPct": 0,
-    "avgHoldSeconds": 3211794.8273615637,
-    "entryAlpha1hPct": null,
-    "entryAlpha24hPct": null
-   }
-  },
-  {
-   "trader": "0x75aa584bef3a942b8b50f34ab56a15f47768f36a",
-   "action": "added",
-   "buyUsd": 15212.503364,
-   "sellUsd": 6266.181296,
-   "buys": 21,
-   "sells": 18,
-   "firstBuyTs": 1790449800,
-   "observedPosition": {
-    "status": "exited",
-    "quantity": 0,
-    "version": "observed-swaps-v1"
-   },
-   "quality": {
-    "score": 77.35519,
-    "confidence": 1,
-    "realizedPnl": 1342.8842371585267,
-    "sampleTrades": 140,
-    "version": "behavior-v3",
-    "maxDrawdownUsd": 0,
-    "maxDrawdownPct": 0,
-    "avgHoldSeconds": 3296479.5,
-    "entryAlpha1hPct": null,
-    "entryAlpha24hPct": null
-   }
-  },
-  {
-   "trader": "0x1af69c824e0b8c0e433b744a674fcbb1ea67ce60",
-   "action": "reduced",
-   "buyUsd": 0,
-   "sellUsd": 15821.430533916473,
-   "buys": 0,
-   "sells": 6,
-   "firstBuyTs": 1788797700,
-   "observedPosition": {
-    "status": "open",
-    "quantity": 49.64524538299999,
-    "version": "observed-swaps-v1"
-   },
-   "quality": {
-    "score": 74.58032,
-    "confidence": 1,
-    "realizedPnl": 8291.582780911482,
-    "sampleTrades": 109,
-    "version": "behavior-v3",
-    "maxDrawdownUsd": 2423.541515226707,
-    "maxDrawdownPct": 0.033234395,
-    "avgHoldSeconds": 1510660.6666666667,
-    "entryAlpha1hPct": null,
-    "entryAlpha24hPct": null
-   }
-  },
-  {
-   "trader": "0x37346bb1ca6723c6d3999c81f6ec6a480b3502c2",
-   "action": "added",
-   "buyUsd": 27.195981,
-   "sellUsd": 0,
-   "buys": 3,
-   "sells": 1,
-   "firstBuyTs": 1789926000,
-   "observedPosition": {
-    "status": "open",
-    "quantity": 1.1395898219999978,
-    "version": "observed-swaps-v1"
-   },
-   "quality": {
-    "score": 73.13802,
-    "confidence": 1,
-    "realizedPnl": 1582.2718253571488,
-    "sampleTrades": 111,
-    "version": "behavior-v3",
-    "maxDrawdownUsd": 60.62685318027471,
-    "maxDrawdownPct": 0.0037771827,
-    "avgHoldSeconds": 1445538.294117647,
-    "entryAlpha1hPct": null,
-    "entryAlpha24hPct": null
-   }
-  },
-  {
-   "trader": "0x282726548bfbd21fb96683ffc402789dedcd861a",
-   "action": "added",
-   "buyUsd": 151.640455,
-   "sellUsd": 20.635721,
-   "buys": 2,
-   "sells": 1,
-   "firstBuyTs": null,
-   "observedPosition": {
-    "status": null,
-    "quantity": 0,
-    "version": "observed-swaps-v1"
-   },
-   "quality": {
-    "score": 72.68396,
-    "confidence": 1,
-    "realizedPnl": 121.0162300912983,
-    "sampleTrades": 187,
-    "version": "behavior-v3",
-    "maxDrawdownUsd": 0,
-    "maxDrawdownPct": 0,
-    "avgHoldSeconds": 1034440.5,
-    "entryAlpha1hPct": null,
-    "entryAlpha24hPct": null
-   }
-  },
-  {
-   "trader": "0xfad4c8f1e71e4c56b87733bd916ff7cff46c6c29",
-   "action": "exited",
-   "buyUsd": 0,
-   "sellUsd": 81.145898,
-   "buys": 0,
-   "sells": 7,
-   "firstBuyTs": 1788235200,
-   "observedPosition": {
-    "status": "exited",
-    "quantity": 0,
-    "version": "observed-swaps-v1"
-   },
-   "quality": {
-    "score": 71.423676,
-    "confidence": 1,
-    "realizedPnl": 132.00907276452838,
-    "sampleTrades": 2613,
-    "version": "behavior-v3",
-    "maxDrawdownUsd": 10.959024508523438,
-    "maxDrawdownPct": 0.009118106,
-    "avgHoldSeconds": 3412519.090909091,
+    "maxDrawdownUsd": 404.06151379750224,
+    "maxDrawdownPct": 0.046789866,
+    "avgHoldSeconds": 1419416.4,
     "entryAlpha1hPct": null,
     "entryAlpha24hPct": null
    }
   },
   {
    "trader": "0x84d0f74d21a89f86b67e9a38d8559d0b4e10f12d",
-   "action": "reduced",
-   "buyUsd": 0,
-   "sellUsd": 7.362176,
-   "buys": 0,
-   "sells": 1,
+   "action": "added",
+   "buyUsd": 582.7587159226816,
+   "sellUsd": 0,
+   "buys": 2,
+   "sells": 0,
    "firstBuyTs": null,
    "observedPosition": {
     "status": "untracked_reduction",
@@ -699,118 +592,222 @@
     "version": "observed-swaps-v1"
    },
    "quality": {
-    "score": 70.50576,
+    "score": 72.508934,
     "confidence": 1,
-    "realizedPnl": 192.28772827472523,
-    "sampleTrades": 113,
+    "realizedPnl": 160.13766231622353,
+    "sampleTrades": 124,
     "version": "behavior-v3",
-    "maxDrawdownUsd": 11.770385773777054,
-    "maxDrawdownPct": 0.017391924,
-    "avgHoldSeconds": 1738855.0833333333,
+    "maxDrawdownUsd": 5.941414063488992,
+    "maxDrawdownPct": 0.0006580703,
+    "avgHoldSeconds": 1835768.84,
     "entryAlpha1hPct": null,
     "entryAlpha24hPct": null
    }
   },
   {
-   "trader": "0xd71212365401aa8c623cd2a9ca466152989070fd",
+   "trader": "0x25ea0aeefea7eab97a163382c5b230e2e8df5e1e",
    "action": "exited",
-   "buyUsd": 0,
-   "sellUsd": 5.902544,
-   "buys": 0,
-   "sells": 1,
-   "firstBuyTs": 1787841600,
+   "buyUsd": 283.185978,
+   "sellUsd": 3072.716583227197,
+   "buys": 3,
+   "sells": 4,
+   "firstBuyTs": 1789286100,
    "observedPosition": {
     "status": "exited",
     "quantity": 0,
     "version": "observed-swaps-v1"
    },
    "quality": {
-    "score": 70.43648,
+    "score": 72.476105,
     "confidence": 1,
-    "realizedPnl": 421.7349898404152,
-    "sampleTrades": 236,
+    "realizedPnl": 2126.303447130095,
+    "sampleTrades": 184,
     "version": "behavior-v3",
-    "maxDrawdownUsd": 29.29238076134798,
-    "maxDrawdownPct": 0.0030148083,
-    "avgHoldSeconds": 2603524.2752293576,
+    "maxDrawdownUsd": 168.0353706500617,
+    "maxDrawdownPct": 0.0050747306,
+    "avgHoldSeconds": 2781069.4444444445,
     "entryAlpha1hPct": null,
     "entryAlpha24hPct": null
    }
   },
   {
-   "trader": "0x8e2a9d954e7c88a00d3571eeab3d5e733a309426",
-   "action": "reduced",
-   "buyUsd": 0,
-   "sellUsd": 2.239801,
-   "buys": 0,
-   "sells": 1,
-   "firstBuyTs": null,
-   "observedPosition": {
-    "status": "untracked_reduction",
-    "quantity": 0,
-    "version": "observed-swaps-v1"
-   },
-   "quality": {
-    "score": 70.189384,
-    "confidence": 1,
-    "realizedPnl": 1.5149573634596671,
-    "sampleTrades": 621,
-    "version": "behavior-v3",
-    "maxDrawdownUsd": 0,
-    "maxDrawdownPct": 0,
-    "avgHoldSeconds": 1284501.7692307692,
-    "entryAlpha1hPct": null,
-    "entryAlpha24hPct": null
-   }
-  },
-  {
-   "trader": "0x4122f18804aca3a66f6ccecdc29edc6789772eca",
+   "trader": "0x8151aac95fcec7c3ca82557c43da5ac2276f3cb9",
    "action": "added",
-   "buyUsd": 99.5,
+   "buyUsd": 215.236627,
    "sellUsd": 0,
    "buys": 1,
    "sells": 0,
-   "firstBuyTs": 1787684700,
-   "observedPosition": {
-    "status": "open",
-    "quantity": 1.07612403,
-    "version": "observed-swaps-v1"
-   },
-   "quality": {
-    "score": 69.36062,
-    "confidence": 0.96006525,
-    "realizedPnl": 232.5864819321311,
-    "sampleTrades": 83,
-    "version": "behavior-v3",
-    "maxDrawdownUsd": 26.599039791806604,
-    "maxDrawdownPct": 0.013738678,
-    "avgHoldSeconds": 2233448.0825688075,
-    "entryAlpha1hPct": null,
-    "entryAlpha24hPct": null
-   }
-  },
-  {
-   "trader": "0xcd6b980029e6e6e0733ac8ec3e02be9410d09799",
-   "action": "exited",
-   "buyUsd": 0,
-   "sellUsd": 110.36557200000001,
-   "buys": 0,
-   "sells": 8,
-   "firstBuyTs": 1788234000,
+   "firstBuyTs": 1786305300,
    "observedPosition": {
     "status": "exited",
     "quantity": 0,
     "version": "observed-swaps-v1"
    },
    "quality": {
-    "score": 69.263596,
+    "score": 71.343285,
     "confidence": 1,
-    "realizedPnl": 2.2714703670783303,
-    "sampleTrades": 1398,
+    "realizedPnl": 18796.36259310499,
+    "sampleTrades": 295,
     "version": "behavior-v3",
-    "maxDrawdownUsd": 0.38880172252853207,
-    "maxDrawdownPct": 0.00025277404,
-    "avgHoldSeconds": 2591814.5280898875,
+    "maxDrawdownUsd": 2899.563220493482,
+    "maxDrawdownPct": 0.15745938,
+    "avgHoldSeconds": 2690328.8012552303,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x8d4fe3909302a098a303b29dbd562362ad6ff0aa",
+   "action": "exited",
+   "buyUsd": 0,
+   "sellUsd": 3.038364,
+   "buys": 0,
+   "sells": 1,
+   "firstBuyTs": 1789215300,
+   "observedPosition": {
+    "status": "exited",
+    "quantity": 0,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 71.22604,
+    "confidence": 0.9651638,
+    "realizedPnl": 936.0717054232124,
+    "sampleTrades": 85,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 178.01592999999994,
+    "maxDrawdownPct": 0.034924507,
+    "avgHoldSeconds": 1528782.0930232557,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x4f551b4688a624d9ea2550f1ac9928f7021bdd20",
+   "action": "added",
+   "buyUsd": 2265.996879193333,
+   "sellUsd": 68.8730404456817,
+   "buys": 2,
+   "sells": 1,
+   "firstBuyTs": 1787661300,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 0.2198303119999998,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 71.08271,
+    "confidence": 1,
+    "realizedPnl": 4931.05488280766,
+    "sampleTrades": 323,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 1023.4462834302249,
+    "maxDrawdownPct": 0.026284043,
+    "avgHoldSeconds": 1466789.5714285714,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0xec544c04d4416b4e49d330d42807d1ef3aa49ef7",
+   "action": "added",
+   "buyUsd": 995.392606,
+   "sellUsd": 0,
+   "buys": 1,
+   "sells": 0,
+   "firstBuyTs": 1791049200,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 14.433522431,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 70.298164,
+    "confidence": 1,
+    "realizedPnl": 127.2249506382955,
+    "sampleTrades": 137,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 0,
+    "maxDrawdownPct": 0,
+    "avgHoldSeconds": 279486.64285714284,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x9bc462bce2acd6fbe2ef5470d55b439453451083",
+   "action": "added",
+   "buyUsd": 0.9294690356877218,
+   "sellUsd": 0,
+   "buys": 1,
+   "sells": 0,
+   "firstBuyTs": 1788458700,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 28.489091065,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 70.1681,
+    "confidence": 1,
+    "realizedPnl": 0.43538884184960874,
+    "sampleTrades": 1061,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 0,
+    "maxDrawdownPct": 0,
+    "avgHoldSeconds": 1648236.1497512439,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x67d698a325f29e17a9477f28ba4fe50f1cec60e4",
+   "action": "added",
+   "buyUsd": 52.283094105457096,
+   "sellUsd": 0,
+   "buys": 1,
+   "sells": 0,
+   "firstBuyTs": 1788307800,
+   "observedPosition": {
+    "status": "open",
+    "quantity": 19.412945206,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 70.166824,
+    "confidence": 1,
+    "realizedPnl": 0.046056210393244625,
+    "sampleTrades": 1066,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 0,
+    "maxDrawdownPct": 0,
+    "avgHoldSeconds": 1620063.5937339496,
+    "entryAlpha1hPct": null,
+    "entryAlpha24hPct": null
+   }
+  },
+  {
+   "trader": "0x2bb27b73c602643f42471d4751fe4fc4eebefbd1",
+   "action": "added",
+   "buyUsd": 1696.3641943386488,
+   "sellUsd": 0,
+   "buys": 4,
+   "sells": 0,
+   "firstBuyTs": 1787024100,
+   "observedPosition": {
+    "status": "exited",
+    "quantity": 0,
+    "version": "observed-swaps-v1"
+   },
+   "quality": {
+    "score": 70.16671,
+    "confidence": 1,
+    "realizedPnl": 0.009254868032604537,
+    "sampleTrades": 1058,
+    "version": "behavior-v3",
+    "maxDrawdownUsd": 0,
+    "maxDrawdownPct": 0,
+    "avgHoldSeconds": 2281277.021423863,
     "entryAlpha1hPct": null,
     "entryAlpha24hPct": null
    }
@@ -826,96 +823,96 @@
     "address": "0x20024e485c0b22b42855589700721b28320a7777",
     "symbol": "PRISM"
    },
-   "sharedWallets": 404,
-   "similarity": 0.10640604
+   "sharedWallets": 329,
+   "similarity": 0.10052076
   },
   {
    "token": {
     "address": "0x56910d4409f3a0c78c64dd8d0545ff0705389870",
     "symbol": "Index"
    },
-   "sharedWallets": 305,
-   "similarity": 0.07852027
+   "sharedWallets": 250,
+   "similarity": 0.07077983
   },
   {
    "token": {
     "address": "0x18e674231a58c239dc7daedcffe15ec3a24cff5c",
     "symbol": "HOOKR"
    },
-   "sharedWallets": 263,
-   "similarity": 0.07527072
-  },
-  {
-   "token": {
-    "address": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
-    "symbol": "CASHCAT"
-   },
-   "sharedWallets": 402,
-   "similarity": 0.067563616
+   "sharedWallets": 228,
+   "similarity": 0.06793047
   },
   {
    "token": {
     "address": "0xe934e36a439c94017b64a3fece66af12099abf50",
     "symbol": "STONKBROKER"
    },
-   "sharedWallets": 180,
-   "similarity": 0.06317569
+   "sharedWallets": 162,
+   "similarity": 0.06460275
+  },
+  {
+   "token": {
+    "address": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
+    "symbol": "CASHCAT"
+   },
+   "sharedWallets": 294,
+   "similarity": 0.061890945
+  },
+  {
+   "token": {
+    "address": "0x39dbed3a2bd333467115de45665cc57f813c4571",
+    "symbol": "PONS"
+   },
+   "sharedWallets": 369,
+   "similarity": 0.05472351
+  },
+  {
+   "token": {
+    "address": "0xec262a75e413fafd0df80480274532c79d42da09",
+    "symbol": "MSTR"
+   },
+   "sharedWallets": 130,
+   "similarity": 0.05187041
+  },
+  {
+   "token": {
+    "address": "0x6330d8c3178a418788df01a47479c0ce7ccf450b",
+    "symbol": "COIN"
+   },
+   "sharedWallets": 88,
+   "similarity": 0.051393013
   },
   {
    "token": {
     "address": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18",
     "symbol": "AI"
    },
-   "sharedWallets": 422,
-   "similarity": 0.050812025
+   "sharedWallets": 388,
+   "similarity": 0.049059577
   },
   {
    "token": {
-    "address": "0x1b0e319c6a659f002271b69db8a7df2f911c153e",
-    "symbol": "GME"
+    "address": "0xab093def657f15df31b33922a95e047add645b29",
+    "symbol": "SHROOM"
+   },
+   "sharedWallets": 144,
+   "similarity": 0.04870813
+  },
+  {
+   "token": {
+    "address": "0xe8ffd7e24187f72afb08d75b1bb13088a989a791",
+    "symbol": "DELTA"
    },
    "sharedWallets": 140,
-   "similarity": 0.047538675
+   "similarity": 0.047901496
   },
   {
    "token": {
-    "address": "0x42afa2124ca5a2b83898e46b2da9a190995b1e18",
-    "symbol": "SCHIFFY"
+    "address": "0x7dbf38976f6d3b9c529e7d9484a71898b409ee6a",
+    "symbol": "ZZZ"
    },
-   "sharedWallets": 143,
-   "similarity": 0.047443565
-  },
-  {
-   "token": {
-    "address": "0xaa07a0e9209e16ac99708c3ec70159c6ef3128a3",
-    "symbol": "ORBIO"
-   },
-   "sharedWallets": 296,
-   "similarity": 0.046737276
-  },
-  {
-   "token": {
-    "address": "0x91a2dae9699f0b82540b5886b0d8759c22820ba3",
-    "symbol": "musebook"
-   },
-   "sharedWallets": 253,
-   "similarity": 0.04565715
-  },
-  {
-   "token": {
-    "address": "0x812486eaea648819853f8e372dc9f1516c7868bd",
-    "symbol": "UBIK"
-   },
-   "sharedWallets": 150,
-   "similarity": 0.044906523
-  },
-  {
-   "token": {
-    "address": "0xd9db30bb0d2b8d2eae3826a1372117e058791e18",
-    "symbol": "MOO"
-   },
-   "sharedWallets": 170,
-   "similarity": 0.044192262
+   "sharedWallets": 134,
+   "similarity": 0.047595713
   },
   {
    "_truncated": "8 more not shown"
@@ -923,100 +920,100 @@
  ],
  "buyerCohorts": [
   {
-   "ts": 1788393600,
-   "buyers": 1069,
-   "repeatBuyers": 350,
-   "active7d": 68,
-   "repeatRate": 0.3274087932647334,
-   "active7dRate": 0.06361085126286249
-  },
-  {
-   "ts": 1788480000,
-   "buyers": 740,
-   "repeatBuyers": 255,
-   "active7d": 45,
-   "repeatRate": 0.34459459459459457,
-   "active7dRate": 0.060810810810810814
-  },
-  {
-   "ts": 1788566400,
-   "buyers": 682,
-   "repeatBuyers": 215,
-   "active7d": 48,
-   "repeatRate": 0.3152492668621701,
-   "active7dRate": 0.07038123167155426
-  },
-  {
    "ts": 1788652800,
-   "buyers": 631,
-   "repeatBuyers": 237,
-   "active7d": 59,
-   "repeatRate": 0.375594294770206,
-   "active7dRate": 0.09350237717908082
+   "buyers": 579,
+   "repeatBuyers": 221,
+   "active7d": 35,
+   "repeatRate": 0.38169257340241797,
+   "active7dRate": 0.06044905008635579
   },
   {
    "ts": 1788739200,
    "buyers": 655,
-   "repeatBuyers": 229,
-   "active7d": 70,
-   "repeatRate": 0.34961832061068704,
-   "active7dRate": 0.10687022900763359
+   "repeatBuyers": 231,
+   "active7d": 63,
+   "repeatRate": 0.3526717557251908,
+   "active7dRate": 0.09618320610687023
   },
   {
    "ts": 1788825600,
    "buyers": 1027,
-   "repeatBuyers": 244,
-   "active7d": 64,
-   "repeatRate": 0.23758519961051608,
-   "active7dRate": 0.062317429406037
+   "repeatBuyers": 247,
+   "active7d": 46,
+   "repeatRate": 0.24050632911392406,
+   "active7dRate": 0.044790652385589096
   },
   {
    "ts": 1788912000,
    "buyers": 593,
-   "repeatBuyers": 193,
-   "active7d": 56,
-   "repeatRate": 0.3254637436762226,
-   "active7dRate": 0.09443507588532883
+   "repeatBuyers": 195,
+   "active7d": 36,
+   "repeatRate": 0.3288364249578415,
+   "active7dRate": 0.06070826306913996
   },
   {
    "ts": 1788998400,
    "buyers": 434,
-   "repeatBuyers": 178,
-   "active7d": 33,
-   "repeatRate": 0.41013824884792627,
-   "active7dRate": 0.07603686635944701
+   "repeatBuyers": 182,
+   "active7d": 32,
+   "repeatRate": 0.41935483870967744,
+   "active7dRate": 0.07373271889400922
   },
   {
    "ts": 1789084800,
    "buyers": 545,
-   "repeatBuyers": 201,
+   "repeatBuyers": 205,
    "active7d": 69,
-   "repeatRate": 0.3688073394495413,
+   "repeatRate": 0.3761467889908257,
    "active7dRate": 0.12660550458715597
   },
   {
    "ts": 1789171200,
    "buyers": 507,
-   "repeatBuyers": 184,
-   "active7d": 51,
-   "repeatRate": 0.3629191321499014,
-   "active7dRate": 0.10059171597633136
+   "repeatBuyers": 185,
+   "active7d": 39,
+   "repeatRate": 0.36489151873767256,
+   "active7dRate": 0.07692307692307693
   },
   {
    "ts": 1789257600,
    "buyers": 458,
-   "repeatBuyers": 144,
-   "active7d": 40,
-   "repeatRate": 0.314410480349345,
-   "active7dRate": 0.08733624454148471
+   "repeatBuyers": 145,
+   "active7d": 35,
+   "repeatRate": 0.3165938864628821,
+   "active7dRate": 0.07641921397379912
   },
   {
    "ts": 1789344000,
    "buyers": 419,
    "repeatBuyers": 114,
-   "active7d": 50,
+   "active7d": 31,
    "repeatRate": 0.2720763723150358,
-   "active7dRate": 0.11933174224343675
+   "active7dRate": 0.07398568019093078
+  },
+  {
+   "ts": 1789430400,
+   "buyers": 1103,
+   "repeatBuyers": 284,
+   "active7d": 38,
+   "repeatRate": 0.257479601087942,
+   "active7dRate": 0.03445149592021759
+  },
+  {
+   "ts": 1789516800,
+   "buyers": 508,
+   "repeatBuyers": 145,
+   "active7d": 34,
+   "repeatRate": 0.2854330708661417,
+   "active7dRate": 0.06692913385826772
+  },
+  {
+   "ts": 1789603200,
+   "buyers": 495,
+   "repeatBuyers": 105,
+   "active7d": 29,
+   "repeatRate": 0.21212121212121213,
+   "active7dRate": 0.05858585858585859
   },
   {
    "_truncated": "19 more not shown"
@@ -1306,7 +1303,21 @@
     "buyerPressure": 0.667,
     "tradesPerWallet": 1.17
    },
-   "outcomes": []
+   "outcomes": [
+    {
+     "horizonMinutes": 1440,
+     "evaluatedAt": 1791122224,
+     "entryPriceUsd": 279.8868225662693,
+     "outcomePriceUsd": 398.9410034908999,
+     "returnPct": 0.42536545,
+     "maxGainPct": 1.2081753,
+     "maxDrawdownPct": -0.97570056,
+     "trades": 4219,
+     "buyUsd": 1319868.8398796082,
+     "sellUsd": 1275558.4863773035,
+     "uniqueWallets": 1823
+    }
+   ]
   },
   {
    "id": "b29cc18b-21a1-4b79-867a-50952f87fab9",
