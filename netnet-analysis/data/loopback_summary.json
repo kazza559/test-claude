@@ -1,0 +1,81 @@
+{
+ "market_id": "0xaa586d26a6fe62d9c0f0948fede6e2130500ac7a655587447e2d4a37e6330589",
+ "oracle": "0xcde9599059f8ae6d6b9f33a0af7877827ec75f16",
+ "lltv": 0.625,
+ "supply_usdg": 910329.852698,
+ "borrow_usdg": 823602.235033,
+ "util_pct": 90.47294588791523,
+ "borrow_apr_pct": 49.001749200864005,
+ "borrow_apy_pct": 63.23447726945233,
+ "oracle_wsnet_usd": 842.1919463797024,
+ "oracle_net_usd": 194.51501329215932,
+ "index": 4.329701508,
+ "collateral_wsnet": 3203.898521070588,
+ "collateral_net_eq": 13871.924258158295,
+ "borrowers": 165,
+ "users_ever": 805,
+ "aggregate_ltv": 0.3052303259478947,
+ "ladder": [
+  {
+   "net_px": 190,
+   "positions": 0,
+   "collateral_net_eq": 0.0,
+   "debt_usdg": 0
+  },
+  {
+   "net_px": 180,
+   "positions": 0,
+   "collateral_net_eq": 0.0,
+   "debt_usdg": 0
+  },
+  {
+   "net_px": 170,
+   "positions": 7,
+   "collateral_net_eq": 30.0,
+   "debt_usdg": 3252
+  },
+  {
+   "net_px": 160,
+   "positions": 21,
+   "collateral_net_eq": 134.1,
+   "debt_usdg": 14035
+  },
+  {
+   "net_px": 150,
+   "positions": 38,
+   "collateral_net_eq": 734.8,
+   "debt_usdg": 72071
+  },
+  {
+   "net_px": 140,
+   "positions": 65,
+   "collateral_net_eq": 2792.3,
+   "debt_usdg": 255740
+  },
+  {
+   "net_px": 130,
+   "positions": 95,
+   "collateral_net_eq": 5135.1,
+   "debt_usdg": 454621
+  },
+  {
+   "net_px": 120,
+   "positions": 121,
+   "collateral_net_eq": 6757.5,
+   "debt_usdg": 582399
+  },
+  {
+   "net_px": 100,
+   "positions": 135,
+   "collateral_net_eq": 7754.5,
+   "debt_usdg": 655368
+  }
+ ],
+ "sleeve": {
+  "user": "0x498752d5fa0600cbd613074c151abe15b3fec7cb",
+  "coll_wsnet": 813.5413203179559,
+  "debt_usdg": 114059.60775572,
+  "ltv": 0.16647199099932938,
+  "liq_net_px": 51.81008246721085
+ }
+}

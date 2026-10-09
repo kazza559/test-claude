@@ -6,73 +6,73 @@
   "name": null
  },
  "market": {
-  "priceUsd": 225.794737913486,
-  "priceTime": "2026-10-06T11:40:04.000Z",
+  "priceUsd": 119.07602656882624,
+  "priceTime": "2026-10-09T13:18:37.000Z",
   "h1": {
-   "trades": 46,
-   "buys": 17,
-   "sells": 29,
-   "buyUsd": 3813.675446128751,
-   "sellUsd": 3489.244867791277
+   "trades": 61,
+   "buys": 37,
+   "sells": 24,
+   "buyUsd": 4577.58925452639,
+   "sellUsd": 3527.9184810501592
   },
   "h24": {
-   "trades": 2926,
-   "buys": 1354,
-   "sells": 1572,
-   "buyUsd": 587918.1008791452,
-   "sellUsd": 705389.6037130596,
-   "buyers": 668,
-   "sellers": 915
+   "trades": 2817,
+   "buys": 1349,
+   "sells": 1468,
+   "buyUsd": 592417.4815113617,
+   "sellUsd": 695767.3185638076,
+   "buyers": 723,
+   "sellers": 872
   },
   "d7": {
-   "trades": 22773,
-   "buys": 10831,
-   "sells": 11942,
-   "buyUsd": 5650491.317498326,
-   "sellUsd": 6238811.595331615
+   "trades": 21175,
+   "buys": 9601,
+   "sells": 11574,
+   "buyUsd": 4909504.573441341,
+   "sellUsd": 5020775.064299274
   },
   "topProfit": [
    {
-    "trader": "0xad0659223184b884615e7c1e6c6d4aa6149697f7",
-    "realizedUsd": 6564.51,
+    "trader": "0xcd57368b792e0a7cff2066a82425e2d7d4645d9f",
+    "realizedUsd": 9885.11,
     "qty": 0,
-    "buys": 3,
-    "sells": 3
-   },
-   {
-    "trader": "0x25ea0aeefea7eab97a163382c5b230e2e8df5e1e",
-    "realizedUsd": 2662.48,
-    "qty": 0,
-    "buys": 56,
-    "sells": 81
+    "buys": 8,
+    "sells": 13
    },
    {
     "trader": "0x3821c23b51515086e0aa91400b5fe00199b47e4a",
-    "realizedUsd": 2491.06,
-    "qty": 338.22427199500004,
-    "buys": 11,
-    "sells": 3
-   },
-   {
-    "trader": "0x7c9457a775015eee6e098cb1a4ba6cf9b0fdf3c0",
-    "realizedUsd": 2350.71,
-    "qty": 0,
-    "buys": 26,
-    "sells": 89
-   },
-   {
-    "trader": "0xc57943ce0f9d7d181c33b6875639ef7a4208fc70",
-    "realizedUsd": 2257.71,
-    "qty": 13.160409032,
-    "buys": 4,
+    "realizedUsd": 3241.48,
+    "qty": 230.38870183699999,
+    "buys": 6,
     "sells": 1
    },
    {
-    "trader": "0xfca78e50737bc30274a567446a363fb8e5b9814a",
-    "realizedUsd": 1904.52,
-    "qty": 7.4360842149999975,
-    "buys": 3,
-    "sells": 3
+    "trader": "0x288c3eadfdbef55ac51fed48272c757a899d5045",
+    "realizedUsd": 3235.74,
+    "qty": 18.346646986,
+    "buys": 6,
+    "sells": 4
+   },
+   {
+    "trader": "0x7c9457a775015eee6e098cb1a4ba6cf9b0fdf3c0",
+    "realizedUsd": 2902.56,
+    "qty": 0.3520158799999997,
+    "buys": 19,
+    "sells": 56
+   },
+   {
+    "trader": "0xfbce9641b18f9c12206a917f4f3a5b4ce63aed9b",
+    "realizedUsd": 2781.19,
+    "qty": 2.072283716000001,
+    "buys": 1,
+    "sells": 2
+   },
+   {
+    "trader": "0xe2ed1740ad2f10030276f62bafb3ea349a0a56ea",
+    "realizedUsd": 2499.12,
+    "qty": 27.187782659,
+    "buys": 44,
+    "sells": 25
    },
    {
     "trader": "0x7e6fb2e33267405fba0af166c4193f1789687396",
@@ -82,105 +82,168 @@
     "sells": 1
    },
    {
-    "trader": "0x943d0591155f74efcd4bc58dd6024f596d45b340",
-    "realizedUsd": 1383.37,
-    "qty": 0,
-    "buys": 3,
-    "sells": 1
+    "trader": "0x02400c68ed25c30ff8222ffe86a3cf579d940304",
+    "realizedUsd": 1499.47,
+    "qty": 10.692493976999991,
+    "buys": 8,
+    "sells": 3
    },
    {
-    "trader": "0xd6cbcba99bc931d40f1490f93a4bd8a7abf29ea5",
-    "realizedUsd": 1297.8,
-    "qty": 1.24186861,
-    "buys": 2,
-    "sells": 2
+    "trader": "0xb1729ccd0ff72f89f953f75270c32fe4f6889760",
+    "realizedUsd": 1382.97,
+    "qty": 4.422532531999999,
+    "buys": 8,
+    "sells": 28
    },
    {
-    "trader": "0xcbcfb5360f1bf7d55d9e529e298ecd439fd353fc",
-    "realizedUsd": 1211.05,
-    "qty": 0.06846897300000032,
-    "buys": 1,
-    "sells": 2
+    "trader": "0x315c7e3f71a06c50c332cf9359b435c3d10de5f8",
+    "realizedUsd": 1377.45,
+    "qty": 18.803910698,
+    "buys": 6,
+    "sells": 4
    }
   ],
   "topHolders": [
    {
-    "trader": "0xe7e867518c5b3d929ca63622f314ff9dc60e96f6",
-    "qty": 1239.4051132590002,
-    "costUsd": 467897.22,
-    "buys": 23,
-    "sells": 0
-   },
-   {
-    "trader": "0x5a0c868eb0f70b03b44c795fba92a7ee3bb230c7",
-    "qty": 475.53246694499995,
-    "costUsd": 136577.67,
-    "buys": 21,
-    "sells": 0
-   },
-   {
     "trader": "0x00000083377224012dc18bdfc4be2007fd81a274",
-    "qty": 404.333507027,
-    "costUsd": 102147.77,
-    "buys": 64,
-    "sells": 2
-   },
-   {
-    "trader": "0xf70da97812cb96acdf810712aa562db8dfa3dbef",
-    "qty": 383.507222618,
-    "costUsd": 99222.84,
-    "buys": 7,
-    "sells": 0
-   },
-   {
-    "trader": "0x3821c23b51515086e0aa91400b5fe00199b47e4a",
-    "qty": 338.22427199500004,
-    "costUsd": 87484.94,
-    "buys": 11,
+    "qty": 692.2035178659996,
+    "costUsd": 182496.06,
+    "buys": 91,
     "sells": 3
    },
    {
-    "trader": "0xcdf005548f0e36b85e422a09e0ddbd1e4054e2bd",
-    "qty": 243.437180076,
-    "costUsd": 97611.35,
-    "buys": 18,
+    "trader": "0x5a0c868eb0f70b03b44c795fba92a7ee3bb230c7",
+    "qty": 471.875361617,
+    "costUsd": 135021.43,
+    "buys": 17,
+    "sells": 0
+   },
+   {
+    "trader": "0xf70da97812cb96acdf810712aa562db8dfa3dbef",
+    "qty": 346.156761651,
+    "costUsd": 78348.34,
+    "buys": 5,
     "sells": 0
    },
    {
     "trader": "0x91645809dd21c69aa6ffdb71c7b7d8a443a18fda",
-    "qty": 131.73897549100002,
-    "costUsd": 34002.07,
-    "buys": 6,
+    "qty": 250.459222953,
+    "costUsd": 66191.2,
+    "buys": 14,
     "sells": 0
    },
    {
-    "trader": "0x6f97b7de6be7b7771e975e46bae96c35e332e172",
-    "qty": 113.15190807899998,
-    "costUsd": 30428.43,
-    "buys": 5,
+    "trader": "0x76ac94a97089345b7012a3105bdf905d9b0fd535",
+    "qty": 232.41769392400002,
+    "costUsd": 52873.7,
+    "buys": 10,
+    "sells": 3
+   },
+   {
+    "trader": "0x3821c23b51515086e0aa91400b5fe00199b47e4a",
+    "qty": 230.38870183699999,
+    "costUsd": 56851.47,
+    "buys": 6,
+    "sells": 1
+   },
+   {
+    "trader": "0xe26eeadbf918c7246f556e8c351e46b28768e82a",
+    "qty": 188.18443877299995,
+    "costUsd": 52744.61,
+    "buys": 14,
     "sells": 2
    },
    {
-    "trader": "0x0acd70f0ad1c809cc3b90dad4a3bc3d1e82c4e47",
-    "qty": 106.301740487,
-    "costUsd": 27753.22,
-    "buys": 3,
+    "trader": "0xe7e867518c5b3d929ca63622f314ff9dc60e96f6",
+    "qty": 178.437891786,
+    "costUsd": 54618.17,
+    "buys": 5,
     "sells": 0
    },
    {
-    "trader": "0xdb93342558502d4f522e774eac55d71bff8e6130",
-    "qty": 106.284504743,
-    "costUsd": 32028.33,
+    "trader": "0x71affd3da39f3e2fa09ac0edb4b7850c3d00cdad",
+    "qty": 148.918034526,
+    "costUsd": 32873.35,
+    "buys": 5,
+    "sells": 18
+   },
+   {
+    "trader": "0x7bd5286b53d10322a341e715acb8ef8a0777ba4f",
+    "qty": 117.279671805,
+    "costUsd": 34099.7,
     "buys": 13,
     "sells": 0
    }
   ],
   "recentSwaps": [
    {
-    "time": "2026-10-06T11:40:04.000Z",
-    "tx": "0x0d0dd2308452b41b9859e33045bd2477abd59e1395f37e2bf071c86827a4bdb8",
-    "trader": "0x86e6d1c67a69282e8232c5f58e1dee9b12252577",
+    "time": "2026-10-09T13:18:37.000Z",
+    "tx": "0x47d88cb82c60eddb426ad1a13a57033e4bdc14d2273d111cfd8367d6f6c5c0c5",
+    "trader": "0x098773428be9f14fbf68a2b0c35fb18a6540ef40",
+    "venue": "1inch",
+    "side": "sell",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountIn": 0.628290863,
+    "tokenOut": {
+     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
+     "symbol": "WETH",
+     "decimals": 18
+    },
+    "amountOut": 0.027923366549770703,
+    "usd": 74.81
+   },
+   {
+    "time": "2026-10-09T13:13:50.000Z",
+    "tx": "0xcdb0b366ddf744f04a2f5329dd0760a198848a8fb2db36e61569b77d6d0ba44a",
+    "trader": "0x4ebf724d6fe35e4cc876169b96f24d146d80d657",
     "venue": "0x",
+    "side": "buy",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0x2cc0fac44b8252f6b10208b091aff2c94b4da77d",
+     "symbol": "INJOH",
+     "decimals": 18
+    },
+    "amountIn": 46206.20175144188,
+    "tokenOut": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountOut": 0.353413263,
+    "usd": 85.11
+   },
+   {
+    "time": "2026-10-09T13:13:29.000Z",
+    "tx": "0x1eadc0feaec0eb8175de5c850392537c689a9416b92734310056a2d8cb8a21c5",
+    "trader": "0x16a600c9f456f110e98740122b90a6dff507d740",
+    "venue": "Relay",
+    "side": "buy",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "symbol": "USDG",
+     "decimals": 6
+    },
+    "amountIn": 23.686933,
+    "tokenOut": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountOut": 0.105617534,
+    "usd": 23.69
+   },
+   {
+    "time": "2026-10-09T13:13:23.000Z",
+    "tx": "0xa7d1d8f847082b2847f1c8e43a06fb1103eb27517506cadcf402f3abbb2f07f4",
+    "trader": "0x742b278560f91c762ad1f0580b37ec3c91592099",
+    "venue": "KyberSwap",
     "side": "sell",
     "fomo": false,
     "tokenIn": {
@@ -188,203 +251,140 @@
      "symbol": "NET",
      "decimals": 9
     },
-    "amountIn": 0.1965,
+    "amountIn": 0.038549276,
     "tokenOut": {
      "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
-     "symbol": "0x5fc5\u2026d168",
-     "decimals": 18
+     "symbol": "USDG",
+     "decimals": 6
     },
-    "amountOut": 44.368666,
-    "usd": 44.37
+    "amountOut": 8.556904,
+    "usd": 8.56
    },
    {
-    "time": "2026-10-06T11:39:22.000Z",
-    "tx": "0x9ac227135b928acd7f7538dc9b7e977365b510014a1971e691146666e034606b",
-    "trader": "0xbeac5cea804f00ba9b8987cd3cd3fdad3a4fe630",
-    "venue": "LI.FI",
-    "side": "sell",
+    "time": "2026-10-09T13:13:23.000Z",
+    "tx": "0xf54e3aa4a7b06030a01b3fbbef40279fd308fce469b02034b68471eb394b689a",
+    "trader": "0x9d0810b632d16131de3d79fcb520d757a893448e",
+    "venue": "DEX pool",
+    "side": "buy",
     "fomo": false,
     "tokenIn": {
      "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
      "symbol": "NET",
      "decimals": 9
     },
-    "amountIn": 0.042423171,
+    "amountIn": 0.002752802,
     "tokenOut": {
-     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
-     "symbol": "0x5fc5\u2026d168",
+     "address": "0x2e8c31162b855a2ffa90f6f8634643ad6f111e18",
+     "symbol": "AI",
      "decimals": 18
     },
-    "amountOut": 9.580021,
-    "usd": 9.58
+    "amountOut": 6.146171452004578,
+    "usd": 0.66
    },
    {
-    "time": "2026-10-06T11:36:19.000Z",
-    "tx": "0x8d1f238c0d77479666eab1d1a9b2ad55fe6faec032acff14ce5ffa621451770d",
-    "trader": "0xc443f8f0c8efc5e785136653cd30e51fc480a9d1",
-    "venue": "OKX DEX",
-    "side": "sell",
+    "time": "2026-10-09T13:13:22.000Z",
+    "tx": "0xa42a55b198faafa2ececd53a411d7c59475674f218aee3286096b8b6aef6c554",
+    "trader": "0x4ebf724d6fe35e4cc876169b96f24d146d80d657",
+    "venue": "0x",
+    "side": "buy",
     "fomo": false,
     "tokenIn": {
+     "address": "0x451b42a15100c340ca12f7c66de06fac5ea2d751",
+     "symbol": "BOW",
+     "decimals": 18
+    },
+    "amountIn": 9801.29021461413,
+    "tokenOut": {
      "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
      "symbol": "NET",
      "decimals": 9
     },
-    "amountIn": 0.100799512,
-    "tokenOut": {
-     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
-     "symbol": "0x5fc5\u2026d168",
-     "decimals": 18
-    },
-    "amountOut": 22.765901,
-    "usd": 22.77
+    "amountOut": 0.163738271,
+    "usd": 39.42
    },
    {
-    "time": "2026-10-06T11:35:53.000Z",
-    "tx": "0x8c6962cff989f5f012a7d1d277beac4f4c491d2c27253dba93bd16db37e0c1e9",
-    "trader": "0x5a37cfb01f9d456d585f8f492eb9b5c763f07023",
+    "time": "2026-10-09T13:12:52.000Z",
+    "tx": "0xe00f313ba6b2a98a93cb161becb6c9e14994c7f2547180f2a64a123202515fde",
+    "trader": "0x6b19a3e24a2e181793ef3ed01ce0061978b8ea47",
+    "venue": "LI.FI (smart wallet)",
+    "side": "buy",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
+     "symbol": "WETH",
+     "decimals": 18
+    },
+    "amountIn": 0.033342954856172634,
+    "tokenOut": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountOut": 0.37107659,
+    "usd": 89.33
+   },
+   {
+    "time": "2026-10-09T13:12:24.000Z",
+    "tx": "0x8d28921578b267a7ef028e8b7a12f76b3fef19cd0562de6003773b9a7aa20dda",
+    "trader": "0x4ebf724d6fe35e4cc876169b96f24d146d80d657",
+    "venue": "0x",
+    "side": "buy",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0x76736c667677dd57812790c81d37eb4c199e7b7e",
+     "symbol": "LDC",
+     "decimals": 18
+    },
+    "amountIn": 245242.99558272623,
+    "tokenOut": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountOut": 0.041872512,
+    "usd": 9.39
+   },
+   {
+    "time": "2026-10-09T13:12:08.000Z",
+    "tx": "0xf65921d0cdf54bac5c72ca548cced2c88c24a05748058b23da28f7c036336ba5",
+    "trader": "0x2a35a0bc2ba9432f8698910630a8c209ca80ff17",
+    "venue": "KyberSwap (smart wallet)",
+    "side": "buy",
+    "fomo": false,
+    "tokenIn": {
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "symbol": "USDG",
+     "decimals": 6
+    },
+    "amountIn": 353.382998,
+    "tokenOut": {
+     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
+     "symbol": "NET",
+     "decimals": 9
+    },
+    "amountOut": 1.5795048760000001,
+    "usd": 353.38
+   },
+   {
+    "time": "2026-10-09T13:10:13.000Z",
+    "tx": "0x03d5ccd138c12d7781bc00e681035fcc96919f51ecf19f7403027a4b96ef9a5a",
+    "trader": "0x67337a62e42f0e021323d4feeec22ddf431aa8ae",
     "venue": "DEX pool",
     "side": "buy",
     "fomo": false,
     "tokenIn": {
      "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
-     "symbol": "0x5fc5\u2026d168",
-     "decimals": 18
+     "symbol": "USDG",
+     "decimals": 6
     },
-    "amountIn": 219.968176,
+    "amountIn": 24.95,
     "tokenOut": {
      "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
      "symbol": "NET",
      "decimals": 9
     },
-    "amountOut": 0.957332091,
-    "usd": 219.97
-   },
-   {
-    "time": "2026-10-06T11:35:50.000Z",
-    "tx": "0xef62bc63af0b006a75b83fdda8eb265f4a5f4fae56d5d724af4436fd2379f4fe",
-    "trader": "0xc443f8f0c8efc5e785136653cd30e51fc480a9d1",
-    "venue": "OKX DEX",
-    "side": "buy",
-    "fomo": false,
-    "tokenIn": {
-     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
-     "symbol": "0x0bd7\u2026ad73",
-     "decimals": 18
-    },
-    "amountIn": 0.1194,
-    "tokenOut": {
-     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
-     "symbol": "NET",
-     "decimals": 9
-    },
-    "amountOut": 1.437915488,
-    "usd": 319.91
-   },
-   {
-    "time": "2026-10-06T11:35:45.000Z",
-    "tx": "0x2a921096b6858b300ca5cbea8e24c84d0c55d0058efa9298e5cfe51e3ba65a16",
-    "trader": "0x9a462753d92b27ecae8b8251c3a4b92402ab5ae1",
-    "venue": "Robinhood Swap",
-    "side": "buy",
-    "fomo": false,
-    "tokenIn": {
-     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
-     "symbol": "0x0bd7\u2026ad73",
-     "decimals": 18
-    },
-    "amountIn": 0.0198,
-    "tokenOut": {
-     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
-     "symbol": "NET",
-     "decimals": 9
-    },
-    "amountOut": 0.238917509,
-    "usd": 53.05
-   },
-   {
-    "time": "2026-10-06T11:35:33.000Z",
-    "tx": "0x033e47598bffe328f20b3ad9eef6d6ed3b661a331bc84eafc661a52deb9e5cbb",
-    "trader": "0x9a462753d92b27ecae8b8251c3a4b92402ab5ae1",
-    "venue": "Robinhood Swap",
-    "side": "buy",
-    "fomo": false,
-    "tokenIn": {
-     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
-     "symbol": "0x0bd7\u2026ad73",
-     "decimals": 18
-    },
-    "amountIn": 0.0198,
-    "tokenOut": {
-     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
-     "symbol": "NET",
-     "decimals": 9
-    },
-    "amountOut": 0.239053133,
-    "usd": 53.05
-   },
-   {
-    "time": "2026-10-06T11:35:27.000Z",
-    "tx": "0x55d8ef527962d59f6c8b17f9636db0e23e315aa4ae3d853af7362b312df0fb58",
-    "trader": "0x9a462753d92b27ecae8b8251c3a4b92402ab5ae1",
-    "venue": "Robinhood Swap",
-    "side": "buy",
-    "fomo": false,
-    "tokenIn": {
-     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
-     "symbol": "0x0bd7\u2026ad73",
-     "decimals": 18
-    },
-    "amountIn": 0.0198,
-    "tokenOut": {
-     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
-     "symbol": "NET",
-     "decimals": 9
-    },
-    "amountOut": 0.239193283,
-    "usd": 53.05
-   },
-   {
-    "time": "2026-10-06T11:34:41.000Z",
-    "tx": "0x8d391b58f6f93914b932ee7b8112adfc7f7f4365fc8017043cef64b7f400f5eb",
-    "trader": "0xcd6b980029e6e6e0733ac8ec3e02be9410d09799",
-    "venue": "LI.FI",
-    "side": "sell",
-    "fomo": false,
-    "tokenIn": {
-     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
-     "symbol": "NET",
-     "decimals": 9
-    },
-    "amountIn": 0.05154625,
-    "tokenOut": {
-     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
-     "symbol": "0x0bd7\u2026ad73",
-     "decimals": 18
-    },
-    "amountOut": 0.004285528516175354,
-    "usd": 11.48
-   },
-   {
-    "time": "2026-10-06T11:33:11.000Z",
-    "tx": "0x8d124a61ffc1c453987697755d1916b0daaf140c85b8e17cb44984bed5515f55",
-    "trader": "0x551ae28b740242cc73727775a0362f3defeeab1b",
-    "venue": "DEX pool",
-    "side": "sell",
-    "fomo": false,
-    "tokenIn": {
-     "address": "0xca9c78dd337a67f6e0077f65f5e9218719d30edf",
-     "symbol": "NET",
-     "decimals": 9
-    },
-    "amountIn": 0.105662757,
-    "tokenOut": {
-     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
-     "symbol": "0x0bd7\u2026ad73",
-     "decimals": 18
-    },
-    "amountOut": 0.008680924012705912,
-    "usd": 23.26
+    "amountOut": 0.111905006,
+    "usd": 24.95
    }
   ],
   "pools": [
@@ -393,7 +393,7 @@
     "kind": 2,
     "token0": {
      "address": "0x058e7b30200d001130232e8fbfdf900590e0baa9",
-     "symbol": "0x058e\u2026baa9",
+     "symbol": "E280",
      "decimals": 18
     },
     "token1": {
@@ -416,8 +416,8 @@
     },
     "token1": {
      "address": "0xd7321938718672614a81b6239b9d6a6b268a9a8e",
-     "symbol": "0xd732\u20269a8e",
-     "decimals": 18
+     "symbol": "HorseMeat",
+     "decimals": 9
     },
     "fee": 3000,
     "hooks": null,

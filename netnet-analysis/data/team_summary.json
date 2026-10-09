@@ -14,69 +14,69 @@
   }
  },
  "pteam_exercised_net": 13320.0,
- "pteam_exercisable_now_net": 7065.758130093,
+ "pteam_exercisable_now_net": 8132.679254463,
  "pteam_txs_mint_and_desk_same_tx": 192,
  "pteam_txs_total": 200,
  "net_sent_to_desks": 13520.0,
  "est_desk_sale_usd": 7078008.84,
  "sleeve": {
-  "net": 651.773115189,
-  "wsnet": 813.5203247241694,
-  "usdg": 10271.267197,
+  "net": 326.248945868,
+  "wsnet": 181.48734401613177,
+  "usdg": 340.060833,
   "wallet_stocks": {
    "NVDA": {
     "qty": 89.11190897287746,
-    "usd": 21503.59475424506
+    "usd": 20882.484748704104
    },
    "SPCX": {
-    "qty": 1.5793411779465871,
-    "usd": 273.58927225568726
+    "qty": 1.6752381322236107,
+    "usd": 277.1346442137519
    },
    "AAPL": {
-    "qty": 48.33355568788218,
-    "usd": 16129.390868603163
+    "qty": 48.338103493571936,
+    "usd": 16068.552363333183
    },
    "GOOGL": {
     "qty": 0.7181139643622411,
-    "usd": 250.17654290451753
+    "usd": 252.5319567076257
    },
    "MSFT": {
     "qty": 168.01956174555824,
-    "usd": 88808.41955623226
+    "usd": 88670.64351560091
    },
    "COIN": {
-    "qty": 43.14509990371065,
-    "usd": 8189.371412723319
+    "qty": 46.4718026074675,
+    "usd": 8108.400118950929
    }
   },
   "morpho": {
    "NVDA": {
     "collateral": 6474.62,
-    "collateral_usd": 1562390.5522,
-    "debt_usd": 609536.6428470062,
-    "market_borrow_usd": 686035.483254,
-    "market_supply_usd": 686035.483454
+    "collateral_usd": 1517262.4508,
+    "debt_usd": 610589.5961198328,
+    "market_borrow_usd": 687211.566419,
+    "market_supply_usd": 690823.999204
    },
    "SPCX": {
     "collateral": 8075.650000000001,
-    "collateral_usd": 1398944.8495,
-    "debt_usd": 512980.84417418746,
-    "market_borrow_usd": 515677.459387,
-    "market_supply_usd": 515677.459387
+    "collateral_usd": 1335954.7795000002,
+    "debt_usd": 513752.42904612893,
+    "market_borrow_usd": 516294.680863,
+    "market_supply_usd": 517404.771735
    },
    "AAPL": {
     "collateral": 1444.6900000000003,
-    "collateral_usd": 482107.49990000005,
-    "debt_usd": 197309.30388406495,
-    "market_borrow_usd": 197359.417224,
-    "market_supply_usd": 197359.417224
+    "collateral_usd": 480243.84980000014,
+    "debt_usd": 197557.31320974772,
+    "market_borrow_usd": 197607.48954,
+    "market_supply_usd": 198002.452948
    },
    "GOOGL": {
     "collateral": 1887.78,
-    "collateral_usd": 657664.7964,
-    "debt_usd": 259676.13466299532,
-    "market_borrow_usd": 259722.167015,
-    "market_supply_usd": 259722.167015
+    "collateral_usd": 663856.7148000001,
+    "debt_usd": 259996.10435850514,
+    "market_borrow_usd": 260042.193431,
+    "market_supply_usd": 260610.929533
    },
    "MSFT": {
     "collateral": 0.0,
@@ -88,14 +88,14 @@
    "COIN": {
     "collateral": 0.0,
     "collateral_usd": 0.0,
-    "debt_usd": 0.0,
-    "market_borrow_usd": 3.208113,
-    "market_supply_usd": 3.208113
+    "debt_usd": 0,
+    "market_borrow_usd": 0.0,
+    "market_supply_usd": 3.415219
    }
   },
-  "morpho_collateral_usd": 4101107.6980000003,
-  "morpho_debt_usd": 1579502.925568254
+  "morpho_collateral_usd": 3997317.7949,
+  "morpho_debt_usd": 1581895.4427342147
  },
- "sleeve_net_bought": 5108.4171,
- "sleeve_net_bought_usd": 2075206.4
+ "sleeve_net_bought": 5545.697,
+ "sleeve_net_bought_usd": 2201689.28
 }

@@ -112,6 +112,7 @@ figcaption .sub{font-size:13px;color:var(--muted)}
 .tk{fill:var(--muted);font-size:11.5px;font-family:var(--sans);font-variant-numeric:tabular-nums}
 .lb{fill:var(--ink-2);font-size:12px;font-family:var(--sans);font-variant-numeric:tabular-nums}
 .lbs{fill:var(--ink);font-size:12px;font-weight:600;font-family:var(--sans);font-variant-numeric:tabular-nums}
+.lbi{fill:#fff;font-size:12px;font-weight:600;font-family:var(--sans);font-variant-numeric:tabular-nums}
 .ref{stroke:var(--muted);stroke-width:1}
 .xh{stroke:var(--axis);stroke-width:1}
 .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
@@ -146,13 +147,15 @@ tr:last-child td{border-bottom:0}
 footer{display:grid;gap:10px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:18px}
 footer p{max-width:90ch}
 code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:1px solid var(--line);border-radius:4px;padding:0 4px;overflow-wrap:anywhere}
+h3.sub{font-size:16px;margin-top:6px}
+.bg-ink{background:var(--ink)}
 </style>
 
 <div class="wrap">
   <header class="top">
     <div class="eyebrow" id="asof">Robinhood Chain · chainId 4663</div>
     <h1>NetNet (NET) và dòng tiền Robinhood Chain</h1>
-    <p class="lead">Thị trường crypto chung đang tốt, nhưng dòng tiền đầu cơ đang rời Robinhood Chain. Với NET, người mua lớn nhất là chính team và họ gần hết tiền để mua tiếp, trong khi lượng bán từ bond và rebase vẫn đều đặn.</p>
+    <p class="lead">Thị trường crypto chung chuyển sang phòng thủ. Robinhood Chain rút ròng tiền đầu cơ ba tuần liền, chỉ còn tiền gửi lấy lãi tiếp tục chảy vào. Người mua lớn nhất của NET là team đã dừng mua sau khi vay tiền thế chấp bằng chính NET.</p>
     <span class="trend"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4 L7 9 L10 6 L14 11" fill="none" stroke="var(--crit)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11 H14 V7" fill="none" stroke="var(--crit)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Xu hướng NET 1–3 tuần: nghiêng giảm</span>
     <div class="verdict" id="verdict"></div>
   </header>
@@ -168,8 +171,8 @@ code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:
   </section>
 
   <section id="thitruong" aria-labelledby="h-a">
-    <div class="sec-head"><div class="eyebrow">A · Thị trường chung</div><h2 id="h-a">Crypto đang risk-on, token gốc Robinhood Chain đi ngược</h2>
-      <p class="ink2">BTC và ETH ở sát đỉnh 90 ngày, chỉ số Fear &amp; Greed ở vùng Greed. Token gốc của Robinhood Chain lại giảm 15–75% trong 30 ngày. Đây là pha hạ nhiệt sau hype ra mắt chain, không phải thị trường chung đi xuống, nên nếu chain có câu chuyện mới thì tiền vẫn có sẵn để quay lại.</p></div>
+    <div class="sec-head"><div class="eyebrow">A · Thị trường chung</div><h2 id="h-a">Crypto chuyển sang phòng thủ, token gốc Robinhood Chain giảm mạnh hơn</h2>
+      <p class="ink2">BTC rơi từ ~$85,8K (6/10) xuống ~$81,7K cuối ngày 8/10, thấp nhất kể từ 21/9, rồi hồi về ~$83K. Dầu Brent vượt $100 vì căng thẳng ở eo Hormuz, lợi suất trái phiếu Mỹ 10 năm lên ~5,3%, ETF rút ròng, và ~$609M vị thế đòn bẩy bị thanh lý trong 24 giờ ngày 7/10. Ba ngày trước thị trường chung còn là điểm tựa, giờ thành gió ngược cho mọi tài sản đầu cơ.</p></div>
     <div class="kpis four" id="macro"></div>
     <figure>
       <figcaption><span class="t">Biến động giá 30 ngày</span><span class="sub">Token gốc Robinhood Chain so với BTC và ETH (CoinGecko)</span></figcaption>
@@ -179,51 +182,94 @@ code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:
   </section>
 
   <section id="dongtien" aria-labelledby="h-b">
-    <div class="sec-head"><div class="eyebrow">B · Dòng tiền vào Robinhood Chain</div><h2 id="h-b">Tiền vẫn nằm trên chain, nhưng đã thôi đuổi theo đầu cơ</h2>
-      <p class="ink2">Mainnet chạy từ 1/7/2026. TVL và stablecoin ở đỉnh, nhưng volume DEX, phí và lượng ETH bridge đều đã quay đầu từ giữa tháng 9. Số liệu theo tuần, tuần cuối kết thúc ngày 6/10.</p></div>
+    <div class="sec-head"><div class="eyebrow">B · Dòng tiền Robinhood Chain</div><h2 id="h-b">Tiền đầu cơ rút ròng ba tuần liền, tiền gửi lấy lãi vẫn chảy vào</h2>
+      <p class="ink2">Đo trực tiếp on-chain: tổng cung stablecoin, vault Robinhood Earn, Morpho, cổ phiếu token hoá, ETH trong bridge trên Ethereum và số giao dịch. Mainnet chạy từ 1/7/2026; tuần cuối tính đến 13:20 UTC ngày 9/10.</p></div>
+    <div class="kpis" id="rh-kpis"></div>
+
+    <h3 class="sub">B.1 Tiền mới vào và ra khỏi chain</h3>
+    <figure>
+      <figcaption><span class="t">Tiền mới ròng mỗi tuần theo kênh</span><span class="sub">USD, tuần thứ Sáu–thứ Năm; dương là vào chain, âm là rút ra; ETH quy theo giá hiện tại</span></figcaption>
+      <div class="legend"><span><i class="key-box bg-s1"></i>Stablecoin (USDG + USDe + U)</span><span><i class="key-box bg-s3"></i>Cổ phiếu token hoá (mint trừ burn)</span><span><i class="key-box bg-s2"></i>ETH qua bridge chính thức</span><span><i class="key-line bg-ink"></i>Tổng ròng</span></div>
+      <div class="chart" id="c-net"></div>
+      <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-net"></div></details>
+    </figure>
+
+    <h3 class="sub">B.2 Tiền đang nằm ở đâu</h3>
+    <div class="grid2">
+      <figure>
+        <figcaption><span class="t">Stablecoin trên chain và Robinhood Earn</span><span class="sub">USD, 00:00 UTC mỗi ngày; Earn là vault Steakhouse USDG trên Morpho</span></figcaption>
+        <div class="legend"><span><i class="key-line bg-s1"></i>USDG (Paxos)</span><span><i class="key-line bg-s3"></i>Robinhood Earn</span><span><i class="key-line bg-s2"></i>USDe (Ethena)</span></div>
+        <div class="chart" id="c-stab"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-stab"></div></details>
+      </figure>
+      <figure>
+        <figcaption><span class="t">Ai đang vay USDG trên Morpho</span><span class="sub">Dư nợ USDG theo tài sản thế chấp; tổng vay <span id="morpho-tot">–</span></span></figcaption>
+        <div class="chart" id="c-morpho"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-morpho"></div></details>
+      </figure>
+    </div>
+    <figure>
+      <figcaption><span class="t">TVL theo protocol: thay đổi 7 ngày</span><span class="sub">14 protocol lớn nhất trên Robinhood Chain (DefiLlama); di chuột để xem TVL và thay đổi 30 ngày</span></figcaption>
+      <div class="chart" id="c-proto"></div>
+      <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-proto2"></div></details>
+    </figure>
+
+    <h3 class="sub">B.3 Hoạt động và phí</h3>
     <div class="grid3">
       <figure>
-        <figcaption><span class="t">Volume DEX mỗi tuần</span><span class="sub">USD, DefiLlama</span></figcaption>
+        <figcaption><span class="t">Volume DEX mỗi tuần</span><span class="sub">USD theo protocol (DefiLlama), tuần kết thúc thứ Năm</span></figcaption>
+        <div class="legend"><span><i class="key-box bg-s1"></i>Uniswap V3</span><span><i class="key-box bg-s2"></i>Uniswap V4</span><span><i class="key-box bg-s3"></i>Fables</span><span><i class="key-box bg-s4"></i>Pons V2</span><span><i class="key-box bg-mid"></i>Khác</span></div>
         <div class="chart" id="c-dex"></div>
         <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-dex"></div></details>
       </figure>
       <figure>
-        <figcaption><span class="t">TVL và stablecoin</span><span class="sub">USD cuối tuần, DefiLlama</span></figcaption>
-        <div class="legend"><span><i class="key-line bg-s1"></i>Stablecoin</span><span><i class="key-line bg-s2"></i>TVL DeFi</span></div>
-        <div class="chart" id="c-tvl"></div>
-        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-tvl"></div></details>
+        <figcaption><span class="t">Phí mỗi tuần theo nhóm</span><span class="sub">USD (DefiLlama)</span></figcaption>
+        <div class="legend"><span><i class="key-box bg-s1"></i>DEX</span><span><i class="key-box bg-s2"></i>Launchpad</span><span><i class="key-box bg-s4"></i>Trading app</span><span><i class="key-box bg-s3"></i>Perps</span><span><i class="key-box bg-mid"></i>Khác</span></div>
+        <div class="chart" id="c-fees"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-fees"></div></details>
       </figure>
       <figure>
-        <figcaption><span class="t">ETH khoá trong bridge L1</span><span class="sub">Bridge chính thức trên Ethereum (<span class="mono">0xDf87…64b3</span>)</span></figcaption>
+        <figcaption><span class="t">Giao dịch người dùng mỗi ngày</span><span class="sub">Trung bình 7 ngày; ước tính từ 100 block mẫu mỗi ngày</span></figcaption>
+        <div class="chart" id="c-tx"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-tx"></div></details>
+      </figure>
+    </div>
+
+    <h3 class="sub">B.4 Cổ phiếu token hoá và ETH</h3>
+    <div class="grid2">
+      <figure>
+        <figcaption><span class="t">Giá trị cổ phiếu token hoá đang lưu hành</span><span class="sub">USD, 191 mã, tổng cung on-chain nhân giá hiện tại, nên đường này chỉ thay đổi khi có mint/burn</span></figcaption>
+        <div class="chart" id="c-stock"></div>
+        <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-stock"></div></details>
+      </figure>
+      <figure>
+        <figcaption><span class="t">ETH khoá trong bridge L1</span><span class="sub">Bridge chính thức trên Ethereum (<span class="mono">0xDf87…64b3</span>), đo lúc 13:12 UTC mỗi ngày</span></figcaption>
         <div class="chart" id="c-eth"></div>
         <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-eth"></div></details>
       </figure>
     </div>
+
     <div class="grid2">
       <div class="card">
         <h3>Đọc các con số</h3>
-        <ul class="notes">
-          <li><b>Tiền vẫn đậu trên chain.</b> Stablecoin $1,113 tỷ là đỉnh mới: USDG (Paxos) $713M và USDe (Ethena) $361M, cả hai tăng 11–13% trong 30 ngày. Phần lớn là tiền gửi lấy lãi trong vault Steakhouse USDG trên Morpho.</li>
-          <li><b>Đầu cơ hạ nhiệt.</b> Volume DEX tuần −55% và phí −81% so với đỉnh tuần 2–8/9. Lượng meme mới trên Pons giảm 72%, phí meme giảm 78% (KuCoin, 4/10).</li>
-          <li><b>ETH bắt đầu rút ra.</b> Từ đỉnh 313,6K ETH (17/9) còn 276K ETH, tức khoảng −$100M; riêng 24 giờ qua −11,8K ETH. Rút về L1 có thời gian chờ, nên đây là quyết định từ khoảng một tuần trước.</li>
-          <li><b>Cổ phiếu token hoá còn nhỏ:</b> <span id="stock-note">191 mã</span>. Người dùng Mỹ chưa giao dịch được stock token.</li>
-        </ul>
+        <ul class="notes" id="rh-notes"></ul>
       </div>
       <div class="card">
         <h3>Tin tức và chất xúc tác</h3>
         <ul class="notes">
-          <li>HOOD Summit (cuối tháng 9): AI trading agent, giao dịch cổ phiếu cuối tuần, perps qua Bitstamp. Không có gì trực tiếp cho token gốc trên chain.</li>
-          <li><b>Robinhood công bố kết quả quý 3 ngày 27/10/2026</b> (sau giờ đóng cửa). Đây là dịp có thể công bố số liệu chain hoặc kế hoạch mới.</li>
-          <li>Robinhood Chain chiếm 53% doanh thu tháng 9 của Uniswap. Ví Robinhood đã mở hơn 190 stock token, nhưng chỉ chiếm 1–2% giao dịch on-chain.</li>
-          <li>Có trường hợp một nhóm phát hành 56 token meme và thu lời khoảng $15,5M từ người mua.</li>
+          <li>Trợ giá gas cho ví Robinhood hết hạn ngày 29/9 (<a href="https://www.kucoin.com/news/flash/robinhood-chain-ends-free-gas-subsidy-in-late-september-memecoins-face-stress-test" target="_blank" rel="noopener">KuCoin</a>). Số giao dịch mỗi ngày giảm từ ~7,7 triệu (22–28/9) xuống ~6,4 triệu (30/9–8/10).</li>
+          <li>Volume cặp meme–cổ phiếu từng đạt $443M/ngày đầu tháng 9 rồi giảm 96% (<a href="https://cryptobriefing.com/robinhood-chain-memecoin-trading-surge-collapse/" target="_blank" rel="noopener">Crypto Briefing</a>, <a href="https://fortune.com/2026/10/06/443-million-memecoin-frenzy-robinhood-circle-latest-memecoin-boom-bust/" target="_blank" rel="noopener">Fortune</a>).</li>
+          <li>Robinhood đang thăm dò một Stock Token gắn với ETF quản lý chủ động của T. Rowe Price, mới ở giai đoạn sơ bộ (<a href="https://unchainedcrypto.com/robinhood-explores-stock-token-tied-to-t-rowe-price-actively-managed-etf" target="_blank" rel="noopener">Unchained</a>). $HYPE lên chain qua SushiSwap (<a href="https://coinfomania.com/hype-goes-live-on-robinhood-chain" target="_blank" rel="noopener">Coinfomania</a>).</li>
+          <li>Fables (DEX ve(3,3), TVL $37M) được cho là ra token ngày 20/10 (<a href="https://www.tokenpost.com/tag/robinhood-chain" target="_blank" rel="noopener">TokenPost</a>), chưa có xác nhận chính thức.</li>
+          <li><b>Robinhood công bố kết quả quý 3 ngày 27/10/2026</b> (<a href="https://www.globenewswire.com/news-release/2026/10/01/3373375/0/en/robinhood-markets-inc-to-announce-third-quarter-2026-results-on-october-27-2026.html" target="_blank" rel="noopener">GlobeNewswire</a>). Đây là dịp có thể công bố số liệu hoặc kế hoạch mới cho chain.</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="gianav" aria-labelledby="h-c">
-    <div class="sec-head"><div class="eyebrow">C · NET: giá và NAV</div><h2 id="h-c">Premium co từ 21× về 1,33× NAV</h2>
-      <p class="ink2">NAV là lượng USDG thật trong treasury chia cho tổng supply. Premium (giá/NAV) quyết định tốc độ rebase: dưới 1× thì không mint, từ 1,75× trở lên thì mint tối đa 0,45% mỗi 8 giờ, trên 2× thì PremiumSeller tự bán ra. NAV đạt đỉnh $175,5 ngày 27/9 và đang giảm dần vì rebase pha loãng nhanh hơn lượng USDG mà bond mang vào.</p></div>
+    <div class="sec-head"><div class="eyebrow">C · NET: giá và NAV</div><h2 id="h-c">Pump lên 1,9× NAV rồi xả, premium về lại 1,31×</h2>
+      <p class="ink2">NAV là lượng USDG thật trong treasury chia cho tổng supply. Premium (giá/NAV) quyết định tốc độ rebase: dưới 1× thì không mint, từ 1,75× trở lên thì mint tối đa 0,45% mỗi 8 giờ, trên 2× thì PremiumSeller tự bán ra. Cú pump ngày 7/10 đẩy premium lên 1,91×, rebase chạy tối đa, và supply tăng 5,2% chỉ trong 3 ngày. NAV giảm đều từ $168,2 (6/10) xuống $164,8.</p></div>
     <figure>
       <figcaption><span class="t">Giá NET và NAV</span><span class="sub">USD, mỗi 12 giờ, trục log, pool Uniswap v2 canonical và Treasury on-chain</span></figcaption>
       <div class="legend"><span><i class="key-line bg-s1"></i>Giá NET</span><span><i class="key-line bg-s2"></i>NAV (backing / NET)</span></div>
@@ -242,27 +288,38 @@ code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:
   </section>
 
   <section id="aiban" aria-labelledby="h-d">
-    <div class="sec-head"><div class="eyebrow">D · Ai đang bán</div><h2 id="h-d">Bond, rebase và desk của team liên tục đưa NET mới ra thị trường</h2>
-      <p class="ink2">Bond bán NET rẻ hơn TWAP 3%, vest 2 ngày, và capacity 0,25% supply mỗi epoch gần như luôn bị mua hết. Phần lớn NET claim từ bond được bán ngay. Rebase mint thêm cho staker mỗi 8 giờ, không có cooldown khi rút stake.</p></div>
+    <div class="sec-head"><div class="eyebrow">D · Ai đang bán</div><h2 id="h-d">Bond và rebase đưa NET mới ra thị trường mỗi ngày, holder cũ đang thoát</h2>
+      <p class="ink2">Bond bán NET rẻ hơn TWAP 3%, vest 2 ngày, và capacity 0,25% supply mỗi epoch gần như luôn bị mua hết. Phần lớn NET claim từ bond được bán ngay. Rebase mint thêm cho staker mỗi 8 giờ, không có cooldown khi rút stake. Tuần 2–8/10 mint 16.720 NET, supply tăng ~13%.</p></div>
     <figure>
-      <figcaption><span class="t">NET mới mint mỗi tuần theo nguồn</span><span class="sub">Tuần bắt đầu thứ Sáu; tuần cuối chỉ có 5 ngày (2–6/10)</span></figcaption>
+      <figcaption><span class="t">NET mới mint mỗi tuần theo nguồn</span><span class="sub">Tuần bắt đầu thứ Sáu; tuần cuối là 2–8/10</span></figcaption>
       <div class="legend"><span><i class="key-box bg-s1"></i>Rebase cho staker</span><span><i class="key-box bg-s2"></i>Bond</span><span><i class="key-box bg-s3"></i>pTEAM (team, giá $1)</span><span><i class="key-box bg-s4"></i>PremiumSeller</span></div>
       <div class="chart" id="c-mint"></div>
       <details class="tbl"><summary>Xem bảng số liệu</summary><div class="tablewrap" id="t-mint"></div></details>
     </figure>
     <div class="grid2">
       <div class="card">
+        <h3>Pump rồi xả ngày 7/10</h3>
+        <ul class="notes">
+          <li>00:00–04:00 UTC: giá từ $272 lên $362 trên thanh khoản mỏng. Trong 12 giờ đầu ngày, 721 ví mua ròng +$139K; người mua lớn nhất là RWA Sleeve của team ($56K).</li>
+          <li>Từ 12:00 ngày 7/10 đến nay: 2.149 ví <b>bán ròng −$261K</b>. Giá xuống $203 (8/10) rồi $184 (9/10). Ví <span class="mono">0x465b…</span> mua $46K lúc pump rồi bán lại toàn bộ.</li>
+          <li>Holder lâu năm <span class="mono">0xf41b…9e3b</span> bán 686 NET (~$139K) trong 3 lệnh. Ví này không mua, không claim bond, không nhận chuyển khoản nào trong 30 ngày. <span class="mono">0x480c…</span> (−$101K) cùng kiểu.</li>
+          <li>Cá voi (HoodScan 24 giờ): 7 ví mua $114K, bán $285K, ròng −$171K.</li>
+        </ul>
+      </div>
+      <div class="card">
         <h3>Team bán qua "bond desk"</h3>
         <ul class="notes" id="team-notes"></ul>
       </div>
-      <div class="tbl-card"><div class="tablewrap"><table id="t-desks"><caption>USDG người đăng ký trả vào các desk</caption></table></div></div>
     </div>
-    <div class="tbl-card"><div class="tablewrap"><table id="t-sellers"><caption>Bán ròng nhiều nhất 7 ngày (gần như toàn bonder)</caption></table></div></div>
+    <div class="grid2">
+      <div class="tbl-card"><div class="tablewrap"><table id="t-sellers"><caption>Bán ròng nhiều nhất 7 ngày</caption></table></div></div>
+      <div class="tbl-card"><div class="tablewrap"><table id="t-desks"><caption>USDG người đăng ký trả vào các desk (không đổi từ 6/10)</caption></table></div></div>
+    </div>
   </section>
 
   <section id="aimua" aria-labelledby="h-e">
-    <div class="sec-head"><div class="eyebrow">E · Ai đang mua</div><h2 id="h-e">Người mua lớn nhất là team, và họ gần hết tiền</h2>
-      <p class="ink2">RWA Sleeve là một Safe do team giữ. Owner duy nhất của nó là EOA <span class="mono">0xe7e8…96f6</span>, cũng là owner 1-of-1 của Team Safe; HoodScan liệt kê ví này là "holder lớn nhất". Sleeve mua NET qua LiFi bằng USDG vay thế chấp cổ phiếu token hoá trên Morpho.</p></div>
+    <div class="sec-head"><div class="eyebrow">E · Ai đang mua</div><h2 id="h-e">Team vay tiền thế chấp bằng chính NET để mua, rồi dừng</h2>
+      <p class="ink2">RWA Sleeve là một Safe do team giữ. Owner duy nhất của nó là EOA <span class="mono">0xe7e8…96f6</span>, cũng là owner 1-of-1 của Team Safe. Hết USDG, ngày 6/10 lúc 18:57 UTC team gửi 813,5 wsNET của Sleeve vào Loopback làm thế chấp, vay 113.324 USDG, mua thêm 435 NET trong ngày 6–7/10, rồi dừng hẳn từ 15:51 UTC ngày 7/10.</p></div>
     <div class="grid2">
       <figure>
         <figcaption><span class="t">RWA Sleeve mua NET mỗi ngày</span><span class="sub">USD theo giá đóng cửa nến 4 giờ; ngày không mua tính là 0</span></figcaption>
@@ -282,24 +339,31 @@ code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:
         <ul class="notes" id="buyer-notes"></ul>
       </div>
     </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Loopback: đòn bẩy trên NET</h3>
+        <ul class="notes" id="loop-notes"></ul>
+      </div>
+      <div class="tbl-card"><div class="tablewrap"><table id="t-loop"><caption>Loopback: thanh lý khi giá oracle giảm</caption></table></div></div>
+    </div>
   </section>
 
   <section id="dubao" aria-labelledby="h-f">
     <div class="sec-head"><div class="eyebrow">F · Dự báo 1–3 tuần</div><h2 id="h-f">Cung vẫn lớn hơn cầu, sàn cơ chế ở vùng NAV</h2>
-      <p class="ink2">Supply đang tăng khoảng 1,3% mỗi ngày, nên cần khoảng $400K tiền mới ròng mỗi ngày chỉ để giữ giá đứng yên. Ở vùng NAV, InverseBond tự mua lại và rebase cùng bond tự dừng, nên vùng $160–170 là sàn theo cơ chế. Xác suất bên dưới là đánh giá chủ quan.</p></div>
+      <p class="ink2">Supply đang tăng khoảng 1,3% mỗi ngày, nên cần khoảng $400K tiền mới ròng mỗi ngày chỉ để giữ giá đứng yên. Ba ngày qua giá đã chạm cả $362 lẫn $184, nên nhìn vùng giá quan trọng hơn con số cụ thể. Ở vùng NAV, InverseBond tự mua lại và rebase cùng bond tự dừng. Xác suất bên dưới là đánh giá chủ quan.</p></div>
     <figure>
       <figcaption><span class="t">Bậc giá và kịch bản</span><span class="sub">USD; các mốc tính từ NAV hiện tại và ngưỡng trong contract</span></figcaption>
       <div class="chart" id="c-ladder"></div>
     </figure>
     <div class="tbl-card"><div class="tablewrap"><table id="t-scn" class="wide"><caption>Kịch bản</caption></table></div></div>
+    <div class="tbl-card"><div class="tablewrap"><table id="t-sim" class="wide"><caption>Mô phỏng pha loãng (hằng số contract, trạng thái 9/10)</caption></table></div></div>
     <div class="grid2">
-      <div class="tbl-card"><div class="tablewrap"><table id="t-sim" class="wide"><caption>Mô phỏng pha loãng (hằng số contract, trạng thái 6/10)</caption></table></div></div>
       <div class="card">
         <h3>Robinhood Chain 2–4 tuần tới</h3>
         <ul class="notes">
-          <li><b>Cơ sở:</b> tiếp tục bình thường hoá sau hype. Volume DEX quanh $0,8–1,2 tỷ/ngày, phí thấp, token gốc dao động hoặc giảm tiếp với những nhịp pump ngắn. Stablecoin đi ngang hoặc tăng nhẹ nhờ tiền gửi lấy lãi; ETH tiếp tục rút dần.</li>
-          <li><b>Có thể đảo chiều nếu</b> Robinhood công bố số liệu hoặc ưu đãi mới cho chain (27/10), stock token mở thêm thị trường, có chương trình incentive mới, hoặc tiền risk-on từ BTC/ETH tràn sang.</li>
-          <li><b>Tín hiệu xác nhận:</b> volume DEX tuần quay lại trên $10 tỷ và stablecoin tăng tiếp.</li>
+          <li><b>Cơ sở:</b> tiếp tục co lại. Volume DEX $5–8 tỷ/tuần, phí $15–25M/tuần, 5–7 triệu giao dịch/ngày. Stablecoin đi ngang ~$1,05–1,10 tỷ: Earn vẫn hút tiền gửi, USDG giao dịch tiếp tục giảm. ETH tiếp tục rút; cổ phiếu token hoá rút ròng nhẹ.</li>
+          <li><b>Rủi ro:</b> thưởng Merkl giảm hoặc lãi suất Earn tụt làm vòng vay USDe ↔ USDG gỡ ra, khi đó stablecoin có thể giảm hàng trăm triệu USD rất nhanh. BTC thủng $77–80K.</li>
+          <li><b>Có thể đảo chiều nếu</b> USDG tăng lại (hơn +$20M/tuần), bridge ETH vào ròng 2 tuần liền, cổ phiếu token hoá mint ròng trở lại, volume DEX tuần trên $10 tỷ. Chất xúc tác: Fables TGE (~20/10, chưa xác nhận), kết quả quý 3 của Robinhood (27/10), stock token mới.</li>
         </ul>
       </div>
     </div>
@@ -311,20 +375,21 @@ code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:
       <div class="card">
         <h3>Tín hiệu nên theo dõi</h3>
         <ul class="notes">
-          <li>Số dư USDG và giao dịch của RWA Sleeve <span class="mono">0x4987…c7cb</span>: mua lại, bán NET, rút wsNET hay trả nợ Morpho.</li>
+          <li>RWA Sleeve <span class="mono">0x4987…c7cb</span>: số dư USDG, nợ Loopback (<span class="mono">0xaa58…0589</span>) và nợ Morpho cổ phiếu, có mua lại hay rút wsNET không.</li>
           <li><span class="mono">pTEAM.exercised()</span> (đang 13.320) và NET chuyển vào các desk <span class="mono">0x99b6…</span>, <span class="mono">0xa84e…</span>, <span class="mono">0x70ea…</span>, <span class="mono">0x2f2f…</span>, <span class="mono">0x732b…</span>.</li>
           <li><span class="mono">Distributor.premium()</span>: dưới 1,1 thì rebase gần như dừng; trên 1,75 thì rebase tối đa.</li>
           <li><span class="mono">InverseBond.capacityRemaining()</span>: giảm tức là đã có người bán xuống dưới NAV.</li>
-          <li>ETH trong bridge L1 và stablecoin trên chain.</li>
+          <li>Dòng tiền RH chain: tổng cung USDG, vault Earn, cổ phiếu token hoá và ETH trong bridge L1 (<span class="mono">scripts/rh_flows.py</span>, <span class="mono">scripts/rh_chain.py</span>).</li>
         </ul>
       </div>
       <div class="card">
         <h3>Rủi ro chính</h3>
         <ul class="notes">
-          <li><b>Tập trung vào team:</b> một EOA ký 1-of-1 cho cả Team Safe và RWA Sleeve. Option pTEAM không hết hạn, team luôn mint được 15% float với giá $1.</li>
+          <li><b>Tập trung vào team:</b> một EOA ký 1-of-1 cho cả Team Safe và RWA Sleeve. Option pTEAM không hết hạn, team luôn mint được 15% float với giá $1 (hiện 8.133 NET).</li>
+          <li><b>Đòn bẩy của team:</b> nợ $1,58M trên các market cổ phiếu (dùng gần 100% vốn) và $114K trên Loopback, thế chấp bằng chính NET.</li>
           <li><b>Docs chưa khớp với chain:</b> NET trong các desk đến từ pTEAM chứ không phải mua trên thị trường, và ít nhất 4 desk do Team Safe quản lý không được công bố địa chỉ.</li>
-          <li><b>Thanh khoản mỏng</b> (~$1,1M) so với FDV ~$31M; 92% supply có thể rút stake ngay.</li>
-          <li><b>Đòn bẩy của team:</b> Sleeve nợ $1,58M trên các market Morpho đã dùng 100% vốn.</li>
+          <li><b>Thanh khoản mỏng</b> (~$1,06M) so với FDV ~$31M; 92,7% supply có thể rút stake ngay.</li>
+          <li><b>Hệ sinh thái đang co lại;</b> khối stablecoin lớn nhất là tiền gửi lấy lãi có trợ cấp và có thể rút nhanh.</li>
           <li><b>Phản xạ kiểu OHM:</b> premium thường co về NAV sau giai đoạn hưng phấn. NAV là USDG thật, phần vốn hoá phía trên NAV thì không có gì bảo chứng.</li>
         </ul>
       </div>
@@ -333,8 +398,9 @@ code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);border:
 
   <footer id="phuongphap">
     <h2>Phương pháp và nguồn</h2>
-    <p>Đọc trực tiếp từ chain: RPC <code>rpc.mainnet.chain.robinhood.com</code> (log Transfer) và <code>robinhood.drpc.org</code> (eth_call lịch sử qua Multicall3), contract verified trên Sourcify, số dư bridge trên Ethereum qua <code>eth.drpc.org</code>. Đối chiếu DefiLlama, DexScreener, GeckoTerminal, CoinGecko, alternative.me và HoodScan. Dòng tiền gom khoảng 587K transaction NET/sNET/wsNET của khoảng 42K ví; pool, contract protocol và router được loại ra, phần còn lại là ví người dùng.</p>
-    <p>Tin tức: <a href="https://kucoin.com/news/flash/robinhood-chain-meme-and-stock-token-prices-drop-sharply-amid-cooling-speculation" target="_blank" rel="noopener">KuCoin, 4/10</a> · <a href="https://coingabbar.com/en/robinhood-chain-news-dex-volume-falls-from-record-high" target="_blank" rel="noopener">Coingabbar</a> · <a href="https://www.globenewswire.com/news-release/2026/10/01/3373375/0/en/robinhood-markets-inc-to-announce-third-quarter-2026-results-on-october-27-2026.html" target="_blank" rel="noopener">GlobeNewswire</a>. Mã nguồn và dữ liệu: thư mục <code>netnet-analysis/</code> trong repo <code>kazza559/test-claude</code>, branch <code>claude/coin-analysis-0xca9c78dd-hpdrb6</code>.</p>
+    <p>Đọc trực tiếp từ chain: RPC <code>rpc.mainnet.chain.robinhood.com</code> (log Transfer, block) và <code>robinhood.drpc.org</code> (eth_call lịch sử qua Multicall3), contract verified trên Sourcify (kể cả mã nguồn <code>LoopbackOracle</code>), số dư bridge trên Ethereum qua <code>eth.drpc.org</code>. Đối chiếu DefiLlama, DexScreener, GeckoTerminal, CoinGecko, alternative.me và HoodScan. Dòng tiền NET gom ~610K transaction NET/sNET/wsNET của ~42,5K ví; pool, contract protocol và router được loại ra, phần còn lại là ví người dùng.</p>
+    <p>Dòng tiền RH chain: tổng cung USDG/USDe/U và tài sản vault Steakhouse đọc lúc 00:00 UTC mỗi ngày từ 1/7; 191 cổ phiếu token hoá tính theo giá hiện tại nên thay đổi là mint/burn; 277 market Morpho cho vay USDG đọc theo ngày; số giao dịch người dùng ước tính bằng 100 block mẫu mỗi ngày. Meme coin đã loại 8 pool SUSD có $310,7M volume từ 101 giao dịch (wash trade).</p>
+    <p>Tin tức: <a href="https://fortune.com/article/price-of-bitcoin-10-09-2026/" target="_blank" rel="noopener">Fortune (BTC 9/10)</a> · <a href="https://www.analyticsinsight.net/price-analysis/crypto-prices-today-bitcoin-holds-near-usd-82400-as-etf-outflows-oil-spike-test-support" target="_blank" rel="noopener">Analytics Insight</a> · <a href="https://arynews.tv/en/bitcoin-falls-under-84k-as-oil-jumps" target="_blank" rel="noopener">ARY News</a> · <a href="https://www.newsbytesapp.com/news/business/bitcoin-falls-25-to-83470-amid-609-million-liquidations-altcoins-fall/tldr" target="_blank" rel="noopener">NewsBytes</a> · <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-8-dow-sp-500-nasdaq-080537884.html" target="_blank" rel="noopener">Yahoo Finance</a> · <a href="https://www.finanznachrichten.de/nachrichten-2026-07/68920872-robinhood-chooses-morpho-to-power-new-earn-product-004.htm" target="_blank" rel="noopener">Robinhood chọn Morpho cho Earn</a> · <a href="https://defillama.com/yields/pool/32f586b4-5358-5aa2-88ee-c842139e7023" target="_blank" rel="noopener">DefiLlama: lợi suất Steakhouse USDG</a> · <a href="https://www.coingabbar.com/en/robinhood-chain-news-dex-volume-falls-from-record-high" target="_blank" rel="noopener">Coingabbar</a>. Mã nguồn và dữ liệu: thư mục <code>netnet-analysis/</code> trong repo <code>kazza559/test-claude</code>, branch <code>claude/coin-analysis-0xca9c78dd-hpdrb6</code>.</p>
     <p><b>Đây là phân tích dữ liệu, không phải lời khuyên đầu tư.</b> NET là token rebase kiểu OlympusDAO trên một chain mới; bạn có thể mất phần lớn số vốn bỏ vào.</p>
   </footer>
 </div>
@@ -432,9 +498,10 @@ function niceStep(span, n) {
   const raw = span / n, mag = Math.pow(10, Math.floor(Math.log10(raw))), e = raw / mag;
   return (e >= 7.5 ? 10 : e >= 3.5 ? 5 : e >= 1.5 ? 2 : 1) * mag;
 }
-function linTicks(min, max, n) {
+function linTicks(min, max, n) {  // first tick <= min, last tick >= max
   const st = niceStep(max - min || 1, n), out = [];
-  for (let v = Math.floor(min / st) * st; v <= max + st * 0.001; v += st) out.push(+v.toFixed(10));
+  const top = Math.ceil(max / st - 1e-9) * st;
+  for (let v = Math.floor(min / st) * st; v <= top + st * 0.001; v += st) out.push(+v.toFixed(10));
   return out;
 }
 const LOGT = [0.5, 1, 2, 3, 5, 10, 20, 30, 50, 100, 200, 300, 500, 1000, 2000, 3000];
@@ -610,11 +677,12 @@ function hbars(host, o) {
       svgText(svg, m.l - 10, yy + 12, d.label, d.strong ? "lbs" : "lb", "end");
       const g = svgEl("g", {class: "bar-g"}, svg);
       svgEl("path", {d: roundEnd(zx, x(d.value), yy, bh, 4), class: d.value >= 0 ? "f-pos" : "f-neg"}, g);
-      const vs = o.fmt(d.value), estW = vs.length * 7.2;
-      let vx = x(d.value) + (d.value >= 0 ? 6 : -6), anc = d.value >= 0 ? "start" : "end";
-      if (d.value < 0 && vx - estW < m.l + 2) { vx = zx + 6; anc = "start"; }
-      if (d.value >= 0 && vx + estW > W - 2) { vx = zx - 6; anc = "end"; }
-      svgText(svg, vx, yy + 12, vs, "lbs", anc);
+      const vs = o.fmt(d.value), estW = vs.length * 7.2, barW = Math.abs(x(d.value) - zx);
+      let vx = x(d.value) + (d.value >= 0 ? 6 : -6), anc = d.value >= 0 ? "start" : "end", lc = "lbs";
+      // no room outside the bar end: write the value inside the bar if it fits, else on the other side of zero
+      if (d.value < 0 && vx - estW < m.l + 2) { if (barW > estW + 12) { vx = x(d.value) + 6; anc = "start"; lc = "lbi"; } else { vx = zx + 6; anc = "start"; } }
+      if (d.value >= 0 && vx + estW > W - 2) { if (barW > estW + 12) { vx = x(d.value) - 6; anc = "end"; lc = "lbi"; } else { vx = zx - 6; anc = "end"; } }
+      svgText(svg, vx, yy + 12, vs, lc, anc);
       const hit = svgEl("rect", {x: m.l, y: yy - 6, width: iw, height: rowH, class: "hit", tabindex: 0, "aria-label": d.label + ": " + o.fmt(d.value)}, svg);
       const on = () => showTip(host, tip, x(d.value), yy, d.label, d.tip || [["Giá trị", null, o.fmt(d.value)]]);
       const off = () => { tip.hidden = true; };
@@ -673,15 +741,83 @@ function ladder(host, o) {
   });
 }
 
+
+/* ---------- diverging stacked columns: positive parts stack up from zero, negative parts stack down; ink tick = net ---------- */
+function roundBottom(x, y, w, hgt, r) {
+  r = Math.max(0, Math.min(r, w / 2, hgt));
+  return `M${x},${y}V${y + hgt - r}Q${x},${y + hgt} ${x + r},${y + hgt}H${x + w - r}Q${x + w},${y + hgt} ${x + w},${y + hgt - r}V${y}Z`;
+}
+function divColumns(host, o) {
+  const tip = tipBox(host);
+  mount(host, W => {
+    const H = o.height || 260, narrow = W < 520;
+    const m = {t: 22, r: 10, b: 26, l: o.left || 54};
+    const iw = W - m.l - m.r, ih = H - m.t - m.b;
+    const svg = svgEl("svg", {width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": o.aria});
+    host.prepend(svg);
+    const n = o.x.length;
+    const up = o.x.map((_, i) => o.stacks.reduce((a, s) => a + Math.max(0, s.values[i] || 0), 0));
+    const dn = o.x.map((_, i) => o.stacks.reduce((a, s) => a + Math.min(0, s.values[i] || 0), 0));
+    const net = o.x.map((_, i) => up[i] + dn[i]);
+    const ticks = linTicks(Math.min(0, ...dn) * 1.15, Math.max(0, ...up) * 1.08, narrow ? 4 : 5);  // headroom for the net labels
+    const lo = ticks[0], hi = ticks[ticks.length - 1];
+    const y = v => m.t + ih - (v - lo) / (hi - lo) * ih;
+    const band = iw / n, bw = Math.max(4, Math.min(26, band * 0.62));
+    ticks.forEach(t => { const yy = Math.round(y(t)) + 0.5; svgEl("line", {x1: m.l, x2: m.l + iw, y1: yy, y2: yy, class: "gl"}, svg); svgText(svg, m.l - 8, yy + 4, o.yfmt(t), "tk", "end"); });
+    const every = Math.max(1, Math.ceil(n / Math.floor(iw / (narrow ? 44 : 52))));
+    o.x.forEach((lab, i) => { if (i % every && i !== n - 1) return; svgText(svg, m.l + band * i + band / 2, H - m.b + 18, o.xfmt ? o.xfmt(lab) : lab, "tk", "middle"); });
+    const groups = [];
+    o.x.forEach((lab, i) => {
+      const g = svgEl("g", {class: "bar-g"}, svg); groups.push(g);
+      const bx = m.l + band * i + (band - bw) / 2;
+      const segsUp = o.stacks.map(s => ({s, v: s.values[i] || 0})).filter(z => z.v > 0);
+      const segsDn = o.stacks.map(s => ({s, v: s.values[i] || 0})).filter(z => z.v < 0);
+      let acc = 0;
+      segsUp.forEach((z, k) => {
+        const yTop = y(acc + z.v), yBot = y(acc) - (k > 0 ? 2 : 0), hh = Math.max(0, yBot - yTop);
+        if (hh > 0) {
+          if (k === segsUp.length - 1) svgEl("path", {d: roundTop(bx, yTop, bw, hh, 3), class: "f-" + z.s.cls}, g);
+          else svgEl("rect", {x: bx, y: yTop, width: bw, height: hh, class: "f-" + z.s.cls}, g);
+        }
+        acc += z.v;
+      });
+      acc = 0;
+      segsDn.forEach((z, k) => {
+        const yTop = y(acc) + (k > 0 ? 2 : 0), yBot = y(acc + z.v), hh = Math.max(0, yBot - yTop);
+        if (hh > 0) {
+          if (k === segsDn.length - 1) svgEl("path", {d: roundBottom(bx, yTop, bw, hh, 3), class: "f-" + z.s.cls}, g);
+          else svgEl("rect", {x: bx, y: yTop, width: bw, height: hh, class: "f-" + z.s.cls}, g);
+        }
+        acc += z.v;
+      });
+      svgEl("rect", {x: bx - 3, y: Math.round(y(net[i])) - 1, width: bw + 6, height: 2.5, class: "f-ink"}, g);
+      if (o.labelAt && o.labelAt.includes(i)) {
+        const above = net[i] >= 0, ly = above ? y(up[i]) - 6 : y(dn[i]) + 14;
+        svgText(svg, bx + bw / 2, ly, o.yfmt(net[i]), "lbs", "middle");
+      }
+      const hit = svgEl("rect", {x: m.l + band * i, y: m.t, width: band, height: ih, class: "hit", tabindex: 0, "aria-label": (o.xfmt ? o.xfmt(lab) : lab) + ": ròng " + o.yfmt(net[i])}, svg);
+      const on = () => { groups.forEach((gg, j) => gg.classList.toggle("dim", j !== i)); const rows = o.tipRows ? o.tipRows(i) : o.stacks.map(s => [s.label, s.cls, o.yfmt(s.values[i] || 0)]); showTip(host, tip, bx + bw / 2, y(Math.max(net[i], 0)), o.tipTitle ? o.tipTitle(i) : lab, rows); };
+      const off = () => { groups.forEach(gg => gg.classList.remove("dim")); tip.hidden = true; };
+      hit.addEventListener("pointerenter", on); hit.addEventListener("focus", on);
+      hit.addEventListener("pointerleave", off); hit.addEventListener("blur", off);
+    });
+    const zy = Math.round(y(0)) + 0.5;
+    svgEl("line", {x1: m.l, x2: m.l + iw, y1: zy, y2: zy, class: "ax"}, svg);
+  });
+}
+
 /* ================= content ================= */
-const S = D.state;
+const S = D.state, R = D.rh_sum, L = D.loopback;
+const PREV = {label: "6/10", spot: 224.04};  // snapshot of the previous report (2026-10-06 11:34 UTC)
+const sn = (v, d = 0) => (v > 0 ? "+" : v < 0 ? MINUS : "") + nf(Math.abs(v), d);
+const usdm = (v, d = 0) => (v > 0 ? "+" : "") + usdc(v * 1e6, d);  // signed, from $M
 document.getElementById("asof").textContent = "Robinhood Chain · chainId 4663 · snapshot " + D.asof.replace(/^(\d{4})-(\d\d)-(\d\d)/, (_, y, mo, d) => d + "/" + mo + "/" + y);
 
 // verdict cards (subjective probabilities, as in README)
 const SCN = [
-  {label: "Cơ sở: trôi xuống / đi ngang", short: "Cơ sở", p: "~50%", lo: 180, hi: 215, cls: "f-mid", sw: "bg-mid", why: "Team ngừng mua vì hết tiền; bond tiếp tục xả ~1.000 NET/ngày; premium co dần làm rebase chậm lại."},
-  {label: "Xấu: về NAV", short: "Xấu", p: "~30%", lo: 160, hi: 168, cls: "f-neg", sw: "bg-neg", why: "Team exercise pTEAM (7K NET) rồi bán, hoặc Sleeve phải bán NET để trả nợ Morpho; ETH tiếp tục rời chain. Tại NAV, InverseBond hấp thụ ~$217K/ngày, rebase và bond tự về 0."},
-  {label: "Tốt: hồi phục", short: "Tốt", p: "~20%", lo: 260, hi: 295, cls: "f-pos", sw: "bg-pos", why: "Dòng tiền mới vào Robinhood Chain (kết quả quý 3 ngày 27/10, thị trường mới cho stock token), BTC/ETH lên tiếp, team nạp tiền mới."},
+  {label: "Cơ sở: trôi xuống", short: "Cơ sở", p: "~50%", lo: 175, hi: 210, cls: "f-mid", sw: "bg-mid", why: "Team không mua thêm; bond xả ~1.000 NET/ngày; rebase chậm lại khi premium co; BTC đi ngang $80–85K; Robinhood Chain tiếp tục rút tiền đầu cơ."},
+  {label: "Xấu: về NAV / sàn", short: "Xấu", p: "~30%", lo: 155, hi: 168, cls: "f-neg", sw: "bg-neg", why: "Team mint pTEAM (8,1K NET) rồi bán qua desk, NAV còn ~$156; BTC thủng $80K; tiền rời Robinhood Chain nhanh hơn; người vay Loopback bán để trả lãi. Tại NAV, InverseBond hấp thụ ~$224K/ngày, rebase và bond tự về 0."},
+  {label: "Tốt: hồi phục", short: "Tốt", p: "~20%", lo: 240, hi: 290, cls: "f-pos", sw: "bg-pos", why: "Team nạp tiền mới hoặc vay thêm để mua; chất xúc tác cho Robinhood Chain (Fables TGE, kết quả quý 3 ngày 27/10, stock token mới); BTC lấy lại $85K+."},
 ];
 const vd = document.getElementById("verdict");
 SCN.forEach(s => vd.appendChild(h("div", {class: "scn"},
@@ -692,22 +828,22 @@ SCN.forEach(s => vd.appendChild(h("div", {class: "scn"},
 // KPI strip
 function kpi(host, k, v, s) { host.appendChild(h("div", {class: "kpi"}, h("div", {class: "k", text: k}), h("div", {class: "v", text: v}), h("div", {class: "s", text: s}))); }
 const K = document.getElementById("kpis");
-const p3 = D.history.find(r => r.t.startsWith("2026-10-03T12"));
-kpi(K, "Giá NET", usd(S.spot, 0), (p3 ? pct((S.spot / p3.price - 1) * 100, 0) + " so với 3/10; " : "") + pct(D.net_cg.chg7, 0) + " / 7 ngày");
+kpi(K, "Giá NET", usd(S.spot, 0), pct((S.spot / PREV.spot - 1) * 100, 0) + " so với " + PREV.label + "; " + pct(D.net_cg.chg7, 0) + " / 7 ngày");
 kpi(K, "NAV (backing / NET)", usd(S.nav, 2), "Sàn mua lại " + usd(S.inv_price, 2) + "; Treasury " + usdc(S.rfv, 2));
-kpi(K, "Premium", nf(S.premium, 2) + "×", "Đỉnh 21× ngày 30/8");
+const pk = Math.max(...D.history.filter(r => r.t >= "2026-10-06").map(r => r.premium));
+kpi(K, "Premium", nf(S.premium, 2) + "×", nf(pk, 2) + "× lúc pump 7/10; đỉnh 21× ngày 30/8");
 const daily = 3 * S.rate * S.staked + 0.0075 * S.supply;
 kpi(K, "Pha loãng mỗi ngày", nf(daily / S.supply * 100, 1) + "%", "≈ " + nf(Math.round(daily / 10) * 10, 0) + " NET; cần " + usdc(daily * S.spot, 0) + " tiền mới/ngày để giữ giá");
 const hd7 = D.hoodscan.d7;
 kpi(K, "Dòng tiền DEX 7 ngày", usdc(hd7.buyUsd - hd7.sellUsd, 2), "Mua " + usdc(hd7.buyUsd, 2) + ", bán " + usdc(hd7.sellUsd, 2) + " (HoodScan)");
-kpi(K, "USDG còn lại của team", usdc(D.sleeve.usdg, 0), "RWA Sleeve; vay Morpho đã kín 100%");
+kpi(K, "USDG còn lại của team", usd(D.sleeve.usdg, 0), "Dừng mua từ 7/10; nợ Loopback " + usdc(L.sleeve.debt_usdg, 0));
 
 // macro tiles
 const MK = document.getElementById("macro");
-kpi(MK, "BTC", usd(D.macro.BTC.price, 0), pct(D.macro.BTC.chg_30d_pct) + " / 30 ngày, sát đỉnh 90 ngày");
-kpi(MK, "ETH", usd(D.macro.ETH.price, 0), pct(D.macro.ETH.chg_30d_pct) + " / 30 ngày");
-kpi(MK, "Fear & Greed", String(D.macro.fear_greed.now), "Greed; trung bình 30 ngày " + nf(D.macro.fear_greed.avg_30d, 0));
-kpi(MK, "Tổng vốn hoá crypto", usdc(D.macro.global.mcap_usd, 2).replace(/,(\d)0T$/, ",$1T"), pct(D.macro.global.mcap_chg_24h_pct) + " / 24h; BTC dominance " + nf(D.macro.global.btc_dominance, 1) + "%");
+kpi(MK, "BTC", usd(D.macro.BTC.price, 0), pct(D.macro.BTC.chg_7d_pct) + " / 7 ngày; thấp nhất từ 21/9 vào ngày 8/10");
+kpi(MK, "ETH", usd(D.macro.ETH.price, 0), pct(D.macro.ETH.chg_7d_pct) + " / 7 ngày; " + pct(D.macro.ETH.chg_30d_pct) + " / 30 ngày");
+kpi(MK, "Fear & Greed", String(D.macro.fear_greed.now), "73 ngày 6/10; trung bình 30 ngày " + nf(D.macro.fear_greed.avg_30d, 0));
+kpi(MK, "Tổng vốn hoá crypto", usdc(D.macro.global.mcap_usd, 2), pct(D.macro.global.mcap_chg_24h_pct) + " / 24h; BTC dominance " + nf(D.macro.global.btc_dominance, 1) + "%");
 
 // A: ecosystem vs BTC/ETH (30d)
 const eco = [...D.eco].sort((a, b) => a.chg30 - b.chg30);
@@ -719,34 +855,137 @@ hbars(document.getElementById("c-eco"), {
 });
 table(document.getElementById("t-eco"), ["Token", "30 ngày", "7 ngày", "Vốn hoá"], eco.map(e => [e.symbol, pct(e.chg30), pct(e.chg7), e.mcap ? usdc(e.mcap, 0) : "–"]), [1, 2, 3]);
 
-// B: Robinhood Chain weekly
-const CW = D.chain_weekly;
-const wk = c => dm(c.week_start) + "–" + dm(c.week_end);
+// B: Robinhood Chain capital flows
+const RW = D.rh_weekly, RD = D.rh_daily, last = RW[RW.length - 1];
+const wk = we => RW.find(w => w.week_end === we);
+const netw = RW.map(w => (w.stables_net_musd || 0) + (w.stock_tokens_net_musd || 0) + (w.bridge_net_musd || 0));
+const hype = wk("2026-09-04"), hype2 = wk("2026-09-11");
+const RK = document.getElementById("rh-kpis");
+kpi(RK, "Stablecoin trên chain", usdc(R.now.stables, 2), "Đỉnh " + usdc(R.peak.stables.value, 2) + " (" + dm(R.peak.stables.date) + "); USDG " + pct((R.now.usdg / R.peak.usdg.value - 1) * 100) + " từ đỉnh");
+kpi(RK, "Tiền mới ròng 3 tuần", usdc(netw.slice(-3).reduce((a, b) => a + b, 0) * 1e6, 0), "Stablecoin + cổ phiếu + ETH; hai tuần hype " + usdm(netw[RW.indexOf(hype)] + netw[RW.indexOf(hype2)], 0));
+kpi(RK, "Robinhood Earn", usdc(R.now.earn_vault, 0), nf(R.earn_share_of_usdg_pct, 0) + "% lượng USDG; " + usdm(last.earn_vault_net_musd, 1) + " tuần này");
+kpi(RK, "ETH trong bridge L1", nf(R.now.bridge_eth / 1000, 1) + "K", sn((R.now.bridge_eth - R.peak.bridge_eth.value) / 1000, 1) + "K ETH từ đỉnh " + dm(R.peak.bridge_eth.date));
+kpi(RK, "Cổ phiếu token hoá", usdc(R.now.stock_tokens_usd, 0), pct((R.now.stock_tokens_usd / R.peak.stock_tokens_usd.value - 1) * 100, 0) + " từ đỉnh " + usdc(R.peak.stock_tokens_usd.value, 0) + " (" + dm(R.peak.stock_tokens_usd.date) + ")");
+kpi(RK, "Giao dịch/ngày (ước tính)", nf(last.user_tx_per_day_m, 1) + " triệu", pct((last.user_tx_per_day_m / hype.user_tx_per_day_m - 1) * 100, 0) + " so với tuần 29/8–4/9");
+
+// B.1 weekly net new money by channel
+const wtitle = i => "Tuần kết thúc " + dm(RW[i].week_end) + (RW[i].partial ? " (đến 13:20 UTC)" : "");
+divColumns(document.getElementById("c-net"), {
+  aria: "Tiền mới ròng vào Robinhood Chain mỗi tuần theo kênh: stablecoin, cổ phiếu token hoá, ETH qua bridge",
+  x: RW.map(w => w.week_end), xfmt: dm,
+  stacks: [{label: "Stablecoin", cls: "s1", values: RW.map(w => w.stables_net_musd * 1e6)},
+           {label: "Cổ phiếu token hoá", cls: "s3", values: RW.map(w => w.stock_tokens_net_musd * 1e6)},
+           {label: "ETH bridge", cls: "s2", values: RW.map(w => w.bridge_net_musd * 1e6)}],
+  yfmt: v => usdc(v, 0), labelAt: [RW.indexOf(hype), RW.length - 1],
+  tipTitle: wtitle,
+  tipRows: i => [["Stablecoin", "s1", usdm(RW[i].stables_net_musd, 1)], ["Cổ phiếu token hoá", "s3", usdm(RW[i].stock_tokens_net_musd, 1)],
+                 ["ETH bridge", "s2", sn(RW[i].bridge_eth_net / 1000, 1) + "K ETH (" + usdm(RW[i].bridge_net_musd, 1) + ")"], ["Tổng ròng", null, usdm(netw[i], 1)],
+                 ["Gửi vào Earn", null, usdm(RW[i].earn_vault_net_musd, 1)], ["Vay USDG Morpho", null, usdm(RW[i].morpho_borrow_net_musd, 1)]],
+  height: 290,
+});
+table(document.getElementById("t-net"), ["Tuần kết thúc", "Stablecoin", "USDG", "USDe", "Earn vault", "Vay USDG Morpho", "Cổ phiếu token hoá", "ETH bridge", "Tổng ròng", "Giao dịch/ngày", "Volume DEX", "Phí"],
+  RW.map((w, i) => [dm(w.week_end) + (w.partial ? "*" : ""), usdm(w.stables_net_musd, 1), usdm(w.usdg_net_musd, 1), usdm(w.usde_net_musd, 1), usdm(w.earn_vault_net_musd, 1), usdm(w.morpho_borrow_net_musd, 1),
+    usdm(w.stock_tokens_net_musd, 1), sn(w.bridge_eth_net / 1000, 1) + "K ETH", usdm(netw[i], 1), w.user_tx_per_day_m != null ? nf(w.user_tx_per_day_m, 1) + " tr" : "–", usdc(w.dex_volume_busd * 1e9, 1), usdc(w.fees_musd * 1e6, 1)]),
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]).classList.add("wide");
+
+// B.2 stablecoins by issuer + Earn, daily
+lineChart(document.getElementById("c-stab"), {
+  aria: "Tổng cung USDG, USDe trên Robinhood Chain và tài sản vault Robinhood Earn theo ngày",
+  x: RD.map(r => r.d),
+  series: [{label: "USDG", cls: "s1", values: RD.map(r => r.usdg * 1e6), endLabel: v => "USDG " + usdc(v, 0)},
+           {label: "Earn", cls: "s3", values: RD.map(r => r.earn * 1e6), endLabel: v => "Earn " + usdc(v, 0)},
+           {label: "USDe", cls: "s2", values: RD.map(r => r.usde * 1e6), endLabel: v => "USDe " + usdc(v, 0)}],
+  yfmt: v => usdc(v, 0), height: 260, xEvery: 2,
+  tipRows: i => [["USDG", "s1", usdc(RD[i].usdg * 1e6, 1)], ["USDe", "s2", usdc(RD[i].usde * 1e6, 1)], ["U", null, usdc(RD[i].u * 1e6, 0)], ["Robinhood Earn", "s3", usdc(RD[i].earn * 1e6, 1)]],
+});
+table(document.getElementById("t-stab"), ["Ngày", "USDG", "USDe", "U", "Tổng", "Robinhood Earn"],
+  RD.filter((r, i) => i % 7 === 0 || i === RD.length - 1).map(r => [dm(r.d), usdc(r.usdg * 1e6, 1), usdc(r.usde * 1e6, 1), usdc(r.u * 1e6, 0), usdc((r.usdg + r.usde + r.u) * 1e6, 1), usdc(r.earn * 1e6, 1)]), [1, 2, 3, 4, 5]);
+const MC = D.morpho_coll, mtot = MC.reduce((a, c) => a + c[1], 0);
+document.getElementById("morpho-tot").textContent = usdc(mtot, 0) + ", dùng " + nf(R.now.morpho_util_pct, 1) + "% vốn cung";
+hbars(document.getElementById("c-morpho"), {
+  aria: "Dư nợ USDG trên Morpho theo tài sản thế chấp",
+  items: MC.map(([k, v]) => ({label: k, value: v, strong: k.startsWith("Cổ phiếu") || k.startsWith("wsNET"), tip: [["Dư nợ", null, usdc(v, 2)], ["Tỷ trọng", null, nf(v / mtot * 100, 1) + "%"]]})),
+  fmt: (v, tick) => usdc(v, tick ? 0 : 1), labelWidth: n => n ? 140 : 150,
+});
+table(document.getElementById("t-morpho"), ["Tài sản thế chấp", "Dư nợ USDG", "Tỷ trọng"], MC.map(([k, v]) => [k, usdc(v, 2), nf(v / mtot * 100, 1) + "%"]), [1, 2]);
+const PR = D.rh_proto.filter(p => p.chg7 != null);
+const pname = s => s.replace(" Robinhood", "").replace(" Financial", "").replace(" Network", "");
+hbars(document.getElementById("c-proto"), {
+  aria: "Thay đổi TVL 7 ngày của các protocol lớn trên Robinhood Chain",
+  items: [...PR].sort((a, b) => b.chg7 - a.chg7).map(p => ({label: pname(p.name), value: p.chg7, tip: [["7 ngày", null, pct(p.chg7)], ["30 ngày", null, p.chg30 != null ? pct(p.chg30) : "–"], ["TVL", null, usdc(p.tvl, 1)], ["Loại", null, p.cat]]})),
+  fmt: (v, tick) => tick ? (v > 0 ? "+" : v < 0 ? MINUS : "") + nf(Math.abs(v), 0) + "%" : pct(v, 1),
+  labelWidth: n => n ? 104 : 150,
+});
+table(document.getElementById("t-proto2"), ["Protocol", "Loại", "TVL", "7 ngày", "30 ngày"], PR.map(p => [p.name, p.cat, usdc(p.tvl, 1), pct(p.chg7), p.chg30 != null ? pct(p.chg30) : "–"]), [2, 3, 4]);
+
+// B.3 activity: DEX volume by protocol, fees by category, transactions
+const DP = D.dex_proto;
+const dexOther = r => Object.entries(r).filter(([k]) => !["week_end", "Uniswap V3", "Uniswap V4", "Fables", "Pons V2"].includes(k)).reduce((a, [, v]) => a + (v || 0), 0);
 columnChart(document.getElementById("c-dex"), {
-  aria: "Volume DEX mỗi tuần trên Robinhood Chain",
-  x: CW.map(c => c.week_end), xfmt: dm,
-  stacks: [{label: "Volume DEX", cls: "s1", values: CW.map(c => c.dex * 1e6)}],
-  yfmt: v => usdc(v, 0), labelAt: [CW.findIndex(c => c.dex === Math.max(...CW.map(z => z.dex))), CW.length - 1],
-  tipTitle: i => "Tuần " + wk(CW[i]), tipRows: i => [["Volume DEX", "s1", usdc(CW[i].dex * 1e6, 2)], ["Phí", null, usdc(CW[i].fees * 1e6, 1)]],
+  aria: "Volume DEX mỗi tuần trên Robinhood Chain theo protocol",
+  x: DP.map(r => r.week_end), xfmt: dm,
+  stacks: [{label: "Uniswap V3", cls: "s1", values: DP.map(r => r["Uniswap V3"])}, {label: "Uniswap V4", cls: "s2", values: DP.map(r => r["Uniswap V4"])},
+           {label: "Fables", cls: "s3", values: DP.map(r => r["Fables"])}, {label: "Pons V2", cls: "s4", values: DP.map(r => r["Pons V2"])}, {label: "Khác", cls: "mid", values: DP.map(dexOther)}],
+  yfmt: v => usdc(v, 0), labelAt: [DP.length - 1],
+  tipTitle: i => "Tuần kết thúc " + dm(DP[i].week_end),
+  tipRows: i => [["Uniswap V3", "s1", usdc(DP[i]["Uniswap V3"], 2)], ["Uniswap V4", "s2", usdc(DP[i]["Uniswap V4"], 2)], ["Fables", "s3", usdc(DP[i]["Fables"], 2)], ["Pons V2", "s4", usdc(DP[i]["Pons V2"], 2)], ["Khác", "mid", usdc(dexOther(DP[i]), 2)]],
   height: 230,
 });
-table(document.getElementById("t-dex"), ["Tuần", "Volume DEX", "Phí"], CW.map(c => [wk(c), usdc(c.dex * 1e6, 2), usdc(c.fees * 1e6, 1)]), [1, 2]);
-lineChart(document.getElementById("c-tvl"), {
-  aria: "TVL DeFi và stablecoin trên Robinhood Chain theo tuần",
-  x: CW.map(c => c.week_end),
-  series: [{label: "Stablecoin", cls: "s1", values: CW.map(c => c.stables * 1e6)}, {label: "TVL DeFi", cls: "s2", values: CW.map(c => c.tvl * 1e6)}],
-  yfmt: v => usdc(v, v >= 1e9 ? 1 : 0), endLabels: false, height: 230, xEvery: 2,
+table(document.getElementById("t-dex"), ["Tuần kết thúc", "Uniswap V3", "Uniswap V4", "Fables", "Pons V2", "Khác"], DP.map(r => [dm(r.week_end), usdc(r["Uniswap V3"], 2), usdc(r["Uniswap V4"], 2), usdc(r["Fables"], 2), usdc(r["Pons V2"], 2), usdc(dexOther(r), 2)]), [1, 2, 3, 4, 5]);
+const FC = D.fees_cat;
+const feeOther = r => Object.entries(r).filter(([k]) => !["week_end", "Dexs", "Launchpad", "Trading App", "Derivatives"].includes(k)).reduce((a, [, v]) => a + (v || 0), 0);
+columnChart(document.getElementById("c-fees"), {
+  aria: "Phí mỗi tuần trên Robinhood Chain theo nhóm protocol",
+  x: FC.map(r => r.week_end), xfmt: dm,
+  stacks: [{label: "DEX", cls: "s1", values: FC.map(r => r["Dexs"])}, {label: "Launchpad", cls: "s2", values: FC.map(r => r["Launchpad"])},
+           {label: "Trading app", cls: "s4", values: FC.map(r => r["Trading App"])}, {label: "Perps", cls: "s3", values: FC.map(r => r["Derivatives"])}, {label: "Khác", cls: "mid", values: FC.map(feeOther)}],
+  yfmt: v => usdc(v, 0), labelAt: [FC.length - 1],
+  tipTitle: i => "Tuần kết thúc " + dm(FC[i].week_end),
+  tipRows: i => [["DEX", "s1", usdc(FC[i]["Dexs"], 1)], ["Launchpad", "s2", usdc(FC[i]["Launchpad"], 1)], ["Trading app", "s4", usdc(FC[i]["Trading App"], 1)], ["Perps", "s3", usdc(FC[i]["Derivatives"], 2)], ["Khác", "mid", usdc(feeOther(FC[i]), 1)]],
+  height: 230,
 });
-table(document.getElementById("t-tvl"), ["Tuần kết thúc", "Stablecoin", "TVL DeFi"], CW.map(c => [dm(c.week_end), usdc(c.stables * 1e6, 2), usdc(c.tvl * 1e6, 2)]), [1, 2]);
+table(document.getElementById("t-fees"), ["Tuần kết thúc", "DEX", "Launchpad", "Trading app", "Perps", "Khác"], FC.map(r => [dm(r.week_end), usdc(r["Dexs"], 1), usdc(r["Launchpad"], 1), usdc(r["Trading App"], 1), usdc(r["Derivatives"], 2), usdc(feeOther(r), 1)]), [1, 2, 3, 4, 5]);
+const TXD = RD.filter(r => r.tx != null);
+const tx7 = TXD.map((r, i) => { const w = TXD.slice(Math.max(0, i - 6), i + 1); return w.reduce((a, z) => a + z.tx, 0) / w.length; });
+lineChart(document.getElementById("c-tx"), {
+  aria: "Số giao dịch người dùng mỗi ngày trên Robinhood Chain, trung bình 7 ngày",
+  x: TXD.map(r => r.d),
+  series: [{label: "Giao dịch/ngày", cls: "s1", values: tx7.map(v => v * 1e6), area: true}],
+  yfmt: v => nf(v / 1e6, 0) + " tr", endLabels: false, height: 230, xEvery: 2,
+  tipRows: i => [["Trung bình 7 ngày", "s1", nf(tx7[i], 2) + " triệu"], ["Trong ngày (ước tính)", null, nf(TXD[i].tx, 2) + " triệu"]],
+});
+table(document.getElementById("t-tx"), ["Ngày", "Giao dịch (ước tính)", "Trung bình 7 ngày"], TXD.map((r, i) => [dm(r.d), nf(r.tx, 2) + " tr", nf(tx7[i], 2) + " tr"]).filter((_, i) => i % 3 === 0 || i === TXD.length - 1), [1, 2]);
+
+// B.4 tokenized stocks + ETH bridge, daily
+const SD = RD.filter(r => r.stocks != null);
+lineChart(document.getElementById("c-stock"), {
+  aria: "Giá trị cổ phiếu token hoá đang lưu hành trên Robinhood Chain, theo giá hiện tại",
+  x: SD.map(r => r.d),
+  series: [{label: "Cổ phiếu token hoá", cls: "s3", values: SD.map(r => r.stocks * 1e6), area: true}],
+  yfmt: v => usdc(v, 0), endLabels: false, height: 230, xEvery: 2,
+  tipRows: i => [["Giá trị lưu hành", "s3", usdc(SD[i].stocks * 1e6, 1)]],
+});
+table(document.getElementById("t-stock"), ["Ngày", "Giá trị lưu hành"], SD.filter((r, i) => i % 7 === 0 || i === SD.length - 1).map(r => [dm(r.d), usdc(r.stocks * 1e6, 1)]), [1]);
+const ED = RD.filter(r => r.eth != null);
 lineChart(document.getElementById("c-eth"), {
-  aria: "ETH khoá trong bridge L1 của Robinhood Chain theo tuần",
-  x: CW.map(c => c.week_end),
-  series: [{label: "ETH trong bridge", cls: "s1", values: CW.map(c => c.eth), area: true}],
+  aria: "ETH khoá trong bridge L1 của Robinhood Chain theo ngày",
+  x: ED.map(r => r.d),
+  series: [{label: "ETH trong bridge", cls: "s2", values: ED.map(r => r.eth), area: true}],
   yfmt: v => nf(v / 1000, 0) + "K", endLabels: false, height: 230, xEvery: 2,
-  tipRows: i => [["ETH trong bridge", "s1", nf(CW[i].eth, 0) + " ETH"]],
+  tipRows: i => [["ETH trong bridge", "s2", nf(ED[i].eth, 0) + " ETH"], ["Thay đổi trong ngày", null, i ? sn(ED[i].eth - ED[i - 1].eth, 0) + " ETH" : "–"]],
 });
-table(document.getElementById("t-eth"), ["Tuần kết thúc", "ETH trong bridge L1"], CW.map(c => [dm(c.week_end), nf(c.eth, 0)]), [1]);
-document.getElementById("stock-note").textContent = D.stock_tokens.count + " mã, vốn hoá on-chain " + usdc(D.stock_tokens.marketCap, 0) + ", volume 24 giờ " + usdc(D.stock_tokens.volume24, 0) + " (NVDA dẫn đầu)";
+table(document.getElementById("t-eth"), ["Ngày", "ETH trong bridge L1"], ED.filter((r, i) => i % 7 === 0 || i >= ED.length - 7).map(r => [dm(r.d), nf(r.eth, 0)]), [1]);
+
+const mm = D.memes;
+const RN = document.getElementById("rh-notes");
+[
+  "Hai tuần hype (29/8–11/9) mang vào " + usdm(netw[RW.indexOf(hype)] + netw[RW.indexOf(hype2)], 0) + " (stablecoin + cổ phiếu token hoá + ETH). Ba tuần gần nhất rút ròng: " + netw.slice(-3).map(v => usdm(v, 0)).join(", ") + ".",
+  "USDG, đồng tiền giao dịch chính, giảm từ đỉnh " + usdc(R.peak.usdg.value, 1) + " (" + dm(R.peak.usdg.date) + ") còn " + usdc(R.now.usdg, 1) + ". USDe lập đỉnh mới " + usdc(R.now.usde, 0) + ", chủ yếu đi vào vòng vay trên Morpho.",
+  "Robinhood Earn (vault Steakhouse USDG) giữ " + nf(R.earn_share_of_usdg_pct, 0) + "% lượng USDG và tuần nào cũng nhận thêm tiền gửi. Lợi suất ~7% gồm ~3,9% lãi thật và ~3,3% thưởng Merkl. Người trả lãi chủ yếu là những người vay USDG thế chấp USDe và syrupUSDG (93% dư nợ).",
+  "Vay USDG thế chấp cổ phiếu token hoá chỉ " + usdc(MC.find(c => c[0].startsWith("Cổ phiếu"))[1], 2) + ", và 95% trong số đó là của RWA Sleeve (team NetNet).",
+  "Meme coin (đã loại wash trade): " + nf(mm.tracked, 0) + " token, volume 24 giờ " + usdc(mm.vol24, 1) + ", dòng tiền ròng " + usdc(mm.net_flow_24h, 0) + ", trung vị 24 giờ " + pct(mm.median_change_24h_pct) + ", chỉ " + nf(mm.share_up_24h_pct, 0) + "% token tăng giá.",
+  "Thứ duy nhất đang tăng là perps (Arcus +41%, Meridian +35% TVL trong 7 ngày; phí perps tăng gần như mỗi tuần) và lending. Đầu cơ chuyển sang đòn bẩy trên perp DEX, không quay lại meme hay token gốc.",
+].forEach(t => RN.appendChild(h("li", {text: t})));
 
 // C: price vs NAV (log)
 const HS = D.history;
@@ -767,13 +1006,15 @@ lineChart(document.getElementById("c-prem"), {
   tipRows: i => [["Premium", "s1", nf(HS[i].premium, 2) + "×"], ["Giá", null, usd(HS[i].price, 0)], ["NAV", null, usd(HS[i].nav, 1)]],
 });
 table(document.getElementById("t-prem"), ["Thời điểm (UTC)", "Premium"], HS.filter((r, i) => i % 4 === 0 || i === HS.length - 1).map(r => [dmh(r.t), nf(r.premium, 2) + "×"]), [1]);
+const navPt = (S.rfv + S.pteam_now) / (S.supply + S.pteam_now);
 table(document.getElementById("t-proto"), ["Thành phần", "Hiện tại"], [
   ["NAV", usd(S.nav, 2) + "; RFV " + usdc(S.rfv, 2) + " (liquid " + usdc(S.liquid, 2) + " + Morpho " + usdc(S.morpho, 2) + ")"],
-  ["Rebase (mỗi 8 giờ)", nf(S.rate * 100, 3) + "%/epoch ≈ " + nf(3 * S.rate * S.staked, 0) + " NET/ngày"],
+  ["Rebase (mỗi 8 giờ)", nf(S.rate * 100, 3) + "%/epoch ≈ " + nf(3 * S.rate * S.staked, 0) + " NET/ngày (tối đa ~1.800 lúc pump 7/10)"],
   ["Bond (giảm 3%, vest 2 ngày)", "~" + nf(0.0075 * S.supply, 0) + " NET/ngày; " + nf(S.bd_net, 0) + " NET đang vest"],
   ["InverseBond (sàn)", usd(S.inv_price, 2) + "; " + usdc(S.inv_cap, 0) + " mỗi epoch"],
   ["PremiumSeller", "Tắt; bật khi TWAP > " + usd(2 * S.nav, 0)],
-  ["pTEAM (team, giá $1)", "Đã dùng " + nf(S.pteam_ex, 0) + "; mint được ngay " + nf(S.pteam_now, 0) + " NET"],
+  ["pTEAM (team, giá $1)", "Đã dùng " + nf(S.pteam_ex, 0) + "; mint được ngay " + nf(S.pteam_now, 0) + " NET (NAV sẽ còn " + usd(navPt, 0) + ")"],
+  ["Loopback (vay USDG thế chấp wsNET)", "Vay " + usdc(L.borrow_usdg, 0) + " / cung " + usdc(L.supply_usdg, 0) + "; lãi " + nf(L.borrow_apr_pct, 0) + "%/năm; thế chấp " + nf(L.collateral_net_eq, 0) + " NET"],
   ["Supply / đang stake", nf(S.supply, 0) + " NET / " + nf(S.staked / S.supply * 100, 1) + "%"],
   ["Pool canonical", nf(S.pool_net, 0) + " NET + " + usdc(S.pool_usdg, 0) + " USDG"],
 ]);
@@ -785,7 +1026,7 @@ columnChart(document.getElementById("c-mint"), {
   aria: "NET mới mint mỗi tuần theo nguồn",
   x: WM.map(w => w.week), xfmt: dm,
   stacks: [{label: "Rebase", cls: "s1", values: WM.map(w => w.rebase)}, {label: "Bond", cls: "s2", values: WM.map(w => w.bond)}, {label: "pTEAM", cls: "s3", values: WM.map(w => w.pteam)}, {label: "PremiumSeller", cls: "s4", values: WM.map(w => w.premium)}],
-  yfmt: v => nf(v, 0), labelAt: [WM.length - 2],
+  yfmt: v => nf(v, 0), labelAt: [WM.length - 1],
   tipTitle: i => "Tuần từ " + dm(WM[i].week) + (WM[i].days < 7 ? " (" + WM[i].days + " ngày)" : ""),
   tipRows: i => [["Rebase", "s1", nf(WM[i].rebase, 0)], ["Bond", "s2", nf(WM[i].bond, 0)], ["pTEAM", "s3", nf(WM[i].pteam, 0)], ["PremiumSeller", "s4", nf(WM[i].premium, 0)], ["NET claim từ bond", null, nf(WM[i].bond_claim, 0)]],
   height: 260,
@@ -794,60 +1035,70 @@ table(document.getElementById("t-mint"), ["Tuần từ", "Rebase", "Bond", "pTEA
 const SL = D.sleeve, dsum = D.desks.reduce((a, d) => ({i: a.i + d.usdg_in, t: a.t + d.to_treasury, r: a.r + d.to_router}), {i: 0, t: 0, r: 0});
 const TN = document.getElementById("team-notes");
 [
-  "Từ 24/7 đến 28/9, Team Safe mint " + nf(SL.pteam_exercised, 0) + " NET bằng option pTEAM với giá $1/NET.",
+  "Từ 24/7 đến 28/9, Team Safe mint " + nf(SL.pteam_exercised, 0) + " NET bằng option pTEAM với giá $1/NET. Từ 28/9 đến nay không mint thêm.",
   SL.pteam_same_tx + "/" + SL.pteam_txs + " giao dịch exercise chuyển NET thẳng vào desk ngay trong cùng một lệnh; ước tính bán ra khoảng " + usdc(SL.desk_sale_est_usd, 1) + " (TWAP × 0,935).",
   "Người đăng ký đã trả " + usdc(dsum.i, 2) + " USDG vào các desk: chỉ " + usdc(dsum.t, 2) + " (" + nf(dsum.t / dsum.i * 100, 1) + "%) vào Treasury, còn " + usdc(dsum.r, 2) + " qua router 0xc941… để mua cổ phiếu token hoá cho RWA Sleeve.",
-  "Ngày 5/10, Sleeve nạp thêm 100 NET vào desk 0x732b (không có trong danh sách chính thức). Team vẫn còn quyền mint ngay " + nf(SL.pteam_now, 0) + " NET với giá $1 (~" + usdc(SL.pteam_now * S.spot, 1) + " theo giá thị trường).",
+  "Team vẫn còn quyền mint ngay " + nf(SL.pteam_now, 0) + " NET với giá $1 (~" + usdc(SL.pteam_now * S.spot, 2) + " theo giá thị trường). Nếu mint hết, NAV giảm ~" + nf((1 - navPt / S.nav) * 100, 1) + "% xuống " + usd(navPt, 0) + ".",
 ].forEach(t => TN.appendChild(h("li", {text: t})));
 table(document.getElementById("t-desks"), ["Desk", "USDG vào", "Vào Treasury", "Qua router"], D.desks.filter(d => d.usdg_in > 0).map(d => [d.name.replace("unlisted", "không công bố").replace("listed", "có công bố"), usdc(d.usdg_in, 2), usdc(d.to_treasury, 2), usdc(d.to_router, 2)]).concat([[{text: "Tổng", cls: ""}, usdc(dsum.i, 2), usdc(dsum.t, 2), usdc(dsum.r, 2)]]), [1, 2, 3]);
 table(document.getElementById("t-sellers"), ["Ví", "Bán ròng", "Mua", "Bán", "NET claim từ bond"], D.traders7.sellers.map(r => [{text: short(r.addr), cls: "addr"}, usdc(r.net, 0), usdc(r.buy, 0), usdc(r.sell, 0), nf(r.bond_claim, 0)]), [1, 2, 3, 4]);
 
 // E: Sleeve daily buys (fill missing days with 0)
 const sd = {}; D.sleeve_daily.forEach(r => { sd[r.date] = r; });
-const days = []; for (let d = new Date(Date.UTC(2026, 8, 18)); d <= new Date(Date.UTC(2026, 9, 6)); d = new Date(d.getTime() + 864e5)) days.push(d.toISOString().slice(0, 10));
-const sv = days.map(d => (sd[d] && sd[d].usd > 100) ? sd[d].usd : 0), sn = days.map(d => (sd[d] && sd[d].usd > 100) ? sd[d].net : 0);
+const days = []; for (let d = new Date(Date.UTC(2026, 8, 18)); d <= new Date(Date.UTC(2026, 9, 9)); d = new Date(d.getTime() + 864e5)) days.push(d.toISOString().slice(0, 10));
+const sv = days.map(d => (sd[d] && sd[d].usd > 1000) ? sd[d].usd : 0), sn2 = days.map(d => (sd[d] && sd[d].usd > 1000) ? sd[d].net : 0);
 columnChart(document.getElementById("c-sleeve"), {
   aria: "Lượng NET RWA Sleeve của team mua mỗi ngày",
   x: days, xfmt: dm,
   stacks: [{label: "Sleeve mua", cls: "s1", values: sv}],
-  yfmt: v => usdc(v, 0), labelAt: [days.indexOf("2026-09-28"), days.indexOf("2026-10-05")],
-  tipTitle: i => dm(days[i]), tipRows: i => [["USD", "s1", usd(sv[i], 0)], ["NET", null, nf(sn[i], 1)]],
-  notes: [{i: days.length - 1, text: "Dừng mua"}], height: 240,
+  yfmt: v => usdc(v, 0), labelAt: [days.indexOf("2026-09-28"), days.indexOf("2026-10-07")],
+  tipTitle: i => dm(days[i]), tipRows: i => [["USD", "s1", usd(sv[i], 0)], ["NET", null, nf(sn2[i], 1)]],
+  notes: [{i: days.length - 1, text: "Dừng từ 7/10"}], height: 240,
 });
-table(document.getElementById("t-sleeve"), ["Ngày", "NET", "USD"], days.map((d, i) => [dm(d), nf(sn[i], 1), usd(sv[i], 0)]).concat([["Tổng", nf(SL.bought_net, 0), usd(SL.bought_usd, 0)]]), [1, 2]);
-const netEq = SL.net + SL.wsnet * SL.index;
+table(document.getElementById("t-sleeve"), ["Ngày", "NET", "USD"], days.map((d, i) => [dm(d), nf(sn2[i], 1), usd(sv[i], 0)]).concat([["Tổng", nf(SL.bought_net, 0), usd(SL.bought_usd, 0)]]), [1, 2]);
+const wallet = SL.net + SL.wsnet * SL.index, pledged = L.sleeve.coll_wsnet * SL.index;
 table(document.getElementById("t-book"), ["Khoản mục", "Giá trị"], [
-  ["Đã mua trên thị trường (18/9–5/10)", nf(SL.bought_net, 0) + " NET, " + usdc(SL.bought_usd, 2) + " (giá vốn ~" + usd(SL.bought_usd / SL.bought_net, 0) + ")"],
-  ["Đang giữ", nf(SL.net, 0) + " NET + " + nf(SL.wsnet, 1) + " wsNET ≈ " + nf(netEq, 0) + " NET (" + usdc(netEq * S.spot, 2) + ")"],
+  ["Đã mua trên thị trường (18/9–7/10)", nf(SL.bought_net, 0) + " NET, " + usdc(SL.bought_usd, 2) + " (giá vốn ~" + usd(SL.bought_usd / SL.bought_net, 0) + ")"],
+  ["NET trong ví", nf(SL.net, 0) + " NET + " + nf(SL.wsnet, 1) + " wsNET ≈ " + nf(wallet, 0) + " NET"],
+  ["Thế chấp trên Loopback", nf(L.sleeve.coll_wsnet, 1) + " wsNET ≈ " + nf(pledged, 0) + " NET; nợ " + usdc(L.sleeve.debt_usdg, 0) + " (LTV " + nf(L.sleeve.ltv * 100, 1) + "%)"],
+  ["Tổng NET (quy đổi)", nf(wallet + pledged, 0) + " NET ≈ " + usdc((wallet + pledged) * S.spot, 2)],
   ["USDG trong ví", usd(SL.usdg, 0)],
   ["Cổ phiếu token hoá trong ví", usdc(SL.wallet_stocks_usd, 0)],
-  ["Thế chấp trên Morpho", usdc(SL.morpho_collateral_usd, 2) + " (NVDA, SPCX, AAPL, GOOGL)"],
-  ["Nợ Morpho", usdc(SL.morpho_debt_usd, 2) + " (LTV " + nf(SL.morpho_debt_usd / SL.morpho_collateral_usd * 100, 1) + "%)"],
-  ["Mức sử dụng vốn các market Morpho", Object.entries(SL.markets).map(([k, v]) => k + " " + nf((v.util || 0) * 100, 0) + "%").join(", ")],
+  ["Thế chấp cổ phiếu trên Morpho", usdc(SL.morpho_collateral_usd, 2) + " (NVDA, SPCX, AAPL, GOOGL)"],
+  ["Nợ Morpho (cổ phiếu)", usdc(SL.morpho_debt_usd, 2) + " (LTV " + nf(SL.morpho_debt_usd / SL.morpho_collateral_usd * 100, 1) + "%)"],
+  ["Mức sử dụng vốn các market đó", Object.entries(SL.markets).map(([k, v]) => k + " " + nf((v.util || 0) * 100, 1) + "%").join(", ")],
 ], []);
-const catName = {bond_claimers: "Ví có claim bond", other_wallets: "Ví khác (nhỏ lẻ, staker)", team_rwa_sleeve: "RWA Sleeve (team)"};
+const catName = {bond_claimers: "Ví có claim bond", other_wallets: "Nhỏ lẻ, staker", team_rwa_sleeve: "RWA Sleeve (team)"};
 const cats = [...D.categories].sort((a, b) => b.net - a.net);
 hbars(document.getElementById("c-cat"), {
   aria: "Dòng tiền ròng 30 ngày trên DEX theo nhóm ví",
   items: cats.map(c => ({label: catName[c.key] || c.key, value: c.net, tip: [["Ròng", null, usdc(c.net, 2)], ["Ví mua ròng", null, nf(c.wallets_buy, 0) + " ví, " + usdc(c.buy, 1)], ["Ví bán ròng", null, nf(c.wallets_sell, 0) + " ví, " + usdc(c.sell, 1)]]})),
-  fmt: (v, tick) => usdc(v, tick ? 0 : 2), labelWidth: n => n ? 120 : 190,
+  fmt: (v, tick) => usdc(v, tick ? 0 : 2), labelWidth: n => n ? 128 : 150,
 });
 table(document.getElementById("t-cat"), ["Nhóm", "Ròng", "Ví mua ròng", "Mua", "Ví bán ròng", "Bán"], cats.map(c => [catName[c.key] || c.key, usdc(c.net, 2), nf(c.wallets_buy, 0), usdc(c.buy, 2), nf(c.wallets_sell, 0), usdc(c.sell, 2)]), [1, 2, 3, 4, 5]);
 const mix = D.hoodscan.mix, h24 = D.hoodscan.h24;
 const BN = document.getElementById("buyer-notes");
 [
-  "Nhỏ lẻ vẫn bắt đáy suốt đà giảm: nhóm \"ví khác\" mua ròng 30 ngày, nhưng 24 giờ qua chỉ mua ròng " + usdc((mix.retail.buyUsd || 0) - (mix.retail.sellUsd || 0), 0) + " và số người bán đông hơn người mua (" + nf(h24.sellers, 0) + " so với " + nf(h24.buyers, 0) + ").",
-  "Cá voi (" + nf(mix.whale.wallets, 0) + " ví) bán ròng " + usdc((mix.whale.buyUsd || 0) - (mix.whale.sellUsd || 0), 0) + " trong 24 giờ; không còn ví \"smart money\" nào mua (HoodScan).",
-  "Bỏ RWA Sleeve ra, dòng tiền ròng 7 ngày trên DEX khoảng −$1M: team gần như là bên mua ròng duy nhất.",
-  "Đòn bẩy Loopback (Morpho, thế chấp wsNET): vay $660K / cung $717K, utilization 92%. Định giá thế chấp có sàn bằng NAV, nên rủi ro thanh lý hàng loạt thấp.",
+  "Nhỏ lẻ vẫn bắt đáy: nhóm \"ví khác\" mua ròng trong 30 ngày, 24 giờ qua mua ròng " + usdc((mix.retail.buyUsd || 0) - (mix.retail.sellUsd || 0), 0) + ", nhưng số người bán vẫn đông hơn người mua (" + nf(h24.sellers, 0) + " so với " + nf(h24.buyers, 0) + ").",
+  "Người mua lớn trong đợt giảm: 0xfbd9…f720 (+$92K trong 7 ngày, phần lớn mua ngày 8–9/10), 0x9164…8fda (+$70K), 0xe26e… (+$42K từ trưa 7/10).",
+  "Không tính RWA Sleeve, dòng tiền ròng 7 ngày trên DEX khoảng −$0,6M: team vẫn là bên mua ròng lớn nhất.",
 ].forEach(t => BN.appendChild(h("li", {text: t})));
+const LN = document.getElementById("loop-notes");
+[
+  "Loopback là market Morpho cho vay USDG thế chấp wsNET: cung " + usdc(L.supply_usdg, 0) + ", vay " + usdc(L.borrow_usdg, 0) + " (dùng " + nf(L.util_pct, 1) + "% vốn), lãi vay ~" + nf(L.borrow_apr_pct, 0) + "%/năm.",
+  nf(L.borrowers, 0) + " người vay thế chấp " + nf(L.collateral_net_eq, 0) + " NET (" + nf(L.collateral_net_eq / S.supply * 100, 1) + "% supply), LTV bình quân " + nf(L.aggregate_ltv * 100, 1) + "% (ngưỡng thanh lý 62,5%).",
+  "Oracle định giá NET = TWAP × 0,9 (hiện " + usd(L.oracle_net_usd, 0) + "), không bao giờ thấp hơn NAV và không cao hơn 5× NAV, và tự dừng khi giá tức thời thấp hơn TWAP quá 15%. Vì có sàn NAV, chỉ các vị thế có giá thanh lý trên NAV mới có thể bị thanh lý do giá giảm: rủi ro thanh lý dây chuyền thấp.",
+  "Rủi ro thật nằm ở lãi vay: người vay đang trả ~" + nf(L.borrow_apr_pct, 0) + "%/năm và cược rằng rebase (~0,57%/ngày) bù được cả lãi lẫn đà giảm giá. Nếu premium tiếp tục co, họ có lý do bán ra.",
+].forEach(t => LN.appendChild(h("li", {text: t})));
+table(document.getElementById("t-loop"), ["Giá oracle NET ≤", "Vị thế", "NET thế chấp", "Nợ USDG", "Oracle có thể xuống mức này?"],
+  L.ladder.map(r => [usd(r.net_px, 0), nf(r.positions, 0), nf(r.collateral_net_eq, 0), usdc(r.debt_usdg, 0), r.net_px >= S.nav ? "Có" : (r.net_px >= navPt ? "Nếu mint pTEAM" : "Không")]), [1, 2, 3]);
 
 // F: ladder + scenarios + simulation
 ladder(document.getElementById("c-ladder"), {
   aria: "Các mốc giá quan trọng và vùng giá của ba kịch bản",
-  min: 140, max: 360, now: S.spot,
+  min: 140, max: 350, now: S.spot,
   levels: [
-    {v: S.inv_price, label: "Sàn mua lại", short: "Sàn"}, {v: S.nav, label: "NAV", short: "NAV"}, {v: S.spot, label: "Giá hiện tại", short: "Giá", strong: true},
+    {v: S.inv_price, label: "Sàn mua lại", short: "Sàn"}, {v: S.nav, label: "NAV", short: "NAV"}, {v: navPt, label: "NAV nếu mint pTEAM", short: "NAV−"}, {v: S.spot, label: "Giá hiện tại", short: "Giá", strong: true},
     {v: 1.75 * S.nav, label: "1,75× NAV", short: "1,75×"}, {v: 2 * S.nav, label: "2× NAV", short: "2×"},
   ],
   ranges: SCN.map(s => ({label: s.label, short: s.short, p: s.p, lo: s.lo, hi: s.hi, cls: s.cls})),

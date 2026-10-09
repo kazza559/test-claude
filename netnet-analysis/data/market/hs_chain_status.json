@@ -1,0 +1,31 @@
+{
+ "chain": {
+  "name": "Robinhood Chain",
+  "chainId": 4663,
+  "kind": "Arbitrum Orbit L2",
+  "gasToken": "ETH",
+  "settlementStable": "USDG"
+ },
+ "indexer": null,
+ "swapIndex": {
+  "trades": 289578445,
+  "oldest": "2026-05-22T21:14:53.000Z",
+  "newest": "2026-10-09T13:19:59.000Z"
+ },
+ "snapshots": {
+  "stocks": {
+   "asOf": "2026-10-09T13:18:32.447Z",
+   "ageMinutes": 1.9,
+   "rosterListedAt": "2026-09-09T04:43:22.946Z"
+  },
+  "memeStocks": {
+   "asOf": "2026-10-09T13:13:25.828Z",
+   "ageMinutes": 7.1
+  },
+  "stories": {
+   "asOf": "2026-10-09T12:20:50.429Z",
+   "ageMinutes": 59.6
+  }
+ },
+ "url": "https://hoodscan.co"
+}

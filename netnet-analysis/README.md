@@ -1,7 +1,7 @@
 # NetNet (NET) và Robinhood Chain — phân tích on-chain, dòng tiền, dự báo
 
 Token `0xCA9c78Dd337A67F6e0077F65F5E9218719d30eDf` trên **Robinhood Chain** (Arbitrum Orbit L2, chainId 4663).
-Snapshot: **2026-10-06 ~11:40 UTC** (bản trước: 2026-10-03). Số liệu đọc trực tiếp từ chain (RPC công khai, contract verified trên Sourcify, bridge L1 trên Ethereum), đối chiếu với DefiLlama, DexScreener, GeckoTerminal, CoinGecko, HoodScan và tin tức.
+Snapshot: **2026-10-09 ~13:30 UTC** (các bản trước: 6/10 và 3/10). Số liệu đọc trực tiếp từ chain (RPC công khai, contract verified trên Sourcify, bridge L1 trên Ethereum), đối chiếu với DefiLlama, DexScreener, GeckoTerminal, CoinGecko, HoodScan và tin tức.
 
 > Đây là phân tích dữ liệu, không phải lời khuyên đầu tư. NET là token rebase kiểu OlympusDAO trên một chain mới. Bạn có thể mất phần lớn số vốn bỏ vào.
 
@@ -11,34 +11,39 @@ Bản HTML có biểu đồ: [`report.html`](report.html) (build bằng `scripts
 
 ## TL;DR
 
-**Thị trường chung: thuận lợi.** BTC $86,3K (+7% trong 30 ngày, sát đỉnh 90 ngày), ETH $2.715 (+8%), Fear & Greed **73 (Greed)**. Vậy cú sập của token gốc Robinhood Chain **là chuyện riêng của hệ sinh thái**, không do thị trường chung.
+**Thị trường chung: chuyển sang phòng thủ.** BTC từ ~$85,8K (6/10) xuống ~$81,7K cuối ngày 8/10 (thấp nhất kể từ 21/9), hiện ~$83K. ETH $2.500 (−6% / 7 ngày). Fear & Greed giảm từ 73 xuống **59**. Nguyên nhân chính: dầu Brent vượt $100 (căng thẳng ở eo Hormuz), lợi suất trái phiếu Mỹ 10 năm lên ~5,3%, ETF rút ròng, ~$609M vị thế đòn bẩy bị thanh lý trong 24 giờ ngày 7/10. Ba ngày trước thị trường chung còn là điểm tựa, giờ thành gió ngược.
 
-**Robinhood Chain: tiền vẫn nằm trên chain nhưng hết đuổi theo đầu cơ.**
+**Robinhood Chain: tiền không rời chain, nhưng đã chuyển từ đầu cơ sang gửi lấy lãi.** Đo on-chain, tuần 3–9/10:
 
-| Chỉ số | Hiện tại | So với đỉnh / 30 ngày |
-|---|---|---|
-| TVL DeFi | $1,05 tỷ (#9/468 chain) | +16% / 30 ngày nhưng tăng chậm dần (+3,9% / 7 ngày) |
-| Stablecoin | $1,113 tỷ (đỉnh mới): USDG $713M, USDe $361M | Gần như đi ngang từ giữa tháng 9 ($1,088 tỷ ngày 15/9) |
-| Volume DEX / tuần | $8,3 tỷ | **−55%** so với đỉnh $18,4 tỷ (2–8/9); đỉnh ngày $3,5–3,7 tỷ (4/9) |
-| Phí / tuần | $28,7M | **−81%** so với đỉnh $153M |
-| ETH khoá trong bridge L1 | 276K ETH (~$750M) | **−12%** so với đỉnh 313,6K (17/9), riêng 24 giờ qua −11,8K ETH |
-| Token gốc (30 ngày) | PONS −57%, AI −44%, CASHCAT −33%, NET −75% | Lượng meme mới phát hành trên Pons giảm 72%, phí meme giảm 78% |
+| Dòng tiền | Tuần này | Xu hướng |
+|---|---:|---|
+| Stablecoin mới (USDG + USDe + U) | **+$8,8M** (tổng $1,090 tỷ) | Đi ngang từ giữa tháng 9. Hai tuần hype: +$198M và +$117M |
+| ├ USDG (Paxos, tiền giao dịch) | −$5,3M | −$31M (−4,3%) so với đỉnh $726M ngày 15/9 |
+| └ USDe (Ethena) | +$14,0M | Đỉnh mới $368M, chủ yếu đi vào vòng vay trên Morpho |
+| Gửi vào Robinhood Earn (vault Steakhouse USDG) | **+$23,2M** | Đỉnh mới **$537M = 77% lượng USDG**, tuần nào cũng +$12–26M |
+| Cổ phiếu token hoá (mint trừ burn, theo giá hiện tại) | **−$11,5M** | Rút ròng 4 tuần liên tiếp: $181M (15/9) còn $150M (−17%) |
+| ETH qua bridge chính thức từ Ethereum | **−12.088 ETH (−$30M)** | Rút ròng 3 tuần liên tiếp, tổng −33,3K ETH (−$83M) từ đỉnh 16/9 |
+| Volume DEX / phí | $7,3 tỷ / $22,6M | −55% / −82% so với đỉnh |
+| Giao dịch người dùng (ước tính) | ~5,9 triệu/ngày | −48% so với tuần 29/8–4/9; gas dùng −70% |
+
+Cộng stablecoin, cổ phiếu token hoá và ETH: **tiền mới vào chain đã âm 3 tuần liền** (−$30M, −$22M, −$33M), sau hai tuần hype +$474M và +$243M. Phần tiền đầu cơ (ETH, USDG, cổ phiếu token hoá, phí launchpad) đang chảy ra; phần tiền gửi lấy lãi (Earn/Morpho, USDe) vẫn chảy vào. **93% khoản vay USDG trên Morpho là vòng vay stablecoin** (thế chấp USDe, syrupUSDG); vay thế chấp cổ phiếu token hoá chỉ $1,67M, và 95% trong số đó là của team NetNet.
 
 **NET**
 
-| | Hiện tại (6/10) | 3/10 |
+| | 9/10 | 6/10 |
 |---|---|---|
-| Giá | **~$224** (−88% từ đỉnh $1.888; −47% / 7 ngày, −75% / 30 ngày) | $277 |
-| NAV (USDG thật bảo chứng / NET) | **$167,8** | $170,5 |
-| Premium (giá / NAV) | **1,33×** | 1,64× |
-| Sàn mua lại (InverseBond) | **$165,2** (~$72K mỗi 8 giờ) | $167,9 |
-| Pha loãng | **~1.800 NET/ngày (~1,3%/ngày)**: rebase ~770 + bond ~1.030 | ~2.390 NET/ngày |
-| Dòng tiền DEX 7 ngày (HoodScan) | mua $5,65M, bán $6,24M, **ròng −$0,59M** | ròng −$0,29M |
+| Giá | **~$216** (−89% từ đỉnh $1.888; −25% / 7 ngày; −66% / 30 ngày). Ba ngày qua chạy từ $184 đến $362 | $224 |
+| NAV (USDG thật bảo chứng / NET) | **$164,84** | $167,76 |
+| Premium (giá / NAV) | **1,31×** (vọt lên 1,91× ngày 7/10 rồi co lại) | 1,33× |
+| Sàn mua lại (InverseBond) | **$162,37** (~$75K mỗi 8 giờ) | $165,24 |
+| Supply | 144.739 NET (**+5,2% trong 3 ngày**) | 137.554 |
+| Pha loãng | **~1.850 NET/ngày (1,28%/ngày)**, cần ~$400K tiền mới ròng mỗi ngày để giữ giá | ~1.800 NET/ngày |
+| Dòng tiền DEX 7 ngày (HoodScan) | mua $4,91M, bán $5,02M, **ròng −$0,11M** | ròng −$0,59M |
 
-- **Ai bán:** bonder (mua bond rẻ hơn 3% rồi xả, ~900 NET/ngày; ròng −$5,9M trong 30 ngày), staker chốt rebase, cá voi (−$158K trong 24 giờ). Team vẫn bán NET qua "bond desk" (nạp thêm 100 NET ngày 5/10).
-- **Ai mua:** **chủ yếu là team.** RWA Sleeve của team mua lại **5.108 NET (~$2,08M)** từ 18/9 đến 5/10, chiếm +$954K trong số mua ròng 7 ngày (gấp ~9 lần ví đứng thứ hai). Bỏ team ra, dòng tiền ròng 7 ngày khoảng **−$1M**.
-- **Tín hiệu mới quan trọng nhất:** lực mua của team **gần như đã cạn tiền**. Sleeve còn ~$10K USDG; các market Morpho thế chấp cổ phiếu đã dùng **100%** vốn nên không vay thêm được; cổ phiếu còn trong ví ~$135K. Sleeve không mua thêm từ 19:25 UTC ngày 5/10.
-- **Dự báo 1–3 tuần:** cơ sở (~50%) là trôi về **$180–215** (1,1–1,3× NAV); xấu (~30%) là test NAV **$160–168**; tốt (~20%) là hồi **$260–295**. Rủi ro/lợi nhuận đã cân hơn trước: **−25% xuống NAV**, **+50% lên 2× NAV**. Nhưng xu hướng vẫn giảm và người mua lớn nhất đã hết tiền.
+- **Ai bán:** bonder (claim ~1.000 NET/ngày; 30 ngày ròng −$5,9M), holder lâu năm (`0xf41b…9e3b` xả 686 NET, ~$139K, trong 3 lệnh), cá voi (−$171K trong 24 giờ), và người lướt sóng mua đỉnh ngày 7/10 rồi bán ra.
+- **Ai mua:** vẫn chủ yếu là team. Ngày 6/10 RWA Sleeve **vay $113K USDG trên Loopback, thế chấp bằng chính 813,5 wsNET của mình**, mua thêm 435 NET (~$126K) trong ngày 6–7/10, rồi **dừng hẳn từ 15:51 UTC ngày 7/10**. Số USDG còn lại: **$340**. Nhỏ lẻ mua ròng nhẹ (+$66K trong 24 giờ).
+- **Cú pump ngày 7/10:** giá từ $272 lên $362 trong 4 giờ trên thanh khoản mỏng (người mua lớn nhất là Sleeve). Premium vọt lên 1,91× làm rebase chạy tối đa (1.800 NET/ngày), sau đó giá rơi về $184–231. Pump ngắn chỉ làm supply tăng nhanh hơn.
+- **Dự báo 1–3 tuần (xác suất chủ quan):** cơ sở ~50% **$175–210**; xấu ~30% **$155–168** (về NAV; NAV có thể giảm còn ~$156 nếu team mint 8.133 NET pTEAM); tốt ~20% **$240–290**. Nghiêng giảm: người mua lớn nhất đã hết tiền, thị trường chung chuyển phòng thủ, RH chain mất dòng tiền đầu cơ. Vùng NAV (~$160–165) vẫn là sàn theo cơ chế.
 
 ---
 
@@ -46,153 +51,214 @@ Bản HTML có biểu đồ: [`report.html`](report.html) (build bằng `scripts
 
 | | Giá | 7 ngày | 30 ngày | 90 ngày |
 |---|---:|---:|---:|---:|
-| BTC | $86.280 | +3,2% | +7,4% | +38,6% (đỉnh 90 ngày $86,6K) |
-| ETH | $2.715 | +1,4% | +8,0% | +55,8% |
-| Tổng vốn hoá crypto | $2,92T (−2,6% / 24h), BTC dominance 59,3% | | | |
-| Fear & Greed | **73 (Greed)**; trung bình 7 ngày 70, 30 ngày 68 | | | |
+| BTC | $83.030 | −1,7% | +6,1% | +30,2% (đỉnh 90 ngày $86,6K) |
+| ETH | $2.500 | −6,3% | +1,3% | +39,8% |
+| Tổng vốn hoá crypto | $2,81T (−2,6% / 24h), BTC dominance 59,2% | | | |
+| Fear & Greed | **59** (73 ngày 6/10); trung bình 7 ngày 67, 30 ngày 67 | | | |
 
-Thị trường chung đang ở pha tăng (risk-on). Trong khi đó, token gốc Robinhood Chain giảm 30–75% trong 30 ngày, tức là **tương quan âm với thị trường chung**. Đây là pha hạ nhiệt sau đợt hype ra mắt chain, không phải pha "risk-off" toàn thị trường. Ý nghĩa: nếu RH chain có câu chuyện mới, tiền có sẵn để quay lại; nhưng hiện tại tiền đang chảy sang nơi khác.
+- Theo [Fortune](https://fortune.com/article/price-of-bitcoin-10-09-2026/), sáng 9/10 BTC ở ~$82,4K. [Analytics Insight](https://www.analyticsinsight.net/price-analysis/crypto-prices-today-bitcoin-holds-near-usd-82400-as-etf-outflows-oil-spike-test-support) cho rằng hỗ trợ đã lùi về $80K, kháng cự $85K; ETF rút ròng và giá dầu là hai yếu tố quyết định BTC lấy lại $83K hay test $77K.
+- Ngày 7/10: Brent vượt $101,5 sau tin Iran tấn công tàu chở dầu gần eo Hormuz, lợi suất Mỹ 10 năm lên ~5,31%, BTC thủng $84K ([ARY News](https://arynews.tv/en/bitcoin-falls-under-84k-as-oil-jumps)), ~$609M vị thế đòn bẩy bị thanh lý trong 24 giờ ([NewsBytes](https://www.newsbytesapp.com/news/business/bitcoin-falls-25-to-83470-amid-609-million-liquidations-altcoins-fall/tldr)). Chứng khoán Mỹ cũng giảm hai phiên liên tiếp khi nhóm AI bị bán ([Yahoo Finance](https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-8-dow-sp-500-nasdaq-080537884.html)).
 
-## B. Dòng tiền vào Robinhood Chain
+**Ý nghĩa:** hôm 6/10, cú sập của token gốc RH chain còn là "chuyện riêng của hệ sinh thái" vì thị trường chung đang risk-on. Bây giờ thị trường chung cũng chuyển phòng thủ: tiền đầu cơ ít có lý do quay lại RH chain trong ngắn hạn, và mọi nhịp hồi của token gốc sẽ khó giữ.
 
-Mainnet chạy từ 1/7/2026. Số liệu tuần (DefiLlama; ETH bridge đo trên Ethereum; file `data/market/rh_chain_weekly.csv`):
+## B. Dòng tiền Robinhood Chain (phân tích sâu)
 
-| Tuần | Volume DEX | Phí | TVL cuối tuần | Stablecoin | ETH trong bridge L1 | BTC |
-|---|---:|---:|---:|---:|---:|---:|
-| 8–14/7 | $5,4B | $37M | $160M | $327M | 85,5K | $62K |
-| 5–11/8 | $3,7B | $26M | $479M | $611M | 153,4K | $64K |
-| 26/8–1/9 | $9,4B | $73M | $729M | $797M | 219,4K | $79K |
-| **2–8/9** | **$18,4B** (đỉnh) | **$153M** (đỉnh) | $900M | $1.001M | 292,2K | $79K |
-| 9–15/9 | $13,8B | $88M | $930M | $1.088M | 309,0K | $78K |
-| 16–22/9 | $10,6B | $52M | $995M | $1.106M | 309,0K (đỉnh 313,6K ngày 17/9) | $87K |
-| 23–29/9 | $9,4B | $37M | $1.010M | $1.065M | 297,0K | $83K |
-| **30/9–6/10** | **$8,3B** | **$29M** | **$1.050M** | **$1.113M** | **276,0K** | $86K |
+Mainnet chạy từ 1/7/2026. Phần này đo **tiền thật đi vào/ra chain** trực tiếp on-chain (tổng cung stablecoin, vault Earn, Morpho, cổ phiếu token hoá, bridge ETH trên Ethereum, số giao dịch), rồi đối chiếu với DefiLlama. Script: `scripts/rh_flows.py`, `scripts/rh_flow_summary.py`, `scripts/rh_protocols.py`, `scripts/rh_chain.py`.
 
-Nhận xét:
-1. **Tiền vẫn "đậu" trên chain.** TVL và stablecoin đều ở đỉnh. USDG (Paxos, phát hành trực tiếp trên chain) chiếm $713M (+11% / 30 ngày), USDe (Ethena) $361M (+13%). Phần lớn là tiền gửi lấy lãi (vault Steakhouse USDG trên Morpho, Robinhood Earn). Treasury của NetNet cũng gửi $16,1M vào đây.
-2. **Hoạt động đầu cơ giảm mạnh.** Volume DEX giảm 55% và phí giảm 81% so với đỉnh. Theo KuCoin (4/10): lượng token mới phát hành trên Pons V2 giảm 72% (còn ~6.768/ngày), phí ngày giảm 78% (từ $6,87M xuống $1,48M). Có trường hợp một nhóm phát hành 56 token meme và thu lời ~$15,5M từ người mua.
-3. **ETH bắt đầu rút ra.** ETH trong bridge chính thức trên Ethereum (`0xDf87…64b3`) giảm từ 313,6K (17/9) xuống 276K (−37,6K ETH ≈ −$100M), riêng 24 giờ qua −11,8K ETH. Vì rút từ L2 về L1 có thời gian chờ, các lệnh rút này phản ánh quyết định từ khoảng 1 tuần trước. ERC20 bridge qua đường chính thức không đáng kể (USDC/USDT chỉ vài nghìn USD).
-4. **Cổ phiếu token hoá tăng chậm và còn nhỏ:** 191 mã, vốn hoá on-chain $156M, thanh khoản $92M, volume 24h $99M (NVDA $36M, SPY $15M). Stock token không mở cho người dùng Mỹ.
-5. **Token gốc hệ sinh thái (CoinGecko, 30 ngày):** PONS −57% (vốn hoá $268M), AI −44% ($111M), CASHCAT −33% ($151M), NPC −4%, LIT (Lighter) −15%. HoodScan theo dõi 1.293 meme đang có thanh khoản; 24 giờ qua tổng dòng tiền ròng −$0,84M.
+### B.1 Tiền mới vào/ra chain theo tuần
 
-Tin tức và chất xúc tác:
-- **HOOD Summit (cuối tháng 9):** công bố AI trading agent, giao dịch cổ phiếu cuối tuần, perps qua Bitstamp. **Không có gì trực tiếp cho token gốc trên chain.**
-- **Robinhood báo cáo quý 3 vào 27/10/2026** (sau giờ đóng cửa). Đây là dịp có thể công bố số liệu chain hoặc kế hoạch mới.
-- Robinhood Chain chiếm 53% doanh thu tháng 9 của Uniswap. Robinhood Wallet đã mở truy cập hơn 190 stock token. Ví Robinhood chỉ chiếm 1–2% giao dịch on-chain.
+Tuần theo DefiLlama (thứ Sáu đến thứ Năm). Số on-chain tính từ 00:00 UTC ngày đầu tuần đến 00:00 UTC sau ngày cuối; tuần cuối tính đến 13:20 UTC ngày 9/10. ETH quy USD theo giá hiện tại ($2.500). File `data/market/rh_flow_weekly.csv`.
+
+| Tuần kết thúc | Stablecoin | trong đó USDG | USDe | Earn vault | Vay USDG Morpho | Cổ phiếu token hoá | ETH bridge | Giao dịch/ngày | Volume DEX | Phí |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 17/7 | +$95M | +$77M | +$18M | +$67M | +$41M | +$6M | +40,9K (+$102M) | 8,4M | $5,7B | $39M |
+| 14/8 | +$47M | +$16M | +$31M | +$35M | +$52M | +$3M | +19,2K (+$48M) | 13,6M | $3,6B | $26M |
+| 28/8 | +$36M | +$20M | +$16M | +$47M | +$49M | +$12M | +18,7K (+$47M) | 9,2M | $5,2B | $30M |
+| **4/9** | **+$198M** | **+$199M** | −$1M | +$32M | +$6M | **+$99M** | **+70,7K (+$177M)** | 11,4M | **$15,6B** | **$129M** |
+| 11/9 | +$117M | +$84M | +$3M | +$12M | +$13M | +$23M | +41,4K (+$104M) | 10,8M | $16,1B | $122M |
+| 18/9 | +$12M | −$6M | +$17M | +$19M | +$21M | −$0,5M | +13,2K (+$33M) | 10,0M | $11,9B | $70M |
+| 25/9 | −$9M | −$9M | $0 | +$26M | +$5M | −$8M | **−5,5K (−$14M)** | 7,6M | $10,2B | $46M |
+| 2/10 | +$16M | +$6M | +$10M | +$19M | +$16M | −$6M | **−12,7K (−$32M)** | 7,5M | $9,4B | $35M |
+| **9/10** | **+$9M** | **−$5M** | +$14M | **+$23M** | +$10M | **−$12M** | **−12,1K (−$30M)** | **5,9M** | **$7,3B** | **$23M** |
+
+Đọc bảng:
+1. **Hai tuần hype (29/8–11/9) mang vào ~$717M** (stablecoin + cổ phiếu token hoá + ETH). Từ 18/9 tiền mới gần như dừng, và **3 tuần gần nhất là rút ròng** (−$30M, −$22M, −$33M).
+2. **USDG**, đồng tiền giao dịch chính (Paxos phát hành trực tiếp trên chain), giảm 3/4 tuần gần nhất: từ đỉnh $726,5M (15/9) còn $695,4M.
+3. **ETH rút về Ethereum:** bridge chính thức (`0xDf87…64b3`) từ 312.174 ETH (16/9) còn 278.881 ETH. Rút từ L2 về L1 phải chờ khoảng 1 tuần, nên lượng ETH ra khỏi bridge hôm nay phản ánh quyết định rút từ tuần trước. Riêng ngày 6/10: −11.800 ETH. Từ 7/10 đến nay vào lại +2.850 ETH, nhưng còn quá sớm để gọi là đảo chiều.
+4. **Cổ phiếu token hoá bị đổi ngược ra:** giá trị on-chain của 191 mã (theo giá hiện tại) đỉnh $180,6M ngày 15/9, nay $149,7M. Bốn tuần liền burn nhiều hơn mint. Lớn nhất: SPY $19,2M, NVDA $17,3M, SPCX $9,7M, GLD $7,7M, META $7,1M.
+5. **Hoạt động giảm một nửa.** Số giao dịch người dùng mỗi ngày (ước tính bằng cách lấy mẫu 100 block/ngày) từ ~11M (tuần 4/9) còn ~5,9M; gas dùng mỗi ngày −70%. Trợ giá gas cho ví Robinhood hết hạn ngày 29/9 ([KuCoin](https://www.kucoin.com/news/flash/robinhood-chain-ends-free-gas-subsidy-in-late-september-memecoins-face-stress-test)); trung bình 30/9–8/10 ~6,4M giao dịch/ngày so với ~7,7M trong tuần 22–28/9. Toàn chain vẫn có ~1,9 triệu swap/ngày (chỉ số swap của HoodScan tăng từ 283,6M lên 289,6M trong 3 ngày).
+
+### B.2 Tiền đang nằm ở đâu
+
+**Stablecoin $1,090 tỷ** (on-chain, 9/10): USDG $695,4M (64%), USDe $364,8M (33%), U (United Stables) $30M. DefiLlama: $1,093 tỷ.
+
+| Nơi tiền đậu | Quy mô | Ghi chú |
+|---|---:|---|
+| **Robinhood Earn** = vault Steakhouse USDG trên Morpho (`0xbeef…09dd`) | **$537M** (77% USDG) | Robinhood chọn Morpho cho sản phẩm Earn ([FinanzNachrichten](https://www.finanznachrichten.de/nachrichten-2026-07/68920872-robinhood-chooses-morpho-to-power-new-earn-product-004.htm)). Lợi suất quảng cáo ~7%, trong đó ~3,9% là lãi thật và ~3,3% là thưởng Merkl ([DefiLlama](https://defillama.com/yields/pool/32f586b4-5358-5aa2-88ee-c842139e7023)) |
+| Morpho Blue, các market cho vay USDG | Cung $534M, vay $478M (dùng 89,5% vốn) | Vay theo tài sản thế chấp: **USDe $320M (67%)**, syrupUSDG $118M (25%), mGLO $29M (6%), spUSDG $8M. Cổ phiếu token hoá $1,67M (0,35%), wsNET $0,82M |
+| Perp DEX (Lighter, Arcus, Meridian) | ~$162M | Nhóm duy nhất có phí tăng đều mỗi tuần |
+| Pool DEX (Uniswap v2/v3/v4, Fables, Ramses, up, Sushi…) | ~$277M | Đang rút: Uniswap V4 −14%, V3 −20%, Fables −19%, up v3 −33% trong 7 ngày |
+
+Nghĩa là: lãi suất ~7% của Earn được trả bởi **người vay USDG thế chấp stablecoin** (vòng USDe ↔ USDG để farm lãi và điểm thưởng) cộng thêm thưởng Merkl. Đây là tiền "đậu" theo lợi suất, không phải tiền mua tài sản rủi ro. Nếu thưởng Merkl giảm hoặc lãi suất bên ngoài cao hơn, khối tiền này có thể rút nhanh.
+
+**TVL theo protocol** (DefiLlama, `data/market/rh_protocols.csv`):
+
+| Protocol | Loại | TVL | 7 ngày | 30 ngày |
+|---|---|---:|---:|---:|
+| Morpho Blue | Lending | $611M | +5,2% | +20,3% |
+| Steakhouse Financial | Curator (Earn) | $537M | +4,4% | +13,8% |
+| Uniswap V4 | DEX | $159M | −13,9% | +3,4% |
+| Lighter Robinhood Perps | Perps | $111M | +2,7% | +58,6% |
+| Uniswap V3 | DEX | $52M | −20,1% | −37,7% |
+| Arcus Perps | Perps | $48M | **+40,8%** | +113% |
+| Fables | DEX | $37M | −19,0% | +144% |
+| Gate | CEX | $22M | −31,6% | – |
+| Spark Savings | Yield | $10M | −27,3% | −70,2% |
+| SushiSwap V3 | DEX | $4,0M | +46,0% | +106% |
+| Meridian Perps | Perps | $3,2M | +34,7% | +26,1% |
+
+### B.3 Hoạt động đang ở đâu
+
+**Volume DEX theo protocol** (tuần kết thúc 8/10 so với đỉnh tuần 10/9): Uniswap V3 $2,67 tỷ (−65%), Uniswap V4 $3,00 tỷ (−49%), Fables $0,55 tỷ (đỉnh $0,70 tỷ tuần 1/10), Ramses $0,25 tỷ (−51%), **Pons V2 (launchpad meme) $0,10 tỷ (−90%)**, Metric $0,13 tỷ.
+
+**Phí theo nhóm** (tuần kết thúc 8/10 so với tuần 10/9): DEX $13,8M (−75%), **Launchpad $6,0M (−90%)**, Trading App $1,5M (−93%), **Derivatives $1,08M (+167%, tăng liên tục từ tháng 7)**.
+
+**Meme coin** (HoodScan, đã loại 8 pool SUSD có $310,7M "volume" từ chỉ 101 giao dịch, rõ ràng là wash trade): 1.180 token, volume 24h **$10,0M**, thanh khoản $54,1M, dòng tiền ròng 24h **−$574K**, trung vị 24h **−12,2%**, chỉ 31% token tăng giá. Vẫn có 44 token mới mỗi ngày. Theo [Crypto Briefing](https://cryptobriefing.com/robinhood-chain-memecoin-trading-surge-collapse/) và [Fortune](https://fortune.com/2026/10/06/443-million-memecoin-frenzy-robinhood-circle-latest-memecoin-boom-bust/), volume cặp meme–cổ phiếu từng đạt $443M/ngày đầu tháng 9 rồi giảm 96%.
+
+**Cổ phiếu token hoá:** 191 mã, volume 24h $105,5M (NVDA $19,9M, SPY $19,9M, CRCL $8,1M, MSTR $6,7M, SPCX $6,4M), thanh khoản $92,6M. Volume vẫn khá, nhưng lượng token đang lưu hành giảm (B.1).
+
+**Token gốc hệ sinh thái** (CoinGecko, 7 ngày / 30 ngày): AI −40% / −57% (vốn hoá $93M), CASHCAT −36% / −39% ($112M), PONS −34% / −55% ($237M), NET −25% / −66%, LIT (Lighter) −6% / −31% ($892M), NPC −6% / +2%.
+
+### B.4 Kết luận về dòng tiền RH chain
+
+- **Chưa có dấu hiệu tháo chạy:** TVL ~$1,04 tỷ, stablecoin ~$1,09 tỷ, gần đỉnh.
+- **Nhưng cơ cấu đã đổi:** tiền đầu cơ ra (ETH −$83M từ đỉnh, cổ phiếu token hoá −$31M, USDG −$31M, phí launchpad −90%), tiền gửi lãi vào (Earn +$12–26M/tuần, USDe đỉnh mới). Đây là kiểu chain "đậu tiền lấy lãi", không phải chain có lực mua tài sản rủi ro.
+- **Thứ duy nhất đang tăng trưởng** là perps (Arcus, Lighter, Meridian) và lending. Đầu cơ đang chuyển sang đòn bẩy trên perp DEX, không quay lại meme/token gốc.
+- **Với NET:** không có dòng tiền mới từ hệ sinh thái để đỡ premium. Giá phụ thuộc vào cơ chế nội tại (NAV, InverseBond) và việc team có nạp tiền mới hay không.
+
+Tin tức và chất xúc tác ([TokenPost](https://www.tokenpost.com/tag/robinhood-chain), [Coingabbar](https://www.coingabbar.com/en/robinhood-chain-news-dex-volume-falls-from-record-high)):
+- Robinhood đang **thăm dò** một Stock Token gắn với ETF quản lý chủ động của T. Rowe Price, mới ở giai đoạn sơ bộ ([Unchained](https://unchainedcrypto.com/robinhood-explores-stock-token-tied-to-t-rowe-price-actively-managed-etf)). $HYPE lên chain qua SushiSwap ([Coinfomania](https://coinfomania.com/hype-goes-live-on-robinhood-chain)).
+- Fables (DEX ve(3,3), TVL $37M) được cho là sẽ ra token ngày 20/10 theo TokenPost; chưa thấy xác nhận từ nguồn chính thức. Nếu đúng, đây có thể là đợt incentive thanh khoản mới.
+- **Robinhood công bố kết quả quý 3 ngày 27/10/2026** ([GlobeNewswire](https://www.globenewswire.com/news-release/2026/10/01/3373375/0/en/robinhood-markets-inc-to-announce-third-quarter-2026-results-on-october-27-2026.html)). Đây là dịp có thể công bố số liệu hoặc kế hoạch mới cho chain.
 
 ## C. NET: pool và thanh khoản
 
-30 pair, tổng thanh khoản ~**$1,10M** (giảm từ $1,19M), volume 24h ~$1,5M (giảm từ $2,3M).
+30 pair, tổng thanh khoản **~$1,06M** (6/10: $1,10M), volume 24h ~$1,49M.
 
 | Pool | DEX | Thanh khoản | Vol 24h | Thuế 5% |
 |---|---|---:|---:|:-:|
-| [`0x59F9…5B54`](https://dexscreener.com/robinhood/0x59f95461e68e0c77605299791e1449f175165b54) NET/USDG: canonical, oracle TWAP, 97,6% LP thuộc Treasury | Uniswap v2 | $383K (854 NET + $191K) | $0,23M | ✅ |
-| [`0x99e7…1673`](https://dexscreener.com/robinhood/0x99e70a5b06215e5d2f3bec773b4f59c008fc1673) NET/USDG 1% | Up v3 | $226K | $0,54M | ❌ |
-| `0x0d66…deb3` NET/USDG 0,9% | Uniswap v4 | $148K | $0,06M | ❌ |
-| `0x4030…170d` NET/USDG | Uniswap v4 | $103K | $0,26M | ❌ |
-| `0x813f…3862` NET/USDG 1% | Ramses v3 | $97K | $0,11M | ❌ |
-| `0x146a…18D3` NET/USDG | Alandale | $18K | $0,13M | ❌ |
+| [`0x59F9…5B54`](https://dexscreener.com/robinhood/0x59f95461e68e0c77605299791e1449f175165b54) NET/USDG: canonical, oracle TWAP, ~98% LP thuộc Treasury | Uniswap v2 | $379K (876 NET + $189K) | $0,27M | ✅ |
+| `0x0d66…deb3` NET/USDG | Uniswap v4 | $265K (6/10: $148K) | $0,26M | ❌ |
+| [`0x99e7…1673`](https://dexscreener.com/robinhood/0x99e70a5b06215e5d2f3bec773b4f59c008fc1673) NET/USDG 1% | Up v3 | $165K (6/10: $226K) | $0,43M | ❌ |
+| `0x4030…170d` NET/USDG | Uniswap v4 | $136K | $0,27M | ❌ |
+| `0x888f…4fc1` NET/USDG | Uniswap v4 | $27K (pool mới, 3/10) | $0,02M | ❌ |
+| `0x146a…18D3` NET/USDG | Alandale | $15K | $0,10M | ❌ |
 
-Danh sách đầy đủ ở `data/pools.csv`. Chỉ pool v2 bị đánh thuế 5%, nên ~85% volume đi qua các pool không thuế.
+Pool Ramses v3 (`0x813f…3862`, $97K ngày 6/10) gần như đã rút hết thanh khoản (còn $0,7K). Danh sách đầy đủ ở `data/pools.csv`.
 
 ## D. NET: cơ chế và trạng thái protocol
 
-Các hằng số dưới đây đã đối chiếu `Constants.sol` trên Sourcify.
-
-| Thành phần | Quy tắc | Hiện tại (6/10) |
+| Thành phần | Quy tắc | Hiện tại (9/10) |
 |---|---|---|
-| NAV | RFV / supply; RFV = USDG liquid + USDG trong Morpho × 0,98 + POL | **$167,76**. RFV **$23,08M** ($7,24M liquid + $16,14M Steakhouse/Morpho) |
-| Rebase (8h) | 0,45% × clamp((P−1)/0,75, 0, 1) | P = 1,33 → **0,197%/epoch** (0,59%/ngày) ≈ **770 NET/ngày**. Đã giảm một nửa so với 3/10 |
-| Bond | giá max(TWAP × 0,97, NAV), vest 2 ngày, 0,25% supply/epoch | ~**1.030 NET/ngày**; còn 1.603 NET đang vest |
-| InverseBond | mua NET ở NAV × 0,985 rồi đốt; 1% USDG liquid/epoch | **$165,24**, ~$72K/epoch. Chưa từng được dùng đáng kể |
-| PremiumSeller | bán khi TWAP > 2× NAV ($335) | tắt |
-| pTEAM | team mint với giá $1, trần 15% float, không hết hạn | đã dùng 13.320; **có thể mint ngay 7.066 NET** (~$1,6M). NAV sẽ giảm ~4,9% xuống ~$159,6 |
-| Supply | | 137.554 NET (+4,3% so với 3/10), **92,2% đang stake** |
+| NAV | RFV / supply; RFV = USDG liquid + USDG trong Morpho × 0,98 + POL | **$164,84**. RFV **$23,86M** ($7,48M liquid + $16,69M Steakhouse/Morpho) |
+| Rebase (8h) | 0,45% × clamp((P−1)/0,75, 0, 1) | P = 1,32 → **0,19%/epoch** (0,57%/ngày) ≈ **760 NET/ngày**. Ngày 7/10, khi premium lên 1,9×, rebase chạy tối đa ~1.800 NET/ngày |
+| Bond | giá max(TWAP × 0,97, NAV), vest 2 ngày, 0,25% supply/epoch | ~**1.085 NET/ngày**; 1.675 NET đang vest |
+| InverseBond | mua NET ở NAV × 0,985 rồi đốt; 1% USDG liquid/epoch | **$162,37**, ~$75K/epoch (~$224K/ngày). Chưa được dùng |
+| PremiumSeller | bán khi TWAP > 2× NAV ($330) | tắt |
+| pTEAM | team mint với giá $1, trần 15% float, không hết hạn | đã dùng 13.320 (không đổi từ 28/9); **mint được ngay 8.133 NET** (~$1,76M theo giá thị trường). Nếu mint hết, NAV giảm ~5,3% xuống **~$156** |
+| Supply | | **144.739 NET** (+5,2% so với 6/10), 92,7% đang stake |
 
-Nguồn của toàn bộ NET đã mint: rebase 66,7K (48%), bond 33,7K (24%), genesis 21,7K (16%), **pTEAM 13,3K (10%)**, PremiumSeller 2,3K (2%).
+Tuần 2–8/10 mint 16.720 NET (rebase 9.937, bond 6.780), tức supply tăng ~13% trong một tuần. NAV giảm đều: $168,2 (6/10) → $167,4 (7/10) → $166,1 (8/10) → $164,8 (9/10). Nguồn của toàn bộ NET đã mint: rebase 70,7K (49%), bond 36,8K (25%), genesis 21,7K (15%), **pTEAM 13,3K (9%)**, PremiumSeller 2,3K (2%).
 
-NAV đạt đỉnh $175,5 (27/9) rồi giảm dần ($170,5 ngày 3/10, $167,8 hiện tại), vì rebase pha loãng nhanh hơn lượng USDG mà bond mang vào. Bảng 12 giờ ở `data/protocol_history_12h.csv`.
+**Loopback** (market Morpho cho vay USDG thế chấp wsNET, `0xaa58…0589`): cung $910K, vay **$824K** (dùng 90,5% vốn), lãi vay **~49%/năm**. Thế chấp 3.204 wsNET ≈ **13.872 NET (9,6% supply)**, 165 người vay, LTV bình quân 30,5% (ngưỡng thanh lý 62,5%). Oracle `LoopbackOracle` định giá NET = TWAP × 0,9, **không bao giờ thấp hơn NAV** và không cao hơn 5× NAV, và tự dừng khi giá tức thời thấp hơn TWAP quá 15%. Vì có sàn NAV, giá giảm đến đâu thì cũng chỉ ~16 vị thế (~100 NET, nợ ~$10K) có thể bị thanh lý; nếu NAV giảm xuống ~$156 (team mint pTEAM) thì con số này là ~27 vị thế (~444 NET, nợ ~$44K). **Rủi ro thanh lý dây chuyền thấp.** Nhưng lãi vay 49%/năm là gánh nặng: người vay đang cược rằng rebase (~0,57%/ngày) bù được lãi và đà giảm giá.
 
 ## E. Ai đang bán
 
-1. **Bonder (nguồn bán lớn nhất và đều đặn nhất).** Claim ~885–960 NET/ngày; 7 ngày 7.043 NET, 30 ngày 27.623 NET. 30 ngày qua, nhóm ví có claim bond: 353 ví bán ròng −$10,1M, 401 ví mua ròng +$4,2M, **tổng ròng −$5,9M**. Top bán 7 ngày cũng là bonder: `0xf357…401d` (−$247K, claim 825 NET), `0x7c94…f3c0` (−$164K), `0x708d…b1a9` (−$107K).
-2. **Staker chốt rebase.** Rebase mint 1.590/ngày (3/10), sau đó giảm còn ~1.000 (5/10) và ~770 (hiện tại). Không có cooldown khi rút stake.
-3. **Cá voi.** HoodScan 24 giờ: 9 ví cá voi mua $100K, bán $258K (**−$158K**). Không còn ví "smart money" nào mua.
-4. **Team, qua bond desk.** Từ 24/7 đến 28/9, team mint 13.320 NET bằng pTEAM với giá $1. 192/200 giao dịch chuyển NET thẳng vào desk ngay trong cùng một lệnh, ước tính bán ra ~$7,1M. Người đăng ký đã trả **$5,46M USDG** vào các desk: chỉ $0,68M (12,5%) vào Treasury, còn $4,78M qua router `0xc941…` để mua cổ phiếu token hoá cho RWA Sleeve. **Ngày 5/10, Sleeve tiếp tục nạp 100 NET vào desk `0x732b`** (không có trong danh sách chính thức) để bán. Chi tiết ở `data/team_pteam_to_desks.csv` và `data/desk_usdg_flows.csv`.
+1. **Bonder** (nguồn bán lớn nhất và đều đặn nhất). Claim 900–1.040 NET/ngày; 7 ngày 6.927 NET, 30 ngày 28.422 NET. Trong 30 ngày, nhóm ví có claim bond: 308 ví bán ròng −$8,98M, 391 ví mua ròng +$3,08M, **tổng −$5,90M**. Top bán 7 ngày: `0xf357…401d` (−$229K, claim 937 NET), `0x7c94…f3c0` (−$144K, claim 689 NET), `0x708d…` (−$91K, claim 396 NET).
+2. **Holder lâu năm thoát hàng:** `0xf41b…9e3b` bán 686 NET (~$139K) trong 3 lệnh ngày 8–9/10. Ví này không mua, không claim bond, không nhận chuyển khoản nào trong 30 ngày, tức là NET đã giữ từ trước tháng 9. `0x480c…` (−$101K) cùng kiểu: không mua trong 7 ngày, chỉ có 7 giao dịch từ trước đến nay.
+3. **Đợt pump rồi xả ngày 7/10.** 00:00–12:00 UTC: 721 ví, mua ròng +$139K (Sleeve mua nhiều nhất, $56K). 12:00 ngày 7/10 đến nay: 2.149 ví, **bán ròng −$261K**. Ví `0x465b…` mua $46K lúc pump rồi bán lại toàn bộ.
+4. **Cá voi** (HoodScan 24 giờ): 7 ví mua $114K, bán $285K, **ròng −$171K**. Nhóm "smart money" hoà (28 ví, ròng −$248).
+5. **Team, qua desk:** không mint pTEAM mới từ 28/9, các desk không nhận thêm USDG từ 6/10. Tổng cộng đã mint 13.320 NET bằng pTEAM (24/7–28/9), 192/200 giao dịch chuyển thẳng NET vào desk ngay trong cùng một lệnh, ước tính bán ra ~$7,08M. Người đăng ký trả **$5,46M USDG** vào các desk: chỉ $0,68M (12,5%) vào Treasury, $4,78M qua router `0xc941…` để mua cổ phiếu token hoá cho RWA Sleeve. Chi tiết: `data/team_pteam_to_desks.csv`, `data/desk_usdg_flows.csv`.
 
 ## F. Ai đang mua
 
-1. **RWA Sleeve của team** (`0x4987…c7cb`; owner duy nhất là EOA `0xe7e8…96f6`, cũng là owner 1-of-1 của Team Safe; HoodScan liệt kê ví này là "holder lớn nhất"):
+1. **RWA Sleeve của team** (`0x4987…c7cb`; owner duy nhất là EOA `0xe7e8…96f6`, cũng là owner 1-of-1 của Team Safe):
 
 | Giai đoạn | NET | USD |
 |---|---:|---:|
-| 18–27/9 | 1.122 | $680K |
-| 28/9 | 834 | $378K |
-| 29/9–2/10 | 1.755 | $648K |
-| 3/10 | 429 | $121K |
-| 4/10 | 315 | $89K |
-| 5/10 (lần cuối lúc 19:25 UTC) | 652 | $160K |
-| **Tổng** | **5.108** | **~$2,08M** (giá vốn trung bình ~$406) |
+| 18/9–2/10 | 3.712 | $1,71M |
+| 3–5/10 | 1.396 | $370K |
+| 6/10 | 221 | $60K |
+| 7/10 (lần cuối lúc 15:51 UTC) | 213 | $66K |
+| 8–9/10 | ~0 | ~$0 |
+| **Tổng** | **5.546** | **~$2,20M** (giá vốn trung bình ~$397) |
 
-   - **Tài sản hiện tại:** 652 NET + 813,5 wsNET (≈3.413 NET), tổng ~4.070 NET (~$0,91M, 3,4% lượng NET do người dùng nắm giữ). Cổ phiếu trong ví ~$135K, **USDG ~$10K**. Trên Morpho: thế chấp cổ phiếu **$4,10M**, nợ **$1,58M** (LTV 38,5%).
-   - **Vì sao nói lực mua đã cạn:** các market Morpho NVDA/SPCX/AAPL/GOOGL đều **dùng 100% vốn** (không còn USDG để vay). Lãi suất ở mức utilization 100% sẽ tăng dần theo thuật toán AdaptiveCurve. Muốn mua tiếp, team phải bán cổ phiếu hoặc nạp tiền mới từ bên ngoài.
-2. **Nhỏ lẻ:** 30 ngày có 11,4K ví mua ròng +$15,4M, 7,9K ví bán ròng −$11,7M; nhóm "ví khác" ròng **+$3,7M**. Nhưng 24 giờ qua nhỏ lẻ chỉ mua ròng +$15K (HoodScan), và số người bán đông hơn người mua (915 so với 668).
-3. **Đòn bẩy Loopback (Morpho):** đang vay $660K / cung $717K (utilization 92%, giảm từ 99%), thế chấp 2.229 wsNET (~9.350 NET, ~7% supply). Định giá thế chấp có sàn bằng NAV, nên rủi ro thanh lý hàng loạt thấp.
+   - **Ngày 6/10, 18:57 UTC**, EOA của team gửi 813,5 wsNET của Sleeve vào Loopback làm thế chấp và **vay 113.324 USDG**. Số tiền này dùng để mua NET trong ngày 6–7/10. Sleeve đang dùng đòn bẩy trên chính token của mình (LTV 16,7%, an toàn nhờ oracle có sàn NAV).
+   - **Bảng cân đối hiện tại:** 326 NET + 181,5 wsNET trong ví + 813,5 wsNET thế chấp ≈ **4.634 NET** (~$1,0M). USDG **$340**. Cổ phiếu trong ví ~$134K. Trên Morpho: thế chấp cổ phiếu $4,00M, nợ $1,58M (LTV 39,6%); các market NVDA/SPCX/AAPL/GOOGL vẫn dùng 99,5–99,8% vốn, không còn chỗ vay thêm. Nợ Loopback $114K.
+   - **Kết luận:** sau 6/10, team đã dùng đến nguồn cuối cùng là vay thế chấp NET, và cũng đã dừng. Muốn mua tiếp, team phải bán cổ phiếu, vay thêm trên Loopback (lãi 49%/năm) hoặc nạp tiền mới từ bên ngoài.
+2. **Nhỏ lẻ:** 30 ngày có 10,4K ví mua ròng +$14,1M, 7,3K ví bán ròng −$10,6M, nhóm "ví khác" ròng **+$3,5M**. 24 giờ qua mua ròng +$66K (HoodScan), nhưng số người bán vẫn đông hơn người mua (872 so với 723).
+3. **Người mua lớn trong đợt giảm:** `0xfbd9…f720` (+$92K trong 7 ngày, phần lớn mua ngày 8–9/10), `0x9164…8fda` (+$70K trong 7 ngày), `0xe26e…` (+$42K từ trưa 7/10).
+4. **Không tính Sleeve, dòng tiền ròng 7 ngày trên DEX là khoảng −$0,6M** (tổng mua $10,46M, bán $10,41M, trong đó Sleeve +$0,66M).
 
 ## G. Phân bổ holder
 
-~11.000 ví. Top 10 nắm 13,2%, top 100 nắm 43,8% lượng NET do người dùng nắm giữ (NET + sNET + wsNET quy đổi). Top 1 là Sleeve của team (3,4%). 92% supply đang stake và có thể rút bất cứ lúc nào. Chi tiết ở `data/holders_top100.csv`.
+11.238 ví. Top 10 nắm 10,7%, top 100 nắm 41,1% lượng NET người dùng nắm giữ (NET + sNET + wsNET quy đổi, không tính contract). Ví lớn nhất `0x72f2…` giữ 2.604 NET (2,1%). Nếu tính cả wsNET đang thế chấp trên Loopback, Sleeve của team vẫn là holder lớn nhất (~4.634 NET). 13.872 NET (9,6% supply) đang nằm làm thế chấp trên Morpho. Chi tiết ở `data/holders_top100.csv`.
 
 ## H. Giá và dự báo
 
 ### H.1 Kỹ thuật
-- Nến ngày (pool v2): 3/10 L $210 C $280 → 4/10 L $220 C $236 → 5/10 L **$201** C $243 → 6/10 ~$224. Đỉnh sau thấp hơn đỉnh trước ($313 → $294 → $261 → $251).
-- MA7 $297, MA20 $522, MA30 $583, giá nằm dưới cả ba. RSI14 34. Volume pool v2 chỉ còn $0,1–0,25M/ngày (so với $0,65M ngày 2/10).
-- Vùng $200–220 đã đỡ giá ba ngày liên tiếp (đáy $210, $220, $201).
+- Nến ngày (pool v2): 6/10 C $283 → 7/10 H **$362** C $256 → 8/10 L $203 C $231 → 9/10 L **$184** ~$216. Đỉnh 7/10 thấp hơn đỉnh 2/10 ($357); đáy 9/10 ($184) thủng vùng $200–220 từng đỡ giá ngày 3–5/10.
+- MA7 $249, MA20 $436, MA30 $540, giá nằm dưới cả ba. RSI14 35.
+- Cú pump 7/10 không giữ được 12 giờ. Mỗi nhịp hồi lại gặp bond (~1.000 NET/ngày) và bonder bán ra.
 
-### H.2 Toán pha loãng (mô phỏng từ hằng số contract và trạng thái hiện tại)
-Cần ~**$400K/ngày** tiền mới ròng chỉ để giữ giá đứng yên.
+### H.2 Toán pha loãng (mô phỏng từ hằng số contract và trạng thái 9/10)
 
 | Giả định | Ngày 7 | Ngày 14 | Ngày 21 |
 |---|---|---|---|
-| Market cap giữ nguyên | $208 (NAV $165) | $192 (NAV $163) | $180 (NAV $162) |
-| Giá đứng yên $224 | NAV $165 | NAV $161 | NAV $157 |
-| Premium co về 1,15× trong 10 ngày | $201 | $189 | $188 |
-| Giá về NAV (rebase và bond tự dừng) | $168 | $169 | $170 |
+| Market cap giữ nguyên | $201 (NAV $162) | $186 (NAV $161) | $174 (NAV $160) |
+| Giá đứng yên $216 | NAV $162 | NAV $159 | NAV $155 |
+| Premium co về 1,15× trong 10 ngày | $196 | $186 | $184 |
+| Giá về NAV (rebase và bond tự dừng) | $165 | $166 | $167 |
+
+Nếu market cap đứng yên, chỉ riêng pha loãng đã kéo giá xuống ~$174 sau 3 tuần.
 
 ### H.3 Kịch bản 1–3 tuần (xác suất chủ quan)
 
+Ba ngày qua giá đã chạm cả vùng "tốt" của bản 6/10 ($362) lẫn đáy vùng cơ sở ($184). NET biến động rất mạnh, nên nhìn vùng giá quan trọng hơn con số cụ thể.
+
 | Kịch bản | Xác suất | Vùng giá NET | Điều kiện / dấu hiệu |
 |---|:-:|---|---|
-| **Cơ sở: trôi xuống / đi ngang yếu** | ~50% | **$180–215** (1,1–1,3× NAV) | Team ngừng mua vì hết tiền; bond tiếp tục xả ~1.000 NET/ngày; premium co dần làm rebase chậm lại; hệ sinh thái RH tiếp tục hạ nhiệt |
-| **Xấu: về NAV** | ~30% | **$160–168** | Team exercise pTEAM (7K NET) rồi bán qua desk, hoặc Sleeve phải bán NET để trả nợ Morpho khi lãi vay tăng; ETH tiếp tục rút khỏi chain; meme RH sập thêm. Tại NAV, InverseBond hấp thụ ~$217K/ngày; rebase và bond tự về 0 |
-| **Tốt: hồi về 1,55–1,75× NAV** | ~20% | **$260–295** | Dòng tiền mới vào RH chain (báo cáo quý 3 ngày 27/10, sản phẩm hoặc thị trường mới cho stock token), BTC/ETH tiếp tục lên đỉnh, team nạp tiền mới để mua. Trên $294 rebase chạy tối đa; trên $335 PremiumSeller bán ra |
+| **Cơ sở: trôi xuống, premium co dần** | ~50% | **$175–210** (1,1–1,3× NAV) | Team không mua thêm; bond xả ~1.000 NET/ngày; rebase chậm lại khi premium co; BTC đi ngang $80–85K; RH chain tiếp tục rút tiền đầu cơ |
+| **Xấu: về NAV / sàn** | ~30% | **$155–168** | Team mint pTEAM (8,1K NET) rồi bán qua desk (NAV còn ~$156); BTC thủng $80K; ETH và stablecoin rời RH chain nhanh hơn; người vay Loopback bán để trả lãi 49%/năm. Tại NAV, InverseBond hấp thụ ~$224K/ngày; rebase và bond tự về 0 |
+| **Tốt: hồi về 1,45–1,75× NAV** | ~20% | **$240–290** | Team nạp tiền mới hoặc vay thêm để mua; chất xúc tác cho RH chain (Fables TGE, kết quả quý 3 ngày 27/10, thị trường mới cho stock token); BTC lấy lại $85K+. Trên $288 rebase chạy tối đa; trên $330 PremiumSeller bán ra |
 
-Từ $224: **−25% xuống NAV** so với **+50% lên 2× NAV**. Rủi ro/lợi nhuận cân hơn hôm 3/10, vì giá đã gần NAV và NAV là USDG thật. Nhưng trong ngắn hạn cung vẫn lớn hơn cầu, và người mua chính (team) đã hết tiền. **Điểm "an toàn" theo cơ chế là vùng NAV (~$160–170): ở đó protocol tự mua lại và dừng pha loãng.**
+Từ $216: **−24% xuống NAV**, **+33% lên 1,75× NAV**, **+53% lên 2× NAV**. Rủi ro/lợi nhuận nhìn thì cân, nhưng xác suất nghiêng về phía giảm: người mua chính đã hết tiền, thị trường chung chuyển phòng thủ, và hệ sinh thái không có tiền mới chảy vào. **Vùng NAV (~$160–165) vẫn là sàn theo cơ chế**: ở đó protocol tự mua lại và dừng pha loãng.
 
 ### H.4 Robinhood Chain 2–4 tuần tới
-- **Cơ sở:** tiếp tục "bình thường hoá sau hype". Volume DEX quanh $0,8–1,2 tỷ/ngày, phí thấp, token gốc dao động hoặc giảm tiếp với các nhịp pump ngắn. Stablecoin đi ngang hoặc tăng nhẹ (gửi lấy lãi). ETH tiếp tục rút dần.
-- **Có thể đảo chiều nếu:** Robinhood công bố số liệu hoặc ưu đãi mới cho chain (27/10), stock token mở thêm thị trường, có chương trình incentive mới, hoặc tiền risk-on từ BTC/ETH tràn sang. Tín hiệu cần chờ là volume DEX tuần quay lại trên $10 tỷ và stablecoin tăng tiếp.
+- **Cơ sở:** tiếp tục co lại. Volume DEX $5–8 tỷ/tuần, phí $15–25M/tuần, giao dịch 5–7 triệu/ngày. Stablecoin đi ngang ~$1,05–1,10 tỷ: Earn vẫn hút tiền gửi, USDG giao dịch tiếp tục giảm. ETH tiếp tục rút. Cổ phiếu token hoá rút ròng nhẹ nếu không có thị trường mới.
+- **Rủi ro:** thưởng Merkl giảm hoặc lãi suất Earn tụt, kéo theo vòng vay USDe ↔ USDG gỡ ra, có thể làm stablecoin giảm hàng trăm triệu USD rất nhanh. Thị trường chung xấu thêm (BTC dưới $77–80K).
+- **Có thể đảo chiều nếu:** USDG tăng lại (> +$20M/tuần), bridge ETH vào ròng 2 tuần liền, cổ phiếu token hoá mint ròng trở lại, volume DEX tuần > $10 tỷ. Chất xúc tác: Fables TGE (~20/10, chưa xác nhận), kết quả quý 3 của Robinhood (27/10), thêm stock token mới (ETF của T. Rowe Price).
 
 ### H.5 Theo dõi on-chain
-- **Số dư USDG và giao dịch của RWA Sleeve** `0x4987…c7cb`: có mua lại không, có bán NET hay rút wsNET không. Theo dõi thêm nợ Morpho.
+- **RWA Sleeve** `0x4987…c7cb`: số dư USDG, nợ Loopback (`0xaa58…0589`) và Morpho cổ phiếu, có mua lại hay rút wsNET không.
 - `pTEAM.exercised()` (đang 13.320) và NET chuyển vào các desk (`0x99b6…`, `0xa84e…`, `0x70ea…`, `0x2f2f…`, `0x732b…`).
 - `Distributor.premium()`: < 1,1 thì rebase gần như dừng; > 1,75 thì rebase tối đa.
 - `InverseBond.capacityRemaining()`: giảm tức là đã có người bán xuống dưới NAV.
-- ETH trong bridge L1 và stablecoin trên chain (`scripts/rh_chain.py`).
+- Dòng tiền RH chain hàng ngày: `python3 rh_flows.py supply` (USDG/USDe/U/Earn), `rh_chain.py` (bridge ETH), `rh_flows.py stocks` (cổ phiếu token hoá).
 
 ## I. Rủi ro chính
 1. **Tập trung vào team:** một EOA ký 1-of-1 cho Team Safe và RWA Sleeve. pTEAM không hết hạn, team luôn mint được 15% float với giá $1.
-2. **Docs chưa khớp với chain:** inventory của desk đến từ pTEAM chứ không phải "mua trên thị trường", và có ít nhất 4 desk do Team Safe quản lý không được công bố địa chỉ.
-3. **Thanh khoản mỏng** ($1,1M) so với FDV ~$31M; 92% supply có thể rút stake ngay.
-4. **Đòn bẩy của team:** Sleeve nợ $1,58M trên các market Morpho đã dùng 100% vốn.
-5. **Hệ sinh thái mới đang hạ nhiệt:** volume −55%, phí −81%, ETH rút ra. Rủi ro contract (Morpho/Steakhouse, DEX, router) và rủi ro oracle TWAP.
-6. **Phản xạ kiểu OHM:** premium thường co về NAV sau giai đoạn hưng phấn. NAV $23,1M là USDG thật, nhưng phần ~$7,7M vốn hoá phía trên NAV thì không có gì bảo chứng.
+2. **Đòn bẩy của team:** nợ $1,58M trên các market cổ phiếu (dùng ~100% vốn) và $114K trên Loopback, thế chấp bằng chính NET.
+3. **Docs chưa khớp với chain:** NET trong desk đến từ pTEAM chứ không phải mua trên thị trường; ít nhất 4 desk do Team Safe quản lý không được công bố địa chỉ.
+4. **Thanh khoản mỏng** ($1,06M) so với FDV ~$31M; 92,7% supply có thể rút stake ngay.
+5. **Hệ sinh thái đang co lại** (B.1); khối stablecoin lớn nhất là tiền gửi lấy lãi có trợ cấp, có thể rút nhanh. Rủi ro contract (Morpho/Steakhouse, DEX, router) và oracle TWAP.
+6. **Phản xạ kiểu OHM:** premium thường co về NAV sau giai đoạn hưng phấn. NAV $23,9M là USDG thật; phần ~$7,4M vốn hoá phía trên NAV thì không có gì bảo chứng.
 
 ## J. Phương pháp và tái lập
-- **Nguồn:** RPC `rpc.mainnet.chain.robinhood.com` (eth_getLogs) và `robinhood.drpc.org` (eth_call lịch sử, Multicall3), `eth.drpc.org` (số dư bridge trên L1), Sourcify, DefiLlama, DexScreener, GeckoTerminal, CoinGecko, alternative.me, HoodScan (MCP công khai), tin tức (KuCoin, Coingabbar, Nasdaq/GlobeNewswire).
-- **Phân loại dòng tiền** (`scripts/flows.py`): ~587K transaction, ~42K ví. Delta mỗi địa chỉ được quy về NET (NET + sNET + wsNET × index). Pool, contract protocol và router được loại ra, phần còn lại là ví người dùng. USD quy theo nến 4 giờ. Thời gian quy từ block theo mốc binary-search (`data/block_anchors.json`).
-- **Giới hạn:** HoodScan gán giao dịch theo `tx.from`, ở đây gán theo người gửi/nhận token, nên số tổng có thể lệch. Giá trị bán qua desk là ước tính. Xác suất các kịch bản là đánh giá chủ quan.
+- **Nguồn:** RPC `rpc.mainnet.chain.robinhood.com` (eth_getLogs, block), `robinhood.drpc.org` (eth_call lịch sử, Multicall3), `eth.drpc.org` (số dư bridge trên L1), Sourcify (ABI, mã nguồn `LoopbackOracle`), DefiLlama, DexScreener, GeckoTerminal, CoinGecko, alternative.me, HoodScan (MCP công khai), tin tức (link trong bài).
+- **Phân loại dòng tiền NET** (`scripts/flows.py`): ~610K transaction, ~42,5K ví. Delta mỗi địa chỉ được quy về NET (NET + sNET + wsNET × index). Pool, contract protocol và router được loại ra; phần còn lại là ví người dùng. USD quy theo nến 4 giờ. Thời gian quy từ block theo mốc binary-search (`data/block_anchors.json`).
+- **Dòng tiền RH chain** (`scripts/rh_flows.py`): tổng cung USDG/USDe/U/WETH và tài sản vault Steakhouse đọc lúc 00:00 UTC mỗi ngày từ 1/7; tổng cung 191 cổ phiếu token hoá (danh sách từ HoodScan) nhân giá hiện tại, nên thay đổi là lượng mint/burn chứ không phải biến động giá; 359 market Morpho Blue (277 market cho vay USDG) đọc theo ngày; số giao dịch người dùng ước tính bằng 100 block mẫu mỗi ngày (trừ 1 giao dịch hệ thống ArbOS mỗi block).
+- **Giới hạn:** HoodScan gán giao dịch theo `tx.from`, ở đây gán theo người gửi/nhận token, nên số tổng có thể lệch. Giá trị bán qua desk là ước tính. Số giao dịch/ngày là ước tính có sai số lấy mẫu (xem theo tuần). ETH quy USD theo giá hiện tại. Xác suất các kịch bản là đánh giá chủ quan.
 
 ```bash
 cd netnet-analysis/scripts
@@ -205,7 +271,12 @@ python3 fetch_transfers.py 0x63c12667638f2ae6fc6ae09b43d98ec84a8586ea ../raw/wsn
 python3 trace_addr.py 0x3bb7a23316f82c0e984fa2e784846d8928a35f42 ../raw/team_transfers_raw.json
 python3 trace_addr.py 0x498752d5fa0600cbd613074c151abe15b3fec7cb ../raw/sleeve_transfers.json
 python3 flows.py && python3 holders.py && python3 team.py && python3 desk_usdg.py && python3 export.py
-python3 rh_chain.py                                                # dòng tiền Robinhood Chain + vĩ mô
+python3 loopback.py                                                # market Loopback, bậc thanh lý
+python3 rh_chain.py                                                # DefiLlama, bridge ETH, vĩ mô, meme, stock token
+python3 rh_protocols.py                                            # TVL theo protocol, volume DEX và phí theo nhóm
+python3 rh_flows.py all                                            # stablecoin, Earn, cổ phiếu token hoá, Morpho, số giao dịch theo ngày
+python3 rh_flow_summary.py                                         # bảng dòng tiền theo tuần
+python3 build_report.py                                            # report.html
 ```
 `raw/` (~300MB log) không được commit. `fetch_transfers.py` resume từ file `.cursor`. Chạy `team.py` **sau khi** hai lệnh `trace_addr.py` đã xong.
 
@@ -216,6 +287,10 @@ python3 rh_chain.py                                                # dòng tiề
 | `data/daily_flows.csv`, `data/weekly_supply_flows.csv` | Mint theo nguồn, claim bond/desk, stake/unstake, mua/bán theo ngày/tuần |
 | `data/net_flow_by_category_30d.csv`, `data/top_traders_7d.csv`, `data/top_traders_30d.csv` | Ai mua, ai bán |
 | `data/team_summary.json`, `data/team_pteam_to_desks.csv`, `data/sleeve_net_buys_daily.csv`, `data/desk_usdg_flows.csv` | Team, desk, RWA Sleeve |
+| `data/loopback_summary.json`, `data/loopback_positions.json` | Market Loopback: lãi vay, oracle, vị thế, bậc thanh lý |
 | `data/holders_top100.csv`, `data/pools.csv` | Holder, pool |
-| `data/market/rh_chain_weekly.csv`, `data/market/rh_chain_summary.json`, `data/market/rh_l1_bridge_eth.json`, `data/market/rh_stables_breakdown.json` | Dòng tiền Robinhood Chain |
-| `data/market/market_snapshot.json` | BTC/ETH, Fear & Greed, token hệ sinh thái, stock token, meme (câu trả lời API thô nằm ở `raw/market/`, không commit) |
+| `data/market/rh_flow_weekly.csv`, `data/market/rh_flow_summary.json` | Dòng tiền RH chain theo tuần, đỉnh và hiện tại |
+| `data/market/rh_daily_flows.csv`, `rh_stock_supply_daily.csv`, `rh_morpho_usdg_daily.csv`, `rh_morpho_usdg_borrow_by_collateral.json`, `rh_activity.csv` | Chuỗi on-chain theo ngày: stablecoin, Earn, cổ phiếu token hoá, Morpho, số giao dịch |
+| `data/market/rh_protocols.csv`, `rh_dex_by_protocol_weekly.csv`, `rh_fees_by_category_weekly.csv` | TVL theo protocol, volume DEX theo protocol, phí theo nhóm (DefiLlama) |
+| `data/market/rh_chain_weekly.csv`, `rh_chain_summary.json`, `rh_l1_bridge_eth.json`, `rh_stables_breakdown.json` | DefiLlama theo tuần, bridge ETH trên L1 |
+| `data/market/market_snapshot.json`, `hs_chain_status.json` | BTC/ETH, Fear & Greed, token hệ sinh thái, stock token, meme (đã loại wash trade); trạng thái HoodScan |

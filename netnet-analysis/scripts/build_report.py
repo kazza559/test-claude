@@ -69,6 +69,29 @@ def main():
     eco += [{"symbol": x["symbol"].upper(), "chg30": x["chg_30d_pct"], "chg7": x["chg_7d_pct"], "mcap": x["mcap"]} for x in snap["rh_ecosystem_tokens"]]
     eco += [{"symbol": k, "chg30": snap[k]["chg_30d_pct"], "chg7": snap[k]["chg_7d_pct"], "mcap": None} for k in ("BTC", "ETH")]
 
+    # Robinhood Chain capital flows (rh_flows.py, rh_flow_summary.py, rh_protocols.py)
+    mrows = lambda fn: list(csv.DictReader(open(os.path.join(M, fn))))
+    rh_weekly = [{k: (v if k == "week_end" else (v == "True") if k == "partial" else f(v, 2)) for k, v in r.items()} for r in mrows("rh_flow_weekly.csv")]
+    sup = {r["date"]: r for r in mrows("rh_daily_flows.csv")}
+    stk = {r["date"]: r for r in mrows("rh_stock_supply_daily.csv")}
+    mor = {r["date"]: r for r in mrows("rh_morpho_usdg_daily.csv")}
+    act = {r["date"]: r for r in mrows("rh_activity.csv")}
+    bridge = {x["time"][:10]: x["eth"] for x in json.load(open(os.path.join(M, "rh_l1_bridge_eth.json")))}
+    rh_daily = [{"d": d, "usdg": f(float(r["USDG"]) / 1e6, 1), "usde": f(float(r["USDe"]) / 1e6, 1), "u": f(float(r["U"] or 0) / 1e6, 1),
+                 "earn": f(float(r["steakUSDG"]) / 1e6, 1), "stocks": f(float(stk[d]["usd_const_price"]) / 1e6, 2) if d in stk else None,
+                 "m_supply": f(float(mor[d]["supply"]) / 1e6, 1) if d in mor else None, "m_borrow": f(float(mor[d]["borrow"]) / 1e6, 1) if d in mor else None,
+                 "tx": f(float(act[d]["user_tx_est"]) / 1e6, 2) if d in act else None, "eth": f(bridge.get(d), 0)}
+                for d, r in sup.items() if d != "head"]
+    rh_sum = json.load(open(os.path.join(M, "rh_flow_summary.json")))
+    by = dict(json.load(open(os.path.join(M, "rh_morpho_usdg_borrow_by_collateral.json"))))
+    morpho_coll = [[k, by.get(k, 0)] for k in ("USDe", "syrupUSDG", "mGLO", "spUSDG")]
+    morpho_coll += [["Cổ phiếu token hoá", float(mor["head"]["borrow_stock_tokens"])], ["wsNET (NetNet)", by.get("wsNET", 0)]]
+    morpho_coll.append(["Khác", float(mor["head"]["borrow"]) - sum(v for _, v in morpho_coll)])
+    rh_proto = [{"name": r["name"], "cat": r["category"], "tvl": f(r["tvl"], 0), "chg7": f(r["chg_7d"], 1), "chg30": f(r["chg_30d"], 1)} for r in mrows("rh_protocols.csv")[:14]]
+    fees_cat = [{k: (v if k == "week_end" else f(v, 0)) for k, v in r.items()} for r in mrows("rh_fees_by_category_weekly.csv")]
+    dex_proto = [{k: (v if k == "week_end" else f(v, 0)) for k, v in r.items()} for r in mrows("rh_dex_by_protocol_weekly.csv")]
+    loop = json.load(open(os.path.join(DATA, "loopback_summary.json")))
+
     hs = json.load(open(os.path.join(DATA, "hs_get_token.json")))["market"]
     ev = json.load(open(os.path.join(DATA, "hs_evidence_24h.json")))["item"]
     pools = [{"dex": r["dex"], "ver": r["version"], "pair": r["pair"], "quote": r["quote"], "liq": f(r["liquidity_usd"], 0), "vol": f(r["volume_24h_usd"], 0)}
@@ -86,6 +109,9 @@ def main():
         "eco": eco, "net_cg": {"chg7": cg["price_change_percentage_7d"], "chg30": cg["price_change_percentage_30d"], "ath": cg["ath"]["usd"]},
         "hoodscan": {"h24": hs["h24"], "d7": hs["d7"], "mix": {k: v for k, v in ev["participantMix"].items() if isinstance(v, dict)}, "net24": ev["metrics"]["netFlowUsd"]},
         "pools": pools, "holders_top": [{"addr": r["address"], "eq": f(r["net_equivalent"], 1), "label": r["label"]} for r in holders[:12]],
+        "rh_weekly": rh_weekly, "rh_daily": rh_daily, "rh_sum": rh_sum, "morpho_coll": morpho_coll, "rh_proto": rh_proto, "fees_cat": fees_cat, "dex_proto": dex_proto,
+        "loopback": {k: loop[k] for k in ("supply_usdg", "borrow_usdg", "util_pct", "borrow_apr_pct", "oracle_net_usd", "collateral_net_eq", "borrowers",
+                                          "aggregate_ltv", "ladder", "sleeve")},
     }
     tpl = open(os.path.join(ROOT, "report.template.html")).read()
     html = tpl.replace("/*__DATA__*/null", json.dumps(data, ensure_ascii=False, separators=(",", ":")))

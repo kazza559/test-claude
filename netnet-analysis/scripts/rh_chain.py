@@ -144,11 +144,18 @@ def market_snapshot():
     st = json.load(open(os.path.join(RM, "hs_stocks.json")))
     out["stock_tokens"] = {**st.get("stats", {}), "top_volume": [(x["symbol"], x.get("volume24")) for x in sorted(st.get("stocks", []), key=lambda x: -(x.get("volume24") or 0))[:8]]}
     mm = json.load(open(os.path.join(RM, "hs_memes.json")))
-    coins = [c for c in mm.get("coins", []) if (c.get("anchorSymbol") or "") != "cbBTC"]
+    # SUSD pairs carry wash volume (hundreds of $M from ~100 trades a day) and cbBTC pairs are not memes: keep both out
+    wash = lambda c: "SUSD" in ((c.get("anchorSymbol") or "").upper(), (c.get("symbol") or "").upper())
+    coins = [c for c in mm.get("coins", []) if (c.get("anchorSymbol") or "") != "cbBTC" and not wash(c)]
+    washed = [c for c in mm.get("coins", []) if wash(c)]
     ch = [c["change24"] for c in coins if c.get("change24") is not None and (c.get("vol24") or 0) > 50000]
     out["meme_coins"] = {"tracked": len(coins), "vol24": sum(c.get("vol24") or 0 for c in coins), "liquidity": sum(c.get("liquidity") or 0 for c in coins),
                          "net_flow_24h": sum((c.get("flow") or {}).get("net24h") or 0 for c in coins),
-                         "median_change_24h_pct": statistics.median(ch) if ch else None, "new_launches_24h": len(mm.get("launches") or [])}
+                         "median_change_24h_pct": statistics.median(ch) if ch else None,
+                         "share_up_24h_pct": round(sum(1 for x in ch if x > 0) / len(ch) * 100, 1) if ch else None,
+                         "new_launches_24h": len(mm.get("launches") or []),
+                         "excluded_wash": {"coins": len(washed), "vol24": sum(c.get("vol24") or 0 for c in washed),
+                                           "trades24h": sum((c.get("flow") or {}).get("trades24h") or 0 for c in washed)}}
     return out
 
 
