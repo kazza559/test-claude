@@ -27,6 +27,7 @@ Since the July low, **privacy (ZEC), revenue/"fee-switch" DeFi (PUMP, ENA, UNI) 
 
 - **Top individual RS leaders over 90 days** (RS vs BTC): NEAR +110%, MET +100%, ZRO +97%, ENA +97%, STRK +94%, NIL +90%, PUMP +83%, STX +83%, ARB +68%, ZEC +67%, UNI +65%, TIA/VVV +57%, AERO +54% — [Hyperliquid info API](https://api.hyperliquid.xyz/info)
 - **Coins that rose during the pullback** (2026-09-21 → 2026-10-17, while BTC fell 6%): ZRO **+67%**, TIA **+62%**, STRK **+61%**, GRASS **+52%**, PYTH +34%, AERO **+26%**, AZTEC +25%, NIL +22%, NEAR **+19%**, FIL +17%, WLD +14%, INJ +13%, PUMP +5%, AAVE +6%. Notable losers: LIT −32%, VVV −28%, ZEC −22%, FARTCOIN −22%, UNI −19%, ARB −16%, HYPE −15%, ETH −13%, SOL −12% — [Hyperliquid info API](https://api.hyperliquid.xyz/info)
+- On **2026-10-16**, CoinDesk reported altcoins outpacing BTC (holding near $82,000). Celestia (+16%) and Injective led, and TIA was the biggest gainer in the CD100 — [CoinDesk](https://www.coindesk.com/markets/2026/10/16/altcoins-outpace-bitcoin-as-celestia-jumps-16-warsh-silent-on-interest-rate-plans)
 - **Watchlist RS vs BTC** (since Jul 1 / pullback): SOL −1% / −6%; HYPE −6% / −10%; LIT +14% / −28%; LINK +23% / −1%; BNB −3% / −4%. HYPE remains the perp-DEX narrative leader: CoinGecko lists its ATH as **$97.96 on 2026-09-23**, with the price −18% from that ATH on 2026-10-17 — [Hyperliquid info API](https://api.hyperliquid.xyz/info); [CoinGecko markets API](https://api.coingecko.com/api/v3/coins/markets)
 - **CoinGecko 24h category moves (2026-10-17 ~03:29 UTC):** Modular Blockchain **+15.6%**, Restaking +3.2%, BTCfi +1.8%; Privacy −3.3%, Privacy Coins −4.3%, Zero Knowledge −5.2%, Quantum-Resistant −5.6%, **Prediction Markets −7.4%**, AI −2.5%, AI Agents −3.6%. Category sizes: Privacy $55.2B, RWA $76.2B, Perpetuals $24.0B, AI $24.6B, x402 Ecosystem $10.45B, Prediction Markets $6.44B, AI Agents $3.51B — [CoinGecko categories API](https://api.coingecko.com/api/v3/coins/categories)
 - **CoinGecko trending (2026-10-17):** coins DACITY, QTC, HYPE, NEAR, LIT, UNI, BTC, SOL, QNT, AERO, INJ, JUP, AVAX, CC, ENA; categories Binance Launchpad, Data Availability, Derivatives, Quantum-Resistant, Binance Launchpool, Perpetuals — [CoinGecko trending API](https://api.coingecko.com/api/v3/search/trending)
@@ -71,7 +72,7 @@ Since the July low, **privacy (ZEC), revenue/"fee-switch" DeFi (PUMP, ENA, UNI) 
 ## Q3. Candidate shortlist: 10 coins in 4 narratives, plus a perp-DEX/HIP-3 leader note (watchlist excluded)
 
 ### Takeaway
-The best-supported candidates are **NEAR** (AI/intents leader with an ETF catalyst, liquid), **ZRO** and **TIA** (strongest pullback RS, interop/modular rotation), **PUMP** (real revenue and buybacks, deep HL liquidity, but unlock overhang), **ZEC** (dated NU7 catalyst, but crowded), and **AERO** (Base proxy that held up). VVV, GRASS, ENA and XMR are secondary or alternates. All are tradeable as HL perps with OI ≥ $10M; GRASS and AERO have thin 24h volume.
+The best-supported candidates are **NEAR** (AI/intents leader with an ETF catalyst, liquid), **ZRO** and **TIA** (strongest pullback RS, interop/modular rotation), **PUMP** (real revenue and buybacks, deep HL liquidity, but unlock overhang), **ZEC** (dated NU7 catalyst, but crowded), and **AERO** (Base proxy that held up). VVV, GRASS, ENA and XMR are secondary or alternates. All are tradeable as HL perps with OI ≥ $10M; GRASS and AERO have thin 24h volume. Near-term dated events: ZRO monthly unlock **2026-10-20**; ZEC NU7 go/no-go **~10-20** and activation **11-05**; Predict.fun TGE (78% by 11-30); Ethena framework agreement (expected October 2026); PUMP's monthly insider tranche (~the 12th, inferred).
 
 ### Cited Findings
 **Snapshot table, 2026-10-17.** Price, OI, volume, leverage and returns come from HL at 03:23 UTC. Market cap, FDV and circulating % come from CoinGecko at 03:29 UTC. Returns are vs the stated base close, with RS vs BTC in brackets — [Hyperliquid info API](https://api.hyperliquid.xyz/info); [CoinGecko markets API](https://api.coingecko.com/api/v3/coins/markets)
@@ -111,7 +112,12 @@ The best-supported candidates are **NEAR** (AI/intents leader with an ETF cataly
     - KelpDAO rsETH bridge exploit on 2026-04-18/19 (~$292M) hit LayerZero's reputation — [ThreatCluster](https://threatcluster.io/cluster/layerzero-faces-fallout-from-kelpdao-exploit-zro-token-drops-6ed5a96d).
     - Alameda-linked wallets moved 7.93M ZRO (~$15.3M) to Wintermute in April 2026 — [CoinMarketCap AI updates](https://www.coinmarketcap.com/cmc-ai/layerzero/latest-updates/).
     - Data conflict: Trust Wallet lists ZRO at $2.01 with a "$1.91B market cap" on 2026-10-10, which is closer to CoinGecko's FDV than to its market cap — [Trust Wallet](https://trustwallet.com/vi/price/layerzero).
-- **TIA (HL: TIA)**: Celestia, the modular data-availability layer. HL 24h change **+17.7%** on 2026-10-17. Trading within 3% of its post-July high, with +62% in the pullback — [Hyperliquid info API](https://api.hyperliquid.xyz/info). CoinGecko 7d +45%, 30d +103%; "Modular Blockchain" category +15.6% in 24h — [CoinGecko](https://api.coingecko.com/api/v3/coins/categories). Earlier 2026 catalysts: a Commonware chain on Celestia promising 10x faster blocks drove a ~40% bounce from about $0.295 in June 2026, and TIA hit a 90-day high on 2026-05-25 — [MEXC news (syndicated)](https://www.mexc.com/news/1165308); [Baselight](https://baselight.app/daily-insights/crypto/2026-05-27/tia-usd-90d-high-volume-surge-may25). The October driver is unidentified. −96% from its 2024 ATH.
+  - **Unlocks (cadence verified):**
+    - Monthly tranches land on the **20th** through **2027-05-20**. The 2026-07-20 tranche was ~25.7M ZRO (Strategic Partners ~13M, Core Contributors ~10.63M, ≈$20M then), and 2026-08-20 was ~25.7M. Earlier 2026 tranches were ≈$50.9M (03-20), ≈$40.4M (04-20) and ≈$30M (06-20) in USD — [Crypto Briefing](https://cryptobriefing.com/layerzero-zro-20m-token-unlock-july-2026/); [CryptoTicker](https://cryptoticker.io/en/layerzero-zro-unlock-monthly-dilution/); [Tokenomist digest](https://tokenomist.ai/research/weekly-token-unlocks-digest-mar-16-22-2026-zro-unlock-in-focus).
+    - The **next tranche is due 2026-10-20** (inferred from the cadence). At ~25.7M ZRO that is ≈$50M at $1.96, about 6% of market cap (my calculation).
+    - Conflicts: one tracker counts ~67.4% of supply as unlocked, vs CoinGecko's 40% circulating. Another platform lists 32.6M ZRO (3.3% of supply) for the August tranche.
+    - Mitigants: LayerZero bought back part of the investor allocation, Stargate revenue funds monthly open-market buybacks, and public-market sales averaged only ~4.9M ZRO/month (LayerZero transparency data cited by Bitrue) — [Bitrue](https://www.bitrue.com/blog/zro-token-unlock-date-amount-impact).
+- **TIA (HL: TIA)**: Celestia, the modular data-availability layer. HL 24h change **+17.7%** on 2026-10-17. Trading within 3% of its post-July high, with +62% in the pullback — [Hyperliquid info API](https://api.hyperliquid.xyz/info). CoinGecko 7d +45%, 30d +103%; "Modular Blockchain" category +15.6% in 24h — [CoinGecko](https://api.coingecko.com/api/v3/coins/categories). Earlier 2026 catalysts: a Commonware chain on Celestia promising 10x faster blocks drove a ~40% bounce from about $0.295 in June 2026, and TIA hit a 90-day high on 2026-05-25 — [MEXC news (syndicated)](https://www.mexc.com/news/1165308); [Baselight](https://baselight.app/daily-insights/crypto/2026-05-27/tia-usd-90d-high-volume-surge-may25). **October driver:** on **2026-10-16**, TIA led CoinDesk's CD100. It rose ~16% to a 2026 high near $0.68 (CoinDesk) and ~19% to above $0.70, with an intraday high of $0.7233 (TokenPost/crypto.news). Analysts tied the move to **Celestia Fibre benchmarking 3.07 Tbps** throughput and a **proposed economic (tokenomics) upgrade**. Celestia also launched **Eden**, an EVM test chain for AI-agent transactions. Rekt Capital called a break above the macro accumulation range. Cited levels: resistance $0.70–0.715, support $0.625, with the weekly low ~$0.505 as the breakout-failure reference — [CoinDesk](https://www.coindesk.com/markets/2026/10/16/altcoins-outpace-bitcoin-as-celestia-jumps-16-warsh-silent-on-interest-rate-plans); [crypto.news](https://crypto.news/celestia-price-jumps-can-tia-sustain-its-breakout/); [TokenPost](https://www.tokenpost.com/news/investing/33688); [CoinGabbar](https://www.coingabbar.com/en/celestia-eden-launch-evm-chain-ai-payment-tia-token-price-gains); [CryptoNews](https://cryptonews.net/news/analytics/33605878/). −96% from its 2024 ATH. Next catalyst: the governance timeline for the economic upgrade (date not found).
 
 #### Narrative C: Revenue, buybacks & Base DeFi
 - **PUMP (HL: PUMP)**: pump.fun, the Solana memecoin launchpad with buyback-and-burn.
@@ -121,7 +127,11 @@ The best-supported candidates are **NEAR** (AI/intents leader with an ETF cataly
   - Polymarket "Pump.fun airdrop by 2026-12-31": **16%** — [Polymarket Gamma API](https://gamma-api.polymarket.com/events).
   - Liquidity: third-largest alt OI on HL ($174M).
 - **AERO (HL: AERO)**: Aerodrome, the dominant Base DEX (ve(3,3) model). +26% in the pullback; CoinGecko-trending — [Hyperliquid info API](https://api.hyperliquid.xyz/info); [CoinGecko trending](https://api.coingecko.com/api/v3/search/trending). Fundamentals are weakening: Aerodrome Slipstream holders revenue $6.6M over 30d (−50%) — [DefiLlama](https://api.llama.fi/overview/fees?excludeTotalDataChart=true&dataType=dailyHoldersRevenue). Optionality: Base token odds 8% by end-2026 and 42% by end-2027 — [Polymarket Gamma API](https://gamma-api.polymarket.com/events). 50% circulating; HL max leverage 3x; volume only $6.5M per 24h.
-- **ENA (HL: ENA)**: Ethena (USDe synthetic dollar). +148% over 90d, but −33% from its post-July high and −7% in the pullback; 89% circulating, so low remaining unlock overhang — [Hyperliquid info API](https://api.hyperliquid.xyz/info); [CoinGecko](https://api.coingecko.com/api/v3/coins/markets). CoinGecko-trending. Catalyst: not found.
+- **ENA (HL: ENA)**: Ethena (USDe synthetic dollar). +148% over 90d, but −33% from its post-July high and −7% in the pullback; 89% circulating, so low remaining unlock overhang — [Hyperliquid info API](https://api.hyperliquid.xyz/info); [CoinGecko](https://api.coingecko.com/api/v3/coins/markets). CoinGecko-trending.
+  - **Catalysts:** the Ethena Foundation's fee-switch proposal (vote ran to **2026-09-02**) would use 95% of the net revenue paid to the Foundation to buy ENA. Buying starts only once USDe circulating supply reaches **$7.5B**; it was ~$4.07B on 2026-08-30, and a burn is not confirmed.
+  - **Unlocks:** the Foundation bought out large seed investors and agreed to release the remaining unvested investor allocations on **2026-10-05**, replacing the monthly VC unlock schedule. The recurring overhang is gone, but newly released supply could still be sold.
+  - **Next:** a framework agreement moving protocol IP and economic value to the Foundation is expected in **October 2026**.
+  - The vote outcome was not found — [KuCoin flash](https://www.kucoin.com/news/flash/ethena-fee-switch-ena-buyback-to-start-when-usde-circulating-supply-hits-7-5-billion); [KuCoin blog](https://www.kucoin.com/blog/ethena-ena-tokenomics-buyback-vc-unlocks); [Tokenomist](https://tokenomist.ai/research/ethena-bought-out-its-sellers-and-deleted-the-investor-unlock-calendar-the-buyback-replacing-it-arms-at-7-5b-usde).
 
 #### Narrative D: Privacy
 - **ZEC (HL: ZEC)**: Zcash, the 2026 narrative leader.
@@ -147,10 +157,10 @@ The best-supported candidates are **NEAR** (AI/intents leader with an ETF cataly
   - Conservative: small size only after a retest holds, because it is +165% in 90d and ETF flows can reverse.
 - **ZRO**:
   - Aggressive: momentum long into the "Zero" launch with a tight stop. It had the best pullback RS among liquid alts.
-  - Conservative: wait until the unlock calendar is verified (40% circulating) and a Zero launch date is confirmed. "Sell the news" is likely.
+  - Conservative: let the **2026-10-20 unlock** (~$50M) pass and wait for a confirmed Zero launch date before entering. "Sell the news" is likely.
 - **TIA**:
-  - Aggressive: breakout momentum while it holds near highs; small size, because OI is only $17M and it just printed a +17.7% day.
-  - Conservative: skip until the October driver is known.
+  - Aggressive: breakout continuation above $0.70–0.715 with a stop under $0.625; small size, because OI is only $17M and it just printed a +17.7% day.
+  - Conservative: buy only a retest of $0.62–0.63 that holds, and invalidate below the ~$0.505 weekly low. The tokenomics-upgrade vote is the next catalyst.
 - **PUMP**:
   - Aggressive: high-beta revenue play; buy pullbacks while revenue grows; watch the ~12th-of-month tranches and buyback size.
   - Conservative: avoid, because insiders hold a large share, it is −32% from its post-July high and 7d momentum is negative.
@@ -161,8 +171,8 @@ The best-supported candidates are **NEAR** (AI/intents leader with an ETF cataly
   - Aggressive: event trade only. Dip-buy ahead of the ~Oct 20 decision and Nov 5 activation, then take profit into the event.
   - Conservative: do not chase. It is the most crowded alt on HL outside HYPE and SOL, and ETF flows are negative.
 - **ENA**:
-  - Aggressive: high-beta DeFi rebound with low unlock overhang.
-  - Conservative: wait for a catalyst.
+  - Aggressive: high-beta DeFi rebound now that monthly VC unlocks have ended (Oct 5 release) and the October framework agreement is pending.
+  - Conservative: the fee-switch buybacks only start at $7.5B USDe (vs ~$4.07B in late August), so wait for USDe growth or the vote result.
 - **XMR**: conservative privacy beta with the lowest drawdown in the group.
 - **VVV and GRASS**: aggressive-only, small, low-leverage satellites. Both cap at 3x on HL, and GRASS is illiquid.
 
@@ -172,15 +182,16 @@ The best-supported candidates are **NEAR** (AI/intents leader with an ETF cataly
 3. PUMP or ZEC as a tactical high-beta snapback/event trade.
 
 ### Gaps
-- **Unlock calendars could not be verified.** DefiLlama emissions returned 402/403, and Tokenomist needs a key. From pre-2026 knowledge, unverified and to be checked on Tokenomist before trading:
-  - ZRO: monthly unlocks of ~25.7M on the 20th through mid-2027 (≈$50M/month).
+- **Unlock calendars are only partly verified.** DefiLlama emissions returned 402/403, and Tokenomist needs a key.
+  - ZRO: the monthly cadence on the 20th through 2027-05 is verified (next ~2026-10-20), but the exact October amount is not.
+  - ENA: the monthly VC schedule was replaced by a 2026-10-05 release of remaining investor tokens.
+  - From pre-2026 knowledge, unverified and to be checked on Tokenomist before trading:
   - ARB: 92.65M on the 16th through Mar 2027.
   - STRK: 127M on the 15th through Mar 2027.
-  - ENA: ~172M on the 2nd.
   - NEAR: ~2.5%/yr inflation.
   - TIA: remaining core-contributor vesting into late 2026.
   - PUMP: monthly ~6.9B tranches after Aug 2026 are inferred, not confirmed.
-- Catalysts with dates for VVV, GRASS, ENA, XMR, AERO and TIA's October move were not found.
+- Catalysts with dates for VVV, GRASS, XMR and AERO were not found. Neither were the ENA fee-switch vote result and the date of TIA's proposed economic-upgrade vote.
 - 6-month unlock totals per coin are not available.
 
 ## Q4. Upcoming TGEs, airdrops and points programs (Q4 2026 – Q1 2027)
