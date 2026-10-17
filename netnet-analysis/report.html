@@ -158,11 +158,12 @@ h3.sub{font-size:16px;margin-top:6px}
     <p class="lead">NET đã về sát NAV: giá $165, NAV $162,7. Rebase gần như dừng và sàn mua lại InverseBond bắt đầu hoạt động ở ~$160. Robinhood Chain rút ròng tuần thứ tư liên tiếp; lần đầu tiền gửi lấy lãi trong Robinhood Earn bị rút ra, trong khi cổ phiếu token hoá có tiền vào lại.</p>
     <span class="trend"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8 H13" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round"/><path d="M10 5 L13 8 L10 11" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Xu hướng NET 1–3 tuần: bám NAV, rủi ro ở pTEAM</span>
     <div class="verdict" id="verdict"></div>
+    <p class="ink2 small"><b>Gợi ý hành động:</b> chưa có NET thì không mua mới; đang giữ thì đừng bán dưới sàn $160 và giảm dần theo kế hoạch; đang vay trên Loopback thì giảm đòn bẩy. <a href="#goiy">Xem chi tiết</a>.</p>
   </header>
 
   <nav class="toc" aria-label="Mục lục">
     <a href="#tongquan">Tổng quan NET</a><a href="#thitruong">Thị trường chung</a><a href="#dongtien">Dòng tiền Robinhood Chain</a>
-    <a href="#gianav">Giá và NAV</a><a href="#aiban">Ai đang bán</a><a href="#aimua">Ai đang mua</a><a href="#dubao">Dự báo</a><a href="#ruiro">Theo dõi và rủi ro</a><a href="#phuongphap">Phương pháp</a>
+    <a href="#gianav">Giá và NAV</a><a href="#aiban">Ai đang bán</a><a href="#aimua">Ai đang mua</a><a href="#dubao">Dự báo</a><a href="#goiy">Gợi ý hành động</a><a href="#ruiro">Theo dõi và rủi ro</a><a href="#phuongphap">Phương pháp</a>
   </nav>
 
   <section id="tongquan" aria-labelledby="h-tq">
@@ -377,6 +378,53 @@ h3.sub{font-size:16px;margin-top:6px}
     </div>
   </section>
 
+  <section id="goiy" aria-labelledby="h-gy">
+    <div class="sec-head"><div class="eyebrow">Gợi ý hành động</div><h2 id="h-gy">Ở $165, NET là một khoản USDG không lãi kèm rủi ro team</h2>
+      <p class="ink2">Số liệu lúc 02:00 UTC ngày 17/10: giá $165,1, NAV $162,66, sàn InverseBond $160,22 còn đủ capacity, pTEAM chưa mint thêm. Phía giảm theo cơ chế nhỏ (−3% đến −7%), nhưng phía tăng chưa có động lực, trong khi tiền nằm chờ trong USDG vẫn sinh lãi (Robinhood Earn ~6,5%/năm, cũng có rủi ro riêng). Đây là đánh giá chung, không phải tư vấn tài chính cá nhân: nó không biết giá vốn, mục tiêu và tình hình tài chính của bạn.</p></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Nếu bạn chưa có NET</h3>
+        <ul class="notes">
+          <li><b>Không mua mới.</b> Chưa có lý do để kỳ vọng premium quay lại, ngoài các sự kiện sắp tới.</li>
+          <li><b>Nếu vẫn muốn cược sự kiện</b> (Fables TGE 20/10, kết quả quý 3 Robinhood 27/10): chỉ dùng số tiền mất hết cũng không ảnh hưởng gì, không vay. Mua sát sàn $160–166, trên pool không thuế (up v3, Uniswap v4).</li>
+          <li>Chốt lời từng phần ở $190–210 (1,15–1,3× NAV). Thoát ngay nếu team mint pTEAM hoặc chuyển NET vào desk. Nếu đến 28/10 premium vẫn ~1×, thoát.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Nếu bạn đang giữ NET</h3>
+        <ul class="notes">
+          <li><b>Đừng bán tháo dưới $160.</b> Nếu giá DEX xuống dưới sàn, bán NET vào InverseBond (<span class="mono">0x9216…c4c9</span>, $160,22, ~$78K mỗi 8 giờ) thay vì bán rẻ vào pool mỏng.</li>
+          <li><b>Quên giá vốn cũ.</b> Câu hỏi đúng là: "Nếu đang cầm $165 tiền mặt, mình có mua NET không?" Nếu không, giảm vị thế theo kế hoạch.</li>
+          <li><b>Một cách làm cân bằng:</b> bán một phần quanh giá hiện tại, giữ phần còn lại ở dạng stake (không tốn gì, rút không bị khoá), bán nốt vào nhịp hồi $190–210 hoặc ngay khi có tín hiệu thoát.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Nếu bạn đang vay trên Loopback</h3>
+        <ul class="notes">
+          <li><b>Trả nợ hoặc giảm đòn bẩy.</b> Lãi vay ~44%/năm (~0,12%/ngày), trong khi rebase gần bằng 0.</li>
+          <li>Rủi ro bị thanh lý thấp vì oracle không định giá dưới NAV. Nhưng lãi ăn mòn vốn mỗi ngày, và nếu NAV giảm do pTEAM thì các vị thế LTV cao sẽ bị thanh lý.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Nếu bạn lướt sóng</h3>
+        <ul class="notes">
+          <li>Biên độ thật $160–185. Thanh khoản chỉ ~$1,1M; pool Uniswap v2 bị thuế 5% mỗi chiều và hay có râu nến ảo.</li>
+          <li>Đặt lệnh trên pool không thuế, không đặt theo giá râu nến ($244, $339 vừa qua). Giữ quy mô nhỏ: một lệnh vài chục nghìn USD đã đẩy được giá pool v2 lên vài chục phần trăm.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tbl-card"><div class="tablewrap"><table class="wide"><caption>Tín hiệu thay đổi quyết định</caption>
+      <thead><tr><th>Thoát ngay hoặc không vào</th><th>Có thể giữ hoặc tăng nhỏ</th></tr></thead>
+      <tbody>
+        <tr><td><span class="mono">pTEAM.exercised()</span> tăng, hoặc NET chuyển vào các desk của team</td><td>Premium giữ trên 1,15× nhiều ngày, volume tăng, không phải râu nến</td></tr>
+        <tr><td>InverseBond cạn capacity nhiều epoch liên tiếp; USDG liquid của Treasury giảm nhanh</td><td>Team Safe hoặc Sleeve mua lớn trở lại bằng tiền mới</td></tr>
+        <tr><td>NAV giảm trong khi premium vẫn ~1×</td><td>Dòng tiền Robinhood Chain chuyển dương: USDG tăng, bridge ETH vào ròng</td></tr>
+        <tr><td>Stablecoin hoặc Earn trên chain rút hơn $50M/tuần; BTC thủng $77K</td><td>Fables TGE và kết quả quý 3 kéo được tiền mới vào chain</td></tr>
+      </tbody>
+    </table></div></div>
+    <p class="ink2"><b>Tỷ trọng:</b> đây là token rủi ro rất cao, team kiểm soát bằng ví 1-of-1. Chỉ nên là một phần nhỏ trong danh mục, ở mức mất hết cũng không ảnh hưởng cuộc sống; không vay để mua. Dự báo cũng có thể sai (bản 9/10 đã sai kịch bản cơ sở), nên coi các mức giá trên là khung để tự đặt kế hoạch.</p>
+  </section>
+
   <section id="ruiro" aria-labelledby="h-g">
     <div class="sec-head"><div class="eyebrow">G · Theo dõi và rủi ro</div><h2 id="h-g">Những gì cần xem on-chain</h2></div>
     <div class="grid2">
@@ -410,7 +458,7 @@ h3.sub{font-size:16px;margin-top:6px}
     <p>Dòng tiền RH chain: tổng cung USDG/USDe/U và tài sản vault Steakhouse đọc lúc 00:00 UTC mỗi ngày từ 1/7; 191 cổ phiếu token hoá tính theo giá hiện tại nên thay đổi là mint/burn; 277 market Morpho cho vay USDG đọc theo ngày; số giao dịch người dùng ước tính bằng 100 block mẫu mỗi ngày. Meme coin loại các pool wash trade khi có (bản 9/10 loại 8 pool SUSD có $310,7M volume từ 101 giao dịch). Lợi suất Robinhood Earn lấy từ DefiLlama yields.</p>
     <p>Trang này là snapshot lúc 01:30 UTC ngày 17/10/2026; nó không tự lấy dữ liệu mới khi mở.</p>
     <p>Tin tức: <a href="https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-friday-october-16-2026-bitcoin-ethereum-prices-firm-despite-two-strong-inflation-reports-113928147.html" target="_blank" rel="noopener">Yahoo Finance (16/10)</a> · <a href="https://www.coindesk.com/markets/2026/10/16/bitcoin-buyers-snap-up-a-brief-drop-below-usd80-000-as-asian-stocks-rebound" target="_blank" rel="noopener">CoinDesk (16/10)</a> · <a href="https://fortune.com/article/price-of-bitcoin-10-16-2026/" target="_blank" rel="noopener">Fortune (16/10)</a> · <a href="https://defillama.com/yields/pool/32f586b4-5358-5aa2-88ee-c842139e7023" target="_blank" rel="noopener">DefiLlama: lợi suất Steakhouse USDG</a> · <a href="https://www.finanznachrichten.de/nachrichten-2026-07/68920872-robinhood-chooses-morpho-to-power-new-earn-product-004.htm" target="_blank" rel="noopener">Robinhood chọn Morpho cho Earn</a>. Mã nguồn và dữ liệu: thư mục <code>netnet-analysis/</code> trong repo <code>kazza559/test-claude</code>, branch <code>claude/coin-analysis-0xca9c78dd-hpdrb6</code>.</p>
-    <p><b>Đây là phân tích dữ liệu, không phải lời khuyên đầu tư.</b> NET là token rebase kiểu OlympusDAO trên một chain mới; bạn có thể mất phần lớn số vốn bỏ vào.</p>
+    <p><b>Phần gợi ý hành động là đánh giá chung dựa trên dữ liệu, không phải tư vấn tài chính cá nhân.</b> NET là token rebase kiểu OlympusDAO trên một chain mới, do team kiểm soát; bạn có thể mất phần lớn số vốn bỏ vào.</p>
   </footer>
 </div>
 

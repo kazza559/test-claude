@@ -3,7 +3,7 @@
 Token `0xCA9c78Dd337A67F6e0077F65F5E9218719d30eDf` trên **Robinhood Chain** (Arbitrum Orbit L2, chainId 4663).
 Snapshot thời gian thực: **2026-10-17 01:30 UTC** (các bản trước: 9/10, 6/10, 3/10). Số liệu đọc trực tiếp từ chain (RPC công khai, contract verified trên Sourcify, bridge L1 trên Ethereum), đối chiếu với DefiLlama, DexScreener, GeckoTerminal, CoinGecko, HoodScan và tin tức.
 
-> Đây là phân tích dữ liệu, không phải lời khuyên đầu tư. NET là token rebase kiểu OlympusDAO trên một chain mới. Bạn có thể mất phần lớn số vốn bỏ vào.
+> Phần "Gợi ý hành động" là đánh giá chung dựa trên dữ liệu on-chain, không phải tư vấn tài chính cá nhân: nó không biết giá vốn, mục tiêu và tình hình tài chính của bạn. NET là token rebase kiểu OlympusDAO trên một chain mới, do team kiểm soát. Bạn có thể mất phần lớn số vốn bỏ vào.
 
 Bản HTML có biểu đồ: [`report.html`](report.html) (build bằng `scripts/build_report.py` từ `report.template.html`), cũng được publish tại https://claude.ai/artifact/1s4mmumZGorDN3euAZMLid. Trang HTML không tự lấy dữ liệu mới khi mở; số liệu là snapshot ở trên.
 
@@ -49,6 +49,11 @@ Cộng stablecoin, cổ phiếu token hoá và ETH: **tiền mới vào chain â
 - **Tốt ~20%: $190–240.** Có cầu mới (Fables TGE ngày 20/10, kết quả quý 3 của Robinhood ngày 27/10, team nạp thêm tiền, BTC hồi).
 
 Từ $165: **−3% xuống sàn InverseBond**, −7% nếu team mint pTEAM, **+28% lên 1,3× NAV**. Rủi ro giảm giá theo cơ chế giờ đã nhỏ hơn nhiều so với tuần trước. Nhưng muốn tăng thì cần người mua mới, và hiện chưa thấy.
+
+**Gợi ý hành động (chi tiết ở [mục I](#i-gợi-ý-hành-động)):**
+- **Chưa có NET:** không mua mới. Nếu muốn cược vào các sự kiện 20/10 và 27/10, chỉ dùng số tiền nhỏ chấp nhận mất, mua sát sàn ($160–166), không vay, chốt dần ở $190–210, thoát nếu team mint pTEAM.
+- **Đang giữ:** đừng bán tháo dưới sàn $160. Quyết định theo câu hỏi "có $165 tiền mặt thì có mua NET không?". Nếu không, giảm dần: bán một phần quanh giá hiện tại, phần còn lại bán vào nhịp hồi $190–210, hoặc bán ngay khi có tín hiệu pTEAM.
+- **Đang vay trên Loopback:** trả nợ hoặc giảm đòn bẩy. Lãi ~44%/năm trong khi rebase gần bằng 0.
 
 ---
 
@@ -252,7 +257,50 @@ Từ $165: **−3% xuống sàn InverseBond ($160)**, **−7% nếu team mint pT
 - `Distributor.premium()`: > 1,1 thì rebase chạy lại; > 1,75 thì tối đa.
 - RH chain: vault Earn (`0xbeef…09dd`), tổng cung USDG/USDe, bridge ETH, cổ phiếu token hoá (`scripts/rh_flows.py`, `scripts/rh_chain.py`).
 
-## I. Rủi ro chính
+## I. Gợi ý hành động
+
+Số liệu lúc 02:00 UTC ngày 17/10: giá $165,1, NAV $162,66, sàn InverseBond $160,22 (còn đủ capacity ~$78,6K cho epoch này), pTEAM chưa mint thêm.
+
+**Nhận định chung.** Ở $165, NET gần như là một khoản USDG trị giá ~$160–163 mỗi token (sàn và NAV). Khoản này không sinh lãi (rebase ~0), và đi kèm hai rủi ro: team mint pTEAM, và rủi ro contract. Đổi lại, bạn có một "quyền chọn" tăng giá nếu cầu quay lại. Phía giảm theo cơ chế nhỏ (−3% đến −7%), nhưng phía tăng chưa có động lực. Tiền nằm chờ trong USDG (ví dụ Robinhood Earn ~6,5%/năm, cũng có rủi ro riêng) vẫn sinh lãi, còn NET ở NAV thì không.
+
+### I.1 Nếu bạn chưa có NET
+- **Không mua mới.** Chưa có lý do để kỳ vọng premium quay lại ngoài các sự kiện sắp tới.
+- **Nếu vẫn muốn cược sự kiện** (Fables TGE 20/10, kết quả quý 3 Robinhood 27/10):
+  - Chỉ dùng số tiền mất hết cũng không ảnh hưởng gì. Không vay.
+  - Mua sát sàn, $160–166. Dùng pool không thuế (up v3, Uniswap v4); pool Uniswap v2 bị thuế 5% mỗi chiều.
+  - Chốt lời từng phần ở $190–210 (1,15–1,3× NAV). Vùng trên 1,3× là nơi bond và rebase bắt đầu xả mạnh.
+  - Thoát ngay nếu `pTEAM.exercised()` tăng hoặc có NET chuyển vào các desk.
+  - Nếu đến 28/10 premium vẫn ~1×, thoát: các sự kiện đã qua mà không có cầu mới.
+
+### I.2 Nếu bạn đang giữ NET
+- **Đừng bán tháo dưới $160.** Giá hiện tại chỉ cao hơn sàn ~3%, nên bán vội không tránh được bao nhiêu. Nếu giá DEX xuống dưới $160, bán NET vào InverseBond (`0x9216…c4c9`, giá $160,22, ~$78K mỗi 8 giờ) thay vì bán rẻ vào pool mỏng.
+- **Quên giá vốn cũ.** Câu hỏi đúng là: "Nếu đang cầm $165 tiền mặt, mình có mua NET không?" Nếu câu trả lời là không, hãy giảm vị thế theo kế hoạch.
+- **Một cách làm cân bằng:**
+  - Bán một phần (ví dụ phần bạn cần dùng hoặc phần làm bạn mất ngủ) quanh giá hiện tại.
+  - Giữ phần còn lại ở dạng stake (sNET/wsNET). Stake không tốn gì, rút không bị khoá, và nhận lại rebase nếu premium hồi.
+  - Bán phần còn lại vào nhịp hồi $190–210, hoặc bán ngay khi có tín hiệu thoát ở dưới.
+- **Không giữ vì "APY rebase".** Lợi suất rebase cao trước đây chỉ là NET mới phát hành (pha loãng); hiện nó gần bằng 0.
+
+### I.3 Nếu bạn đang vay trên Loopback (thế chấp wsNET)
+- **Trả nợ hoặc giảm đòn bẩy.** Lãi vay ~44%/năm (~0,12%/ngày), trong khi rebase gần bằng 0.
+- Rủi ro bị thanh lý thấp, vì oracle không định giá dưới NAV. Nhưng chi phí lãi ăn mòn vốn mỗi ngày, và nếu NAV giảm do pTEAM thì vị thế LTV cao sẽ bị thanh lý.
+
+### I.4 Nếu bạn lướt sóng
+- Biên độ thật $160–185. Thanh khoản chỉ ~$1,1M, pool v2 có thuế 5% và hay có râu nến ảo.
+- Đặt lệnh trên pool không thuế. Không đặt lệnh theo giá râu nến ($244, $339 vừa qua).
+- Giữ quy mô nhỏ: một lệnh vài chục nghìn USD đã đủ đẩy giá pool v2 lên vài chục phần trăm.
+
+### I.5 Tín hiệu thay đổi quyết định
+| Thoát ngay hoặc không vào | Có thể giữ hoặc tăng nhỏ |
+|---|---|
+| `pTEAM.exercised()` tăng, hoặc NET chuyển vào các desk của team | Premium giữ trên 1,15× nhiều ngày, volume tăng, không phải râu nến |
+| InverseBond cạn capacity nhiều epoch liên tiếp, USDG liquid của Treasury giảm nhanh | Team Safe hoặc Sleeve mua lớn trở lại bằng tiền mới |
+| NAV giảm trong khi premium vẫn ~1× | Dòng tiền Robinhood Chain chuyển dương: USDG tăng, bridge ETH vào ròng |
+| Stablecoin hoặc Earn trên chain rút hơn $50M/tuần; BTC thủng $77K | Fables TGE và kết quả quý 3 kéo được tiền mới vào chain |
+
+**Tỷ trọng.** Đây là token rủi ro rất cao, team kiểm soát bằng ví 1-of-1. Chỉ nên là một phần nhỏ trong danh mục, ở mức mất hết cũng không ảnh hưởng cuộc sống. Không vay để mua. Dự báo của tôi cũng có thể sai: bản 9/10 đã sai kịch bản cơ sở. Nên coi các mức giá ở trên là khung để tự đặt kế hoạch, không phải cam kết.
+
+## J. Rủi ro chính
 1. **Tập trung vào team:** một EOA ký 1-of-1 cho Team Safe và RWA Sleeve. pTEAM không hết hạn, team luôn mint được 15% float với giá $1 (hiện 9.779 NET).
 2. **Sàn có giới hạn:** InverseBond chỉ dùng 1% USDG liquid mỗi 8 giờ; 70% RFV nằm trong Morpho/Steakhouse, không dùng trực tiếp cho InverseBond.
 3. **Đòn bẩy của team:** nợ $1,59M trên các market cổ phiếu (gần 100% vốn) và $116K trên Loopback, thế chấp bằng chính NET.
@@ -260,7 +308,7 @@ Từ $165: **−3% xuống sàn InverseBond ($160)**, **−7% nếu team mint pT
 5. **Thanh khoản mỏng** ($1,13M) so với FDV ~$26M; 89,8% supply có thể rút stake ngay.
 6. **Hệ sinh thái co lại;** tiền gửi lấy lãi (trụ đỡ lớn nhất) bắt đầu rút.
 
-## J. Phương pháp và tái lập
+## K. Phương pháp và tái lập
 - **Nguồn:** RPC `rpc.mainnet.chain.robinhood.com` (eth_getLogs, block) và `robinhood.drpc.org` (eth_call lịch sử, Multicall3), `eth.drpc.org` (bridge trên L1), Sourcify (ABI, mã nguồn `LoopbackOracle`), DefiLlama (kể cả yields của vault Earn), DexScreener, GeckoTerminal, CoinGecko, alternative.me, HoodScan (MCP công khai), tin tức (link trong bài).
 - **Phân loại dòng tiền NET** (`scripts/flows.py`): ~654K transaction, ~44K ví. Delta mỗi địa chỉ được quy về NET (NET + sNET + wsNET × index). Pool, contract protocol và router được loại ra; phần còn lại là ví người dùng. USD quy theo nến 4 giờ. Thời gian quy từ block theo mốc binary-search (`data/block_anchors.json`).
 - **Dòng tiền RH chain** (`scripts/rh_flows.py`): tổng cung USDG/USDe/U/WETH và tài sản vault Steakhouse đọc lúc 00:00 UTC mỗi ngày từ 1/7. Cổ phiếu token hoá (191 mã) nhân giá hiện tại, nên thay đổi là mint/burn. Các market Morpho Blue cho vay USDG đọc theo ngày. Số giao dịch người dùng ước tính bằng 100 block mẫu mỗi ngày; ngày đã xong được giữ lại, chỉ tính thêm ngày mới.
