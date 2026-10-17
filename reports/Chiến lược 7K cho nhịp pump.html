@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Playbook 7K nhịp pump</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="So sánh 7 cách triển khai khoảng 6.4K USD trên Hyperliquid nếu đáy chu kỳ BTC đã qua, kèm mô phỏng lãi lỗ, đánh giá watchlist và coin theo xu hướng, dữ liệu 17/10/2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600..800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+/* Layout: one reading column (~68ch) inside a 1120px frame; tables, the simulator and the BTC ladder use the full frame. */
+:root {
+  --paper: #f3f5f7;
+  --card: #ffffff;
+  --ink: #16212c;
+  --ink-2: #4b5a69;
+  --ink-3: #6f7d8b;
+  --rule: #d8dee5;
+  --accent: #b85f00;
+  --accent-soft: #fcebd6;
+  --struct: #1f4e79;
+  --struct-soft: #e2ecf6;
+  --gain: #11774a;
+  --gain-soft: #dcf1e6;
+  --loss: #b3261e;
+  --loss-soft: #f8e0de;
+  --warn: #8f5f00;
+  --warn-soft: #fbefd2;
+  --shadow: 0 1px 2px rgba(22, 33, 44, .06), 0 4px 16px rgba(22, 33, 44, .05);
+  --font-display: "Archivo", "Be Vietnam Pro", system-ui, sans-serif;
+  --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-data: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --step--1: .8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --step-4: 2.75rem;
+  --frame: 1120px;
+  --measure: 68ch;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f151c; --card: #161f29; --ink: #e5ebf1; --ink-2: #a3b0bd; --ink-3: #7d8b99; --rule: #283542;
+    --accent: #f0a33f; --accent-soft: #3a2a14; --struct: #8fbbe3; --struct-soft: #1b2b3c;
+    --gain: #4cc38a; --gain-soft: #12301f; --loss: #f2766d; --loss-soft: #3b1816; --warn: #e3b341; --warn-soft: #342a10;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f151c; --card: #161f29; --ink: #e5ebf1; --ink-2: #a3b0bd; --ink-3: #7d8b99; --rule: #283542;
+  --accent: #f0a33f; --accent-soft: #3a2a14; --struct: #8fbbe3; --struct-soft: #1b2b3c;
+  --gain: #4cc38a; --gain-soft: #12301f; --loss: #f2766d; --loss-soft: #3b1816; --warn: #e3b341; --warn-soft: #342a10;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--card);
+}
+.wrap {
+  max-width: var(--frame);
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); font-stretch: 112%; line-height: 1.15; text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+h2 { font-size: var(--step-3); font-weight: 700; }
+h3 { font-size: var(--step-1); font-weight: 650; }
+p { margin: 0; }
+.prose { max-width: var(--measure); display: grid; gap: .85rem; align-content: start; }
+.prose ul, .prose ol { margin: 0; padding-left: 1.2rem; display: grid; gap: .35rem; align-content: start; }
+a { color: var(--struct); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.num, td.n, .mono { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.muted { color: var(--ink-2); }
+.small { font-size: var(--step--1); }
+.eyebrow { font-family: var(--font-data); font-size: var(--step--1); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+
+/* top navigation */
+.topnav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.topnav .wrap { display: flex; gap: 1rem; align-items: center; overflow-x: auto; scrollbar-width: none; padding-block: .6rem; }
+.topnav .wrap::-webkit-scrollbar { display: none; }
+.topnav .brand { font-family: var(--font-display); font-weight: 700; white-space: nowrap; color: var(--ink); text-decoration: none; }
+.topnav a.sec { font-size: var(--step--1); color: var(--ink-2); text-decoration: none; white-space: nowrap; padding: .2rem .1rem; }
+.topnav a.sec:hover { color: var(--ink); }
+
+/* sections */
+main { display: grid; gap: 3.5rem; padding-block: 2rem 4rem; }
+section { display: grid; gap: 1.25rem; scroll-margin-top: 4rem; min-width: 0; }
+section > header { display: grid; gap: .4rem; }
+.lede { font-size: var(--step-1); color: var(--ink-2); max-width: var(--measure); }
+
+/* hero */
+.hero { display: grid; gap: 1.1rem; padding-top: 1rem; }
+.hero h1 { font-size: var(--step-4); font-weight: 800; letter-spacing: -.02em; }
+.hero h1 .tick { color: var(--accent); }
+.thesis { font-size: var(--step-1); max-width: 62ch; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; }
+.stat { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: .9rem 1rem; display: grid; gap: .25rem; min-width: 0; }
+.stat .k { font-size: var(--step--1); color: var(--ink-2); }
+.stat .v { font-family: var(--font-data); font-size: var(--step-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.stat .s { font-size: var(--step--1); color: var(--ink-3); }
+
+/* verdict block */
+.verdict { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; box-shadow: var(--shadow); padding: 1.25rem; display: grid; gap: 1rem; }
+.buckets { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .75rem; }
+.bucket { border: 1px solid var(--rule); border-radius: 10px; padding: .9rem 1rem; display: grid; gap: .45rem; align-content: start; min-width: 0; }
+.bucket .pct { font-family: var(--font-data); font-size: var(--step-2); font-weight: 600; }
+.bucket .usd { font-family: var(--font-data); color: var(--ink-2); font-size: var(--step--1); }
+.bar-split { display: flex; height: 12px; border-radius: 6px; overflow: hidden; border: 1px solid var(--rule); }
+.bar-split span { display: block; height: 100%; }
+
+/* pills */
+.pill { display: inline-flex; align-items: center; gap: .3rem; font-size: .75rem; font-weight: 600; letter-spacing: .02em; padding: .12rem .5rem; border-radius: 999px; white-space: nowrap; border: 1px solid transparent; }
+.pill.core { background: var(--struct-soft); color: var(--struct); border-color: color-mix(in srgb, var(--struct) 30%, transparent); }
+.pill.sat { background: var(--accent-soft); color: var(--accent); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+.pill.skip { background: transparent; color: var(--ink-3); border-color: var(--rule); }
+.pill.gain { background: var(--gain-soft); color: var(--gain); }
+.pill.loss { background: var(--loss-soft); color: var(--loss); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+
+/* tables */
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { padding: .55rem .7rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+thead th { font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; background: color-mix(in srgb, var(--paper) 60%, var(--card)); position: sticky; top: 0; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td.n, th.n { text-align: right; white-space: nowrap; }
+td.pos { color: var(--gain); }
+td.neg { color: var(--loss); }
+tr.rec td { background: color-mix(in srgb, var(--accent-soft) 55%, transparent); }
+tr.rec td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+.cell-liq { color: var(--loss); font-weight: 700; }
+
+/* simulator */
+.sim { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; box-shadow: var(--shadow); padding: 1.1rem; display: grid; gap: 1.1rem; }
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .9rem 1.2rem; }
+.ctl { display: grid; gap: .3rem; min-width: 0; }
+.ctl label { font-size: var(--step--1); color: var(--ink-2); display: flex; justify-content: space-between; gap: .5rem; }
+.ctl label output { font-family: var(--font-data); color: var(--ink); font-weight: 600; }
+.ctl input[type="range"] { width: 100%; accent-color: var(--accent); }
+.ctl select { font: inherit; font-size: .9rem; padding: .35rem .5rem; border-radius: 8px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+.presets { display: flex; flex-wrap: wrap; gap: .4rem; }
+.presets button { font: inherit; font-size: .8rem; padding: .3rem .65rem; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); cursor: pointer; }
+.presets button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.results { display: grid; gap: .5rem; }
+.res-row { display: grid; grid-template-columns: minmax(150px, 220px) 1fr minmax(92px, auto); gap: .75rem; align-items: center; min-width: 0; }
+.res-row .nm { font-size: .9rem; font-weight: 600; min-width: 0; }
+.res-row .nm small { display: block; font-weight: 400; color: var(--ink-3); font-size: .75rem; }
+.track { position: relative; height: 22px; background: color-mix(in srgb, var(--paper) 70%, var(--card)); border-radius: 6px; overflow: hidden; }
+.track .zero { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--ink-3); }
+.track .fill { position: absolute; top: 3px; bottom: 3px; border-radius: 4px; }
+.track .fill.up { background: var(--gain); }
+.track .fill.dn { background: var(--loss); }
+.res-row .val { font-family: var(--font-data); font-variant-numeric: tabular-nums; text-align: right; font-size: .9rem; white-space: nowrap; }
+.res-row.rec .nm { color: var(--accent); }
+.res-meta { font-size: .75rem; color: var(--ink-3); grid-column: 2 / 4; margin-top: -.3rem; }
+@media (max-width: 560px) {
+  .res-row { grid-template-columns: 1fr auto; }
+  .res-row .track { grid-column: 1 / -1; grid-row: 2; }
+  .res-meta { grid-column: 1 / -1; margin-top: 0; }
+}
+
+/* coin cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .9rem; }
+.coin { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 1rem; display: grid; gap: .6rem; align-content: start; min-width: 0; }
+.coin .top { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
+.coin .tk { font-family: var(--font-display); font-size: var(--step-2); font-weight: 750; }
+.coin .px { font-family: var(--font-data); color: var(--ink-2); font-size: .85rem; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: .2rem .8rem; font-size: .85rem; }
+.kv dt { color: var(--ink-3); }
+.kv dd { margin: 0; font-family: var(--font-data); font-variant-numeric: tabular-nums; text-align: right; }
+.coin ul { margin: 0; padding-left: 1.1rem; font-size: .9rem; display: grid; gap: .25rem; }
+.coin .why { font-size: .9rem; }
+
+/* BTC ladder */
+.ladder-wrap { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: .75rem; overflow-x: auto; }
+.ladder-wrap svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.ladder-wrap .lbl { font-family: var(--font-body); font-size: 12.5px; fill: var(--ink); }
+.ladder-wrap .l-sub { font-family: var(--font-data); font-size: 11px; fill: var(--ink-2); }
+.ladder-wrap .l-axis { font-family: var(--font-data); font-size: 10px; fill: var(--ink-3); paint-order: stroke; stroke: var(--card); stroke-width: 5px; }
+.l-axisline { stroke: var(--ink-3); stroke-width: 1.5; }
+.l-tick { stroke: var(--ink-3); }
+.b-tp { fill: var(--gain-soft); stroke: var(--gain); stroke-width: 1; }
+.b-fill { fill: var(--struct-soft); stroke: var(--struct); stroke-width: 1; }
+.b-iso { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.m-pyr { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 4; }
+.m-now { stroke: var(--ink); stroke-width: 2; }
+.m-liq { stroke: var(--loss); stroke-width: 2; }
+.m-liqc { stroke: var(--loss); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.l-lvl { stroke: var(--ink-3); } .l-lvl-dot { fill: var(--ink-3); }
+.l-now { stroke: var(--accent); stroke-width: 2; } .l-now-dot { fill: var(--accent); }
+.l-inv { stroke: var(--loss); } .l-inv-dot { fill: var(--loss); }
+
+/* plan steps and timeline */
+.steps { display: grid; gap: .75rem; counter-reset: step; padding: 0; margin: 0; list-style: none; }
+.steps > li { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: .9rem 1rem .9rem 3rem; position: relative; counter-increment: step; }
+.steps > li::before { content: counter(step); position: absolute; left: 1rem; top: .85rem; font-family: var(--font-data); font-weight: 700; color: var(--accent); }
+.timeline { display: grid; gap: 0; border-left: 2px solid var(--rule); margin-left: .4rem; padding-left: 1.1rem; }
+.timeline .ev { position: relative; padding-block: .45rem; }
+.timeline .ev::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: .85rem; width: 10px; height: 10px; border-radius: 50%; background: var(--card); border: 2px solid var(--struct); }
+.timeline .ev.hot::before { border-color: var(--accent); background: var(--accent); }
+.timeline .d { font-family: var(--font-data); font-size: .8rem; color: var(--ink-2); }
+
+.callout { border: 1px solid var(--rule); border-radius: 10px; padding: .9rem 1rem; background: var(--card); display: grid; gap: .4rem; max-width: var(--measure); }
+.callout.warn { background: var(--warn-soft); border-color: color-mix(in srgb, var(--warn) 35%, transparent); }
+.callout.loss { background: var(--loss-soft); border-color: color-mix(in srgb, var(--loss) 35%, transparent); }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+.two > * { min-width: 0; }
+details { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: .7rem 1rem; }
+details > summary { cursor: pointer; font-weight: 600; }
+details[open] > summary { margin-bottom: .6rem; }
+footer { border-top: 1px solid var(--rule); padding-block: 1.5rem 2.5rem; color: var(--ink-3); font-size: var(--step--1); }
+@media (max-width: 560px) {
+  .hero h1 { font-size: 2.1rem; }
+  h2 { font-size: 1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+
+/* lesson tiles: the figure is the point, the sentence explains it */
+.lessons { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: .9rem; }
+.lesson { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 1rem; display: grid; gap: .45rem; align-content: start; min-width: 0; }
+.lesson .fig { font-family: var(--font-display); font-stretch: 112%; font-size: var(--step-3); font-weight: 800; line-height: 1; color: var(--struct); }
+.lesson .fig.warn { color: var(--loss); }
+.lesson h3 { font-size: 1rem; }
+.lesson p { font-size: .9rem; color: var(--ink-2); }
+.pro-con { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+.pro-con > div { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 1rem; display: grid; gap: .5rem; align-content: start; min-width: 0; }
+.pro-con h3 { font-size: 1rem; }
+.pro-con ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; font-size: .92rem; }
+.pro-con .yes h3 { color: var(--gain); }
+.pro-con .no h3 { color: var(--loss); }
+.inv { display: grid; gap: .4rem; counter-reset: inv; list-style: none; padding: 0; margin: 0; max-width: var(--measure); }
+.inv li { counter-increment: inv; display: grid; grid-template-columns: 2rem 1fr; gap: .5rem; align-items: baseline; }
+.inv li::before { content: counter(inv); font-family: var(--font-data); font-weight: 700; color: var(--loss); }
+.pos-text { color: var(--gain); }
+table.compare td:first-child, table.compare th:first-child { min-width: 230px; }
+table.compare tr.main td { border-bottom: 0; padding-bottom: .2rem; }
+table.compare tr.note td { padding-top: 0; color: var(--ink-2); font-size: .82rem; }
+table.compare tr.rec.note td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+</style>
+</head>
+<body>
+
+<nav class="topnav" aria-label="Mục lục">
+  <div class="wrap">
+    <a class="brand" href="#top">Playbook 7K</a>
+    <a class="sec" href="#ket-luan">Kết luận</a>
+    <a class="sec" href="#thi-truong">Thị trường</a>
+    <a class="sec" href="#chu-ky">Bài học chu kỳ</a>
+    <a class="sec" href="#so-sanh">So sánh</a>
+    <a class="sec" href="#mo-phong">Mô phỏng</a>
+    <a class="sec" href="#watchlist">Watchlist</a>
+    <a class="sec" href="#trend">Coin trend</a>
+    <a class="sec" href="#ke-hoach">Kế hoạch lệnh</a>
+    <a class="sec" href="#rui-ro">Rủi ro</a>
+    <a class="sec" href="#nguon">Nguồn</a>
+  </div>
+</nav>
+
+<div class="wrap">
+<main id="top">
+
+<header class="hero">
+  <p class="eyebrow">Hyperliquid · 17/10/2026 03:23 UTC · BTC $81,494 · vốn $6,376 USDC</p>
+  <h1>Playbook 7K nhịp pump</h1>
+  <p class="thesis">Giả định đáy chu kỳ đã nằm ở $57.8K. Với giả định đó, phương án tốt nhất trong mô phỏng là dồn vốn vào coin dẫn đầu và vào một phần ngay. Phần còn lại rải ở vùng BTC 74–78K, và chỉ tăng đòn bẩy khi BTC đóng ngày trên $88K. Rải đều nhiều coin, hoặc kéo đòn bẩy lên ngay từ đầu, đều cho kết quả kém hơn.</p>
+  <div class="stats">
+    <div class="stat"><span class="k">Phương án D nếu BTC về 73K rồi lên 100K</span><span class="v pos-text">+$4,887 <span class="small muted">+77%</span></span><span class="s">3 tháng, funding bình thường</span></div>
+    <div class="stat"><span class="k">Nếu BTC bật luôn từ 80K lên 100K</span><span class="v">+$1,267</span><span class="s">5 lệnh đang đặt: $0 vì không lệnh nào khớp</span></div>
+    <div class="stat"><span class="k">Tài khoản sụt khi BTC về 73K</span><span class="v">−15%</span><span class="s">Lệnh đang đặt: −12%</span></div>
+    <div class="stat"><span class="k">Cháy tài khoản khi BTC xuống</span><span class="v">$46.6K</span><span class="s">$51.2K nếu alt yếu. Lệnh đang đặt: $50.0K</span></div>
+  </div>
+</header>
+
+<section id="ket-luan">
+  <header>
+    <p class="eyebrow">Kết luận</p>
+    <h2>Nên làm gì với 7K</h2>
+    <p class="lede">Giữ khung perp 2x bạn đang có, nhưng sửa bốn chỗ. Thêm lệnh mồi để không lỡ sóng, dồn đòn bẩy vào HYPE và SOL, chuyển LIT sang isolated rồi thêm NEAR, và chỉ nhồi khi BTC xác nhận vượt đỉnh.</p>
+  </header>
+  <div class="verdict">
+    <div class="bar-split" role="img" aria-label="Lõi 70%, vệ tinh 15%, dự trữ 15%">
+      <span style="width:70%;background:var(--struct)"></span><span style="width:15%;background:var(--accent)"></span><span style="width:15%;background:var(--rule)"></span>
+    </div>
+    <div class="buckets">
+      <div class="bucket">
+        <span class="pill core">Lõi · cross 2x</span>
+        <span class="pct">70%</span><span class="usd">ký quỹ ≈ $4,480 · vị thế ≈ $8,960</span>
+        <p class="small"><b>HYPE + SOL.</b> 74 HYPE (giá vốn TB ~$72.9) và 38 SOL (~$93.7). Khoảng 25% vào ngay, phần còn lại chờ ở 74/69 và 95/88.</p>
+      </div>
+      <div class="bucket">
+        <span class="pill sat">Vệ tinh · isolated 2x</span>
+        <span class="pct">15%</span><span class="usd">ký quỹ ≈ $935 · vị thế ≈ $1,870</span>
+        <p class="small"><b>NEAR + LIT.</b> NEAR 110 @ 4.40 và 125 @ 3.95, LIT 330 @ 2.70. Mỗi lệnh mất tối đa phần ký quỹ của nó, không kéo cả tài khoản.</p>
+      </div>
+      <div class="bucket">
+        <span class="pill skip">Dự trữ · USDC</span>
+        <span class="pct">15%</span><span class="usd">≈ $964 để trống</span>
+        <p class="small">Đệm chống thanh lý cho phần lõi, và là tiền mua thêm nếu BTC rơi về vùng 70–72K.</p>
+      </div>
+      <div class="bucket">
+        <span class="pill warn">Nhồi khi xác nhận</span>
+        <span class="pct">+$4K</span><span class="usd">HYPE +$3K, NEAR +$1K vị thế</span>
+        <p class="small">Chỉ khi BTC đóng nến ngày trên $88K, tức vượt đỉnh đôi $87.4K. Ký quỹ lấy từ phần lãi đã có.</p>
+      </div>
+    </div>
+    <div class="two">
+      <div class="prose">
+        <h3>Năm nguyên tắc đằng sau</h3>
+        <ol>
+          <li><b>Dồn vào coin dẫn đầu.</b> Mỗi chu kỳ chỉ vài coin kéo lãi. HYPE là coin dẫn đầu chu kỳ này: +214% từ đầu năm, quỹ mua lại khoảng $2.4M mỗi ngày.</li>
+          <li><b>Đòn bẩy chỉ đặt lên coin thanh khoản sâu.</b> Ngày 10/10/2025, long 2x isolated trên 38/47 perp Hyperliquid bị cháy. Trong 9 coin còn sống có BTC, ETH, SOL, HYPE, BNB.</li>
+          <li><b>Vào một phần ngay, phần lớn chờ.</b> Trong 24 lần BTC đóng cửa thấp hơn đỉnh 60 ngày 7%, trung vị BTC giảm thêm 10% trong 90 ngày sau đó. Nhưng nếu không có lệnh mồi, bạn có thể lỡ cả sóng.</li>
+          <li><b>Tăng đòn bẩy sau khi đúng, không phải trước.</b> Phần nhồi chỉ kích hoạt khi BTC đóng ngày trên $88K, nên không làm tệ hơn kịch bản xấu.</li>
+          <li><b>Có lịch thoát.</b> Chốt lời theo vùng BTC 92–98K và 100–106K. Đóng LIT trước 20/12 vì đợt mở khóa lớn.</li>
+        </ol>
+      </div>
+      <div class="prose">
+        <h3>Vì sao không chọn phương án khác</h3>
+        <ul>
+          <li><b>Spot 1 coin:</b> không bao giờ cháy, nhưng lãi chỉ bằng khoảng một nửa. Hợp nếu bạn muốn ngủ ngon hơn là degen.</li>
+          <li><b>Spot nhiều coin:</b> không hơn spot 1 coin trong mô phỏng. Trong ba chu kỳ gần nhất, rổ alt chia đều đều thua BTC sau 12 tháng.</li>
+          <li><b>HYPE 3x hoặc rổ coin trend 2x:</b> lãi lớn hơn nếu đúng ngay, nhưng sụt khoảng 32% khi BTC về 73K và cháy quanh $60–63K, sát đáy tháng 8. Khi funding nóng lên, lợi thế của HYPE 3x so với phương án D biến mất.</li>
+          <li><b>Call BTC:</b> lỗ tối đa khoảng 30%, rất đáng cân nhắc. Nhưng cần tài khoản quyền chọn ngoài Hyperliquid, thêm rủi ro BTC bạn đã có nhiều, và mất giá nếu thị trường lình xình.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="thi-truong">
+  <header>
+    <p class="eyebrow">Thị trường 17/10</p>
+    <h2>Giả định đáy đã qua đứng vững tới đâu</h2>
+    <p class="lede">Cấu trúc giá ủng hộ giả định đáy đã qua. Vĩ mô và dòng tiền thì chưa ủng hộ một nhịp pump sớm. Kế hoạch được dựng trong giả định của bạn, nhưng chừa chỗ cho một cú chỉnh sâu trước khi tăng.</p>
+  </header>
+  <div class="pro-con">
+    <div class="yes">
+      <h3>Ủng hộ giả định đáy đã qua</h3>
+      <ul>
+        <li>Đáy $57.8K (1/7), đáy cao hơn $62.2K (1/8), đỉnh đôi $87.4K (21/9 và 2/10). BTC vẫn +41% từ đáy.</li>
+        <li>BTC đang đứng trên giá vốn của holder ngắn hạn ($74.4K) và xa giá thực hiện ($53.4K, MVRV khoảng 1.55).</li>
+        <li>74% số alt thắng BTC trong 90 ngày, sát ngưỡng 75% thường gọi là mùa alt.</li>
+        <li>CEO CryptoQuant tuyên bố bear market đã hết (13/10). Checkonchain xem $58K là đáy.</li>
+      </ul>
+    </div>
+    <div class="no">
+      <h3>Chống lại một nhịp pump sớm</h3>
+      <ul>
+        <li>Fed tăng lãi suất ngày 16/9 lên 3.75–4.00%. CPI tháng 9 ra 3.7% (dự báo 3.6%) vì giá dầu. Polymarket cho 76.5% khả năng Fed tăng tiếp ngày 9/12.</li>
+        <li>ETF BTC bị rút khoảng $0.85B từ 7/10. ETF ETH rút 9 phiên liền, ETF SOL có tuần rút đầu tiên sau 14 tuần.</li>
+        <li>Stablecoin đi ngang ($306.6B, thấp hơn đỉnh tháng 5 là 2.5%). Strategy chỉ mua nhỏ giọt.</li>
+        <li>Thị trường quyền chọn chỉ định giá khoảng 8% cho BTC trên $100K vào 25/12, và 18–20% vào 26/3/2027.</li>
+        <li>Đòn bẩy chưa được xả. OI vẫn cao, tỷ lệ long/short của nhỏ lẻ trên OKX tăng từ 0.98 lên 1.79.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="two">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mốc on-chain</th><th class="n">Giá</th><th class="n">BTC $81.5K so với mốc</th></tr></thead>
+        <tbody>
+          <tr><td>Giá thực hiện (realized price)</td><td class="n">$53.4K</td><td class="n pos">+53%</td></tr>
+          <tr><td>Giá vốn holder ngắn hạn</td><td class="n">$74.4K</td><td class="n pos">+9.5%</td></tr>
+          <tr><td>True Market Mean</td><td class="n">$78–79K</td><td class="n pos">+3–4.5%</td></tr>
+          <tr><td>Giá vốn người mua 6–12 tháng</td><td class="n">$88K</td><td class="n neg">−7%</td></tr>
+          <tr><td>Giá vốn holder 1–2 năm</td><td class="n">$100K</td><td class="n neg">−18.5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <h3>Thang vô hiệu</h3>
+      <ol class="inv">
+        <li><span>Đóng ngày dưới <b>$80K</b>: mục tiêu kế tiếp $78K.</span></li>
+        <li><span>Đóng tuần dưới <b>$74–75K</b> (giá vốn holder ngắn hạn): cấu trúc tăng bị gãy.</span></li>
+        <li><span>Đóng ngày dưới <b>$62.2K</b> (đáy cao hơn 1/8): cắt một nửa vị thế.</span></li>
+        <li><span>Thủng <b>$57.8K</b> (đáy chu kỳ): giả định sai, thoát hết.</span></li>
+      </ol>
+      <p class="small muted">Lịch gần: FOMC 28/10 (86.5% giữ nguyên), đáo hạn quyền chọn 30/10 (max pain $79K), hạn Mt. Gox 31/10, CPI 10/11, FOMC 9/12.</p>
+    </div>
+  </div>
+</section>
+
+<section id="chu-ky">
+  <header>
+    <p class="eyebrow">Bài học từ 3 chu kỳ</p>
+    <h2>Điều gì thật sự kiếm tiền sau đáy</h2>
+    <p class="lede">Số liệu tính lại từ giá ngày của top 50 coin ở các chu kỳ 2019, 2020–21, 2023–24, cộng dữ liệu Hyperliquid. Nhiều kết quả đi ngược cảm giác thông thường.</p>
+  </header>
+  <div class="lessons">
+    <div class="lesson"><span class="fig">6–23%</span><h3>Số alt thắng BTC sau 12 tháng</h3><p>Ở cả ba chu kỳ, chỉ 6–23% trong top 50 alt thắng BTC sau 12 tháng tính từ đáy. Rổ alt chia đều lần nào cũng thua BTC. Mùa alt rộng chỉ đến sau khi BTC vượt đỉnh cũ.</p></div>
+    <div class="lesson"><span class="fig">16x</span><h3>Tiền nằm ở vài coin dẫn đầu</h3><p>BNB 8.5x và LINK 18x năm 2019; SOL 22–27x, INJ 33x, FET 59x từ 2023; HYPE 16x tới đỉnh tháng 9/2026. Điểm chung: có lực mua cơ học như mua lại hay đốt, có narrative mới, có sàn lớn đứng sau. Chúng lọt top 5 chỉ 3–6 tháng sau đáy.</p></div>
+    <div class="lesson"><span class="fig warn">−25% đến −95%</span><h3>Coin dẫn đầu cũng sập giữa đường</h3><p>Mọi coin dẫn đầu đều có lúc rơi sâu trước khi lên đỉnh. SOL từng −50% trong tháng 6/2023. Muốn ăn được cả sóng thì phải sống sót qua những cú này.</p></div>
+    <div class="lesson"><span class="fig warn">−66%</span><h3>Cú quét ngày 10/10/2025</h3><p>Trung vị 47 perp trên Hyperliquid rơi 66% trong ngày. BTC −17%, HYPE −28%, SOL −38%, LINK −65%. Chỉ 9/47 perp giữ được long 2x isolated, trong đó có BTC, ETH, SOL, HYPE, BNB.</p></div>
+    <div class="lesson"><span class="fig">−10%</span><h3>Vào lệnh lúc BTC vừa chỉnh 7%</h3><p>Ở 24 lần như hiện tại, trung vị BTC giảm thêm 10% và alt giảm thêm 17% trong 90 ngày. Bốn lần năm 2023, lệnh 2x đều sống. Năm 2019 thì 60–95% số lệnh 2x trên top 20 alt bị cháy.</p></div>
+    <div class="lesson"><span class="fig">1–2 tuần</span><h3>Đà tăng không kéo dài như ta nghĩ</h3><p>Momentum trong crypto chỉ đúng trong 1–2 tuần và đảo chiều sau khoảng một tháng. Chiến lược mua 3 coin tăng mạnh nhất tháng trước là tệ nhất, sụt 59–99%. Coin chống chịu tốt nhất trong nhịp chỉnh cũng không hay dẫn đầu sóng sau.</p></div>
+  </div>
+</section>
+
+<section id="so-sanh">
+  <header>
+    <p class="eyebrow">So sánh</p>
+    <h2>7 cách dùng $6,376</h2>
+    <p class="lede">Lãi/lỗ sau 3 tháng, funding bình thường, alt chạy theo beta của dữ liệu 2026. Đường đi của BTC là từ $81.5K xuống đáy chỉnh rồi lên mục tiêu. Các phương án perp tính trên đúng ví của bạn.</p>
+  </header>
+  <div class="tbl-wrap"><table class="compare"><thead><tr><th>Phương án</th><th class="n">Đòn bẩy<br>khi khớp hết</th><th class="n">Cháy tài khoản<br>khi BTC</th><th class="n">Bật luôn<br><span class="muted">80K → 100K</span></th><th class="n">Về vùng đáy<br><span class="muted">73K → 100K</span></th><th class="n">Siêu sóng<br><span class="muted">75K → 120K</span></th><th class="n">Lình xình<br><span class="muted">74K → 84K</span></th><th class="n">Gãy tiền đề<br><span class="muted">57K → 60K</span></th><th class="n">Sụt khi<br>BTC 73K</th></tr></thead><tbody><tr class="main"><td><b>A. Spot 1 coin (HYPE)</b><br><span class="muted small">Không đòn bẩy, 30% vào ngay, 70% chờ 74/69</span></td><td class="n">1.0x</td><td class="n"><span class="muted">không</span></td><td class="n pos">+$567<br><span class="muted small">+9%</span></td><td class="n pos">+$2,235<br><span class="muted small">+35%</span></td><td class="n pos">+$2,779<br><span class="muted small">+44%</span></td><td class="n pos">+$516<br><span class="muted small">+8%</span></td><td class="n neg">−$2,413<br><span class="muted small">−38%</span></td><td class="n neg">−11%</td></tr>
+<tr class="note"><td colspan="9">Không bao giờ cháy, nhưng lãi chỉ bằng khoảng một nửa các phương án 2x.</td></tr>
+<tr class="main"><td><b>B. Spot rổ 5 coin</b><br><span class="muted small">HYPE, SOL, LIT, LINK, BNB mỗi coin 20%</span></td><td class="n">1.0x</td><td class="n"><span class="muted">không</span></td><td class="n pos">+$746<br><span class="muted small">+12%</span></td><td class="n pos">+$2,249<br><span class="muted small">+35%</span></td><td class="n pos">+$2,509<br><span class="muted small">+39%</span></td><td class="n pos">+$536<br><span class="muted small">+8%</span></td><td class="n neg">−$2,489<br><span class="muted small">−39%</span></td><td class="n neg">−10%</td></tr>
+<tr class="note"><td colspan="9">Không hơn spot 1 coin. Ba chu kỳ gần nhất, rổ alt chia đều đều thua BTC sau 12 tháng.</td></tr>
+<tr class="main"><td><b>C. Perp 2x đang đặt</b><br><span class="muted small">5 lệnh chờ hiện tại, cross, chưa khớp</span></td><td class="n">1.8x</td><td class="n">$50.0K<br><span class="muted small">$54.3K nếu alt yếu</span></td><td class="n pos">+$0<br><span class="muted small">+0%</span></td><td class="n pos">+$4,619<br><span class="muted small">+72%</span></td><td class="n pos">+$5,095<br><span class="muted small">+80%</span></td><td class="n pos">+$1,243<br><span class="muted small">+19%</span></td><td class="n neg">−$4,464<br><span class="muted small">−70%</span></td><td class="n neg">−12%</td></tr>
+<tr class="note"><td colspan="9">Không khớp lệnh nào nếu BTC bật từ ~80K. LIT để cross kéo mức thanh lý lên ~$50K.</td></tr>
+<tr class="main rec"><td><b>D. Lõi + vệ tinh + nhồi</b> <span class="pill sat">khuyến nghị</span><br><span class="muted small">HYPE/SOL cross có lệnh mồi, NEAR/LIT isolated, nhồi HYPE/NEAR khi BTC đóng ngày trên 88K</span></td><td class="n">1.7x</td><td class="n">$46.6K<br><span class="muted small">$51.2K nếu alt yếu</span></td><td class="n pos">+$1,267<br><span class="muted small">+20%</span></td><td class="n pos">+$4,887<br><span class="muted small">+77%</span></td><td class="n pos">+$7,150<br><span class="muted small">+112%</span></td><td class="n pos">+$920<br><span class="muted small">+14%</span></td><td class="n neg">−$4,544<br><span class="muted small">−71%</span><br><span class="pill warn">mất ký quỹ vệ tinh</span></td><td class="n neg">−15%</td></tr>
+<tr class="note rec"><td colspan="9">Có phần vào ngay, đòn bẩy dồn vào HYPE/SOL, vệ tinh bị chặn lỗ, chỉ nhồi khi đã xác nhận.</td></tr>
+<tr class="main"><td><b>E. Degen: HYPE 3x</b><br><span class="muted small">Dồn hết vào HYPE, cross 3x, 30% vào ngay</span></td><td class="n">3.0x</td><td class="n">$63.4K<br><span class="muted small">$66.0K nếu alt yếu</span></td><td class="n pos">+$1,443<br><span class="muted small">+23%</span></td><td class="n pos">+$5,802<br><span class="muted small">+91%</span></td><td class="n pos">+$7,659<br><span class="muted small">+120%</span></td><td class="n pos">+$755<br><span class="muted small">+12%</span></td><td class="n neg cell-liq">−$6,046<br><span class="muted small">−95%</span><br><span class="pill loss">cháy</span></td><td class="n neg">−32%</td></tr>
+<tr class="note"><td colspan="9">Lãi lớn nhất nếu đúng ngay, nhưng −32% khi BTC về 73K và cháy quanh $63K. Funding cao ăn hết lợi thế.</td></tr>
+<tr class="main"><td><b>F. Rổ coin trend 2x</b><br><span class="muted small">NEAR, PUMP, ENA, ZEC, nửa vào ngay, nửa chờ −15%</span></td><td class="n">2.0x</td><td class="n">$60.2K<br><span class="muted small">$63.3K nếu alt yếu</span></td><td class="n pos">+$2,921<br><span class="muted small">+46%</span></td><td class="n pos">+$6,736<br><span class="muted small">+106%</span></td><td class="n pos">+$15,790<br><span class="muted small">+248%</span></td><td class="n pos">+$1,018<br><span class="muted small">+16%</span></td><td class="n neg cell-liq">−$6,213<br><span class="muted small">−97%</span><br><span class="pill loss">cháy</span></td><td class="n neg">−33%</td></tr>
+<tr class="note"><td colspan="9">Upside lớn nhất trên giấy. Thực tế coin trend rơi 46–77% trong một ngày 10/10/2025.</td></tr>
+<tr class="main"><td><b>G. Call BTC + USDC</b><br><span class="muted small">30% mua call 110K tháng 3/2027, 70% USDC lãi ~4%/năm</span></td><td class="n">quyền chọn</td><td class="n"><span class="muted">không</span></td><td class="n pos">+$1,828<br><span class="muted small">+29%</span></td><td class="n pos">+$1,828<br><span class="muted small">+29%</span></td><td class="n pos">+$13,426<br><span class="muted small">+211%</span></td><td class="n neg">−$1,378<br><span class="muted small">−22%</span></td><td class="n neg">−$1,867<br><span class="muted small">−29%</span></td><td class="n neg">−24%</td></tr>
+<tr class="note"><td colspan="9">Lỗ tối đa ~30%, ăn đậm nếu BTC lên 120K. Cần tài khoản quyền chọn, và mất giá dần theo thời gian.</td></tr>
+</tbody></table></div>
+  <p class="small muted">Funding cũng là chi phí lớn. Nếu thị trường hưng phấn như cuối 2024 (funding HYPE ~60%/năm, SOL ~45%), 3 tháng giữ vị thế ở kịch bản 73K → 100K tốn khoảng $1,750 với lệnh đang đặt, $2,015 với phương án D và $3,370 với HYPE 3x. Khi đó lãi của HYPE 3x chỉ còn ngang phương án D.</p>
+</section>
+
+<section id="mo-phong">
+  <header>
+    <p class="eyebrow">Mô phỏng</p>
+    <h2>Tự kéo kịch bản</h2>
+    <p class="lede">Chọn BTC chỉnh về đâu và sau đó lên tới đâu. Mỗi thanh là lãi/lỗ của một phương án sau khoảng thời gian bạn chọn, kể cả funding và phí.</p>
+  </header>
+  <div class="sim">
+    <div class="presets" id="sim-presets"><button type="button" data-id="bat" data-low="80000" data-tgt="100000" aria-pressed="false">Bật luôn <span class="mono">80→100K</span></button><button type="button" data-id="nong" data-low="77000" data-tgt="100000" aria-pressed="false">Chỉnh nông <span class="mono">77→100K</span></button><button type="button" data-id="day" data-low="73000" data-tgt="100000" aria-pressed="true">Về vùng đáy <span class="mono">73→100K</span></button><button type="button" data-id="sau" data-low="66000" data-tgt="95000" aria-pressed="false">Chỉnh sâu <span class="mono">66→95K</span></button><button type="button" data-id="linh" data-low="74000" data-tgt="84000" aria-pressed="false">Lình xình <span class="mono">74→84K</span></button><button type="button" data-id="sieu" data-low="75000" data-tgt="120000" aria-pressed="false">Siêu sóng <span class="mono">75→120K</span></button><button type="button" data-id="gay" data-low="57000" data-tgt="60000" aria-pressed="false">Gãy tiền đề <span class="mono">57→60K</span></button></div>
+    <div class="controls">
+      <div class="ctl"><label for="sim-low">BTC chỉnh về <output id="out-low">$73.0K</output></label><input type="range" id="sim-low" min="55000" max="81500" step="500" value="73000"></div>
+      <div class="ctl"><label for="sim-tgt">Rồi lên tới <output id="out-tgt">$100K</output></label><input type="range" id="sim-tgt" min="55000" max="130000" step="1000" value="100000"></div>
+      <div class="ctl"><label for="sim-mode">Alt chạy thế nào</label><select id="sim-mode"><option value="base">Như dữ liệu 2026</option><option value="strong">Alt mạnh (mùa alt)</option><option value="weak">Alt yếu (BTC hút tiền)</option></select></div>
+      <div class="ctl"><label for="sim-fund">Funding</label><select id="sim-fund"><option value="calm">Bình thường (8–16%/năm)</option><option value="hot">Hưng phấn (35–60%/năm)</option></select></div>
+      <div class="ctl"><label for="sim-months">Thời gian giữ <output id="out-months">3 tháng</output></label><input type="range" id="sim-months" min="1" max="6" step="1" value="3"></div>
+    </div>
+    <div class="results" id="sim-results" aria-live="polite"></div>
+    <p class="small muted" id="sim-note"></p>
+  </div>
+  <details>
+    <summary>Mô hình tính thế nào</summary>
+    <div class="prose small">
+      <p>Giá mỗi coin bám BTC theo hàm mũ P = P0 × (BTC/BTC0)^β. Khi BTC giảm, mô hình dùng beta chiều giảm; từ đáy đi lên thì dùng beta chiều tăng. Coin nào rơi mạnh hơn lúc hồi thì sau một vòng sẽ thấp hơn điểm xuất phát, đúng như dữ liệu 2026.</p>
+      <p>Beta chiều giảm lấy từ beta theo giờ nhân 1.4, vì nhịp nhiều ngày lớn hơn nhịp theo giờ. Beta chiều tăng là trung bình của beta theo giờ và tỷ lệ tăng thực tế của nhịp 1/8 → 21/9. Lệnh chờ chỉ khớp nếu giá mô phỏng chạm tới. Thanh lý cross khi vốn nhỏ hơn tổng ký quỹ duy trì (HYPE 5%, SOL 2.5%, LIT 10%). Lệnh isolated chỉ mất ký quỹ của chính nó. Call BTC định giá bằng Black-Scholes, IV 40%.</p>
+      <p>Mô hình không tính tin riêng của từng coin, cú quét thanh lý vượt mức beta, trượt giá. Hãy xem kết quả như thứ tự xếp hạng giữa các phương án, không phải con số chắc chắn.</p>
+    </div>
+  </details>
+</section>
+
+<section id="watchlist">
+  <header>
+    <p class="eyebrow">Watchlist</p>
+    <h2>Sáu coin bạn đang theo dõi</h2>
+    <p class="lede">Beta đo theo giờ từ 1/7 (chiều giảm / chiều tăng). Nhịp tăng là mức tăng của coin chia cho mức tăng của BTC từ 1/8 đến 21/9.</p>
+  </header>
+  <div class="cards">
+    <article class="coin">
+      <div class="top"><span class="tk">HYPE</span><span class="pill core">Lõi chính</span></div>
+      <dl class="kv"><dt>Giá</dt><dd>$79.92</dd><dt>Từ đỉnh $98 (23/9)</dt><dd>−18%</dd><dt>Beta giảm / tăng</dt><dd>1.24 / 0.84</dd><dt>Nhịp tăng so với BTC</dt><dd>2.0x</dd><dt>Ngày 10/10/2025</dt><dd>−28%</dd><dt>Funding hiện tại</dt><dd>7.4%/năm</dd></dl>
+      <ul>
+        <li>Doanh thu 30 ngày $71M (~$864M/năm). Quỹ hỗ trợ mua lại ~$2.37M mỗi ngày, đang giữ 48.1M HYPE.</li>
+        <li>Hai ETF HYPE ở Mỹ có ~$430M. Hyperliquid Strategies giữ 38.5M HYPE, tăng ~5M trong một tháng.</li>
+        <li>Hyperliquid chiếm ~57% OI perp on-chain.</li>
+        <li>Rủi ro: đội ngũ mở khóa ~9.9M HYPE/tháng trên lý thuyết. Đầu tháng 10 có 3.75M HYPE được rút stake để bán OTC. Long HYPE thường trả funding gấp đôi BTC.</li>
+      </ul>
+      <p class="why"><b>Vai trò:</b> tỷ trọng lớn nhất. Polymarket cho 45% khả năng HYPE chạm $100 trước cuối năm, 54.5% khả năng về $70.</p>
+    </article>
+    <article class="coin">
+      <div class="top"><span class="tk">SOL</span><span class="pill core">Lõi thứ hai</span></div>
+      <dl class="kv"><dt>Giá</dt><dd>$104.6</dd><dt>Từ đỉnh 1/2025</dt><dd>−65%</dd><dt>Beta giảm / tăng</dt><dd>1.33 / 1.03</dd><dt>Nhịp tăng so với BTC</dt><dd>1.7x</dd><dt>Ngày 10/10/2025</dt><dd>−38%</dd><dt>Funding hiện tại</dt><dd>~0%</dd></dl>
+      <ul>
+        <li>Alpenglow kích hoạt trên mainnet ngày 21/10.</li>
+        <li>Doanh thu mạng (REV) +48% so với quý trước. Stablecoin lập đỉnh $17.5B (25/9).</li>
+        <li>ETF SOL có ~$1.68B nhưng bị rút 9 phiên liền tới 15/10. Các công ty giữ SOL phần lớn giao dịch dưới giá trị tài sản.</li>
+        <li>Từ đầu năm SOL −16%, BTC −7%.</li>
+      </ul>
+      <p class="why"><b>Vai trò:</b> coin bị đánh sâu nhưng có catalyst, thanh khoản sâu nhất sau BTC/ETH, và long 2x sống sót qua ngày 10/10.</p>
+    </article>
+    <article class="coin">
+      <div class="top"><span class="tk">LIT</span><span class="pill sat">Vệ tinh ngắn hạn</span></div>
+      <dl class="kv"><dt>Giá</dt><dd>$3.20</dd><dt>Từ đỉnh $5.59 (24/9)</dt><dd>−43%</dd><dt>Beta giảm / tăng</dt><dd>1.55 / 0.96</dd><dt>Nhịp tăng so với BTC</dt><dd>3.5x</dd><dt>Vốn hóa / FDV</dt><dd>$801M / $3.2B</dd><dt>Funding hiện tại</dt><dd>−13.6%/năm</dd></dl>
+      <ul>
+        <li>Beta cao nhất watchlist. Funding âm nghĩa là người giữ long đang được trả phí.</li>
+        <li>Mua lại $2.77M trong 30 ngày. Từ 27/12 (hoặc 28/1, hai nguồn ghi khác nhau) mở khóa ~13.9M LIT/tháng, gấp khoảng 20 lần lượng mua lại.</li>
+        <li>Robinhood chọn Bitstamp cho perp ở Mỹ (30/9). Chưa có catalyst nào có ngày cụ thể.</li>
+      </ul>
+      <p class="why"><b>Vai trò:</b> lệnh bắt đáy nhỏ, isolated, đóng trước 20/12. Polymarket cho 51.5% khả năng LIT về $2.50 trước 2027.</p>
+    </article>
+    <article class="coin">
+      <div class="top"><span class="tk">LINK</span><span class="pill sat">Vệ tinh thay thế</span></div>
+      <dl class="kv"><dt>Giá</dt><dd>$12.31</dd><dt>Từ đỉnh 12/2024</dt><dd>−60%</dd><dt>Beta giảm / tăng</dt><dd>1.56 / 0.99</dd><dt>Nhịp tăng so với BTC</dt><dd>1.7x</dd><dt>Ngày 10/10/2025</dt><dd>−65%</dd><dt>OI trên Hyperliquid</dt><dd>$61M</dd></dl>
+      <ul>
+        <li>Mạnh nhất trong ba major năm 2026: LINK/BTC +23% từ 1/7, và đi ngang BTC trong nhịp chỉnh.</li>
+        <li>Chuyện tổ chức là thật: DTCC giao dịch thật (15/7), CCIP 2.0 (28/9), UBS.</li>
+        <li>Nhưng Chainlink Reserve chỉ mua ~$4–5M/tháng, trong khi ví của đội vừa chuyển ~14.1M LINK (~$180M) lên Binance ngày 9/10.</li>
+      </ul>
+      <p class="why"><b>Vai trò:</b> thay NEAR nếu bạn muốn ít biến động hơn. Chỉ spot hoặc 1x, vì LINK từng sập 65% trong một ngày.</p>
+    </article>
+    <article class="coin">
+      <div class="top"><span class="tk">BNB</span><span class="pill skip">Bỏ qua</span></div>
+      <dl class="kv"><dt>Giá</dt><dd>$721</dd><dt>Từ đỉnh $1,370 (10/2025)</dt><dd>−48%</dd><dt>Beta giảm / tăng</dt><dd>0.91 / 0.64</dd><dt>Nhịp tăng so với BTC</dt><dd>1.0x</dd><dt>Ngày 10/10/2025</dt><dd>−36%</dd></dl>
+      <ul>
+        <li>Đợt đốt quý thứ 37 (~1.6M BNB, ~$1B) sắp diễn ra.</li>
+        <li>Cầu mới yếu: ETF BNB rất nhỏ, công ty giữ BNB giao dịch ở 0.6 lần giá trị tài sản, DEX trên BSC giảm 50–60% so với Q4/2025.</li>
+      </ul>
+      <p class="why"><b>Vai trò:</b> giữ giá tốt nhưng tăng chậm hơn BTC. Không hợp phần degen.</p>
+    </article>
+    <article class="coin">
+      <div class="top"><span class="tk">KNTQ</span><span class="pill skip">Tránh</span></div>
+      <dl class="kv"><dt>Giá spot</dt><dd>~$0.311</dd><dt>Đỉnh 11/10</dt><dd>$0.385</dd><dt>kHYPE 14 ngày</dt><dd>−8.7%</dd><dt>TVL</dt><dd>$940M</dd><dt>Mở khóa 27/11</dt><dd>310M KNTQ</dd></dl>
+      <ul>
+        <li>Đợt claim S2 đã xong. 16.29M KNTQ chưa claim được trả về ví tăng trưởng.</li>
+        <li>Nền tảng đang co lại: TVL sát ngưỡng vô hiệu $900M của báo cáo trước, doanh thu tháng 10 chỉ bằng ~60% tháng 9.</li>
+        <li>Chỉ có spot, độ sâu sổ lệnh ±2% khoảng $59K/$53K.</li>
+      </ul>
+      <p class="why"><b>Vai trò:</b> không đưa vào kế hoạch. Nếu muốn, chỉ trade sự kiện với số tiền nhỏ.</p>
+    </article>
+  </div>
+</section>
+
+<section id="trend">
+  <header>
+    <p class="eyebrow">Coin theo trend</p>
+    <h2>Narrative đang có dòng tiền</h2>
+    <p class="lede">So với BTC trong 90 ngày, nhóm ẩn danh mạnh nhất (+31%), sau đó là hạ tầng liên chuỗi (+27%), DeFi có doanh thu (+23%) và AI (+10%). Trong nhịp chỉnh, nhóm hạ tầng và AI vẫn tăng. Nhóm yếu nhất là RWA, L1 mới, meme, và perp DEX trừ HYPE.</p>
+  </header>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Coin (Hyperliquid)</th><th>Narrative</th><th class="n">Giá</th><th class="n">OI</th><th class="n">Từ đáy 1/8</th><th class="n">Từ đỉnh BTC 21/9</th><th class="n">Beta giảm</th><th>Catalyst</th><th>Rủi ro</th><th>Cách dùng</th></tr></thead>
+      <tbody>
+        <tr class="rec"><td><b>NEAR</b></td><td>AI agent + ETF</td><td class="n">$5.07</td><td class="n">$313M</td><td class="n pos">+206%</td><td class="n pos">+24.5%</td><td class="n">1.85</td><td>ETF Bitwise NRR giao dịch từ 29/9</td><td>Đã +88% trong 30 ngày</td><td>Vệ tinh chính, chờ 4.40 / 3.95</td></tr>
+        <tr><td><b>ZRO</b></td><td>Liên chuỗi</td><td class="n">$1.97</td><td class="n">$72M</td><td class="n pos">+172%</td><td class="n pos">+66%</td><td class="n">1.34</td><td>Chain "Zero" dự kiến mùa thu</td><td>Mở khóa ~25.7M ZRO (~$50M) ngày 20/10</td><td>Chỉ xem sau 20/10</td></tr>
+        <tr><td><b>TIA</b></td><td>Modular</td><td class="n">$0.712</td><td class="n">$17M</td><td class="n pos">+132%</td><td class="n pos">+72%</td><td class="n">1.90</td><td>Fibre, đề xuất tokenomics mới (16/10)</td><td>OI mỏng, từng sập 84% trong một ngày</td><td>Bỏ qua hoặc rất nhỏ</td></tr>
+        <tr><td><b>PUMP</b></td><td>Doanh thu, mua lại</td><td class="n">$0.00461</td><td class="n">$174M</td><td class="n pos">+123%</td><td class="n pos">+6%</td><td class="n">1.50</td><td>Doanh thu 30 ngày $44.4M (+30%), dùng để mua lại</td><td>Insider nhận token khoảng ngày 12 hàng tháng; từng sập 75% trong một ngày</td><td>Trade ngắn</td></tr>
+        <tr><td><b>ENA</b></td><td>Doanh thu (fee switch)</td><td class="n">$0.198</td><td class="n">$98M</td><td class="n pos">+146%</td><td class="n neg">−6%</td><td class="n">1.94</td><td>Hết mở khóa nhà đầu tư từ 5/10</td><td>Fee switch cần USDe $7.5B, hiện ~$4.1B</td><td>Beta cao, trade ngắn</td></tr>
+        <tr><td><b>ZEC</b></td><td>Ẩn danh</td><td class="n">$1,151</td><td class="n">$534M</td><td class="n pos">+148%</td><td class="n neg">−21%</td><td class="n">1.62</td><td>NU7 kích hoạt 5/11; Winklevoss nộp hồ sơ ETF 6/10</td><td>Đông người nhất, ETF đang bị rút</td><td>Không đuổi giá</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="two">
+    <div class="callout">
+      <h3>Token sắp ra mắt (Polymarket)</h3>
+      <ul class="small" style="margin:0;padding-left:1.1rem;display:grid;gap:.3rem">
+        <li><b>Variational:</b> 86.5% ra token trước 31/12. FDV trung vị ~$1.2–1.3B. 32% nguồn cung cho người có điểm.</li>
+        <li><b>Predict.fun:</b> 78% trước 30/11, 43% FDV trên $1B.</li>
+        <li><b>Extended:</b> 66% FDV trên $150M. Chưa có token.</li>
+        <li>MetaMask, Base, OpenSea: chỉ ~8% ra token trong 2026.</li>
+      </ul>
+    </div>
+    <div class="callout warn">
+      <h3>Nên tránh</h3>
+      <ul class="small" style="margin:0;padding-left:1.1rem;display:grid;gap:.3rem">
+        <li>Token mới lưu hành thấp: MON (12% lưu hành), MEGA, STABLE, XPL, WLFI, ASTER.</li>
+        <li>Meme mới đang bị xả (PONS, CASHCAT, USELESS) và KAITO (−68% trong 90 ngày).</li>
+        <li>RWA như CC, ONDO. STRK vừa −32% trong 7 ngày.</li>
+        <li>ARB: phe short quá đông (funding −35%/năm), dễ bị giật cả hai chiều.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="ke-hoach">
+  <header>
+    <p class="eyebrow">Kế hoạch lệnh</p>
+    <h2>Từ 5 lệnh hiện tại sang phương án D</h2>
+    <p class="lede">Bên trái là các mốc giá BTC thị trường đang để ý. Bên phải là chỗ lệnh của bạn khớp, chỗ chốt lời và chỗ cháy, quy đổi theo beta cơ sở.</p>
+  </header>
+  <div class="ladder-wrap"><svg viewBox="0 0 720 760" role="img" aria-labelledby="ladder-title"><title id="ladder-title">Thang giá BTC: mốc thị trường bên trái, lệnh và mức thanh lý của kế hoạch D bên phải</title><line x1="360" x2="360" y1="24" y2="736" class="l-axisline"/><line x1="355" x2="365" y1="651.9848654595908" y2="651.9848654595908" class="l-tick"/><text x="360" y="655.9848654595908" text-anchor="middle" class="l-axis">50K</text><line x1="355" x2="365" y1="532.1587985825506" y2="532.1587985825506" class="l-tick"/><text x="360" y="536.1587985825506" text-anchor="middle" class="l-axis">60K</text><line x1="355" x2="365" y1="430.8473025919977" y2="430.8473025919977" class="l-tick"/><text x="360" y="434.8473025919977" text-anchor="middle" class="l-axis">70K</text><line x1="355" x2="365" y1="265.67747835456294" y2="265.67747835456294" class="l-tick"/><text x="360" y="269.67747835456294" text-anchor="middle" class="l-axis">90K</text><line x1="355" x2="365" y1="133.7919207850639" y2="133.7919207850639" class="l-tick"/><text x="360" y="137.7919207850639" text-anchor="middle" class="l-axis">110K</text><line x1="355" x2="365" y1="76.60597271856201" y2="76.60597271856201" class="l-tick"/><text x="360" y="80.60597271856201" text-anchor="middle" class="l-axis">120K</text><rect x="382" y="209.7097397244035" width="322" height="41.52267797644555" rx="4" class="b-tp"/><rect x="382" y="158.13632621703385" width="322" height="38.29571337856831" rx="4" class="b-tp"/><line x1="382" x2="704" y1="280.4471741360114" y2="280.4471741360114" class="m-pyr"/><line x1="382" x2="704" y1="330.92683653474717" y2="330.92683653474717" class="m-now"/><rect x="382" y="359.9961630393914" width="322" height="34.27416717527791" rx="4" class="b-fill"/><rect x="382" y="529.766259938749" width="322" height="30.639414452699043" rx="4" class="b-iso"/><line x1="382" x2="704" y1="636.9185540244905" y2="636.9185540244905" class="m-liq"/><line x1="382" x2="704" y1="651.724604870769" y2="651.724604870769" class="m-liqc"/><line x1="382" x2="704" y1="697.7878741702995" y2="697.7878741702995" class="m-liq"/><text x="392" y="181.284182906318" class="lbl">Chốt lời đợt 2</text><text x="698" y="181.284182906318" text-anchor="end" class="l-sub">BTC 100–106K</text><text x="392" y="234.47107871262628" class="lbl">Chốt lời đợt 1</text><text x="698" y="234.47107871262628" text-anchor="end" class="l-sub">BTC 92–98K</text><text x="392" y="274.4471741360114" class="lbl">Nhồi HYPE +$3K, NEAR +$1K</text><text x="698" y="274.4471741360114" text-anchor="end" class="l-sub">đóng ngày trên 88K</text><text x="392" y="324.92683653474717" class="lbl">Lệnh mồi 15 HYPE + 8 SOL</text><text x="698" y="324.92683653474717" text-anchor="end" class="l-sub">giá hiện tại</text><text x="392" y="381.1332466270303" class="lbl">7 lệnh chờ khớp</text><text x="698" y="381.1332466270303" text-anchor="end" class="l-sub">74.0–78.0K</text><text x="392" y="549.0859671650985" class="lbl">NEAR/LIT isolated cháy</text><text x="698" y="549.0859671650985" text-anchor="end" class="l-sub">57.5–60.2K</text><text x="392" y="630.9185540244905" class="lbl">Plan D cháy nếu alt yếu</text><text x="698" y="630.9185540244905" text-anchor="end" class="l-sub">$51.2K</text><text x="392" y="647.9185540244905" class="lbl">Lệnh hiện tại cháy</text><text x="698" y="647.9185540244905" text-anchor="end" class="l-sub">$50.0K</text><text x="392" y="691.7878741702995" class="lbl">Plan D cháy (cơ sở)</text><text x="698" y="691.7878741702995" text-anchor="end" class="l-sub">$46.6K</text><line x1="344" x2="354" y1="43.49753017291846" y2="43.49753017291846" class="l-lvl"/><circle cx="360" cy="43.49753017291846" r="3.5" class="l-lvl-dot"/><line x1="344" x2="354" y1="196.43203959560216" y2="196.43203959560216" class="l-lvl"/><circle cx="360" cy="196.43203959560216" r="3.5" class="l-lvl-dot"/><line x1="344" x2="354" y1="284.9435916931396" y2="284.9435916931396" class="l-lvl"/><circle cx="360" cy="284.9435916931396" r="3.5" class="l-lvl-dot"/><line x1="344" x2="354" y1="330.92683653474717" y2="330.92683653474717" class="l-now"/><circle cx="360" cy="330.92683653474717" r="3.5" class="l-now-dot"/><line x1="344" x2="354" y1="355.52723158175377" y2="355.52723158175377" class="l-lvl"/><circle cx="360" cy="355.52723158175377" r="3.5" class="l-lvl-dot"/><line x1="344" x2="354" y1="390.7824796587151" y2="390.7824796587151" class="l-lvl"/><circle cx="360" cy="390.7824796587151" r="3.5" class="l-lvl-dot"/><line x1="344" x2="354" y1="407.7844519425769" y2="407.7844519425769" class="l-lvl"/><circle cx="360" cy="407.7844519425769" r="3.5" class="l-lvl-dot"/><line x1="344" x2="354" y1="508.1010450636653" y2="508.1010450636653" class="l-inv"/><circle cx="360" cy="508.1010450636653" r="3.5" class="l-inv-dot"/><line x1="344" x2="354" y1="557.0738723578658" y2="557.0738723578658" class="l-inv"/><circle cx="360" cy="557.0738723578658" r="3.5" class="l-inv-dot"/><text x="338" y="47.49753017291846" text-anchor="end" class="lbl">Đỉnh lịch sử 10/2025</text><text x="338" y="60.49753017291846" text-anchor="end" class="l-sub">$126.2K</text><text x="338" y="200.43203959560216" text-anchor="end" class="lbl">Giá vốn holder 1–2 năm</text><text x="338" y="213.43203959560216" text-anchor="end" class="l-sub">$100.0K</text><text x="338" y="288.9435916931396" text-anchor="end" class="lbl">Đỉnh đôi 21/9 và 2/10</text><text x="338" y="301.9435916931396" text-anchor="end" class="l-sub">$87.4K</text><text x="338" y="334.92683653474717" text-anchor="end" class="lbl">Bây giờ, MA50, giá vốn ETF</text><text x="338" y="347.92683653474717" text-anchor="end" class="l-sub">$81.5K</text><text x="338" y="364.92683653474717" text-anchor="end" class="lbl">True Market Mean</text><text x="338" y="377.92683653474717" text-anchor="end" class="l-sub">$78.5K</text><text x="338" y="394.92683653474717" text-anchor="end" class="lbl">Giá vốn holder ngắn hạn</text><text x="338" y="407.92683653474717" text-anchor="end" class="l-sub">$74.4K</text><text x="338" y="424.92683653474717" text-anchor="end" class="lbl">MA200</text><text x="338" y="437.92683653474717" text-anchor="end" class="l-sub">$72.5K</text><text x="338" y="512.1010450636653" text-anchor="end" class="lbl">Đáy cao hơn 1/8</text><text x="338" y="525.1010450636653" text-anchor="end" class="l-sub">$62.2K</text><text x="338" y="561.0738723578658" text-anchor="end" class="lbl">Đáy chu kỳ 1/7</text><text x="338" y="574.0738723578658" text-anchor="end" class="l-sub">$57.8K</text></svg></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Coin</th><th>Lệnh đang có</th><th>Lệnh mới</th><th class="n">Khớp khi BTC ≈</th><th>Ghi chú</th></tr></thead>
+      <tbody>
+        <tr><td><b>HYPE</b></td><td class="muted">không có</td><td>15 @ ~79.5 (limit sát giá)</td><td class="n">bây giờ</td><td>Lệnh mồi</td></tr>
+        <tr><td><b>HYPE</b></td><td>30 @ 74</td><td>25 @ 74</td><td class="n">78.0K</td><td>Giảm 5 coin</td></tr>
+        <tr><td><b>HYPE</b></td><td>40 @ 69</td><td>34 @ 69</td><td class="n">74.9K</td><td>Giảm 6 coin</td></tr>
+        <tr><td><b>SOL</b></td><td class="muted">không có</td><td>8 @ ~104.5 (limit sát giá)</td><td class="n">bây giờ</td><td>Lệnh mồi</td></tr>
+        <tr><td><b>SOL</b></td><td>25 @ 95</td><td>12 @ 95</td><td class="n">77.4K</td><td>Giảm 13 coin</td></tr>
+        <tr><td><b>SOL</b></td><td>30 @ 88</td><td>18 @ 88</td><td class="n">74.3K</td><td>Giảm 12 coin</td></tr>
+        <tr><td><b>LIT</b></td><td>550 @ 2.6999, cross</td><td>330 @ 2.70, isolated 2x</td><td class="n">75.4K</td><td>Hủy lệnh cũ, đổi chế độ margin trước khi đặt lại. Đóng trước 20/12</td></tr>
+        <tr><td><b>NEAR</b></td><td class="muted">không có</td><td>110 @ 4.40, isolated 2x</td><td class="n">77.2K</td><td>Cháy nếu NEAR về 2.32</td></tr>
+        <tr><td><b>NEAR</b></td><td class="muted">không có</td><td>125 @ 3.95, isolated 2x</td><td class="n">74.0K</td><td>Cháy nếu NEAR về 2.08</td></tr>
+        <tr><td><b>HYPE</b></td><td class="muted">không có</td><td>+$3,000 vị thế, cross</td><td class="n">đóng ngày &gt; 88K</td><td>Nhồi khi xác nhận</td></tr>
+        <tr><td><b>NEAR</b></td><td class="muted">không có</td><td>+$1,000 vị thế, isolated 2x</td><td class="n">đóng ngày &gt; 88K</td><td>Nhồi khi xác nhận</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="two">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Chốt lời (reduce-only)</th><th class="n">Đợt 1<br><span class="muted">BTC ~92–98K</span></th><th class="n">Đợt 2<br><span class="muted">BTC ~100–106K</span></th><th>Phần còn lại</th></tr></thead>
+        <tbody>
+          <tr><td><b>HYPE</b></td><td class="n">30% @ $95</td><td class="n">30% @ $105</td><td>Gồng tới $115–120</td></tr>
+          <tr><td><b>SOL</b></td><td class="n">30% @ $122</td><td class="n">30% @ $135</td><td>Gồng tới $150</td></tr>
+          <tr><td><b>NEAR</b></td><td class="n">40% @ $6.3</td><td class="n">40% @ $7.5</td><td>Để chạy</td></tr>
+          <tr><td><b>LIT</b></td><td class="n">50% @ $3.9</td><td class="n">50% @ $4.5</td><td>Đóng hết trước 20/12, giá nào cũng đóng</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prose">
+      <h3>Kỷ luật khi gồng</h3>
+      <ul>
+        <li>Không rút USDC khi đang có vị thế. Số dư USDC đã giảm $200 so với lần kiểm tra trước, nên mức cháy nhích lên một chút.</li>
+        <li>BTC đóng ngày dưới $62.2K: cắt một nửa lõi, đóng hết vệ tinh. Đóng tuần dưới $57.8K: thoát hết.</li>
+        <li>Funding HYPE trên 40%/năm ba ngày liền: chốt bớt phần nhồi.</li>
+        <li>Không mở lệnh ngoài kế hoạch khi đang lỗ.</li>
+        <li>Xem lại toàn bộ sau FOMC 28/10 và 9/12.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="two">
+    <div class="prose">
+      <h3>Lịch sự kiện</h3>
+      <div class="timeline">
+        <div class="ev hot"><span class="d">20/10</span> ZRO mở khóa ~$50M</div>
+        <div class="ev hot"><span class="d">21/10</span> Solana Alpenglow lên mainnet</div>
+        <div class="ev hot"><span class="d">28/10</span> FOMC, thị trường cược 86.5% giữ nguyên</div>
+        <div class="ev"><span class="d">30/10</span> Đáo hạn quyền chọn $12.2B, max pain $79K</div>
+        <div class="ev"><span class="d">31/10</span> Hạn chót Mt. Gox (34.7K BTC)</div>
+        <div class="ev"><span class="d">3/11</span> Bầu cử giữa kỳ Mỹ</div>
+        <div class="ev"><span class="d">5/11</span> Zcash NU7</div>
+        <div class="ev"><span class="d">10/11</span> CPI tháng 10</div>
+        <div class="ev"><span class="d">27/11</span> KNTQ mở khóa 310M</div>
+        <div class="ev"><span class="d">6/12</span> HYPE mở khóa đội ngũ hằng tháng</div>
+        <div class="ev hot"><span class="d">9/12</span> FOMC, thị trường cược 76.5% tăng lãi</div>
+        <div class="ev hot"><span class="d">20/12</span> Hạn đóng LIT của kế hoạch</div>
+        <div class="ev"><span class="d">25/12</span> Đáo hạn quyền chọn $10.7B, max pain $75K</div>
+        <div class="ev hot"><span class="d">27/12–28/1</span> LIT bắt đầu mở khóa ~13.9M/tháng</div>
+        <div class="ev"><span class="d">trước 31/12</span> Variational nhiều khả năng ra token</div>
+      </div>
+    </div>
+    <div class="prose">
+      <h3>Ý tưởng ngoài 7K</h3>
+      <ul>
+        <li><b>Bán call trên BTC đang giữ.</b> Call 100K tháng 3/2027 trả khoảng $3,000 cho mỗi BTC (~3.7%). Nếu BTC vượt 100K, bạn bán ở 100K, đúng kế hoạch sẵn có. Nếu không, bạn giữ BTC và phí. Cần tài khoản Deribit hoặc OKX.</li>
+        <li><b>Farm điểm Variational.</b> Ước tính khoảng $350 airdrop cho mỗi $1M khối lượng ở FDV trung vị. Chỉ đáng nếu bạn trade nhiều. Đối ứng là vault của sàn, quy tắc tính điểm chưa công khai.</li>
+        <li><b>Lãi cho USDC rảnh.</b> Cho vay USDC trên Hyperliquid ~3.55%/năm, Felix/Morpho ~6.6%. Chỉ dùng phần không cần làm đệm ký quỹ.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="rui-ro">
+  <header>
+    <p class="eyebrow">Rủi ro</p>
+    <h2>Những gì có thể làm hỏng kế hoạch</h2>
+  </header>
+  <div class="two">
+    <div class="callout loss">
+      <h3>Thị trường</h3>
+      <ul class="small" style="margin:0;padding-left:1.1rem;display:grid;gap:.35rem">
+        <li>Fed tăng lãi tháng 12 cộng giá dầu cao có thể kéo BTC về $70–72K, vẫn nằm trong kế hoạch, hoặc sâu hơn.</li>
+        <li>Một cú quét như 10/10 làm alt rơi 30–70% trong vài giờ, nhanh và sâu hơn mô hình.</li>
+        <li>Funding hưng phấn: 3 tháng có thể tốn khoảng $2,000 với phương án D.</li>
+        <li>Quyền chọn chỉ định giá ~18–20% cho BTC trên $100K trước cuối tháng 3/2027. Kế hoạch bán BTC ở 100K của bạn cũng cần một phương án dự phòng.</li>
+      </ul>
+    </div>
+    <div class="callout warn">
+      <h3>Từng coin và mô hình</h3>
+      <ul class="small" style="margin:0;padding-left:1.1rem;display:grid;gap:.35rem">
+        <li>HYPE: đội ngũ mở khóa và bán OTC; HIP-3 phụ thuộc vào trade.xyz (~97.5% khối lượng); cạnh tranh từ các perp DEX khác.</li>
+        <li>NEAR: đã +88% trong 30 ngày. Lịch sử cho thấy đà tăng hay đảo chiều sau một tháng, nên chỉ mua khi điều chỉnh.</li>
+        <li>LIT: lượng mở khóa gấp ~20 lần lượng mua lại từ cuối tháng 12.</li>
+        <li>Beta ước lượng từ 3.5 tháng dữ liệu. Kết quả thật có thể lệch nhiều.</li>
+        <li>Pháp lý Việt Nam: chưa có sàn trong nước được cấp phép. Nghị định 284 phạt 30–50 triệu đồng khi giao dịch trên sàn không phép, chưa rõ áp dụng với cá nhân từ khi nào.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer id="nguon">
+  <div class="prose">
+    <p><b>Nguồn và phương pháp.</b> Giá, OI, funding, nến và beta lấy từ API công khai của Hyperliquid (snapshot 17/10/2026 03:23 UTC). Quyền chọn lấy từ Deribit và OKX. Doanh thu từ DefiLlama, xác suất từ Polymarket, Kalshi và CME FedWatch. Dòng tiền ETF lấy từ SoSoValue và Farside qua báo chí. On-chain từ Glassnode, CryptoQuant, Checkonchain và bitcoin-data.com. Mở khóa token từ Tokenomist và tài liệu dự án. Lịch sử chu kỳ tính từ dữ liệu CoinMarketCap.</p>
+    <p>Báo cáo đầy đủ có trích dẫn nằm trong repo tại <span class="mono">reports/Chiến lược 7K cho nhịp pump.md</span>, ghi chú nghiên cứu ở <span class="mono">research_notes/Chiến lược 7K cho nhịp pump/</span>.</p>
+    <p>Đây là phân tích dựa trên mô hình và dữ liệu tới 17/10/2026, không phải cam kết lợi nhuận. Giá thật có thể đi khác mọi kịch bản ở trên.</p>
+  </div>
+</footer>
+
+</main>
+</div>
+
+<script>
+// Scenario engine shared by the page and the node harness. Pure functions, no DOM.
+// Alt price follows BTC through a power law: P = P0 * (B/B0)^beta, with a downside beta on the way
+// to the dip low and an upside beta from the low to the target, so alts that fall harder than they
+// recover end the round trip below where they started.
+(function (root) {
+  const FEES = { perpMaker: 0.00015, perpTaker: 0.00045, spotMaker: 0.0004, spotTaker: 0.0007 };
+
+  function ncdf(x) {
+    const t = 1 / (1 + 0.2316419 * Math.abs(x));
+    const d = 0.3989423 * Math.exp(-x * x / 2);
+    const p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
+    return x > 0 ? 1 - p : p;
+  }
+
+  // Black-Scholes call value with zero rates; T in years.
+  function bsCall(S, K, T, iv) {
+    if (T <= 0) return Math.max(S - K, 0);
+    const v = iv * Math.sqrt(T), d1 = (Math.log(S / K) + v * v / 2) / v;
+    return S * ncdf(d1) - K * ncdf(d1 - v);
+  }
+
+  function betas(c, mode) {
+    return { dn: c.beta.dn * (mode.dn || 1), up: c.beta.up * (mode.up || 1) };
+  }
+
+  function priceDown(c, B0, B, mode) {
+    return c.p0 * Math.pow(Math.min(B, B0) / B0, betas(c, mode).dn);
+  }
+
+  function priceTarget(c, B0, Blow, Btgt, mode) {
+    const b = betas(c, mode), pLow = priceDown(c, B0, Blow, mode);
+    return pLow * Math.pow(Btgt / Math.min(Blow, B0), Btgt >= Blow ? b.up : b.dn);
+  }
+
+  // Account state when BTC has fallen from B0 to B; every resting buy above the coin's price at B has filled.
+  function stateAt(strat, env, B, mode) {
+    let cash = env.equity, crossPnl = 0, crossReq = 0, crossNotional = 0, deployed = 0, planned = 0;
+    const legs = strat.legs.filter(leg => !leg.trigger).map(leg => {
+      if (leg.type === 'call') {
+        const cost = leg.qty * leg.premium;
+        cash -= cost; planned += cost; deployed += cost;
+        return { leg, filled: true, cost };
+      }
+      const c = env.coins[leg.coin];
+      const p = priceDown(c, env.B0, B, mode);
+      const entry = leg.px == null ? c.p0 : leg.px;
+      const sz = leg.sz != null ? leg.sz : leg.usd / entry;
+      const filled = leg.px == null || p <= leg.px;
+      const L = { leg, entry, sz, p, filled, notional: sz * entry };
+      const cost = leg.type === 'spot' ? sz * entry : sz * entry / (leg.lev || 2);
+      planned += cost;
+      if (filled) {
+        deployed += cost;
+        if (leg.type === 'spot') cash -= sz * entry;
+        else if (leg.iso) {
+          L.margin = sz * entry / leg.lev;
+          cash -= L.margin;
+          L.isoEq = L.margin + sz * (p - entry);
+          L.isoLiq = L.isoEq < sz * p * c.mm;
+        } else {
+          crossPnl += sz * (p - entry);
+          crossReq += sz * p * c.mm;
+          crossNotional += sz * p;
+        }
+      }
+      return L;
+    });
+    const crossEq = cash + crossPnl;
+    return { legs, cash, crossEq, crossReq, crossNotional, deployed, planned,
+             crossLiq: crossNotional > 0 && crossEq < crossReq };
+  }
+
+  // Highest BTC price at which the cross bucket gets liquidated (null if it survives down to 25% of B0).
+  function crossLiqLevel(strat, env, mode) {
+    for (let B = env.B0; B > env.B0 * 0.25; B *= 0.9975) {
+      if (stateAt(strat, env, B, mode).crossLiq) return B;
+    }
+    return null;
+  }
+
+  // BTC price at which an isolated leg is liquidated.
+  function isoLiqLevel(leg, env, mode) {
+    const c = env.coins[leg.coin];
+    const entry = leg.px == null ? c.p0 : leg.px;
+    const pLiq = entry * (1 - 1 / leg.lev) / (1 - c.mm);
+    return env.B0 * Math.pow(pLiq / c.p0, 1 / betas(c, mode).dn);
+  }
+
+  function evaluate(strat, env, sc, mode) {
+    const { Blow, Btgt } = sc;
+    const s = stateAt(strat, env, Blow, mode);
+    const yr = env.months / 12;
+    const apr = coin => env.fundingAPR[coin] ?? env.fundingAPR.default;
+    let spot = 0, iso = 0, crossPnl = 0, crossFunding = 0, isoFunding = 0, fees = 0, isoLost = 0;
+    let calls = 0, callsLow = 0;
+    for (const L of s.legs) {
+      if (!L.filled) continue;
+      if (L.leg.type === 'call') {
+        calls += L.leg.qty * bsCall(Btgt, L.leg.K, (L.leg.expiryMonths - env.months) / 12, L.leg.iv);
+        callsLow += L.leg.qty * bsCall(Blow, L.leg.K, (L.leg.expiryMonths - env.months / 3) / 12, L.leg.iv);
+        continue;
+      }
+      const coin = L.leg.coin, c = env.coins[coin];
+      const pT = priceTarget(c, env.B0, Blow, Btgt, mode);
+      const market = L.leg.px == null;
+      if (L.leg.type === 'spot') {
+        spot += L.sz * pT;
+        fees += L.notional * (market ? FEES.spotTaker : FEES.spotMaker);
+        continue;
+      }
+      fees += L.notional * (market ? FEES.perpTaker : FEES.perpMaker);
+      const f = L.sz * (L.entry + pT) / 2 * apr(coin) * yr;
+      if (L.leg.iso) {
+        if (L.isoLiq) { isoLost += L.margin; continue; }
+        iso += L.margin + L.sz * (pT - L.entry) - f;
+        isoFunding += f;
+      } else if (!s.crossLiq) {
+        crossPnl += L.sz * (pT - L.entry);
+        crossFunding += f;
+      }
+    }
+    // Breakout adds: bought when BTC passes the trigger on the way up, held for half the period.
+    let pyramid = 0, pyrFunding = 0;
+    if (!s.crossLiq) {
+      for (const leg of strat.legs) {
+        if (!leg.trigger || Btgt < leg.trigger) continue;
+        const c = env.coins[leg.coin];
+        const entry = priceTarget(c, env.B0, Blow, leg.trigger, mode);
+        const sz = leg.usd / entry, pT = priceTarget(c, env.B0, Blow, Btgt, mode);
+        const f = sz * (entry + pT) / 2 * apr(leg.coin) * yr / 2;
+        pyramid += sz * (pT - entry) - f - leg.usd * FEES.perpTaker;
+        pyrFunding += f;
+      }
+    }
+    // A liquidated cross bucket keeps roughly half of its maintenance margin; the positions are gone.
+    let liqB = null, crossBucket;
+    if (s.crossLiq) {
+      liqB = crossLiqLevel(strat, env, mode);
+      crossBucket = 0.5 * stateAt(strat, env, liqB, mode).crossReq;
+    } else {
+      crossBucket = s.cash + crossPnl - crossFunding + pyramid;
+    }
+    const idle = strat.cashYield ? Math.max(0, s.cash) * strat.cashYield * yr : 0;
+    const final = crossBucket - fees + spot + iso + calls + idle;
+    const spotLow = s.legs.reduce((a, L) => a + (L.filled && L.leg.type === 'spot' ? L.sz * L.p : 0), 0);
+    const isoLow = s.legs.reduce((a, L) => a + (L.filled && L.leg.iso && !L.isoLiq ? L.isoEq : 0), 0);
+    const eqLow = (s.crossLiq ? crossBucket : s.crossEq) + spotLow + isoLow + callsLow;
+    return {
+      final, pnl: final - env.equity, pnlPct: (final - env.equity) / env.equity,
+      eqLow, ddPct: (eqLow - env.equity) / env.equity,
+      crossLiq: s.crossLiq, liqB, isoLost, funding: crossFunding + isoFunding + pyrFunding, fees, pyramid,
+      deployedPct: s.planned ? s.deployed / s.planned : 0,
+    };
+  }
+
+  // Up-front budget check: spot cost + isolated margin + cross initial margin at the chosen leverage.
+  function budget(strat, env) {
+    let used = 0, notional = 0;
+    for (const leg of strat.legs) {
+      if (leg.trigger) continue;
+      if (leg.type === 'call') { used += leg.qty * leg.premium; continue; }
+      const c = env.coins[leg.coin];
+      const entry = leg.px == null ? c.p0 : leg.px;
+      const sz = leg.sz != null ? leg.sz : leg.usd / entry;
+      used += leg.type === 'spot' ? sz * entry : sz * entry / (leg.lev || 2);
+      notional += sz * entry;
+    }
+    return { used, notional, free: env.equity - used, effLev: notional / env.equity };
+  }
+
+  const api = { bsCall, evaluate, stateAt, crossLiqLevel, isoLiqLevel, budget, priceDown, priceTarget, FEES };
+  if (typeof module !== 'undefined') module.exports = api; else root.MODEL = api;
+})(this);
+</script>
+<script>
+// Inputs for the simulator: Hyperliquid snapshot 2026-10-17 03:23 UTC, betas from the hourly screen
+// (downside beta x1.4 for multi-day amplification; upside = mean of hourly upside beta and the Aug-Sep rally swing).
+(function (root) {
+  const E = 6376;
+  const coins = {
+    BTC:  { p0: 81494,   mm: 0.0125, beta: { dn: 1.00, up: 1.00 } },
+    HYPE: { p0: 79.92,   mm: 0.05,   beta: { dn: 1.74, up: 1.31 } },
+    SOL:  { p0: 104.6,   mm: 0.025,  beta: { dn: 1.86, up: 1.30 } },
+    LIT:  { p0: 3.20,    mm: 0.10,   beta: { dn: 2.17, up: 1.78 } },
+    LINK: { p0: 12.31,   mm: 0.05,   beta: { dn: 2.18, up: 1.26 } },
+    BNB:  { p0: 721.1,   mm: 0.05,   beta: { dn: 1.27, up: 0.83 } },
+    NEAR: { p0: 5.07,    mm: 0.05,   beta: { dn: 2.59, up: 1.92 } },
+    PUMP: { p0: 0.00461, mm: 0.05,   beta: { dn: 2.10, up: 1.56 } },
+    ENA:  { p0: 0.198,   mm: 0.05,   beta: { dn: 2.72, up: 2.14 } },
+    ZEC:  { p0: 1151,    mm: 0.05,   beta: { dn: 2.27, up: 2.33 } },
+  };
+  const perp = (coin, px, sz, lev, iso) => ({ coin, type: 'perp', px, sz, lev, iso: !!iso });
+  const spot = (coin, px, usd) => ({ coin, type: 'spot', px, usd });
+  const strategies = [
+    { id: 'A', name: 'Spot 1 coin (HYPE)', sub: 'Không đòn bẩy, 30% vào ngay, 70% chờ 74/69',
+      legs: [spot('HYPE', null, 1913), spot('HYPE', 74, 2232), spot('HYPE', 69, 2231)] },
+    { id: 'B', name: 'Spot rổ 5 coin', sub: 'HYPE, SOL, LIT, LINK, BNB mỗi coin 20%',
+      legs: [['HYPE', 69.5], ['SOL', 89.5], ['LIT', 2.67], ['LINK', 10.27], ['BNB', 649]]
+        .flatMap(([c, px]) => [spot(c, null, 510), spot(c, px, 765)]) },
+    { id: 'C', name: 'Perp 2x đang đặt', sub: '5 lệnh chờ hiện tại, cross, chưa khớp',
+      legs: [perp('HYPE', 74, 30, 2), perp('HYPE', 69, 40, 2), perp('SOL', 95, 25, 2), perp('SOL', 88, 30, 2), perp('LIT', 2.6999, 550, 2)] },
+    { id: 'D', name: 'Lõi + vệ tinh + nhồi', sub: 'HYPE/SOL cross có lệnh mồi, NEAR/LIT isolated, nhồi HYPE/NEAR khi BTC đóng ngày trên 88K', rec: true,
+      legs: [
+        perp('HYPE', null, 15, 2), perp('HYPE', 74, 25, 2), perp('HYPE', 69, 34, 2),
+        perp('SOL', null, 8, 2), perp('SOL', 95, 12, 2), perp('SOL', 88, 18, 2),
+        perp('NEAR', 4.40, 110, 2, true), perp('NEAR', 3.95, 125, 2, true),
+        perp('LIT', 2.70, 330, 2, true),
+        { coin: 'HYPE', type: 'perp', trigger: 88000, usd: 3000 },
+        { coin: 'NEAR', type: 'perp', trigger: 88000, usd: 1000 },
+      ] },
+    { id: 'E', name: 'Degen: HYPE 3x', sub: 'Dồn hết vào HYPE, cross 3x, 30% vào ngay',
+      legs: [perp('HYPE', null, 72, 3), perp('HYPE', 74, 90, 3), perp('HYPE', 69, 97, 3)] },
+    { id: 'F', name: 'Rổ coin trend 2x', sub: 'NEAR, PUMP, ENA, ZEC, nửa vào ngay, nửa chờ −15%',
+      legs: [['NEAR', 5.07], ['PUMP', 0.00461], ['ENA', 0.198], ['ZEC', 1151]]
+        .flatMap(([c, p]) => [perp(c, null, 1594 / p, 2), perp(c, +(p * 0.85).toPrecision(4), 1594 / (p * 0.85), 2)]) },
+    { id: 'G', name: 'Call BTC + USDC', sub: '30% mua call 110K tháng 3/2027, 70% USDC lãi ~4%/năm', cashYield: 0.04,
+      legs: [{ type: 'call', K: 110000, expiryMonths: 5.3, iv: 0.40, premium: 1750, qty: 1913 / 1750 }] },
+  ];
+  const modes = {
+    base: {},
+    strong: { dn: 0.85, up: 1.3 },
+    weak: { dn: 1.2, up: 0.75 },
+  };
+  const funding = {
+    calm: { default: 0.11, HYPE: 0.16, SOL: 0.08, LIT: 0.0, LINK: 0.08, NEAR: 0.11, BTC: 0.09 },
+    hot: { default: 0.45, HYPE: 0.6, SOL: 0.45, LIT: 0.35, LINK: 0.5, NEAR: 0.5, BTC: 0.37 },
+  };
+  const data = { env: { B0: 81494, equity: E, months: 3, fundingAPR: funding.calm, coins }, strategies, modes, funding };
+  if (typeof module !== 'undefined') module.exports = data; else root.PLAYBOOK_DATA = data;
+})(this);
+</script>
+<script>window.PLAYBOOK = Object.assign({}, window.PLAYBOOK_DATA, { modeNotes: {"base": "Beta theo dữ liệu 2026: alt rơi mạnh hơn khi BTC giảm so với lúc BTC tăng.", "strong": "Alt tăng mạnh hơn cơ sở 30% và giảm nhẹ hơn 15%, giống nhịp 1/8 → 21/9.", "weak": "Alt tăng yếu hơn cơ sở 25% và giảm mạnh hơn 20%, giống giai đoạn BTC hút tiền."} });</script>
+<script>
+// Simulator UI: reads the controls, runs every strategy through MODEL.evaluate and draws one bar per strategy.
+(function () {
+  const D = window.PLAYBOOK;
+  const $ = s => document.querySelector(s);
+  const el = { low: $('#sim-low'), tgt: $('#sim-tgt'), mode: $('#sim-mode'), fund: $('#sim-fund'), months: $('#sim-months') };
+  const out = { low: $('#out-low'), tgt: $('#out-tgt'), months: $('#out-months') };
+  const box = $('#sim-results'), note = $('#sim-note');
+  const usd = v => (v < 0 ? '−$' : '+$') + Math.abs(Math.round(v)).toLocaleString('en-US');
+  const usd0 = v => '$' + Math.round(v).toLocaleString('en-US');
+  const k = v => '$' + (v / 1000).toFixed(v >= 100000 ? 0 : 1) + 'K';
+  const pct = v => (v < 0 ? '−' : '+') + Math.abs(v * 100).toFixed(0) + '%';
+
+  function setPressed(id) {
+    document.querySelectorAll('#sim-presets button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === id)));
+  }
+
+  function render() {
+    let Blow = Math.min(+el.low.value, D.env.B0), Btgt = +el.tgt.value;
+    if (Btgt < Blow) { Btgt = Blow; el.tgt.value = String(Blow); }
+    out.low.textContent = Blow >= D.env.B0 - 1 ? k(D.env.B0) + ' (không chỉnh thêm)' : k(Blow);
+    out.tgt.textContent = k(Btgt);
+    out.months.textContent = el.months.value + ' tháng';
+    const regime = D.funding[el.fund.value];
+    const env = Object.assign({}, D.env, { months: +el.months.value, fundingAPR: regime });
+    const mode = D.modes[el.mode.value];
+    const rows = D.strategies.map(s => ({ s, r: MODEL.evaluate(s, env, { Blow, Btgt }, mode) }));
+    const lo = Math.min(0, ...rows.map(x => x.r.pnl)), hi = Math.max(0, ...rows.map(x => x.r.pnl));
+    const span = (hi - lo) || 1, zero = (-lo / span) * 100;
+    box.innerHTML = '';
+    for (const { s, r } of rows) {
+      const row = document.createElement('div');
+      row.className = 'res-row' + (s.rec ? ' rec' : '');
+      const w = Math.abs(r.pnl) / span * 100;
+      const left = r.pnl >= 0 ? zero : zero - w;
+      const bits = [];
+      bits.push('vốn đã vào ' + Math.round(r.deployedPct * 100) + '%');
+      bits.push('đáy ' + usd(r.eqLow - D.env.equity) + ' (' + pct(r.ddPct) + ')');
+      if (r.funding > 1) bits.push('funding −' + usd0(r.funding));
+      if (r.crossLiq) bits.push('<b class="cell-liq">THANH LÝ cross ở BTC ≈ ' + k(r.liqB) + '</b>');
+      if (r.isoLost > 1) bits.push('<b class="cell-liq">mất ký quỹ isolated ' + usd0(r.isoLost) + '</b>');
+      row.innerHTML =
+        '<div class="nm">' + s.name + '<small>' + s.sub + '</small></div>' +
+        '<div class="track" role="img" aria-label="' + s.name + ' ' + usd(r.pnl) + '">' +
+          '<span class="zero" style="left:' + zero + '%"></span>' +
+          '<span class="fill ' + (r.pnl >= 0 ? 'up' : 'dn') + '" style="left:' + left + '%;width:' + Math.max(w, .4) + '%"></span>' +
+        '</div>' +
+        '<div class="val">' + usd(r.pnl) + ' <span class="muted">' + pct(r.pnlPct) + '</span></div>' +
+        '<div class="res-meta">' + bits.join(' · ') + '</div>';
+      box.appendChild(row);
+    }
+    note.textContent = 'Vốn ' + usd0(D.env.equity) + '. BTC ' + k(D.env.B0) + ' → ' + k(Blow) + ' → ' + k(Btgt) + '. ' + D.modeNotes[el.mode.value];
+  }
+
+  document.querySelectorAll('#sim-presets button').forEach(b => b.addEventListener('click', () => {
+    el.low.value = b.dataset.low; el.tgt.value = b.dataset.tgt; setPressed(b.dataset.id); render();
+  }));
+  [el.low, el.tgt].forEach(i => i.addEventListener('input', () => { setPressed(''); render(); }));
+  [el.mode, el.fund, el.months].forEach(i => i.addEventListener('input', render));
+  render();
+})();
+</script>
+</body>
+</html>
