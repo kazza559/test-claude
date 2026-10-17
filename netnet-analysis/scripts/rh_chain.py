@@ -29,6 +29,8 @@ SOURCES = {
     "cg_rh_eco.json": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=robinhood-ecosystem&order=market_cap_desc&per_page=30&page=1&price_change_percentage=24h,7d,30d",
     "hs_stocks.json": "https://hoodscan.co/stocks-api",
     "hs_memes.json": "https://hoodscan.co/meme-stocks-api",
+    # Robinhood Earn = Steakhouse USDG vault on Morpho (DefiLlama yields pool): APY split into base and rewards
+    "llama_yield_steakusdg.json": "https://yields.llama.fi/chart/32f586b4-5358-5aa2-88ee-c842139e7023",
 }
 
 

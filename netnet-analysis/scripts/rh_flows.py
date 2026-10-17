@@ -93,10 +93,15 @@ ACT_RPC = "https://rpc.mainnet.chain.robinhood.com"  # drpc's free plan caps JSO
 
 def activity(start=datetime.date(2026, 7, 1), per_day=100):
     """User tx per day ~= mean(tx in sampled blocks - 1 ArbOS start tx) x blocks that day."""
+    fn = os.path.join(M, "rh_activity.csv")
+    done = {r["date"]: r for r in csv.DictReader(open(fn))} if os.path.exists(fn) else {}
     s = requests.Session()
     out = []
     mids = [(d, b) for d, b in day_blocks(start) if d != "head"]
     for (d, b0), (_, b1) in zip(mids, mids[1:]):
+        if d in done:  # a finished UTC day does not change: keep the earlier estimate
+            out.append(done[d])
+            continue
         nums = [b0 + int((b1 - b0) * (i + 0.5) / per_day) for i in range(per_day)]
         batch = [{"jsonrpc": "2.0", "id": i, "method": "eth_getBlockByNumber", "params": [hex(n), False]} for i, n in enumerate(nums)]
         res = None

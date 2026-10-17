@@ -1,43 +1,43 @@
 {
  "mint_sources_all_time": {
   "mint_genesis": 21666.666666666,
-  "mint_bond": 36779.31154313904,
+  "mint_bond": 45454.26907585093,
   "mint_premium": 2272.5672473290047,
-  "mint_rebase": 70721.59985762901,
+  "mint_rebase": 73834.56234130503,
   "mint_pteam": 13320.0
  },
- "transactions": 609813,
- "wallets": 42520,
+ "transactions": 653554,
+ "wallets": 44244,
  "net_flow_by_category_30d": {
   "other_wallets/net_sellers": {
-   "wallets": 7314,
-   "net_usd": -10603770
+   "wallets": 6279,
+   "net_usd": -8955759
   },
   "other_wallets/net_buyers": {
-   "wallets": 10424,
-   "net_usd": 14135848
-  },
-  "bond_claimers/net_sellers": {
-   "wallets": 308,
-   "net_usd": -8980585
+   "wallets": 9052,
+   "net_usd": 11704294
   },
   "bond_claimers/net_buyers": {
-   "wallets": 391,
-   "net_usd": 3081756
+   "wallets": 326,
+   "net_usd": 2262099
+  },
+  "bond_claimers/net_sellers": {
+   "wallets": 276,
+   "net_usd": -7702098
   },
   "team_rwa_sleeve/net_buyers": {
    "wallets": 1,
-   "net_usd": 2221635
+   "net_usd": 2262817
   }
  },
  "dex_user_flows_7d": {
-  "buy_usd": 10460937,
-  "sell_usd": 10409916,
-  "bond_claims_net": 6927.0
+  "buy_usd": 7504822,
+  "sell_usd": 7689554,
+  "bond_claims_net": 7823.2
  },
  "dex_user_flows_30d": {
-  "buy_usd": 55950007,
-  "sell_usd": 56095123,
-  "bond_claims_net": 28422.4
+  "buy_usd": 49989980,
+  "sell_usd": 50418627,
+  "bond_claims_net": 30711.1
  }
 }

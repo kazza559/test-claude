@@ -90,6 +90,11 @@ def main():
                  "user_tx_per_day": peak({d: num(r["user_tx_est"]) for d, r in act.items()}) if act else None},
         "morpho_borrow_by_collateral": json.load(open(os.path.join(M, "rh_morpho_usdg_borrow_by_collateral.json")))[:8],
     }
+    yfn = os.path.join(DATA, "..", "raw", "market", "llama_yield_steakusdg.json")
+    if os.path.exists(yfn):  # Robinhood Earn APY (base + Merkl rewards), last 30 days
+        pts = (json.load(open(yfn)).get("data") or [])[-30:]
+        summ["earn_apy"] = [{"date": x["timestamp"][:10], "apy": round(x.get("apy") or 0, 2), "base": round(x.get("apyBase") or 0, 2),
+                             "reward": round(x.get("apyReward") or 0, 2), "tvl": round(x.get("tvlUsd") or 0)} for x in pts]
     summ["now"]["stables"] = summ["now"]["usdg"] + summ["now"]["usde"] + summ["now"]["u"]
     summ["earn_share_of_usdg_pct"] = round(summ["now"]["earn_vault"] / summ["now"]["usdg"] * 100, 1)
     json.dump(summ, open(os.path.join(M, "rh_flow_summary.json"), "w"), indent=1)
