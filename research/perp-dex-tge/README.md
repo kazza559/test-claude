@@ -2,7 +2,12 @@
 
 Báo cáo chính: [`reports/Phân tích perp DEX - pattern TGE và định giá.md`](../../reports/Phân%20tích%20perp%20DEX%20-%20pattern%20TGE%20và%20định%20giá.md)
 
+Bản HTML (responsive, sáng/tối, biểu đồ tương tác): [`reports/Phân tích perp DEX - pattern TGE và định giá.html`](../../reports/Phân%20tích%20perp%20DEX%20-%20pattern%20TGE%20và%20định%20giá.html)
+
 ## Files
+
+- `html/report.template.html`, `html/chart_data.json`, `html/build.py`: nguồn của bản HTML.
+  Sửa template hoặc dữ liệu rồi chạy `python3 research/perp-dex-tge/html/build.py` để tạo lại file trong `reports/`.
 
 - `tools/polymarket_fdv_ladder.py`: kéo ladder "FDV above ___ one day after launch" của một event Polymarket,
   dựng lại median FDV ngụ ý theo thời gian. Chỉ dùng API công khai và thư viện chuẩn Python.

@@ -1,0 +1,2142 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Perp DEX: pattern TGE và định giá · dữ liệu 18/11/2026</title>
+<meta name="description" content="Phân tích dữ liệu lịch sử các perp DEX đã TGE (HYPE, ASTER, LIT, DIME, BP, EDGE, GRVT), độ lệch kỳ vọng Polymarket trước TGE, framework chấm điểm và định giá Extended, Variational, RISEx, TxFlow, Bulk, Arcus, QFEX. Dữ liệu chốt 18/11/2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<script>(function(){try{var t=localStorage.getItem('pdx-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+<style>
+/* ---------- tokens: light ---------- */
+:root{
+  color-scheme:light;
+  --font:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --page:#f2f1ec;--surface:#fcfcfb;--surface-2:#f4f3ef;--surface-3:#eae9e3;
+  --ink:#0b0b0b;--ink-2:#52514e;--ink-3:#6b6a65;--muted:#898781;
+  --grid:#e6e5df;--axis:#c3c2b7;--border:rgba(11,11,11,.10);--border-2:rgba(11,11,11,.16);
+  --accent:#2a78d6;--accent-ink:#1c5cab;--accent-soft:#e7f0fb;
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;
+  --o1:#86b6ef;--o2:#2a78d6;--o3:#104281;
+  --h1:#86b6ef;--h2:#5598e7;--h3:#2a78d6;--h4:#1c5cab;--h5:#104281;
+  --hi1:#0b0b0b;--hi2:#0b0b0b;--hi3:#ffffff;--hi4:#ffffff;--hi5:#ffffff;
+  --pos:#2a78d6;--pos-soft:#86b6ef;--neg:#e34948;
+  --deemph:#bab9b2;--track:#cde2fb;
+  --good:#0ca30c;--warning:#fab219;--serious:#ec835a;--critical:#d03b3b;
+  --good-ink:#006300;--neg-ink:#b42c2b;
+  --warn-bg:#fff6df;--warn-line:#efc65a;--info-bg:#e9f1fb;--good-bg:#e8f5e6;--crit-bg:#fdeceb;
+  --shadow:0 1px 2px rgba(11,11,11,.04),0 8px 28px rgba(11,11,11,.05);
+}
+/* ---------- tokens: dark (OS setting) ---------- */
+@media (prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme:dark;
+    --page:#0d0d0d;--surface:#1a1a19;--surface-2:#212120;--surface-3:#2a2a28;
+    --ink:#f0efec;--ink-2:#c3c2b7;--ink-3:#a5a49c;--muted:#898781;
+    --grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);--border-2:rgba(255,255,255,.17);
+    --accent:#3987e5;--accent-ink:#86b6ef;--accent-soft:#15243a;
+    --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;
+    --o1:#184f95;--o2:#3987e5;--o3:#9ec5f4;
+    --h1:#184f95;--h2:#256abf;--h3:#3987e5;--h4:#6da7ec;--h5:#9ec5f4;
+    --hi1:#ffffff;--hi2:#ffffff;--hi3:#0b0b0b;--hi4:#0b0b0b;--hi5:#0b0b0b;
+    --pos:#3987e5;--pos-soft:#184f95;--neg:#e66767;
+    --deemph:#4d4c48;--track:#0d366b;
+    --good-ink:#0ca30c;--neg-ink:#f08a88;
+    --warn-bg:#2b2410;--warn-line:#7a5d14;--info-bg:#132235;--good-bg:#132813;--crit-bg:#2d1717;
+    --shadow:0 1px 2px rgba(0,0,0,.45),0 8px 28px rgba(0,0,0,.28);
+  }
+}
+/* ---------- tokens: dark (toggle) ---------- */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#0d0d0d;--surface:#1a1a19;--surface-2:#212120;--surface-3:#2a2a28;
+  --ink:#f0efec;--ink-2:#c3c2b7;--ink-3:#a5a49c;--muted:#898781;
+  --grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);--border-2:rgba(255,255,255,.17);
+  --accent:#3987e5;--accent-ink:#86b6ef;--accent-soft:#15243a;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;
+  --o1:#184f95;--o2:#3987e5;--o3:#9ec5f4;
+  --h1:#184f95;--h2:#256abf;--h3:#3987e5;--h4:#6da7ec;--h5:#9ec5f4;
+  --hi1:#ffffff;--hi2:#ffffff;--hi3:#0b0b0b;--hi4:#0b0b0b;--hi5:#0b0b0b;
+  --pos:#3987e5;--pos-soft:#184f95;--neg:#e66767;
+  --deemph:#4d4c48;--track:#0d366b;
+  --good-ink:#0ca30c;--neg-ink:#f08a88;
+  --warn-bg:#2b2410;--warn-line:#7a5d14;--info-bg:#132235;--good-bg:#132813;--crit-bg:#2d1717;
+  --shadow:0 1px 2px rgba(0,0,0,.45),0 8px 28px rgba(0,0,0,.28);
+}
+
+/* ---------- base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:var(--accent-ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+h1,h2,h3,h4,h5{margin:0;line-height:1.25;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.25rem}
+li+li{margin-top:.35rem}
+li>ul{margin-top:.35rem}
+strong{font-weight:650}
+code{font-family:var(--mono);font-size:.88em}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--ink-2)}
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:12px;top:12px;z-index:100;background:var(--surface);padding:8px 12px;border-radius:8px}
+svg.ico{width:1em;height:1em;flex:none}
+.ic-warn{color:var(--warning)}
+.ic-good{color:var(--good)}
+.ic-bad{color:var(--critical)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* ---------- top bar ---------- */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--accent);z-index:70}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--surface) 86%,transparent);-webkit-backdrop-filter:saturate(1.6) blur(12px);backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid var(--border)}
+.topbar-in{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:8px max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left))}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap;font-size:15px}
+.brand-mark{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,var(--s1),var(--s3));display:grid;place-items:center;color:#fff;font-size:11px;font-weight:700;letter-spacing:.02em}
+.now{display:none;font-size:13.5px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.now b{color:var(--ink);font-weight:600}
+.chips{flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.chips::-webkit-scrollbar{display:none}
+.chips a{flex:none;font-size:13px;color:var(--ink-2);text-decoration:none;padding:5px 10px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.chips a:hover{background:var(--surface-2);color:var(--ink)}
+.chips a.on{background:var(--accent-soft);color:var(--accent-ink);border-color:color-mix(in srgb,var(--accent) 30%,transparent);font-weight:600}
+.spacer{flex:1}
+.icon-btn{flex:none;display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--ink);cursor:pointer;padding:0}
+.icon-btn:hover{background:var(--surface-2)}
+.icon-btn svg{width:18px;height:18px}
+@media (min-width:1180px){.chips{display:none}.now{display:block;flex:1}}
+@media (max-width:640px){.brand-text{display:none}.print-btn{display:none}.topbar-in{gap:8px}}
+
+/* ---------- layout ---------- */
+.shell{max-width:1320px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left));display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
+@media (min-width:1180px){.shell{grid-template-columns:236px minmax(0,1fr)}}
+.toc{display:none}
+@media (min-width:1180px){.toc{display:block;position:sticky;top:60px;align-self:start;max-height:calc(100vh - 64px);overflow:auto;padding:28px 4px 24px 0;scrollbar-width:thin}}
+.toc-title{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.toc ol{list-style:none;padding:0;margin:0;display:grid;gap:1px;border-left:1px solid var(--border)}
+.toc li{margin:0}
+.toc a{display:flex;gap:10px;padding:6px 10px 6px 14px;margin-left:-1px;border-left:2px solid transparent;color:var(--ink-2);text-decoration:none;font-size:14px;line-height:1.35;border-radius:0 8px 8px 0}
+.toc a .n{color:var(--ink-3);font-variant-numeric:tabular-nums;min-width:1.4em}
+.toc a:hover{color:var(--ink);background:var(--surface-2)}
+.toc a.on{color:var(--accent-ink);border-left-color:var(--accent);font-weight:600;background:linear-gradient(90deg,var(--accent-soft),transparent)}
+.toc a.on .n{color:var(--accent-ink)}
+.toc-meta{margin-top:18px;font-size:12.5px;color:var(--ink-3);display:grid;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:13.5px;font-weight:550;padding:8px 13px;border-radius:11px;border:1px solid var(--border);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;line-height:1.2}
+.btn:hover{background:var(--surface-2);text-decoration:none}
+.btn svg{width:15px;height:15px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-ink)}
+main{min-width:0;padding:28px 0 96px;display:grid;gap:76px}
+section{scroll-margin-top:64px;min-width:0;display:grid;gap:22px;align-content:start}
+.sec-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;align-items:center}
+.sec-num{grid-row:span 2;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-weight:700;font-size:17px;color:var(--accent-ink);background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 24%,transparent);font-variant-numeric:tabular-nums}
+.sec-head h2{font-size:clamp(1.4rem,1.05rem + 1.4vw,2rem);font-weight:700}
+.sec-head .lede{color:var(--ink-2);max-width:74ch}
+h3.sub{font-size:1.14rem;font-weight:650;display:flex;align-items:center;gap:10px;margin-top:6px}
+h3.sub::before{content:"";width:4px;height:18px;border-radius:2px;background:var(--accent);flex:none}
+.prose{max-width:78ch;display:grid;gap:12px}
+.prose ul,.prose ol{color:var(--ink-2)}
+.grid-2{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);min-width:0}
+.card>h4{font-size:1rem;font-weight:650;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card ul,.card ol{color:var(--ink-2);font-size:.95rem}
+.card li strong{color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;border-radius:24px;padding:clamp(22px,4vw,44px);display:grid;gap:20px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);
+  background:radial-gradient(90% 120% at 100% 0%,color-mix(in srgb,var(--s3) 15%,transparent) 0%,transparent 60%),radial-gradient(90% 120% at 0% 100%,color-mix(in srgb,var(--s1) 17%,transparent) 0%,transparent 62%),var(--surface)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink)}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 4px color-mix(in srgb,var(--good) 22%,transparent)}
+.hero h1{font-size:clamp(1.7rem,1.05rem + 2.6vw,2.9rem);font-weight:700;letter-spacing:-.02em;max-width:26ch;line-height:1.15}
+.hero .lede{font-size:clamp(1rem,.95rem + .25vw,1.1rem);color:var(--ink-2);max-width:72ch}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;font-size:12.5px;font-weight:550;background:var(--surface-2);border:1px solid var(--border);color:var(--ink-2);line-height:1.3}
+.pill svg{width:14px;height:14px}
+.pill.warn{background:var(--warn-bg);border-color:var(--warn-line);color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:720px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:color-mix(in srgb,var(--surface) 72%,transparent);border:1px solid var(--border);border-radius:15px;padding:14px 16px;display:grid;gap:3px;align-content:start}
+.kpi .k{font-size:12.5px;color:var(--ink-2);line-height:1.35}
+.kpi .v{font-size:clamp(1.2rem,1rem + .7vw,1.6rem);font-weight:650;letter-spacing:-.015em;line-height:1.2}
+.kpi .d{font-size:12.5px;color:var(--ink-3);line-height:1.4}
+.kpi.em{border-color:color-mix(in srgb,var(--accent) 40%,var(--border));background:color-mix(in srgb,var(--accent-soft) 70%,transparent)}
+.jump{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.jump .lab{font-size:13px;color:var(--ink-3);margin-right:2px}
+
+/* ---------- TL;DR ---------- */
+.tldr{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.tl{position:relative;padding:18px 20px;border-radius:17px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);display:grid;gap:10px;align-content:start}
+.tl .tag{justify-self:start;font-size:11.5px;font-weight:650;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);padding:3px 9px;border-radius:7px}
+.tl .no{position:absolute;right:16px;top:10px;font-size:30px;font-weight:700;color:color-mix(in srgb,var(--ink) 9%,transparent);font-variant-numeric:tabular-nums;line-height:1}
+.tl h3{font-size:1.02rem;font-weight:650;line-height:1.42;padding-right:30px}
+.tl ul{font-size:.94rem;color:var(--ink-2)}
+.tl li strong{color:var(--ink)}
+.tl.key{border-color:color-mix(in srgb,var(--accent) 40%,var(--border));background:linear-gradient(180deg,var(--accent-soft),var(--surface) 62%)}
+
+/* ---------- stats ---------- */
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr))}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:13px 15px;box-shadow:var(--shadow);display:grid;gap:2px;align-content:start}
+.stat .k{font-size:12.5px;color:var(--ink-2);line-height:1.35}
+.stat .v{font-size:1.5rem;font-weight:650;letter-spacing:-.01em;line-height:1.25}
+.stat .d{font-size:12.5px;color:var(--ink-3);line-height:1.4}
+.stats-cap{font-size:13px;color:var(--ink-3)}
+
+/* ---------- tables ---------- */
+.tbl{min-width:0;display:grid;gap:8px}
+.tbl-cap{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.tbl-cap .t{font-weight:650}
+.tbl-cap .s{font-size:13px;color:var(--ink-3)}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:15px;background:var(--surface);box-shadow:var(--shadow);-webkit-overflow-scrolling:touch}
+.swipe{display:none;font-size:12.5px;color:var(--ink-3);align-items:center;gap:6px}
+.tbl.scrollable .swipe{display:flex}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:14px;line-height:1.5}
+th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--grid)}
+thead th{font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--surface-2);white-space:nowrap;vertical-align:bottom}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--surface-2)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.nw{white-space:nowrap}
+.sticky th:first-child,.sticky td:first-child{position:sticky;left:0;z-index:1;background:var(--surface);box-shadow:inset -1px 0 0 var(--grid)}
+.sticky thead th:first-child{background:var(--surface-2)}
+.sticky tbody tr:hover td:first-child{background:var(--surface-2)}
+table.w-md{min-width:720px}
+table.w-lg{min-width:940px}
+table.w-xl{min-width:1180px}
+td .sub{display:block;font-size:12.5px;color:var(--ink-3)}
+td strong{font-weight:650}
+.up{color:var(--good-ink);font-weight:600}
+.down{color:var(--neg-ink);font-weight:600}
+.tok{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--surface-3);color:var(--ink-2);white-space:nowrap}
+.tok.live{background:var(--accent-soft);color:var(--accent-ink)}
+.flag{display:inline-flex;align-items:center;gap:5px;font-weight:650;white-space:nowrap}
+.flag svg{width:14px;height:14px}
+tr.em td{background:color-mix(in srgb,var(--accent-soft) 55%,var(--surface))}
+.sticky tr.em td:first-child{background:color-mix(in srgb,var(--accent-soft) 55%,var(--surface))}
+.fn{font-size:13px;color:var(--ink-3);max-width:90ch}
+.fn+.fn{margin-top:-2px}
+
+/* ---------- figures ---------- */
+.fig{background:var(--surface);border:1px solid var(--border);border-radius:17px;padding:18px 18px 14px;box-shadow:var(--shadow);display:grid;gap:12px;min-width:0;margin:0}
+.fig-head{display:grid;gap:3px}
+.fig-title{font-weight:650;font-size:1.02rem;line-height:1.4}
+.fig-sub{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2);list-style:none;padding:0;margin:0}
+.legend li{display:inline-flex;align-items:center;gap:7px;margin:0}
+.k-line{width:18px;height:2px;border-radius:2px;display:inline-block}
+.k-box{width:12px;height:12px;border-radius:3px;display:inline-block}
+.k-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.k-bar{width:18px;height:6px;border-radius:3px;display:inline-block}
+.chart{position:relative;width:100%;min-width:0;outline:none;touch-action:pan-y;-webkit-tap-highlight-color:transparent}
+.chart:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:8px}
+.fig-foot{font-size:12.5px;color:var(--ink-3);line-height:1.5}
+.chart-svg{display:block;overflow:visible}
+.chart-svg text{font-family:var(--font)}
+.chart-svg .grid{stroke:var(--grid);stroke-width:1}
+.chart-svg .axis{stroke:var(--axis);stroke-width:1}
+.chart-svg .base{stroke:var(--ink-3);stroke-width:1}
+.chart-svg .tick{fill:var(--ink-3);font-size:11.5px;font-variant-numeric:tabular-nums}
+.chart-svg .ref{stroke:var(--ink-3);stroke-width:1}
+.chart-svg .ref-label{fill:var(--ink-2);font-size:11.5px;font-weight:550;paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+.chart-svg .line{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.chart-svg .dot{stroke:var(--surface);stroke-width:2}
+.chart-svg .dlabel{fill:var(--ink);font-size:12px;font-weight:600;paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+.chart-svg .cross{stroke:var(--ink-3);stroke-width:1}
+.chart-svg .annot{stroke:var(--axis);stroke-width:1}
+.chart-svg .annot-label{fill:var(--ink-3);font-size:11px;paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+.chart-svg .rowlabel{fill:var(--ink);font-size:13px;font-weight:550}
+.chart-svg .rowlabel.strong{font-weight:650}
+.chart-svg .rowsub{fill:var(--ink-3);font-size:11.5px;font-variant-numeric:tabular-nums}
+.chart-svg .vlabel{fill:var(--ink-2);font-size:12px;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+.chart-svg .vlabel.in{fill:#ffffff;stroke:none;font-weight:600}
+.chart-svg .conn{stroke:var(--axis);stroke-width:2;stroke-linecap:round}
+.chart-svg .whisk{stroke:var(--deemph);stroke-width:2;stroke-linecap:round}
+.chart-svg .bar{transition:filter .12s}
+.chart-svg .bar.hover,.chart-svg .dot.hover{filter:brightness(1.14) saturate(1.05)}
+.chart-svg .hitrow,.chart-svg .hitdot,.chart-svg .hit{cursor:crosshair;outline:none}
+.chart-svg .hitrow:focus-visible,.chart-svg .hitdot:focus-visible{stroke:var(--accent);stroke-width:2}
+
+/* ---------- tooltip ---------- */
+.tt{position:fixed;left:0;top:0;z-index:90;pointer-events:none;opacity:0;transition:opacity .12s;background:var(--surface);color:var(--ink);border:1px solid var(--border-2);border-radius:12px;padding:9px 11px;box-shadow:0 10px 30px rgba(0,0,0,.16);font-size:13px;line-height:1.45;min-width:150px;max-width:290px}
+.tt-h{font-size:12px;color:var(--ink-3);margin-bottom:5px}
+.tt-r{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:8px}
+.tt-r+.tt-r{margin-top:3px}
+.tt-k{width:12px;height:2px;border-radius:2px}
+.tt-k.box{width:10px;height:10px;border-radius:3px}
+.tt-k.dot{width:9px;height:9px;border-radius:50%}
+.tt-v{font-weight:650;font-variant-numeric:tabular-nums}
+.tt-l{color:var(--ink-2)}
+.tt-n{font-size:12px;color:var(--ink-3);margin-top:6px}
+
+/* ---------- callouts ---------- */
+.callout{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:16px 18px;border-radius:15px;border:1px solid var(--border);background:var(--surface)}
+.callout .ic{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;flex:none}
+.callout .ic svg{width:19px;height:19px}
+.callout h4{font-size:1rem;font-weight:650;margin-bottom:6px}
+.callout ul,.callout ol{font-size:.95rem;color:var(--ink-2)}
+.callout p{color:var(--ink-2);font-size:.95rem}
+.callout.rule{background:var(--info-bg);border-color:color-mix(in srgb,var(--accent) 26%,transparent)}
+.callout.rule .ic{background:var(--accent);color:#fff}
+.callout.warn{background:var(--warn-bg);border-color:var(--warn-line)}
+.callout.warn .ic{background:var(--warning);color:#0b0b0b}
+.callout.warn h4,.callout.warn strong{color:var(--ink)}
+.callout.note{background:var(--surface-2)}
+.callout.note .ic{background:var(--surface-3);color:var(--ink-2)}
+
+/* ---------- patterns / pillars / ideas ---------- */
+.patterns{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr))}
+.pt{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:14px 16px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 12px;align-content:start;box-shadow:var(--shadow)}
+.pt .id{grid-row:span 2;font-size:12px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);border-radius:8px;padding:4px 7px;height:fit-content;font-variant-numeric:tabular-nums;min-width:34px;text-align:center}
+.pt .t{font-weight:600;line-height:1.42}
+.pt .e{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+.pillars{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr))}
+.pl{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);display:grid;gap:10px;align-content:start}
+.pl-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pl-head h4{font-size:1rem;font-weight:650}
+.pl-w{font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent-ink)}
+.pl-meter{height:6px;border-radius:999px;background:var(--track);overflow:hidden}
+.pl-meter i{display:block;height:100%;background:var(--s1);border-radius:999px}
+.pl dl{display:grid;gap:9px;margin:0}
+.pl dt{font-size:11.5px;font-weight:650;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+.pl dt svg{width:14px;height:14px}
+.pl dd{margin:0;font-size:14px;color:var(--ink-2);line-height:1.55}
+.ideas{counter-reset:idea;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,350px),1fr));list-style:none;padding:0;margin:0}
+.ideas>li{counter-increment:idea;margin:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px 12px 52px;position:relative;font-size:14.5px;color:var(--ink-2);line-height:1.55}
+.ideas>li::before{content:counter(idea);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:8px;background:var(--surface-3);color:var(--ink);font-size:12.5px;font-weight:700;display:grid;place-items:center}
+.ideas>li strong{color:var(--ink)}
+.ideas ul{margin-top:6px;font-size:13.5px}
+
+/* ---------- heatmap ---------- */
+table.heat{border-spacing:3px;border-collapse:separate}
+table.heat th,table.heat td{border-bottom:0;border-radius:8px}
+table.heat thead th{background:transparent;text-align:center}
+table.heat thead th:first-child{text-align:left}
+table.heat tbody tr:hover td{filter:brightness(1.04)}
+table.heat td.sc{text-align:center;font-weight:650;font-variant-numeric:tabular-nums;min-width:52px;vertical-align:middle}
+table.heat td.nm{font-weight:600;vertical-align:middle;background:var(--surface-2)}
+table.heat td.tot,table.heat td.res{vertical-align:middle;background:var(--surface-2);white-space:nowrap}
+table.heat.sticky td:first-child{background:var(--surface-2)}
+.sc1{background:var(--h1)!important;color:var(--hi1)}
+.sc2{background:var(--h2)!important;color:var(--hi2)}
+.sc3{background:var(--h3)!important;color:var(--hi3)}
+.sc4{background:var(--h4)!important;color:var(--hi4)}
+.sc5{background:var(--h5)!important;color:var(--hi5)}
+.meter{display:flex;align-items:center;gap:8px}
+.meter .tr{flex:1;min-width:54px;height:6px;border-radius:999px;background:var(--track);overflow:hidden}
+.meter .tr i{display:block;height:100%;background:var(--s1);border-radius:999px}
+.meter b{font-variant-numeric:tabular-nums;min-width:2.4em}
+.scale{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-3)}
+.scale span.sw{width:26px;height:16px;border-radius:5px;display:inline-grid;place-items:center;font-size:11px;font-weight:650}
+
+/* ---------- project blocks ---------- */
+.proj-hero{display:grid;gap:18px;grid-template-columns:1fr;padding:20px 22px;border-radius:19px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
+@media (min-width:880px){.proj-hero{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:center}}
+.proj-title{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.proj-title h3{font-size:1.5rem;font-weight:700}
+.ticker{font-size:12.5px;font-weight:700;padding:3px 9px;border-radius:7px;background:var(--surface-3);color:var(--ink-2)}
+.proj-sum{color:var(--ink-2);margin-top:8px;max-width:62ch}
+.score{display:grid;gap:7px}
+.score .row{display:flex;align-items:baseline;gap:6px}
+.score .big{font-size:2.1rem;font-weight:700;letter-spacing:-.02em;line-height:1}
+.score .of{color:var(--ink-3);font-weight:550}
+.score .lab{font-size:12.5px;color:var(--ink-3)}
+.score .tr{height:8px;border-radius:999px;background:var(--track);overflow:hidden}
+.score .tr i{display:block;height:100%;background:var(--s1);border-radius:999px}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,132px),1fr));gap:10px;margin-top:4px}
+.ms{padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--border)}
+.ms .k{font-size:12px;color:var(--ink-3);line-height:1.35}
+.ms .v{font-weight:650;font-size:1.05rem;line-height:1.35}
+.ms .d{font-size:12px;color:var(--ink-3)}
+.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr))}
+.fact{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:15px 17px;box-shadow:var(--shadow);min-width:0}
+.fact h4{display:flex;align-items:center;gap:9px;font-size:.98rem;font-weight:650;margin-bottom:8px}
+.fact h4 .fi{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-ink);flex:none}
+.fact h4 .fi svg{width:16px;height:16px}
+.fact ul{font-size:14.5px;color:var(--ink-2)}
+.fact li strong{color:var(--ink)}
+.scen{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.scn{border-radius:16px;padding:16px 17px;border:1px solid var(--border);background:var(--surface);display:grid;gap:6px;align-content:start;box-shadow:var(--shadow)}
+.scn .lab{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.scn .lab i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.scn .fdv{font-size:1.55rem;font-weight:700;letter-spacing:-.015em;line-height:1.2}
+.scn .pp{font-size:14px;color:var(--ink-2)}
+.scn .cond{font-size:13px;color:var(--ink-3)}
+.scn.base{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset,var(--shadow);background:linear-gradient(180deg,var(--accent-soft),var(--surface) 70%)}
+.scn.base .lab{color:var(--accent-ink)}
+.ppts{display:flex;flex-wrap:wrap;gap:8px}
+.ppt{display:grid;padding:8px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--border);min-width:104px}
+.ppt .a{font-size:12px;color:var(--ink-3)}
+.ppt .b{font-weight:650;font-variant-numeric:tabular-nums}
+.ppt.mark{border-color:var(--accent);background:var(--accent-soft)}
+.steps{counter-reset:st;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.steps>li{counter-increment:st;position:relative;padding:12px 14px 12px 54px;border-radius:14px;background:var(--surface);border:1px solid var(--border);margin:0;color:var(--ink-2);font-size:.96rem}
+.steps>li::before{content:counter(st);position:absolute;left:14px;top:11px;width:27px;height:27px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:13px;display:grid;place-items:center}
+.steps>li strong{color:var(--ink)}
+.steps ul{margin-top:6px}
+.ladder{display:grid;gap:8px}
+.lrow{display:grid;grid-template-columns:70px minmax(0,1fr) 56px;align-items:center;gap:10px;font-size:13px}
+.lrow .th{color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.lrow .tr{position:relative;height:10px;border-radius:999px;background:var(--track)}
+.lrow .tr i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--s1)}
+.lrow .tr::after{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:1px;background:var(--ink-3)}
+.lrow .pv{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.lrow.cross .th,.lrow.cross .pv{color:var(--accent-ink);font-weight:700}
+.ladder-note{font-size:12.5px;color:var(--ink-3);margin-top:4px}
+
+/* ---------- new-gen ---------- */
+.ng{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr))}
+.ngc{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow);display:grid;gap:14px;align-content:start}
+.ngc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.ngc-name{font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ngc-tag{font-size:13px;color:var(--ink-3);margin-top:2px}
+.ngc-score{min-width:118px;display:grid;gap:5px;text-align:right}
+.ngc-score .big{font-size:1.45rem;font-weight:700;line-height:1}
+.ngc-score .big small{font-size:.8rem;color:var(--ink-3);font-weight:550}
+.ngc-score .tr{height:6px;border-radius:999px;background:var(--track);overflow:hidden}
+.ngc-score .tr i{display:block;height:100%;background:var(--s1);border-radius:999px}
+.ngc-kv{display:flex;flex-wrap:wrap;gap:6px}
+.ngc-kv span{font-size:12.5px;padding:4px 9px;border-radius:8px;background:var(--surface-2);border:1px solid var(--border);color:var(--ink-2)}
+.ngc-kv b{color:var(--ink);font-weight:650}
+.blocks{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.blk{border-radius:13px;padding:12px 14px;background:var(--surface-2);border:1px solid var(--border)}
+.blk h5{margin:0 0 7px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:6px;color:var(--ink-2)}
+.blk h5 svg{width:14px;height:14px}
+.blk ul{font-size:14px;color:var(--ink-2);padding-left:1.1rem}
+.blk li strong{color:var(--ink)}
+
+/* ---------- ranking ---------- */
+.rank{display:grid;gap:11px}
+.rk{display:grid;grid-template-columns:24px 104px minmax(0,1fr) 42px;align-items:center;gap:10px;font-size:14px}
+.rk .pos{font-weight:700;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.rk .nm{font-weight:600}
+.rk .tr{height:10px;border-radius:999px;background:var(--track);overflow:hidden}
+.rk .tr i{display:block;height:100%;background:var(--s1);border-radius:999px}
+.rk .sv{text-align:right;font-weight:650;font-variant-numeric:tabular-nums}
+.farm{counter-reset:f;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.farm>li{counter-increment:f;margin:0;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:start}
+.farm>li::before{content:counter(f);width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--accent-soft);color:var(--accent-ink)}
+.farm .nm{font-weight:650}
+.farm .why{font-size:14px;color:var(--ink-2)}
+
+/* ---------- checklist ---------- */
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.checks>li{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:12px 14px;box-shadow:var(--shadow)}
+.chk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;cursor:pointer}
+.chk input{appearance:none;-webkit-appearance:none;width:22px;height:22px;border-radius:7px;border:2px solid var(--axis);display:grid;place-items:center;margin:2px 0 0;cursor:pointer;background:var(--surface);flex:none}
+.chk input:checked{background:var(--good);border-color:var(--good)}
+.chk input:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:translate(0,-1px) rotate(45deg)}
+.chk .ct{color:var(--ink-2)}
+.chk .ct strong{color:var(--ink)}
+.chk input:checked+.ct{color:var(--ink-3);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--ink-3) 60%,transparent)}
+.codes{display:grid;gap:6px;margin:10px 0 0 34px}
+.code{display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:7px 8px 7px 11px;font-family:var(--mono);font-size:12.5px;min-width:0}
+.code code{white-space:nowrap;overflow-x:auto;flex:1;min-width:0;font-size:12.5px;scrollbar-width:thin}
+.copy{flex:none;font:inherit;font-family:var(--font);font-size:12px;font-weight:600;padding:5px 9px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.copy svg{width:13px;height:13px}
+.copy.done{background:var(--good-bg);border-color:var(--good);color:var(--good-ink)}
+.cl-sub{margin:8px 0 0 34px;font-size:14px;color:var(--ink-2)}
+
+/* ---------- limits + sources ---------- */
+.limits{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));list-style:none;padding:0;margin:0}
+.limits>li{margin:0;padding:14px 16px;border-radius:15px;background:var(--surface);border:1px solid var(--border);font-size:14.5px;color:var(--ink-2);box-shadow:var(--shadow)}
+.limits strong{color:var(--ink);display:block;margin-bottom:3px}
+.src{display:grid;gap:10px}
+.src details{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:2px 16px;box-shadow:var(--shadow)}
+.src summary{cursor:pointer;padding:12px 0;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none}
+.src summary::-webkit-details-marker{display:none}
+.src summary .cnt{font-size:12.5px;font-weight:500;color:var(--ink-3);margin-left:auto}
+.src summary::after{content:"+";font-weight:600;color:var(--ink-3);width:18px;text-align:center}
+.src details[open] summary::after{content:"–"}
+.src ul{padding:0 0 14px 1.1rem;font-size:14px;color:var(--ink-2)}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--border);background:var(--surface)}
+.foot{max-width:1320px;margin:0 auto;padding:22px max(16px,env(safe-area-inset-right)) 40px max(16px,env(safe-area-inset-left));font-size:13px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;align-items:center}
+.to-top{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));width:44px;height:44px;border-radius:14px;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow);color:var(--ink);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;pointer-events:none;z-index:40}
+.to-top svg{width:18px;height:18px}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+
+/* ---------- small screens ---------- */
+@media (max-width:640px){
+  body{font-size:15.5px}
+  main{gap:60px;padding-top:16px}
+  .hero{border-radius:19px}
+  .card,.fig,.ngc{padding:15px}
+  .fig{padding:14px 12px 12px}
+  th,td{padding:9px 11px}
+  .sec-num{width:42px;height:42px;font-size:15px;border-radius:13px}
+  .lrow{grid-template-columns:62px minmax(0,1fr) 50px}
+  .rk{grid-template-columns:20px 88px minmax(0,1fr) 38px}
+  .ngc-head{flex-direction:column}
+  .ngc-score{text-align:left;width:100%}
+  .codes,.cl-sub{margin-left:0}
+}
+
+/* ---------- print ---------- */
+@media print{
+  :root,:root[data-theme="dark"]{color-scheme:light;--page:#fff;--surface:#fff;--shadow:none}
+  .topbar,.toc,.to-top,.progress,.icon-btn,.print-btn,.copy,.swipe,.jump{display:none!important}
+  .shell{display:block;padding:0}
+  main{gap:30px;padding:0}
+  .fig,.card,.tl,.pt,.callout,.scn,.fact,.ngc,.pl,.stat,.kpi{break-inside:avoid}
+  .table-wrap{overflow:visible;box-shadow:none}
+  table{min-width:0!important;font-size:11px}
+  .sticky th:first-child,.sticky td:first-child{position:static}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 2.8 1.6 20.8h20.8L12 2.8z" fill="currentColor"/><path d="M12 9.6v5.2" stroke="#0b0b0b" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.25" fill="#0b0b0b"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5 10 17 19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.6" r="1.25" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V4h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v6H7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 19.5c.6-3.3 3-5 6-5s5.4 1.7 6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M17 14c2.2.2 3.7 1.6 4.2 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14.8 9.2c-.5-.9-1.6-1.4-2.8-1.4-1.6 0-2.8.8-2.8 2.1 0 2.9 5.8 1.5 5.8 4.4 0 1.3-1.3 2.1-3 2.1-1.3 0-2.5-.6-3-1.6M12 6v1.8M12 16.4V18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2.8 20.5 7.4v9.2L12 21.2l-8.5-4.6V7.4L12 2.8z M3.8 7.6 12 12l8.2-4.4M12 12v9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M12 3v9h9A9 9 0 1 1 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M15 2.6A9 9 0 0 1 21.4 9H15V2.6z" fill="currentColor"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8l-5.4 2.9 1.1-6.1L3.2 9.4l6.1-.8L12 3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="m7.5 14.5 3.5-4 3 2.5 5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4m0 0h11l-2 4 2 4H5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12 2.5-6H21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Bỏ qua đến nội dung</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#top"><span class="brand-mark">TGE</span><span class="brand-text">Perp DEX playbook</span></a>
+    <div class="now" id="nowReading" aria-live="polite"></div>
+    <nav class="chips" aria-label="Mục lục nhanh">
+      <a href="#tldr">TL;DR</a>
+      <a href="#boi-canh">1 · Bối cảnh</a>
+      <a href="#lich-su">2 · Lịch sử TGE</a>
+      <a href="#polymarket">3 · Polymarket</a>
+      <a href="#pattern">4 · Pattern</a>
+      <a href="#framework">5 · Framework</a>
+      <a href="#extended">6 · Extended</a>
+      <a href="#variational">7 · Variational</a>
+      <a href="#new-gen">8 · New-gen</a>
+      <a href="#xep-hang">9 · Xếp hạng</a>
+      <a href="#checklist">10 · Checklist</a>
+      <a href="#gioi-han">11 · Giới hạn</a>
+      <a href="#nguon">Nguồn</a>
+    </nav>
+    <button class="icon-btn print-btn" id="printBtn" type="button" aria-label="In hoặc lưu PDF"><svg aria-hidden="true"><use href="#i-print"/></svg></button>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Đổi giao diện sáng/tối"><svg aria-hidden="true"><use data-theme-icon href="#i-moon"/></svg></button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="toc" aria-label="Mục lục">
+    <p class="toc-title">Mục lục</p>
+    <ol>
+      <li><a href="#tldr"><span class="n">0</span>TL;DR</a></li>
+      <li><a href="#boi-canh"><span class="n">1</span>Bối cảnh thị trường</a></li>
+      <li><a href="#lich-su"><span class="n">2</span>Lịch sử các perp đã TGE</a></li>
+      <li><a href="#polymarket"><span class="n">3</span>Polymarket trước TGE</a></li>
+      <li><a href="#pattern"><span class="n">4</span>Các pattern</a></li>
+      <li><a href="#framework"><span class="n">5</span>Framework chấm điểm</a></li>
+      <li><a href="#extended"><span class="n">6</span>Extended (XTEN)</a></li>
+      <li><a href="#variational"><span class="n">7</span>Variational (VAR)</a></li>
+      <li><a href="#new-gen"><span class="n">8</span>Nhóm new-gen</a></li>
+      <li><a href="#xep-hang"><span class="n">9</span>Xếp hạng &amp; phân bổ</a></li>
+      <li><a href="#checklist"><span class="n">10</span>Checklist &amp; công cụ</a></li>
+      <li><a href="#gioi-han"><span class="n">11</span>Giới hạn</a></li>
+      <li><a href="#nguon"><span class="n">↗</span>Nguồn</a></li>
+    </ol>
+    <div class="toc-meta">
+      <span>Dữ liệu chốt 18/11/2026 (UTC)</span>
+      <span>Không phải lời khuyên đầu tư</span>
+    </div>
+  </aside>
+
+  <main id="main">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero" id="top">
+    <div class="eyebrow"><span class="dot"></span>Báo cáo nghiên cứu · Perp DEX airdrop</div>
+    <h1>Perp DEX: pattern TGE từ dữ liệu lịch sử và định giá Extended, Variational, nhóm new-gen</h1>
+    <p class="lede">Số liệu chốt ngày 18/11/2026 (UTC). Nguồn chính: Polymarket (gamma API + lịch sử giá CLOB), CoinGecko, DefiLlama (phí, doanh thu, OI), Castle Labs (OI/volume ngày 17/11/2026) và tin tức của từng dự án (xem mục Nguồn). Các con số có ghi “ước tính” là suy luận của mình, không phải số công bố.</p>
+    <div class="meta-row">
+      <span class="pill"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>Dữ liệu chốt 18/11/2026</span>
+      <span class="pill">7 perp đã TGE làm mẫu</span>
+      <span class="pill">7 dự án chưa TGE được định giá</span>
+      <span class="pill warn"><svg class="ico ic-warn" aria-hidden="true"><use href="#i-warn"/></svg>Không phải lời khuyên đầu tư</span>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><span class="k">Polymarket ở T-30 so với thực tế</span><span class="v">−42%</span><span class="d">FDV D1 thấp hơn median, 4/5 kèo</span></div>
+      <div class="kpi"><span class="k">Polymarket ở T-2 so với thực tế</span><span class="v">−30%</span><span class="d">vẫn thấp hơn ở 4/5 kèo</span></div>
+      <div class="kpi"><span class="k">Giá D30 sau TGE</span><span class="v">−27% → −39%</span><span class="d">ở 4/5 token (LIT, BP, DIME, GRVT)</span></div>
+      <div class="kpi"><span class="k">Đáy sau TGE (trung vị)</span><span class="v">D91</span><span class="d">khoảng D34–D115</span></div>
+      <div class="kpi"><span class="k">OI mất trong 90 ngày sau TGE</span><span class="v">59–98%</span><span class="d">với dự án sống nhờ points</span></div>
+      <div class="kpi em"><span class="k">Variational · FDV D1 cơ sở</span><span class="v">$0.6–1.0B</span><span class="d">≈ $17–29 mỗi point</span></div>
+      <div class="kpi em"><span class="k">Extended · FDV D1 cơ sở</span><span class="v">$130–220M</span><span class="d">≈ $0.55–0.95 mỗi point</span></div>
+      <div class="kpi"><span class="k">BTC hôm nay</span><span class="v">$63.9k</span><span class="d">giảm khoảng 20% so với giữa tháng 10</span></div>
+    </div>
+    <nav class="jump" aria-label="Đi nhanh tới">
+      <span class="lab">Đi thẳng tới:</span>
+      <a class="btn primary" href="#tldr">Đọc TL;DR<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn" href="#extended">Extended</a>
+      <a class="btn" href="#variational">Variational</a>
+      <a class="btn" href="#new-gen">New-gen</a>
+      <a class="btn" href="#checklist">Checklist</a>
+    </nav>
+  </header>
+
+  <!-- ================= 0. TL;DR ================= -->
+  <section id="tldr" aria-labelledby="h-tldr">
+    <div class="sec-head">
+      <span class="sec-num">0</span>
+      <h2 id="h-tldr">TL;DR</h2>
+      <p class="lede">Chín kết luận chính. Mỗi thẻ có số liệu kiểm chứng ở các mục bên dưới.</p>
+    </div>
+    <div class="tldr">
+      <article class="tl key">
+        <span class="no">1</span><span class="tag">Polymarket</span>
+        <h3>Polymarket định giá quá cao trước TGE perp DEX, và kỳ vọng tụt dần theo thời gian.</h3>
+        <ul>
+          <li>Mẫu: 5 perp đã TGE có kèo “FDV one day after launch” (Lighter, edgeX, Backpack, GRVT, Paradex).</li>
+          <li>Lúc mới mở kèo, FDV thực tế D1 thấp hơn median ngụ ý khoảng <strong>80%</strong> (trung vị, 4/4 trường hợp).</li>
+          <li>Ở T-30 ngày, FDV thực tế vẫn thấp hơn median khoảng <strong>42%</strong> (4/5 trường hợp).</li>
+          <li>Ở T-2 ngày, vẫn thấp hơn khoảng <strong>30%</strong> (4/5 trường hợp).</li>
+          <li>Quy tắc thực dụng: lấy median T-30 nhân 0.6, median T-7/T-2 nhân 0.7, hoặc giá pre-market nhân 0.9.</li>
+        </ul>
+      </article>
+      <article class="tl">
+        <span class="no">2</span><span class="tag">Thị trường</span>
+        <h3>Thị trường chung quyết định mặt bằng FDV nhiều hơn fundamentals.</h3>
+        <ul>
+          <li>TGE trong bull hoặc mania: HYPE (11/2024) khoảng $4B, ASTER (9/2025) khoảng $4–6B.</li>
+          <li>TGE trong bear 2026: EDGE $656M, GRVT khoảng $260M, BP khoảng $230M, DIME khoảng $45M.</li>
+          <li>Hiện BTC khoảng $63.9k, ETH khoảng $1.79k. Extended và Variational sẽ TGE trong môi trường này.</li>
+        </ul>
+      </article>
+      <article class="tl">
+        <span class="no">3</span><span class="tag">Sau TGE</span>
+        <h3>Sau TGE, D30 giảm 27–39% ở 4/5 token.</h3>
+        <ul>
+          <li>Đáy rơi vào D34–D115 (trung vị khoảng <strong>D91</strong>).</li>
+          <li>Ngoại lệ duy nhất là EDGE: float thấp nên bị đẩy lên +130%, rồi sập khoảng 70% trong một giờ ngày 2/6/2026.</li>
+        </ul>
+      </article>
+      <article class="tl">
+        <span class="no">4</span><span class="tag">Catalyst</span>
+        <h3>Sau đáy, chỉ token có catalyst thật mới hồi.</h3>
+        <ul>
+          <li>BP gấp <strong>4.4 lần</strong> D1, nhờ giấy phép CFTC, Backpack Securities và cổ phiếu token hóa.</li>
+          <li>LIT tăng <strong>6.5 lần</strong> từ đáy, nhờ buyback từ doanh thu và kênh phân phối Robinhood.</li>
+          <li>DIME, GRVT, EDGE tiếp tục giảm.</li>
+        </ul>
+      </article>
+      <article class="tl">
+        <span class="no">5</span><span class="tag">OI cliff</span>
+        <h3>“OI cliff”: dự án sống nhờ points mất 59–98% OI trong 90 ngày sau TGE.</h3>
+        <ul>
+          <li>Mức mất: edgeX −59%, Lighter −61%, Paradex −98%.</li>
+          <li>Ngoại lệ: token có flywheel (HYPE), hoặc airdrop trả dần (GRVT giữ được OI).</li>
+          <li>Extended đã “cliff” ngay trước TGE: points kết thúc 6/10, OI giảm 48% trong 30 ngày.</li>
+        </ul>
+      </article>
+      <article class="tl">
+        <span class="no">6</span><span class="tag">Kinh tế farm</span>
+        <h3>Chỉ số mới: “Breakeven FDV” = phí user đã trả trước TGE ÷ % airdrop.</h3>
+        <ul>
+          <li>Hệ số FDV D1 ÷ breakeven dự báo được tâm lý sau TGE.</li>
+          <li>Tích cực: ASTER khoảng 12×, LIT khoảng 17× (cận trên, vì DefiLlama thiếu dữ liệu phí trước 10/2025).</li>
+          <li>Tiêu cực: edgeX 0.55×, Paradex 0.42×. Farmer lỗ phí ròng nên xả mạnh.</li>
+        </ul>
+      </article>
+      <article class="tl key">
+        <span class="no">7</span><span class="tag">Định giá</span>
+        <h3>Định giá D1, kịch bản cơ sở.</h3>
+        <ul>
+          <li><strong>Variational: $0.6–1.0B</strong>, khoảng $17–29/point.</li>
+          <li><strong>Extended: $130–220M</strong>, khoảng $0.55–0.95/point.</li>
+          <li>Đối chiếu Polymarket hiện tại: VAR median khoảng $930–950M, XTEN khoảng $170–185M. Pre-market XTEN $0.20–0.27.</li>
+        </ul>
+      </article>
+      <article class="tl">
+        <span class="no">8</span><span class="tag">Xếp hạng</span>
+        <h3>Điểm chất lượng (thang 5): Variational 3.70 &gt; Arcus 3.00 ≈ QFEX 2.95 &gt; RISEx 2.85 &gt; TxFlow 2.55 ≈ Bulk 2.55 &gt; Extended 2.50.</h3>
+        <ul>
+          <li>Theo Polymarket, không dự án new-gen nào có khả năng cao TGE trước 2027: RISE 11% trước 31/12/2026, BULK 6%, RISEx 2.5%.</li>
+        </ul>
+      </article>
+      <article class="tl">
+        <span class="no">9</span><span class="tag">Narrative</span>
+        <h3>Narrative tăng trưởng của 2026 là TradFi perps 24/7 (cổ phiếu, chỉ số, hàng hóa, FX).</h3>
+        <ul>
+          <li>trade[XYZ] (HIP-3 trên Hyperliquid) có OI $4.15B.</li>
+          <li>57–70% volume của Variational là TradFi.</li>
+          <li>OI của QFEX tăng 49% trong 30 ngày.</li>
+          <li>Arcus bán cổ phiếu token hóa qua hạ tầng Robinhood.</li>
+          <li>Dự án đứng đúng narrative này được trả premium.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= 1. Bối cảnh ================= -->
+  <section id="boi-canh" aria-labelledby="h-bc">
+    <div class="sec-head">
+      <span class="sec-num">1</span>
+      <h2 id="h-bc">Bối cảnh thị trường (18/11/2026)</h2>
+      <p class="lede">Altcoin đang risk-off; HYPE vẫn nắm hơn một nửa OI perp on-chain và là “chỉ số” của cả ngành.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="k">BTC</span><span class="v">$63,890</span><span class="d">−1.5% trong 24h</span></div>
+      <div class="stat"><span class="k">ETH</span><span class="v">$1,791</span><span class="d">CoinGecko, 18/11/2026</span></div>
+      <div class="stat"><span class="k">SOL</span><span class="v">$74</span><span class="d">CoinGecko, 18/11/2026</span></div>
+      <div class="stat"><span class="k">HYPE</span><span class="v">$68.4</span><span class="d">FDV ≈ $65–68B</span></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4><svg class="ico" aria-hidden="true"><use href="#i-pulse"/></svg>Giá chính</h4>
+        <ul>
+          <li>BTC $63,890 (−1.5%/24h), ETH $1,791, SOL $74.</li>
+          <li>Ghi chú thị trường trước đó trong repo đặt BTC quanh $81.5k giữa tháng 10. Như vậy BTC đã giảm khoảng 20% trong một tháng.</li>
+          <li>Hàng loạt token perp lập đáy mới ngày 14/11/2026: DYDX, AVNT, ORDER, MYX, AEVO, F (SynFutures).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>HYPE như “chỉ số ngành”</h4>
+        <ul>
+          <li>Giá $68.4, FDV khoảng $65–68B.</li>
+          <li>Thấp hơn khoảng 30% so với ATH khoảng $97–98 (23/9/2026), và −13% trong 30 ngày.</li>
+          <li>Đỉnh của LIT (24/9) và BP (26/9–1/10) trùng gần như cùng ngày với đỉnh HYPE. Token perp đi theo beta HYPE.</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="fig">
+      <div class="fig-head">
+        <div class="fig-title">Open interest theo sàn, 17/11/2026</div>
+        <div class="fig-sub">Thanh xanh là 7 dự án chưa có token được phân tích trong báo cáo; thanh xám là các sàn còn lại. Thang tuyến tính, nên phần lớn sàn chỉ là một vạch ngắn cạnh Hyperliquid.</div>
+      </div>
+      <ul class="legend">
+        <li><span class="k-box" style="background:var(--s1)"></span>Được phân tích, chưa có token</li>
+        <li><span class="k-box" style="background:var(--deemph)"></span>Đã có token hoặc ngoài phạm vi</li>
+      </ul>
+      <div class="chart" id="c-oishare" tabindex="-1"></div>
+      <figcaption class="fig-foot">Nguồn: Castle Labs (OI ngày 17/11/2026); OI của Bulk lấy từ DefiLlama. Số liệu đầy đủ ở Bảng 1.</figcaption>
+    </figure>
+
+    <div class="tbl">
+      <div class="tbl-cap"><span class="t">Bảng 1. Ảnh chụp thị trường perp DEX, 17/11/2026</span><span class="s">OI và volume từ Castle Labs, phí/doanh thu 30 ngày từ DefiLlama</span></div>
+      <div class="table-wrap">
+        <table class="sticky w-lg">
+          <thead><tr><th>Sàn</th><th class="n">OI</th><th class="n">Thị phần OI</th><th class="n">Volume 7 ngày</th><th class="n">Vol 24h / OI</th><th>Phí hoặc doanh thu 30 ngày</th><th>Token</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Hyperliquid</strong></td><td class="n">$5.54B</td><td class="n">54%</td><td class="n">$82.6B</td><td class="n">1.7×</td><td>doanh thu $70.0M</td><td><span class="tok live">HYPE</span></td></tr>
+            <tr><td><strong>Aster</strong></td><td class="n">$1.16B</td><td class="n">11%</td><td class="n">$15.0B</td><td class="n">1.6×</td><td>phí $4.45M</td><td><span class="tok live">ASTER</span></td></tr>
+            <tr class="em"><td><strong>Variational</strong></td><td class="n">$693M</td><td class="n">6.7%</td><td class="n">$13.5B</td><td class="n">3.0×</td><td>0 phí (thu qua spread, DefiLlama không theo dõi)</td><td><span class="tok">chưa TGE</span></td></tr>
+            <tr><td><strong>Lighter</strong></td><td class="n">$569M</td><td class="n">5.5%</td><td class="n">$22.3B</td><td class="n">4.5×</td><td>doanh thu $3.54M (+$2.10M ở bản Robinhood Chain)</td><td><span class="tok live">LIT</span></td></tr>
+            <tr><td><strong>GRVT</strong></td><td class="n">$341M</td><td class="n">3.3%</td><td class="n">$3.75B</td><td class="n">1.6×</td><td>không có dữ liệu</td><td><span class="tok live">GRVT</span></td></tr>
+            <tr class="em"><td><strong>QFEX</strong></td><td class="n">$211M</td><td class="n">2.0% <span class="sub">+49%/30 ngày</span></td><td class="n">$3.01B</td><td class="n">2.7×</td><td>không có dữ liệu</td><td><span class="tok">chưa có</span></td></tr>
+            <tr><td><strong>edgeX</strong></td><td class="n">$139M</td><td class="n">1.3%</td><td class="n">$5.10B</td><td class="n">3.3×</td><td>doanh thu $1.41M</td><td><span class="tok live">EDGE</span></td></tr>
+            <tr class="em"><td><strong>Arcus</strong></td><td class="n">$86M</td><td class="n">0.8%</td><td class="n">không có dữ liệu</td><td class="n">không có dữ liệu</td><td>doanh thu $1.63M</td><td><span class="tok">chưa có</span></td></tr>
+            <tr class="em"><td><strong>Extended</strong></td><td class="n">$50M</td><td class="n">0.5% <span class="sub">−48%/30 ngày</span></td><td class="n">$2.28B</td><td class="n"><span class="flag"><svg class="ic-warn" aria-hidden="true"><use href="#i-warn"/></svg>5.5× cao</span></td><td>phí $1.45M</td><td><span class="tok">chưa TGE</span></td></tr>
+            <tr><td><strong>Pacifica</strong></td><td class="n">$46M</td><td class="n">0.4%</td><td class="n">$5.10B</td><td class="n"><span class="flag"><svg class="ic-warn" aria-hidden="true"><use href="#i-warn"/></svg>15.2× rất cao</span></td><td>doanh thu $3.47M</td><td><span class="tok">chưa có</span></td></tr>
+            <tr class="em"><td><strong>RISEx</strong></td><td class="n">$34M</td><td class="n">0.3%</td><td class="n">$0.83B</td><td class="n">2.9×</td><td>phí chain RISE $1.38M</td><td><span class="tok">chưa có</span></td></tr>
+            <tr><td><strong>Nado</strong></td><td class="n">$29M</td><td class="n">0.3%</td><td class="n">$3.38B</td><td class="n"><span class="flag"><svg class="ic-warn" aria-hidden="true"><use href="#i-warn"/></svg>13.4× rất cao</span></td><td>doanh thu $0.87M</td><td><span class="tok">chưa có</span></td></tr>
+            <tr class="em"><td><strong>TxFlow</strong></td><td class="n">$27M</td><td class="n">0.3%</td><td class="n">≈ $1.4B <span class="sub">ước tính từ phí</span></td><td class="n"><span class="flag"><svg class="ic-warn" aria-hidden="true"><use href="#i-warn"/></svg>≈7× ước tính</span></td><td>doanh thu $1.76M</td><td><span class="tok">chưa có</span></td></tr>
+            <tr class="em"><td><strong>Bulk</strong></td><td class="n">≈ $12M <span class="sub">DefiLlama</span></td><td class="n">—</td><td class="n">$0.29B</td><td class="n">—</td><td>phí $0.48M</td><td><span class="tok">chưa có</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+      <p class="fn">Hàng tô nhạt là dự án chưa có token được phân tích. Vạch cảnh báo đánh dấu Vol/OI từ 5× trở lên (dấu hiệu volume farm, xem P13).</p>
+    </div>
+    <div class="callout note">
+      <span class="ic"><svg aria-hidden="true"><use href="#i-info"/></svg></span>
+      <div><p>Ngoài bảng trên: <strong>trade[XYZ]</strong> (giao diện HIP-3 trên Hyperliquid, chủ yếu cổ phiếu và chỉ số) có OI <strong>$4.15B</strong> theo DefiLlama, lớn hơn mọi perp DEX khác trừ chính Hyperliquid.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 2. Lịch sử ================= -->
+  <section id="lich-su" aria-labelledby="h-ls">
+    <div class="sec-head">
+      <span class="sec-num">2</span>
+      <h2 id="h-ls">Dữ liệu lịch sử các perp DEX đã TGE</h2>
+      <p class="lede">Bảy token làm mẫu, từ HYPE (11/2024) đến GRVT (7/2026): hồ sơ TGE, đường giá sau TGE, và OI quanh TGE.</p>
+    </div>
+
+    <div class="tbl">
+      <div class="tbl-cap"><span class="t">Bảng 2. Hồ sơ TGE và kết quả</span><span class="s">FDV hiện tại ngày 18/11/2026</span></div>
+      <div class="table-wrap">
+        <table class="sticky w-xl">
+          <thead><tr><th>Token</th><th>Ngày TGE</th><th>Airdrop tại TGE</th><th>Insider</th><th>Vốn private</th><th class="n">FDV D1</th><th>Đáy sau TGE</th><th>Đỉnh sau TGE</th><th class="n">FDV hiện tại</th><th class="n">Hiện tại / D1</th></tr></thead>
+          <tbody>
+            <tr><td><strong>HYPE</strong><span class="sub">Hyperliquid</span></td><td class="nw">29/11/2024</td><td>31%, mở khóa 100%</td><td>0% VC (contributors khoảng 23.8%)</td><td>không gọi vốn</td><td class="n">≈ $4B</td><td>—</td><td>≈ $97B (23/9/2026)</td><td class="n">≈ $65–68B</td><td class="n"><span class="up">≈ 16×</span></td></tr>
+            <tr><td><strong>ASTER</strong><span class="sub">Aster</span></td><td class="nw">17/9/2025</td><td>8.8% (704M). Tổng phần cộng đồng 53.5% (nhiều stage)</td><td>n/a</td><td>YZi Labs (CZ) hậu thuẫn</td><td class="n">≈ $4–6B<span class="sub">giá $0.5–0.77 trong 24–48h đầu</span></td><td>≈ $3.7B (6/2/2026)</td><td>$19.3B (24/9/2025)</td><td class="n">≈ $4.3B</td><td class="n">≈ 0.8–1×</td></tr>
+            <tr><td><strong>LIT</strong><span class="sub">Lighter</span></td><td class="nw">30/12/2025</td><td>25% (12.5M points thành 250M LIT, khoảng 20 LIT/point, khoảng $54/point ở D1)</td><td>50% (26% team, 24% nhà đầu tư; cliff 12 tháng, sau đó 36 tháng)</td><td>$68M ở định giá $1.5B (Founders Fund, Ribbit, Haun, Robinhood)</td><td class="n">≈ $2.7B</td><td>$0.81B (D91)</td><td>$5.3B (D268)</td><td class="n">≈ $2.8B</td><td class="n">≈ 1.0×</td></tr>
+            <tr><td><strong>DIME</strong><span class="sub">Paradex</span></td><td class="nw">5/3/2026</td><td>25%</td><td>n/a</td><td>Paradigm ấp ủ</td><td class="n">≈ $40–50M</td><td>$7.7M (D115)</td><td>≈ $70M (D220)</td><td class="n">≈ $28M</td><td class="n"><span class="down">≈ 0.6×</span></td></tr>
+            <tr><td><strong>BP</strong><span class="sub">Backpack</span></td><td class="nw">23/3/2026</td><td>25%</td><td>báo chí đưa tin “0% insider”, cần kiểm chứng</td><td>n/a</td><td class="n">≈ $230M</td><td>$120M (D65)</td><td>$1.35–1.65B (26/9–1/10)</td><td class="n">≈ $1.0B</td><td class="n"><span class="up">≈ 4.4×</span></td></tr>
+            <tr><td><strong>EDGE</strong><span class="sub">edgeX</span></td><td class="nw">31/3/2026</td><td>25% (30% nếu gồm pre-TGE season)</td><td>float thấp; ZachXBT cáo buộc insider kiểm soát cung</td><td>Amber Group ấp ủ</td><td class="n">≈ $656M</td><td>$242M (D97)</td><td>$1.51B (D52)</td><td class="n">≈ $277M</td><td class="n"><span class="down">≈ 0.42×</span></td></tr>
+            <tr><td><strong>GRVT</strong><span class="sub">GRVT</span></td><td class="nw">30/7/2026</td><td>28% (S1+S2), trả dần trong 12 tháng</td><td>n/a</td><td>nguồn mâu thuẫn ($14–33M)</td><td class="n">≈ $250–260M</td><td>$150M (D34)</td><td>$328M (D12)</td><td class="n">≈ $168M</td><td class="n"><span class="down">≈ 0.65×</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+    </div>
+    <div class="callout note">
+      <span class="ic"><svg aria-hidden="true"><use href="#i-info"/></svg></span>
+      <div>
+        <h4>Ghi chú về cách đo</h4>
+        <ul>
+          <li>D1 là “1 ngày sau launch”. Polymarket chốt lúc 16:00 ET ngày hôm sau.</li>
+          <li>LIT, EDGE, BP, DIME, GRVT dùng giá đóng cửa ngày trên CoinGecko. HYPE và ASTER lấy từ tin tức, vì API công khai của CoinGecko chỉ trả 365 ngày gần nhất.</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="fig">
+      <div class="fig-head">
+        <div class="fig-title">Đường giá sau TGE, chuẩn hóa D1 = 100</div>
+        <div class="fig-sub">Thang log theo số ngày kể từ TGE. Dưới đường 100 là thấp hơn giá D1. Di chuột, chạm, hoặc dùng phím ← → để xem từng ngày.</div>
+      </div>
+      <ul class="legend" id="lg-price"></ul>
+      <div class="chart" id="c-price" tabindex="0" aria-label="Biểu đồ đường giá sau TGE của LIT, EDGE, BP, GRVT, DIME, chuẩn hóa D1 bằng 100"></div>
+      <figcaption class="fig-foot">Nguồn: CoinGecko, giá đóng cửa ngày đến 18/11/2026. Số liệu các mốc ở Bảng 3.</figcaption>
+    </figure>
+
+    <div class="tbl">
+      <div class="tbl-cap"><span class="t">Bảng 3. Đường giá sau TGE</span><span class="s">Giá đóng cửa ngày, % so với D1</span></div>
+      <div class="table-wrap">
+        <table class="sticky w-lg">
+          <thead><tr><th>Token</th><th class="n">D1</th><th class="n">D7</th><th class="n">D30</th><th class="n">D90</th><th class="n">D180</th><th class="n">Đáy (ngày)</th><th class="n">Đỉnh (ngày)</th><th class="n">Hiện tại</th></tr></thead>
+          <tbody>
+            <tr><td><strong>LIT</strong></td><td class="n">$2.70</td><td class="n">$3.00 <span class="up">+11%</span></td><td class="n">$1.97 <span class="down">−27%</span></td><td class="n">$0.83 <span class="down">−69%</span></td><td class="n">$1.72 <span class="down">−36%</span></td><td class="n">$0.81 (D91)</td><td class="n">$5.32 (D268)</td><td class="n">$2.82 <span class="up">+4%</span></td></tr>
+            <tr><td><strong>EDGE</strong></td><td class="n">$0.656</td><td class="n">$0.923 <span class="up">+41%</span></td><td class="n">$1.18 <span class="up">+80%</span></td><td class="n">$0.278 <span class="down">−58%</span></td><td class="n">$0.602 <span class="down">−8%</span></td><td class="n">$0.242 (D97)</td><td class="n">$1.51 (D52)</td><td class="n">$0.277 <span class="down">−58%</span></td></tr>
+            <tr><td><strong>BP</strong></td><td class="n">$0.229</td><td class="n">$0.156 <span class="down">−32%</span></td><td class="n">$0.141 <span class="down">−39%</span></td><td class="n">$0.655 <span class="up">+186%</span></td><td class="n">$0.571 <span class="up">+149%</span></td><td class="n">$0.120 (D65)</td><td class="n">$1.35 (D187)</td><td class="n">$1.007 <span class="up">+340%</span></td></tr>
+            <tr><td><strong>DIME</strong></td><td class="n">$0.040</td><td class="n">$0.042 <span class="up">+5%</span></td><td class="n">$0.027 <span class="down">−32%</span></td><td class="n">$0.020 <span class="down">−50%</span></td><td class="n">$0.015 <span class="down">−63%</span></td><td class="n">$0.0077 (D115)</td><td class="n">$0.070 (D220)</td><td class="n">$0.0275 <span class="down">−31%</span></td></tr>
+            <tr><td><strong>GRVT</strong></td><td class="n">$0.244</td><td class="n">$0.300 <span class="up">+23%</span></td><td class="n">$0.165 <span class="down">−32%</span></td><td class="n">$0.235 <span class="down">−4%</span></td><td class="n">—</td><td class="n">$0.150 (D34)</td><td class="n">$0.328 (D12)</td><td class="n">$0.168 <span class="down">−31%</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+    </div>
+
+    <figure class="fig">
+      <div class="fig-head">
+        <div class="fig-title">OI còn lại sau TGE, so với mức T-30</div>
+        <div class="fig-sub">Mỗi hàng là một sàn; ba chấm là OI ở T+30, T+90 và hiện tại, tính bằng % của OI 30 ngày trước TGE. Số in trên chấm là mức T+90.</div>
+      </div>
+      <ul class="legend">
+        <li><span class="k-dot" style="background:var(--o1)"></span>T+30</li>
+        <li><span class="k-dot" style="background:var(--o2)"></span>T+90</li>
+        <li><span class="k-dot" style="background:var(--o3)"></span>Hiện tại (17/11/2026)</li>
+      </ul>
+      <div class="chart" id="c-oi" tabindex="-1"></div>
+      <figcaption class="fig-foot">Nguồn: DefiLlama. Lighter “hiện tại” gồm cả bản Robinhood Chain. Số liệu tuyệt đối ở Bảng 4.</figcaption>
+    </figure>
+
+    <div class="tbl">
+      <div class="tbl-cap"><span class="t">Bảng 4. Open interest quanh TGE</span><span class="s">DefiLlama</span></div>
+      <div class="table-wrap">
+        <table class="sticky w-lg">
+          <thead><tr><th>Sàn</th><th class="n">T-30</th><th class="n">T0</th><th class="n">T+30</th><th class="n">T+90</th><th class="n">Hiện tại</th><th>Diễn giải</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Lighter</strong></td><td class="n">$820M</td><td class="n">$699M</td><td class="n">$648M</td><td class="n">$318M <span class="down">−61%</span></td><td class="n">$578M</td><td>Hồi lại nhờ bản Robinhood Chain và points thưởng bằng LIT</td></tr>
+            <tr><td><strong>edgeX</strong></td><td class="n">$1.01B</td><td class="n">$1.03B</td><td class="n">$896M</td><td class="n">$418M <span class="down">−59%</span></td><td class="n">$141M <span class="down">−86%</span></td><td>Points hết là OI rút</td></tr>
+            <tr><td><strong>Paradex</strong></td><td class="n">$286M</td><td class="n">$207M</td><td class="n">$24M</td><td class="n">$7M <span class="down">−98%</span></td><td class="n">$11M</td><td>Sụp hoàn toàn</td></tr>
+            <tr><td><strong>GRVT</strong></td><td class="n">$340M</td><td class="n">$355M</td><td class="n">$433M</td><td class="n">$435M <span class="up">+28%</span></td><td class="n">$339M</td><td>Airdrop trả dần 12 tháng giữ chân user</td></tr>
+            <tr><td><strong>Hyperliquid</strong></td><td class="n">—</td><td class="n">—</td><td class="n">$1.6B</td><td class="n">$1.6B</td><td class="n">$5.7B <span class="sub">+$4.15B ở trade[XYZ]</span></td><td>Token có flywheel: khoảng 97–99% phí dùng để buyback</td></tr>
+            <tr><td><strong>Aster</strong></td><td class="n">—</td><td class="n">—</td><td class="n">$1.62B</td><td class="n">$1.27B</td><td class="n">$1.16B</td><td>Airdrop chia nhiều stage</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+      <p class="fn">% trong ngoặc so với T-30. Hyperliquid và Aster không có dữ liệu OI trên DefiLlama trước TGE.</p>
+    </div>
+  </section>
+
+  <!-- ================= 3. Polymarket ================= -->
+  <section id="polymarket" aria-labelledby="h-pm">
+    <div class="sec-head">
+      <span class="sec-num">3</span>
+      <h2 id="h-pm">Polymarket: pattern định giá trước TGE</h2>
+      <p class="lede">Kỳ vọng FDV trên Polymarket cao hơn kết quả thực tế ở 4/5 dự án, kể cả khi chỉ còn 2 ngày trước TGE.</p>
+    </div>
+    <div class="prose">
+      <p>Mình kéo toàn bộ ladder “FDV above $X one day after launch” của các perp DEX qua Polymarket API. Cách tính:</p>
+      <ul>
+        <li>Ghép xác suất các ngưỡng $X thành đường P(FDV &gt; X) theo từng ngày.</li>
+        <li>Median ngụ ý là điểm đường này cắt 50%, nội suy theo log giữa hai ngưỡng.</li>
+      </ul>
+    </div>
+
+    <figure class="fig">
+      <div class="fig-head">
+        <div class="fig-title">Kỳ vọng Polymarket chia cho FDV thực tế D1, theo số ngày trước TGE</div>
+        <div class="fig-sub">Thang log. Trên đường 1× là Polymarket đang định giá cao hơn kết quả thực tế. Các đường tụt dần về phía TGE nhưng phần lớn vẫn nằm trên 1×.</div>
+      </div>
+      <ul class="legend" id="lg-pm"></ul>
+      <div class="chart" id="c-pm" tabindex="0" aria-label="Biểu đồ tỷ lệ median Polymarket chia FDV thực tế theo ngày trước TGE cho Lighter, edgeX, Backpack, GRVT"></div>
+      <figcaption class="fig-foot">Nguồn: Polymarket, lịch sử giá CLOB. Paradex không vẽ: median luôn dưới ngưỡng thấp nhất của kèo (dưới $300M từ T-60) trong khi thực tế chỉ khoảng $45M. Khoảng trống của Lighter (7–9/2025) là lúc median nằm dưới ngưỡng $2B thấp nhất khi đó. Số liệu các mốc ở Bảng 5.</figcaption>
+    </figure>
+
+    <div class="tbl">
+      <div class="tbl-cap"><span class="t">Bảng 5. Median FDV ngụ ý trên Polymarket so với kết quả thực tế</span></div>
+      <div class="table-wrap">
+        <table class="sticky w-xl">
+          <thead><tr><th>Dự án</th><th class="n">Median lúc mở kèo</th><th class="n">T-90</th><th class="n">T-30</th><th class="n">T-7</th><th class="n">T-2</th><th class="n">FDV D1 thực tế</th><th class="n">Sai số ở T-30</th><th class="n">Sai số ở T-2</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Lighter</strong></td><td class="n">dưới $2.0B (6/2025)*</td><td class="n">$3.92B</td><td class="n">$2.60B</td><td class="n">$3.35B</td><td class="n">$2.89B</td><td class="n">≈ $2.7B <span class="sub">kèo chốt khoảng $2–3B</span></td><td class="n"><span class="up">+4%</span></td><td class="n"><span class="down">−7%</span></td></tr>
+            <tr><td><strong>edgeX</strong></td><td class="n">$2.72B (11/2025)</td><td class="n">$1.39B</td><td class="n">$1.13B</td><td class="n">$515M</td><td class="n">$465M</td><td class="n">≈ $656M <span class="sub">khoảng $600–700M</span></td><td class="n"><span class="down">−42%</span></td><td class="n"><span class="up">+41%</span></td></tr>
+            <tr><td><strong>Backpack</strong></td><td class="n">$1.42B (11/2025)</td><td class="n">$1.10B</td><td class="n">$510M</td><td class="n">$352M</td><td class="n">$327M</td><td class="n">≈ $230M <span class="sub">khoảng $200–300M</span></td><td class="n"><span class="down">−55%</span></td><td class="n"><span class="down">−30%</span></td></tr>
+            <tr><td><strong>GRVT</strong></td><td class="n">$278M (2/2026)</td><td class="n">$191M</td><td class="n">$356M</td><td class="n">$362M</td><td class="n">$377M</td><td class="n">≈ $260M <span class="sub">khoảng $250–300M</span></td><td class="n"><span class="down">−27%</span></td><td class="n"><span class="down">−31%</span></td></tr>
+            <tr><td><strong>Paradex</strong></td><td class="n">dưới $750M (11/2025)</td><td class="n">dưới $750M</td><td class="n">dưới $300M</td><td class="n">dưới $300M</td><td class="n">dưới $300M</td><td class="n">≈ $45M <span class="sub">khoảng $40–80M</span></td><td class="n"><span class="down">−85% hoặc tệ hơn</span></td><td class="n"><span class="down">−85% hoặc tệ hơn</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+      <p class="fn">*Kèo Lighter đầu tiên có hạn 31/12/2025, nên giá kèo gồm cả rủi ro TGE trễ. Sai số = FDV thực tế ÷ median − 1.</p>
+    </div>
+
+    <p class="stats-cap"><strong>Thống kê sai số</strong> (FDV thực tế so với median Polymarket, trung vị)</p>
+    <div class="stats">
+      <div class="stat"><span class="k">Lúc mở kèo</span><span class="v">−80%</span><span class="d">Polymarket quá cao 4/4 lần</span></div>
+      <div class="stat"><span class="k">T-30</span><span class="v">−42%</span><span class="d">quá cao 4/5 lần</span></div>
+      <div class="stat"><span class="k">T-7</span><span class="v">−28%</span><span class="d">quá cao 4/5 lần</span></div>
+      <div class="stat"><span class="k">T-2</span><span class="v">−30%</span><span class="d">quá cao 4/5 lần</span></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Diễn biến kỳ vọng của từng dự án</h4>
+        <ul>
+          <li><strong>Backpack:</strong> $1.42B, rồi $1.10B, $510M, $352M, $327M; thực tế khoảng $230M.</li>
+          <li><strong>edgeX:</strong> $2.72B, rồi $1.39B, $1.13B, $515M; thực tế $656M.
+            <ul>
+              <li>Đây là trường hợp duy nhất kết quả cao hơn median cuối, vì FUD về minh bạch kéo kèo xuống quá đà.</li>
+              <li>Pre-market khi đó khoảng $700–729M, sát kết quả hơn Polymarket.</li>
+            </ul>
+          </li>
+          <li><strong>Lighter:</strong> dự án mạnh nhất về traction có sai số nhỏ nhất (+4% ở T-30, −7% ở T-2).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><svg class="ico" aria-hidden="true"><use href="#i-pulse"/></svg>Đối chiếu với TGE không phải perp</h4>
+        <ul>
+          <li><strong>Monad:</strong> T-30 $6.24B, thực tế $3–4B, tức định giá quá cao.</li>
+          <li><strong>MegaETH:</strong> T-30 dưới $600M, thực tế $1.5–2B, tức định giá quá thấp.</li>
+          <li>Như vậy thiên lệch một chiều (quá cao) đặc biệt rõ ở nhóm perp DEX.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4><svg class="ico" aria-hidden="true"><use href="#i-bulb"/></svg>Vì sao nhóm perp bị định giá quá cao (diễn giải của mình)</h4>
+      <ol>
+        <li>Người mua YES phần lớn là cộng đồng hoặc farmer lạc quan. Người có lý do bán là farmer muốn hedge, nhưng họ ít dùng Polymarket.</li>
+        <li>Thời điểm chốt kèo (16:00 ET ngày D1) rơi đúng lúc áp lực xả airdrop cao nhất. Ở 3/5 token, giá D1 thấp hơn giá ngày TGE: BP −40%, DIME −20%, GRVT −12%.</li>
+        <li>Thông tin xấu thường được tiết lộ dần: % insider, lạm phát points, timeline trễ, rồi thị trường chung yếu đi.</li>
+        <li>Năm 2026 có quá nhiều perp TGE, nên dòng tiền và sự chú ý bị chia nhỏ.</li>
+      </ol>
+    </div>
+
+    <div class="callout rule">
+      <span class="ic"><svg aria-hidden="true"><use href="#i-bulb"/></svg></span>
+      <div>
+        <h4>Quy tắc áp dụng</h4>
+        <ul>
+          <li>FDV D1 cơ sở bằng khoảng <strong>0.6 lần median T-30</strong>, hoặc <strong>0.7 lần median T-7/T-2</strong>. Với dự án top đầu về traction (kiểu Lighter, Variational), nên dùng hệ số 0.85–0.95.</li>
+          <li>Pre-market perp (Hyperliquid, MEXC, Whales) chính xác hơn Polymarket. Lịch sử vẫn hơi cao khoảng 5–10%: edgeX khoảng $700–729M thành $656M; Lighter trên $3B thành $2.7B.</li>
+          <li>Độ dốc của kỳ vọng là một tín hiệu riêng. Ladder giảm đều qua nhiều tháng (Backpack, edgeX, Paradex) là cảnh báo. Ladder tăng nhờ catalyst cụ thể (Variational từ 5/2026, sau Series A $50M do Dragonfly dẫn) là tín hiệu tốt.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. Pattern ================= -->
+  <section id="pattern" aria-labelledby="h-pt">
+    <div class="sec-head">
+      <span class="sec-num">4</span>
+      <h2 id="h-pt">Các pattern rút ra từ dữ liệu</h2>
+      <p class="lede">Mười bốn quy luật lặp lại, kèm bằng chứng; cuối mục là chỉ số “breakeven FDV” cho kinh tế farm.</p>
+    </div>
+    <div class="patterns">
+      <div class="pt"><span class="id">P1</span><span class="t">Polymarket quá cao và giảm dần theo thời gian</span><span class="e">Mục 3</span></div>
+      <div class="pt"><span class="id">P2</span><span class="t">Pre-market chính xác hơn Polymarket nhưng vẫn cao khoảng 5–10%</span><span class="e">edgeX, Lighter</span></div>
+      <div class="pt"><span class="id">P3</span><span class="t">Chế độ thị trường quyết định mặt bằng FDV</span><span class="e">Bull: HYPE, ASTER $4B+. Bear 2026: $45–656M</span></div>
+      <div class="pt"><span class="id">P4</span><span class="t">D30 giảm 27–39%; đáy ở D34–D115, trung vị khoảng D91</span><span class="e">Bảng 3: LIT, BP, DIME, GRVT</span></div>
+      <div class="pt"><span class="id">P5</span><span class="t">Float thấp cộng insider kiểm soát dễ bị thao túng: tăng mạnh rồi sập</span><span class="e">EDGE +130% đến D52, sau đó −70% trong 1 giờ (2/6/2026)</span></div>
+      <div class="pt"><span class="id">P6</span><span class="t">OI cliff sau TGE (−59% đến −98% trong 90 ngày) nếu token không có flywheel hoặc vesting</span><span class="e">Bảng 4</span></div>
+      <div class="pt"><span class="id">P7</span><span class="t">Hệ số FDV D1 ÷ breakeven dự báo tâm lý sau TGE</span><span class="e">Bảng 6</span></div>
+      <div class="pt"><span class="id">P8</span><span class="t">Re-rating chỉ đến từ catalyst thật: buyback bằng doanh thu, giấy phép pháp lý, đối tác phân phối</span><span class="e">LIT (buyback, Robinhood), BP (CFTC, chứng khoán token hóa), HYPE (buyback, ETF)</span></div>
+      <div class="pt"><span class="id">P9</span><span class="t">Đối tác phân phối có thể thành đối thủ</span><span class="e">Robinhood chọn Bitstamp cho perps tại Mỹ (30/9/2026), LIT −20% trong ngày</span></div>
+      <div class="pt"><span class="id">P10</span><span class="t">Beta ngành: token perp đi theo HYPE</span><span class="e">Đỉnh HYPE 23/9, LIT 24/9, BP 26/9</span></div>
+      <div class="pt"><span class="id">P11</span><span class="t">Timeline luôn trễ hơn công bố, nên chi phí farm và độ pha loãng tăng</span><span class="e">Extended “H1/2026” thành 11–12/2026; Variational Q3 thành Q4; kèo “launch by” của Pacifica thua 4 quý liền, Hibachi 3 quý, Bulk 2 quý</span></div>
+      <div class="pt"><span class="id">P12</span><span class="t">Cliff 12 tháng của insider là “đợt xả” thứ hai</span><span class="e">LIT: mở khóa đầu tiên khoảng 27/12/2026–28/1/2027 (500M LIT trong 3 năm, khoảng 3.2M/tuần, khoảng 20 lần mức buyback 10/2026). BP/EDGE khoảng 3/2027, GRVT khoảng 7/2027, VAR/XTEN khoảng Q4/2027</span></div>
+      <div class="pt"><span class="id">P13</span><span class="t">Vol/OI là máy phát hiện wash/farm</span><span class="e">Pacifica 15×, Nado 13×, Extended 5.5×, Lighter 4.5×, so với HL 1.7×, GRVT 1.6×</span></div>
+      <div class="pt"><span class="id">P14</span><span class="t">Narrative TradFi perps 24/7 được trả premium</span><span class="e">trade[XYZ] OI $4.15B; Variational 57–70% TradFi; QFEX OI +49%/30 ngày</span></div>
+    </div>
+
+    <figure class="fig">
+      <div class="fig-head">
+        <div class="fig-title">FDV D1 chia cho breakeven FDV: farmer lời hay lỗ trên phí?</div>
+        <div class="fig-sub">Breakeven FDV = phí user đã trả trước TGE ÷ % airdrop. Bên phải 1× là farmer có lời trên phí; bên trái là lỗ ròng. Thang log. Chỉ tính phí giao dịch, chưa tính spread, slippage, funding, PnL.</div>
+      </div>
+      <ul class="legend">
+        <li><span class="k-box" style="background:var(--pos)"></span>Farmer lời (D1 cao hơn breakeven)</li>
+        <li><span class="k-box" style="background:var(--neg)"></span>Farmer lỗ phí ròng</li>
+        <li><span class="k-box" style="background:var(--pos-soft)"></span>Dự phóng (chưa TGE)</li>
+      </ul>
+      <div class="chart" id="c-be" tabindex="-1"></div>
+      <figcaption class="fig-foot">Nguồn: DefiLlama (phí), CoinGecko và tin tức (FDV D1). Số liệu ở Bảng 6.</figcaption>
+    </figure>
+
+    <div class="tbl">
+      <div class="tbl-cap"><span class="t">Bảng 6. Breakeven FDV: farmer có lời trên phí hay không</span><span class="s">Chỉ tính phí giao dịch, chưa tính spread, slippage, funding, PnL</span></div>
+      <div class="table-wrap">
+        <table class="sticky w-lg">
+          <thead><tr><th>Dự án</th><th>Phí user đã trả trước TGE (DefiLlama)</th><th class="n">% airdrop</th><th class="n">Breakeven FDV</th><th class="n">FDV D1</th><th class="n">Hệ số D1 / breakeven</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Aster</strong></td><td>$35.8M</td><td class="n">8.8%</td><td class="n">≈ $0.41B</td><td class="n">≈ $4.8B</td><td class="n"><span class="up">≈ 12×</span></td></tr>
+            <tr><td><strong>Lighter</strong></td><td>từ $38.5M trở lên*</td><td class="n">25%</td><td class="n">từ $0.15B trở lên</td><td class="n">≈ $2.7B</td><td class="n"><span class="up">≈ 17×</span> <span class="sub">cận trên</span></td></tr>
+            <tr><td><strong>edgeX</strong></td><td><strong>$299M</strong></td><td class="n">25%</td><td class="n">≈ $1.2B</td><td class="n">≈ $0.66B</td><td class="n"><span class="down">0.55×</span></td></tr>
+            <tr><td><strong>Paradex</strong></td><td>$26.6M</td><td class="n">25%</td><td class="n">≈ $0.11B</td><td class="n">≈ $0.045B</td><td class="n"><span class="down">0.42×</span></td></tr>
+            <tr class="em"><td><strong>Extended</strong><span class="sub">chưa TGE</span></td><td>$36.3M</td><td class="n">28.3% <span class="sub">30% trừ 5.8% của desk MM nội bộ</span></td><td class="n">≈ $0.13B</td><td class="n">pre-market $0.20–0.27B</td><td class="n">≈ 1.3–1.9× <span class="sub">dự phóng</span></td></tr>
+            <tr class="em"><td><strong>Variational</strong><span class="sub">chưa TGE</span></td><td>0 phí; spread gộp khoảng $119M/năm (9/2026)</td><td class="n">32%</td><td class="n">≈ $0.2–0.3B <span class="sub">ước tính, nếu tổng spread đã trả khoảng $60–100M</span></td><td class="n">Polymarket ≈ $0.93B</td><td class="n">≈ 3–5× <span class="sub">dự phóng</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+      <p class="fn">*DefiLlama chỉ theo dõi phí Lighter từ 12/10/2025, và Lighter miễn phí cho retail, nên hệ số 17× là cận trên. Phí trước TGE của Hyperliquid không có trên DefiLlama; ước tính thô của mình là trên 10×.</p>
+    </div>
+  </section>
+
+  <!-- ================= 5. Framework ================= -->
+  <section id="framework" aria-labelledby="h-fw">
+    <div class="sec-head">
+      <span class="sec-num">5</span>
+      <h2 id="h-fw">Framework chấm điểm perp DEX: 7 trụ</h2>
+      <p class="lede">Mỗi trụ chấm 1–5, nhân trọng số rồi cộng lại thành điểm tổng trên thang 5.</p>
+    </div>
+    <div class="pillars">
+      <div class="pl">
+        <div class="pl-head"><h4>1. Đội ngũ và vốn</h4><span class="pl-w">15%</span></div>
+        <div class="pl-meter" role="img" aria-label="Trọng số 15%"><i style="width:75%"></i></div>
+        <dl>
+          <dt>Đo bằng gì</dt><dd>Lý lịch (HFT/quant, vận hành sàn), từng exit chưa; tier VC; định giá vòng cuối; angel hoặc advisor có sức kéo hệ sinh thái; % insider và lịch vesting</dd>
+          <dt><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Dấu hiệu tốt</dt><dd>Cựu HRT, Citadel, Tower, Jane Street; VC tier-1; insider tối đa 50% với cliff từ 12 tháng</dd>
+          <dt><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Dấu hiệu xấu</dt><dd>Ẩn danh và không có backer; insider nắm phần lớn float</dd>
+          <dt>Nguồn dữ liệu</dt><dd>The Block, Crunchbase, docs dự án</dd>
+        </dl>
+      </div>
+      <div class="pl">
+        <div class="pl-head"><h4>2. Sản phẩm và moat</h4><span class="pl-w">15%</span></div>
+        <div class="pl-meter" role="img" aria-label="Trọng số 15%"><i style="width:75%"></i></div>
+        <dl>
+          <dt>Đo bằng gì</dt><dd>Kiến trúc (L1 riêng, ZK, tích hợp vào validator, RFQ/OLP, CEX); độ trễ; tự lưu ký; độ phủ thị trường (TradFi 24/7, pre-IPO); chi phí giao dịch thực (phí cộng spread); engine rủi ro và lịch sử sự cố</dd>
+          <dt><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Dấu hiệu tốt</dt><dd>Có lợi thế khó sao chép; ít sự cố; đúng narrative</dd>
+          <dt><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Dấu hiệu xấu</dt><dd>Fork hoặc copy; oracle yếu; từng bị thao túng</dd>
+          <dt>Nguồn dữ liệu</dt><dd>Docs, báo cáo audit, X</dd>
+        </dl>
+      </div>
+      <div class="pl">
+        <div class="pl-head"><h4>3. Chất lượng traction</h4><span class="pl-w">20%</span></div>
+        <div class="pl-meter" role="img" aria-label="Trọng số 20%"><i style="width:100%"></i></div>
+        <dl>
+          <dt>Đo bằng gì</dt><dd>OI và thị phần OI; Vol/OI; phí và doanh thu thật; doanh thu trên OI; xu hướng OI 30/90 ngày; % volume không đến từ points</dd>
+          <dt><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Dấu hiệu tốt</dt><dd>Vol/OI dưới 3×; OI tăng; có dòng lệnh từ đối tác phân phối</dd>
+          <dt><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Dấu hiệu xấu</dt><dd>Vol/OI trên 5×; OI giảm khi points giảm</dd>
+          <dt>Nguồn dữ liệu</dt><dd>Castle Labs, DefiLlama</dd>
+        </dl>
+      </div>
+      <div class="pl">
+        <div class="pl-head"><h4>4. Kinh tế airdrop</h4><span class="pl-w">20%</span></div>
+        <div class="pl-meter" role="img" aria-label="Trọng số 20%"><i style="width:100%"></i></div>
+        <dl>
+          <dt>Đo bằng gì</dt><dd>% airdrop và lịch mở khóa; tổng points và tốc độ phát; pha loãng mỗi tuần; breakeven FDV; phần dự án tự phân bổ cho mình; chính sách sybil/wash; độ trễ timeline</dd>
+          <dt><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Dấu hiệu tốt</dt><dd>Từ 25% cho user; hệ số D1/breakeven trên 3×</dd>
+          <dt><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Dấu hiệu xấu</dt><dd>Hệ số dưới 1×; desk nội bộ cũng farm points</dd>
+          <dt>Nguồn dữ liệu</dt><dd>Docs, DefiLlama, kèo “launch by” trên Polymarket</dd>
+        </dl>
+      </div>
+      <div class="pl">
+        <div class="pl-head"><h4>5. Giá trị token</h4><span class="pl-w">10%</span></div>
+        <div class="pl-meter" role="img" aria-label="Trọng số 10%"><i style="width:50%"></i></div>
+        <dl>
+          <dt>Đo bằng gì</dt><dd>Buyback/burn (% doanh thu thật); staking (giảm phí, boost vault); trả phí bằng token; quyền quản trị</dd>
+          <dt><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Dấu hiệu tốt</dt><dd>Buyback từ doanh thu thật</dd>
+          <dt><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Dấu hiệu xấu</dt><dd>Token chỉ để quản trị</dd>
+          <dt>Nguồn dữ liệu</dt><dd>Docs, on-chain</dd>
+        </dl>
+      </div>
+      <div class="pl">
+        <div class="pl-head"><h4>6. Tín hiệu và timing</h4><span class="pl-w">10%</span></div>
+        <div class="pl-meter" role="img" aria-label="Trọng số 10%"><i style="width:50%"></i></div>
+        <dl>
+          <dt>Đo bằng gì</dt><dd>Mức và độ dốc của ladder Polymarket; pre-market; giá OTC của points; chế độ BTC/HYPE; lịch TGE trùng nhau; sàn niêm yết ngày TGE</dd>
+          <dt><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Dấu hiệu tốt</dt><dd>Kỳ vọng ổn định hoặc tăng; niêm yết Binance hoặc Coinbase</dd>
+          <dt><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Dấu hiệu xấu</dt><dd>Kỳ vọng giảm đều; không lên CEX lớn (như DIME)</dd>
+          <dt>Nguồn dữ liệu</dt><dd>Polymarket, pre-market trên Hyperliquid/MEXC</dd>
+        </dl>
+      </div>
+      <div class="pl">
+        <div class="pl-head"><h4>7. Rủi ro <span class="muted" style="font-weight:500;font-size:.85rem">(điểm cao là rủi ro thấp)</span></h4><span class="pl-w">10%</span></div>
+        <div class="pl-meter" role="img" aria-label="Trọng số 10%"><i style="width:50%"></i></div>
+        <dl>
+          <dt>Đo bằng gì</dt><dd>Rủi ro đối ứng (OLP, vault); mức tập trung hóa; pháp lý (KYC, chặn vùng); minh bạch đội ngũ; phụ thuộc đối tác</dd>
+          <dt><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Dấu hiệu tốt</dt><dd>Kiểm toán, minh bạch, có giấy phép</dd>
+          <dt><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Dấu hiệu xấu</dt><dd>Đối ứng không minh bạch; khóa bình luận khi bị hỏi (edgeX)</dd>
+          <dt>Nguồn dữ liệu</dt><dd>Audit, tin tức</dd>
+        </dl>
+      </div>
+    </div>
+
+    <h3 class="sub">Những khía cạnh ít người để ý</h3>
+    <p class="muted">Đã kiểm chứng ở các mục trên, dùng được ngay.</p>
+    <ol class="ideas">
+      <li><strong>Độ dốc ladder Polymarket.</strong> Kỳ vọng giảm qua 3 tháng liên tiếp là tín hiệu xấu hơn bản thân mức giá.</li>
+      <li><strong>Chênh lệch pre-market và Polymarket.</strong> Với XTEN, pre-market $0.20–0.27 nhưng Polymarket khoảng $0.17–0.18, tức thị trường dự đoán D1 thấp hơn pre-market.</li>
+      <li><strong>Breakeven FDV và hệ số D1/breakeven</strong> (Bảng 6).</li>
+      <li><strong>Độ nhạy của OI với points.</strong> Khi tốc độ phát points giảm hoặc dừng, OI giảm bao nhiêu? Extended giảm 73% từ đỉnh và 48% trong 30 ngày sau khi points kết thúc.</li>
+      <li><strong>Vol/OI và doanh thu trên OI.</strong> Dùng để phân biệt volume thật với volume farm.</li>
+      <li><strong>Phần dự án tự phân bổ cho mình.</strong> Desk market-making nội bộ của Extended nhận 5.8% pool airdrop. EDGE có float tập trung.</li>
+      <li><strong>Thiết kế vesting của airdrop.</strong> Mở khóa 100% (LIT, EDGE, BP, XTEN, VAR) thì xả nhanh hơn. Trả dần (GRVT) giữ được OI nhưng ít hype.</li>
+      <li><strong>Phụ thuộc đối tác phân phối, và rủi ro đối tác thành đối thủ.</strong>
+        <ul>
+          <li>Các cặp phụ thuộc: Robinhood với Lighter, Arcus, Meridian; Circle (Arc) với Extended; CZ/Binance với Aster.</li>
+          <li>Bài học Robinhood chọn Bitstamp ở P9.</li>
+        </ul>
+      </li>
+      <li><strong>Sự kiện pháp lý như catalyst.</strong> CFTC chấp thuận Backpack làm sàn phái sinh và clearinghouse, BP tăng 42% trong ngày. Extended nộp whitepaper MiCA lên CySEC.</li>
+      <li><strong>Lịch cliff 12 tháng</strong> của các TGE 2025–2026 (P12).</li>
+      <li><strong>Thời điểm đáy sau TGE (D34–D115)</strong> để canh mua lại token tốt.</li>
+      <li><strong>Chỉ số trễ timeline:</strong> số kèo “launch by” đã thua liên tiếp.</li>
+      <li><strong>Trọng số chấm điểm của points.</strong> Chỉ volume thì dễ wash. Có thêm OI, thời gian, phí, TVL (như TxFlow) thì khó wash hơn. KYC (Arcus, QFEX) nghĩa là ít sybil, phần chia cho user thật lớn hơn.</li>
+    </ol>
+
+    <h3 class="sub">Kiểm tra hợp lý (retro) của scorecard</h3>
+    <div class="tbl">
+      <div class="tbl-cap"><span class="t">Chấm lại các dự án đã TGE, tại thời điểm TGE</span>
+        <span class="scale" aria-label="Thang màu điểm 1 đến 5">Thang điểm
+          <span class="sw sc1">1</span><span class="sw sc2">2</span><span class="sw sc3">3</span><span class="sw sc4">4</span><span class="sw sc5">5</span>
+        </span>
+      </div>
+      <div class="table-wrap">
+        <table class="heat sticky w-lg">
+          <thead><tr><th>Dự án</th><th>Đội ngũ</th><th>Sản phẩm</th><th>Traction</th><th>Airdrop</th><th>Token</th><th>Tín hiệu</th><th>Rủi ro</th><th>Điểm</th><th>Hiện tại / D1</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">HYPE</td><td class="sc sc5">5</td><td class="sc sc5">5</td><td class="sc sc5">5</td><td class="sc sc5">5</td><td class="sc sc5">5</td><td class="sc sc4">4</td><td class="sc sc4">4</td><td class="tot"><span class="meter"><b>4.80</b><span class="tr"><i style="width:96%"></i></span></span></td><td class="res">≈ 16×</td></tr>
+            <tr><td class="nm">LIT</td><td class="sc sc5">5</td><td class="sc sc4">4</td><td class="sc sc4">4</td><td class="sc sc4">4</td><td class="sc sc3">3</td><td class="sc sc3">3</td><td class="sc sc4">4</td><td class="tot"><span class="meter"><b>3.95</b><span class="tr"><i style="width:79%"></i></span></span></td><td class="res">≈ 1.0× <span class="sub">đáy −70%, đỉnh gấp đôi</span></td></tr>
+            <tr><td class="nm">BP</td><td class="sc sc4">4</td><td class="sc sc4">4</td><td class="sc sc3">3</td><td class="sc sc3">3</td><td class="sc sc3">3</td><td class="sc sc2">2</td><td class="sc sc3">3</td><td class="tot"><span class="meter"><b>3.20</b><span class="tr"><i style="width:64%"></i></span></span></td><td class="res">≈ 4.4×</td></tr>
+            <tr><td class="nm">ASTER</td><td class="sc sc3">3</td><td class="sc sc3">3</td><td class="sc sc2">2</td><td class="sc sc3">3</td><td class="sc sc3">3</td><td class="sc sc5">5</td><td class="sc sc2">2</td><td class="tot"><span class="meter"><b>2.90</b><span class="tr"><i style="width:58%"></i></span></span></td><td class="res">≈ 0.8–1× <span class="sub">từng đạt đỉnh gấp 4</span></td></tr>
+            <tr><td class="nm">GRVT</td><td class="sc sc3">3</td><td class="sc sc3">3</td><td class="sc sc3">3</td><td class="sc sc2">2</td><td class="sc sc2">2</td><td class="sc sc2">2</td><td class="sc sc3">3</td><td class="tot"><span class="meter"><b>2.60</b><span class="tr"><i style="width:52%"></i></span></span></td><td class="res">≈ 0.65×</td></tr>
+            <tr><td class="nm">EDGE</td><td class="sc sc2">2</td><td class="sc sc3">3</td><td class="sc sc2">2</td><td class="sc sc1">1</td><td class="sc sc2">2</td><td class="sc sc2">2</td><td class="sc sc1">1</td><td class="tot"><span class="meter"><b>1.85</b><span class="tr"><i style="width:37%"></i></span></span></td><td class="res">≈ 0.42×</td></tr>
+            <tr><td class="nm">DIME</td><td class="sc sc3">3</td><td class="sc sc2">2</td><td class="sc sc1">1</td><td class="sc sc1">1</td><td class="sc sc1">1</td><td class="sc sc1">1</td><td class="sc sc3">3</td><td class="tot"><span class="meter"><b>1.65</b><span class="tr"><i style="width:33%"></i></span></span></td><td class="res">≈ 0.6×</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+    </div>
+    <div class="callout note">
+      <span class="ic"><svg aria-hidden="true"><use href="#i-info"/></svg></span>
+      <div>
+        <ul>
+          <li>Tương quan hạng Spearman giữa điểm và kết quả là <strong>0.93</strong>.</li>
+          <li>Đây là kiểm tra trong mẫu: mình chấm khi đã biết kết quả, nên có thiên lệch hindsight. Coi đây là kiểm tra logic, không phải kiểm định.</li>
+          <li>Lưu ý ASTER: điểm “Tín hiệu” (CZ, mania) chi phối biến động ngắn hạn. Các trụ còn lại dự báo xu hướng 6–12 tháng tốt hơn.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. Extended ================= -->
+  <section id="extended" aria-labelledby="h-ext">
+    <div class="sec-head">
+      <span class="sec-num">6</span>
+      <h2 id="h-ext">Extended (XTEN)</h2>
+      <p class="lede">Points đã kết thúc; việc còn lại là ký claim, cân nhắc hedge và quyết định bán.</p>
+    </div>
+    <div class="proj-hero">
+      <div>
+        <div class="proj-title"><h3>Extended</h3><span class="ticker">XTEN</span><span class="pill">Chưa TGE · points đã kết thúc</span></div>
+        <p class="proj-sum">Đội ngũ ổn. Nhưng traction đang giảm, hệ số D1/breakeven chỉ khoảng 1.3–1.9×, và dự án tự phân bổ 5.8% pool.</p>
+        <div class="mini">
+          <div class="ms"><div class="k">Polymarket median</div><div class="v">≈ $169M</div><div class="d">≈ $184M nếu chắc có launch</div></div>
+          <div class="ms"><div class="k">Pre-market</div><div class="v">$0.20–0.27</div><div class="d">FDV $200–270M</div></div>
+          <div class="ms"><div class="k">FDV D1 cơ sở</div><div class="v">$130–220M</div><div class="d">≈ $0.55–0.95/point</div></div>
+        </div>
+      </div>
+      <div class="score">
+        <span class="lab">Điểm scorecard</span>
+        <div class="row"><span class="big">2.50</span><span class="of">/ 5</span></div>
+        <div class="tr" role="img" aria-label="2.50 trên 5"><i style="width:50%"></i></div>
+        <span class="lab">Thấp nhất trong 7 dự án chưa TGE</span>
+      </div>
+    </div>
+    <div class="callout warn">
+      <span class="ic"><svg aria-hidden="true"><use href="#i-warn"/></svg></span>
+      <div>
+        <h4>Hạn chót: ký điều khoản trước 31/12/2026, 23:59 UTC</h4>
+        <p>Công cụ kiểm tra allocation và Community Distribution Terms đã mở từ 11/11/2026. Ví Starknet phải chỉ định một ví EVM để nhận token.</p>
+      </div>
+    </div>
+
+    <h3 class="sub">Hồ sơ</h3>
+    <div class="facts">
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-team"/></svg></span>Đội ngũ</h4><ul><li>Founder Ruslan Fakhrutdinov, cựu trưởng mảng vận hành crypto ở Revolut.</li><li>Thành lập 2023.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-coin"/></svg></span>Vốn</h4><ul><li>$6.5M từ Tioga, Semantic, StarkWare, Konstantin Lomashuk (Lido), Prelude, Cyber Fund.</li><li>Có tin đồn dự án từ chối vòng mới ở FDV trên $300M. Mình chưa kiểm chứng được.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-box"/></svg></span>Sản phẩm</h4><ul><li>CLOB lai với settlement on-chain.</li><li>Lộ trình hạ tầng: StarkEx, sang Starknet (8/2025), rồi chuyển settlement sang <strong>Arc</strong>, L1 của Circle, ngày 22/10/2026.</li><li>Hơn 400 thị trường, gồm vàng, dầu, FX, S&amp;P và Nasdaq. Đòn bẩy tới 100×.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-pie"/></svg></span>Tokenomics (tổng cung 1B XTEN)</h4><ul><li><strong>30% cộng đồng (300M), mở khóa 100% tại TGE.</strong> Trong đó 17.38M (khoảng 5.8% pool) là points do <strong>desk market-making nội bộ</strong> (X10 Ltd) kiếm được từ 11/2024 đến 4/2026.</li><li>20% hệ sinh thái: 150M cho staking, 50M quỹ phát triển (28.6M mở khóa tại TGE).</li><li>50% founders, team và nhà đầu tư, khóa 12 tháng. Nhà đầu tư nhận 25% ở tháng 12, phần còn lại trả dần đến tháng 48. Team trả dần từ tháng 13 đến tháng 48.</li><li>Staking 6 bậc: giảm phí 5–30%, boost vault 0.5–5×, mức gửi vault tối đa tới $2M, unstake mất 7 ngày.</li><li>Whitepaper đã nộp CySEC theo MiCA.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-star"/></svg></span>Points</h4><ul><li>Khoảng 70M points (ước tính cộng đồng; 69.2M đã phát đến 6/10/2026).</li><li>Chương trình <strong>đã kết thúc</strong>.</li><li>Tỷ lệ quy đổi khoảng 4.3 XTEN/point.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-chart"/></svg></span>Traction</h4><ul><li>OI đỉnh $189M (28/1/2026), nay $50–51M.</li><li>Volume 7 ngày $2.28B, Vol/OI 5.5×.</li><li>Phí 30 ngày $1.45M (khoảng $17M/năm). Tổng phí đã thu $36.3M.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-flag"/></svg></span>Trạng thái</h4><ul><li>Công cụ kiểm tra allocation và điều khoản phân phối mở từ 11/11/2026.</li><li><strong>Hạn ký: 31/12/2026, 23:59 UTC.</strong></li><li>Ví Starknet phải chỉ định một ví EVM để nhận token.</li><li>Chưa công bố ngày TGE; hướng dẫn trước đó là “tháng 11/2026”.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-pulse"/></svg></span>Thị trường</h4><ul><li>Pre-market XTEN khoảng $0.20–0.27 trên Hyperliquid, Lighter, edgeX, MEXC (Coinglass ghi $0.1995 ngày 13/11), tương đương FDV $200–270M.</li><li>Polymarket (hạn 31/12/2026): P(&gt;$150M) 57%, P(&gt;$300M) 16.5%, P(&gt;$500M) 5.5%.</li><li>Median khoảng <strong>$169M</strong>, hoặc khoảng $184M nếu giả định chắc chắn có launch (P(launch) khoảng 0.9).</li><li>Diễn biến median: $479M (1/2026), $294M (2), $181M (4), $315M (7), $150M (8), $251M (10), $169M (18/11).</li></ul></div>
+    </div>
+
+    <div class="grid-2">
+      <figure class="fig">
+        <div class="fig-head">
+          <div class="fig-title">Median FDV ngụ ý của Extended trên Polymarket</div>
+          <div class="fig-sub">Theo thời gian, thang log. Kỳ vọng giảm từ khoảng $480M đầu năm xuống $169M.</div>
+        </div>
+        <div class="chart" id="c-xten-tl" tabindex="0" aria-label="Biểu đồ median FDV ngụ ý của Extended trên Polymarket theo thời gian"></div>
+        <figcaption class="fig-foot">Nguồn: Polymarket, lịch sử giá CLOB. Các mốc chính có trong mục Thị trường ở trên.</figcaption>
+      </figure>
+      <figure class="fig">
+        <div class="fig-head">
+          <div class="fig-title">Ladder hiện tại: xác suất FDV D1 vượt từng ngưỡng</div>
+          <div class="fig-sub">Kèo hạn 31/12/2026; giá gồm cả xác suất token có launch kịp. Vạch dọc giữa mỗi thanh là mốc 50%.</div>
+        </div>
+        <div class="ladder" id="ld-xten"></div>
+        <figcaption class="fig-foot">Polymarket, 18/11/2026 13:40 UTC.</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="sub">Định giá D1 (4 phương pháp)</h3>
+    <div class="tbl">
+      <div class="table-wrap">
+        <table class="sticky w-md">
+          <thead><tr><th>Phương pháp</th><th>Kết quả</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Polymarket nhân hệ số hiệu chỉnh 0.7</strong></td><td>≈ $120–130M</td></tr>
+            <tr><td><strong>Pre-market nhân hệ số hiệu chỉnh 0.9</strong></td><td>≈ $180–240M</td></tr>
+            <tr><td><strong>So sánh với FDV D1 / chỉ số 30 ngày trước TGE</strong> của LIT, EDGE, GRVT, BP</td><td>OI khoảng $70M cho $43–227M (trung vị khoảng $52M); volume 30 ngày khoảng $10B cho $74–142M; phí năm hóa $17.4M cho $44–341M. Trung tâm khoảng $100–150M</td></tr>
+            <tr><td><strong>Breakeven farmer</strong></td><td>≈ $128M</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+    </div>
+
+    <h3 class="sub">Kịch bản FDV D1</h3>
+    <div class="scen">
+      <div class="scn"><span class="lab"><i style="background:var(--deemph)"></i>Bear</span><span class="fdv">$70–120M</span><span class="pp">≈ $0.30–0.51 mỗi point</span><span class="cond">BTC thủng $60k, niêm yết yếu</span></div>
+      <div class="scn base"><span class="lab"><i style="background:var(--s1)"></i>Base</span><span class="fdv">$130–220M</span><span class="pp">≈ $0.55–0.95 mỗi point</span><span class="cond">Kịch bản cơ sở</span></div>
+      <div class="scn"><span class="lab"><i style="background:var(--deemph)"></i>Bull</span><span class="fdv">$250–350M</span><span class="pp">≈ $1.07–1.50 mỗi point</span><span class="cond">Binance hoặc Coinbase spot, narrative Arc/Circle</span></div>
+    </div>
+    <p class="muted" style="font-size:14px">Giá trị mỗi point theo FDV, với 300M XTEN chia cho khoảng 70M points:</p>
+    <div class="ppts">
+      <div class="ppt"><span class="a">FDV $100M</span><span class="b">$0.43/point</span></div>
+      <div class="ppt mark"><span class="a">FDV $150M</span><span class="b">$0.64/point</span></div>
+      <div class="ppt mark"><span class="a">FDV $200M</span><span class="b">$0.86/point</span></div>
+      <div class="ppt"><span class="a">FDV $250M</span><span class="b">$1.07/point</span></div>
+      <div class="ppt"><span class="a">FDV $300M</span><span class="b">$1.29/point</span></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Sau TGE</h4>
+        <ul>
+          <li>Theo pattern P4, kỳ vọng D30 giảm 25–40%. Đáy có thể rơi vào D35–D115.</li>
+          <li>OI đã “cliff” trước TGE nên lực đỡ từ volume yếu. Staking (giảm phí, boost vault) có thể hút bớt một phần cung.</li>
+          <li>D90 kịch bản cơ sở: $70–150M. Đợt cung tiếp theo là cliff 12 tháng, khoảng cuối 2027.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg>Hành động gợi ý</h4>
+        <ol class="steps">
+          <li>Ký điều khoản trước 31/12. Nếu dùng Starknet, chỉ định ví EVM nhận token.</li>
+          <li>Biết allocation rồi thì cân nhắc hedge, theo một trong hai cách:
+            <ul>
+              <li>Short pre-market. Rủi ro: squeeze và funding của pre-market perp.</li>
+              <li>Mua NO ở ngưỡng gần median trên Polymarket, ví dụ NO cho “&gt;$150M” khoảng 43¢, để bảo hiểm kịch bản FDV thấp.</li>
+            </ul>
+          </li>
+          <li>Mặc định theo dữ liệu: bán phần lớn trong 24–48h đầu.</li>
+          <li>Chỉ mua lại sau D60–D110, và chỉ khi OI ổn định và cơ chế staking/buyback rõ ràng.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. Variational ================= -->
+  <section id="variational" aria-labelledby="h-var">
+    <div class="sec-head">
+      <span class="sec-num">7</span>
+      <h2 id="h-var">Variational (VAR)</h2>
+      <p class="lede">Mạnh nhất nhóm chưa TGE, nhưng float 32% mở khóa ngay ngày đầu.</p>
+    </div>
+    <div class="proj-hero">
+      <div>
+        <div class="proj-title"><h3>Variational</h3><span class="ticker">VAR</span><span class="pill">Chưa TGE · dự kiến Q4/2026</span></div>
+        <p class="proj-sum">Cao nhất nhóm chưa TGE: đứng thứ 2–3 về volume, có doanh thu spread thật, Series A $50M do Dragonfly dẫn, và cam kết dùng 100% doanh thu treasury để buyback.</p>
+        <div class="mini">
+          <div class="ms"><div class="k">Polymarket median</div><div class="v">≈ $930–950M</div><div class="d">đỉnh $1.27B (3/10)</div></div>
+          <div class="ms"><div class="k">Points</div><div class="v">≈ 10.5M</div><div class="d">≈ 11.1M nếu TGE 31/12</div></div>
+          <div class="ms"><div class="k">FDV D1 cơ sở</div><div class="v">$0.6–1.0B</div><div class="d">≈ $17–29/point</div></div>
+        </div>
+      </div>
+      <div class="score">
+        <span class="lab">Điểm scorecard</span>
+        <div class="row"><span class="big">3.70</span><span class="of">/ 5</span></div>
+        <div class="tr" role="img" aria-label="3.70 trên 5"><i style="width:74%"></i></div>
+        <span class="lab">Cao nhất trong 7 dự án chưa TGE</span>
+      </div>
+    </div>
+
+    <h3 class="sub">Hồ sơ</h3>
+    <div class="facts">
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-team"/></svg></span>Đội ngũ</h4><ul><li>Lucas Schuermann (CEO) và Edward Yu, nhiều năm làm quant và market making ở quỹ.</li><li>Engine định giá OLP đã phát triển hơn 7 năm.</li><li>Công ty đặt ở Cayman.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-coin"/></svg></span>Vốn (tổng hơn $60M, định giá không công bố)</h4><ul><li>Seed $10.3M (10/2024), Bain Capital Crypto và Peak XV đồng dẫn.</li><li>Series A $50M (20/5/2026), Dragonfly dẫn, có Bain và Coinbase Ventures.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-box"/></svg></span>Sản phẩm</h4><ul><li><strong>Omni (retail):</strong> RFQ, 0 phí maker/taker. OLP là đối ứng duy nhất và hedge ra bên ngoài. Đòn bẩy tới 50×.</li><li><strong>Pro (tổ chức):</strong> RFQ nhiều market maker, đang ở giai đoạn waitlist.</li><li>Khoảng 450–500 thị trường. Hàng hóa (vàng, bạc, đồng, WTI) có từ 5/2026, cùng chỉ số, cổ phiếu và pre-IPO perps. Khoảng <strong>57–70% volume là TradFi</strong>.</li><li>Có chương trình hoàn lỗ (loss refund) với xác suất 1–5%.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-pie"/></svg></span>Tokenomics</h4><ul><li><strong>32% Genesis airdrop, mở khóa 100%.</strong> Để claim cần ít nhất 1 point và phải ký điều khoản. Token không ai claim sẽ bị burn.</li><li>18% foundation.</li><li>50% team và nhà đầu tư: khóa 12 tháng, sau đó trả dần ít nhất 3 năm.</li><li><strong>100% doanh thu treasury dùng để buyback và burn.</strong></li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-star"/></svg></span>Points</h4><ul><li>3M retro (17/12/2025) cộng 150k mỗi tuần.</li><li>Tổng 9.15M đến 25/9, khoảng 10.5M giữa tháng 11, khoảng 11.1M nếu TGE vào 31/12.</li><li>Mỗi tuần pha loãng khoảng 1.4%.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-chart"/></svg></span>Traction</h4><ul><li>Đỉnh: 5 ngày 21–25/9 đạt $17.4B volume (ngày cao nhất $4.02B), thị phần 14.95%, đứng <strong>thứ 2 sau Hyperliquid</strong>.</li><li>OI đỉnh $1.15B (6/10), nay $693M (−29%/30 ngày). Volume 7 ngày $13.5B, Vol/OI khoảng 3×.</li><li>Spread gộp khoảng $119M/năm (9/2026). Treasury nhận 20%, khoảng $24M/năm, và tỷ lệ này “có thể thay đổi”.</li></ul></div>
+      <div class="fact"><h4><span class="fi"><svg aria-hidden="true"><use href="#i-pulse"/></svg></span>Polymarket (hạn 2027)</h4><ul><li>Median khoảng <strong>$930–950M</strong>: P(&gt;$500M) 88.5%, P(&gt;$800M) 61.5%, P(&gt;$1B) 44.5%, P(&gt;$2B) 12.5%.</li><li>Diễn biến median: $235M (4/2026), $504M (5, sau Series A), $906M (8), đỉnh $1.27B (3/10), $1.12B (14/11), khoảng $0.95B (18/11).</li></ul></div>
+    </div>
+
+    <div class="grid-2">
+      <figure class="fig">
+        <div class="fig-head">
+          <div class="fig-title">Median FDV ngụ ý của Variational trên Polymarket</div>
+          <div class="fig-sub">Theo thời gian, thang log. Tăng mạnh sau Series A (5/2026), đỉnh đầu tháng 10, sau đó giảm dần.</div>
+        </div>
+        <div class="chart" id="c-var-tl" tabindex="0" aria-label="Biểu đồ median FDV ngụ ý của Variational trên Polymarket theo thời gian"></div>
+        <figcaption class="fig-foot">Nguồn: Polymarket, lịch sử giá CLOB. Các mốc chính có trong mục Polymarket ở trên.</figcaption>
+      </figure>
+      <figure class="fig">
+        <div class="fig-head">
+          <div class="fig-title">Ladder hiện tại: xác suất FDV D1 vượt từng ngưỡng</div>
+          <div class="fig-sub">Kèo hạn 31/12/2027. Vạch dọc giữa mỗi thanh là mốc 50%.</div>
+        </div>
+        <div class="ladder" id="ld-var"></div>
+        <figcaption class="fig-foot">Polymarket, 18/11/2026 13:40 UTC.</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="sub">Định giá D1</h3>
+    <div class="tbl">
+      <div class="table-wrap">
+        <table class="sticky w-md">
+          <thead><tr><th>Phương pháp</th><th>Kết quả</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Polymarket nhân 0.6–0.7</strong> (thiên lệch trung bình của nhóm)</td><td>≈ $560–670M</td></tr>
+            <tr><td><strong>Polymarket nhân 0.9</strong> (sai số kiểu Lighter, cho dự án top đầu)</td><td>≈ $840M</td></tr>
+            <tr><td><strong>So sánh theo OI</strong> (khoảng $850M nhân bội số 0.61–3.24, trung vị 0.74)</td><td>$520M–2.75B (trung vị khoảng $630M)</td></tr>
+            <tr><td><strong>So sánh theo volume 30 ngày</strong> (khoảng $58B nhân 0.0074–0.0142)</td><td>$430–820M</td></tr>
+            <tr><td><strong>Doanh thu treasury $24M nhân 20–40 lần</strong> (LIT hiện khoảng 41×, EDGE khoảng 16×)</td><td>$480–950M</td></tr>
+            <tr><td><strong>Mô hình VAR·EXT tracker trong repo</strong> (10/2026)</td><td>≈ $705M</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+    </div>
+
+    <h3 class="sub">Kịch bản FDV D1</h3>
+    <div class="scen">
+      <div class="scn"><span class="lab"><i style="background:var(--deemph)"></i>Bear</span><span class="fdv">$350–550M</span><span class="pp">≈ $10–16 mỗi point</span><span class="cond">Risk-off kéo dài, lo ngại OLP thiếu minh bạch</span></div>
+      <div class="scn base"><span class="lab"><i style="background:var(--s1)"></i>Base</span><span class="fdv">$600M–1.0B</span><span class="pp">≈ $17–29 mỗi point (≈ $23 ở $800M)</span><span class="cond">Trung tâm khoảng $800M</span></div>
+      <div class="scn"><span class="lab"><i style="background:var(--deemph)"></i>Bull</span><span class="fdv">$1.2–1.8B</span><span class="pp">≈ $35–52 mỗi point</span><span class="cond">Thị trường hồi, niêm yết tier-1, buyback chạy rõ</span></div>
+    </div>
+    <p class="muted" style="font-size:14px">Giá trị mỗi point theo FDV, với 32% cung chia cho khoảng 11.1M points:</p>
+    <div class="ppts">
+      <div class="ppt"><span class="a">FDV $400M</span><span class="b">$11.5/point</span></div>
+      <div class="ppt mark"><span class="a">FDV $600M</span><span class="b">$17.3/point</span></div>
+      <div class="ppt mark"><span class="a">FDV $800M</span><span class="b">$23.1/point</span></div>
+      <div class="ppt mark"><span class="a">FDV $1B</span><span class="b">$28.8/point</span></div>
+      <div class="ppt"><span class="a">FDV $1.2B</span><span class="b">$34.6/point</span></div>
+      <div class="ppt"><span class="a">FDV $1.5B</span><span class="b">$43.2/point</span></div>
+      <div class="ppt"><span class="a">FDV $2B</span><span class="b">$57.7/point</span></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Sau TGE</h4>
+        <ul>
+          <li>32% mở khóa là float lớn nhất nhóm, nên áp lực bán tuần đầu sẽ mạnh.</li>
+          <li>Buyback khoảng $24M/năm chỉ bằng khoảng 3%/năm của FDV $800M.</li>
+          <li>Nếu points dừng, OI có thể giảm 40–60% trong 90 ngày (P6). Tuy vậy, mô hình 0 phí cộng TradFi có thể giữ volume tốt hơn Extended hay edgeX.</li>
+          <li>D90 kịch bản cơ sở: $350–700M.</li>
+          <li>Catalyst có thể giúp re-rating: ra mắt Pro, mở OLP cho cộng đồng gửi vốn, niêm yết tier-1, buyback minh bạch on-chain.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><svg class="ico ic-warn" aria-hidden="true"><use href="#i-warn"/></svg>Rủi ro</h4>
+        <ul>
+          <li>OLP là đối ứng duy nhất và không công bố vị thế.</li>
+          <li>Có last-look khi thị trường biến động mạnh.</li>
+          <li>Chặn user ở Mỹ và Canada.</li>
+          <li>50% thuộc insider.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <h4><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg>Hành động gợi ý</h4>
+      <ol class="steps">
+        <li>Chỉ farm tiếp khi chi phí mỗi point (spread cộng funding) thấp hơn khoảng $17–20, tức đã chiết khấu so với kịch bản cơ sở. Nhớ mỗi tuần points bị pha loãng khoảng 1.4%.</li>
+        <li>Ưu tiên cặp có spread thấp. Ví dụ, NDX từng được báo giá 0.68 bps ở quy mô $1M.</li>
+        <li>Muốn khóa một phần giá trị: mua NO cho “&gt;$1B” (khoảng 55.5¢).</li>
+        <li>Ký điều khoản claim ngay khi mở.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= 8. New-gen ================= -->
+  <section id="new-gen" aria-labelledby="h-ng">
+    <div class="sec-head">
+      <span class="sec-num">8</span>
+      <h2 id="h-ng">Nhóm new-gen: RISEx, TxFlow, Bulk, Arcus, QFEX</h2>
+      <p class="lede">Chưa dự án nào có token; nên tính chi phí farm theo khung 2027.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="fig-head">
+        <div class="fig-title">Bản đồ định giá FDV D1: bear, base, bull của cả 7 dự án chưa TGE</div>
+        <div class="fig-sub">Thanh xanh là vùng kịch bản cơ sở; vạch xám là vùng bear và bull. Mũi “+” nghĩa là kịch bản bull không có cận trên. Thang log. Variational và Extended đã phân tích ở mục 7 và 6.</div>
+      </div>
+      <ul class="legend">
+        <li><span class="k-bar" style="background:var(--s1)"></span>Kịch bản cơ sở</li>
+        <li><span class="k-bar" style="background:var(--deemph)"></span>Bear và bull</li>
+        <li><span class="k-dot" style="background:var(--s2)"></span>Median Polymarket hiện tại</li>
+        <li><span class="k-line" style="background:var(--s2);height:4px"></span>Vùng pre-market</li>
+      </ul>
+      <div class="chart" id="c-val" tabindex="-1"></div>
+      <figcaption class="fig-foot">Ước tính của mình, xem Bảng 7 và mục 6–7. QFEX: kịch bản bear là “không có token”.</figcaption>
+    </figure>
+
+    <div class="tbl">
+      <div class="tbl-cap"><span class="t">Bảng 7. So sánh nhanh</span><span class="s">OI và phí ngày 17/11/2026</span></div>
+      <div class="table-wrap">
+        <table class="sticky w-xl">
+          <thead><tr><th></th><th>RISEx</th><th>TxFlow</th><th>Bulk</th><th>Arcus</th><th>QFEX</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Kiến trúc</strong></td><td>Perp DEX chủ lực trên RISE (Ethereum L2 tốc độ cao)</td><td>L1 riêng, gồm perps, spot, prediction</td><td>CLOB tích hợp vào validator Solana (fork Jito-Agave)</td><td>Ứng dụng trên Robinhood Chain (L2 dựa trên Arbitrum)</td><td>Sàn tập trung (CLOB + clearing), lưu ký tại BitGo, bắt buộc KYC</td></tr>
+            <tr><td><strong>Đội ngũ</strong></td><td>RISE Labs (CEO Sam Battenally) cùng team BSX (mua lại 11/2025)</td><td>Gần như ẩn danh (một nguồn nêu Matt Hu, Harrison Rea, Jack Wang)</td><td>North Star Labs</td><td>Eddie Zhang (CEO); Antonio Juliano trong hội đồng quản trị; ấp ủ tại dYdX Labs</td><td>Cựu Tower, Citadel, Jump, HRT, Optiver, Jane Street</td></tr>
+            <tr><td><strong>Vốn</strong></td><td>khoảng $8M (Galaxy dẫn; angel Vitalik, Stani Kulechov)</td><td>Không VC, không phân bổ cho nhà đầu tư</td><td>Seed $8M (6MV và Robot dẫn; Wintermute, Big Brain, Anatoly)</td><td>Robinhood Crypto đầu tư</td><td>Seed $9.5M ở định giá $95M (General Catalyst, YC; Paul Graham)</td></tr>
+            <tr><td><strong>Points</strong></td><td>Ignite S1: 200k/tuần từ cuối 7/2026, kết thúc muộn nhất Q2/2027. 100% RISE points dành cho user RISEx. 1.5% cung RISE dành cho holder BSX</td><td>S1 từ 12/10/2026: 1.25M/tuần cho trader (82% ngân sách) cộng 488k/tháng quỹ growth. Kết thúc muộn nhất Q1/2027. Chỉ tính perps</td><td>AURA = USDC gửi trước nhân thời gian (cộng stake SOL, referral). Team nói 30% cung dành cho user</td><td>S1 từ 1/10/2026, khoảng 250k/tuần</td><td>Không có points chính thức; tin đồn “Season 0”</td></tr>
+            <tr><td><strong>Token</strong></td><td>Chưa công bố</td><td>Chưa xác nhận</td><td>Chưa có (30% “để dành” cho user)</td><td>“Đã xác nhận”, có phần cho cộng đồng dYdX</td><td>Chưa có</td></tr>
+            <tr><td><strong>OI (17/11)</strong></td><td class="nw">$34M (đỉnh $45M)</td><td class="nw">$27–28M (đỉnh $48M)</td><td class="nw">khoảng $12M</td><td class="nw">$84–86M (đỉnh $124M)</td><td><strong>$197–211M (+49%/30 ngày)</strong></td></tr>
+            <tr><td><strong>Phí hoặc doanh thu 30 ngày</strong></td><td>$1.38M (phí chain RISE)</td><td>$1.76M (khoảng $21M/năm)</td><td>$0.48M</td><td>$1.63M (khoảng $20M/năm)</td><td>không có dữ liệu</td></tr>
+            <tr><td><strong>Polymarket</strong></td><td>RISE có token trước 31/12/2026: 11%; RISEx: 2.5%; trước 30/6/2027: khoảng 34–40%</td><td>—</td><td>Trước 31/12/2026: 6%; trước 30/6/2027: 29.5%</td><td>—</td><td>Launch và FDV &gt; $50M trước hết 2027: 63.5%; &gt; $200M: 48%; &gt; $500M: 26.5% (kèo mỏng)</td></tr>
+            <tr><td><strong>FDV D1 ước tính</strong> <span class="sub">bear / base / bull</span></td><td>$80–150M / <strong>$200–400M</strong> / $600M–1B</td><td>$30–80M / <strong>$100–250M</strong> / trên $400M</td><td>$50–100M / <strong>$150–300M</strong> / trên $500M</td><td>$100–200M / <strong>$300–600M</strong> / trên $1B</td><td>không có token / <strong>$200–500M</strong> / khoảng $1B</td></tr>
+            <tr><td><strong>Điểm</strong></td><td><span class="meter"><b>2.85</b><span class="tr"><i style="width:57%"></i></span></span></td><td><span class="meter"><b>2.55</b><span class="tr"><i style="width:51%"></i></span></span></td><td><span class="meter"><b>2.55</b><span class="tr"><i style="width:51%"></i></span></span></td><td><span class="meter"><b>3.00</b><span class="tr"><i style="width:60%"></i></span></span></td><td><span class="meter"><b>2.95</b><span class="tr"><i style="width:59%"></i></span></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="swipe"><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Vuốt ngang để xem đủ bảng</div>
+    </div>
+
+    <div class="ng">
+      <article class="ngc" id="ng-risex">
+        <div class="ngc-head">
+          <div><div class="ngc-name">8.1 RISEx</div><div class="ngc-tag">Perp DEX chủ lực trên RISE (Ethereum L2) · Galaxy, Vitalik, Stani</div></div>
+          <div class="ngc-score"><span class="big">2.85 <small>/ 5</small></span><span class="tr" role="img" aria-label="2.85 trên 5"><i style="width:57%"></i></span></div>
+        </div>
+        <div class="ngc-kv"><span>OI <b>$34M</b></span><span>Points <b>200k/tuần</b></span><span>Token trước 30/6/2027 <b>≈ 34–40%</b></span><span>FDV base <b>$200–400M</b></span></div>
+        <div class="blocks">
+          <div class="blk"><h5><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Luận điểm</h5><ul><li>Tích hợp dọc giữa hạ tầng và ứng dụng: L2 tốc độ cao cộng orderbook. Đây là cách Hyperliquid làm, nhưng RISE làm trên Ethereum.</li><li>Có Galaxy, Vitalik, Stani đứng sau.</li><li>Mua lại BSX, một perp DEX trên Base với hơn $15B volume.</li><li>S1 vừa bắt đầu, phát cố định 200k points/tuần, mainnet có giới hạn truy cập. Ít đối thủ hơn so với farm công khai.</li></ul></div>
+          <div class="blk"><h5><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Rủi ro</h5><ul><li>Token nhiều khả năng là token của chain. Giá trị phụ thuộc vào việc chain có người dùng ngoài RISEx hay không.</li><li>Vốn gọi nhỏ, ảnh hưởng tới hỗ trợ market making và niêm yết.</li><li>TGE nhiều khả năng sau giữa năm 2027.</li></ul></div>
+          <div class="blk"><h5><svg aria-hidden="true"><use href="#i-bulb"/></svg>Ví dụ tính giá trị point</h5><ul><li>Giả định minh họa: S1 có khoảng 8–10M points.</li><li>Nếu S1 nhận 10% cung và FDV là $300M, mỗi point đáng khoảng $3–4.</li><li>Hãy thay tỷ lệ % và FDV thật khi dự án công bố.</li></ul></div>
+        </div>
+      </article>
+
+      <article class="ngc" id="ng-txflow">
+        <div class="ngc-head">
+          <div><div class="ngc-name">8.2 TxFlow</div><div class="ngc-tag">L1 riêng · không VC · perps, spot, prediction</div></div>
+          <div class="ngc-score"><span class="big">2.55 <small>/ 5</small></span><span class="tr" role="img" aria-label="2.55 trên 5"><i style="width:51%"></i></span></div>
+        </div>
+        <div class="ngc-kv"><span>OI <b>$27–28M</b></span><span>Doanh thu <b>≈ $21M/năm</b></span><span>Points <b>1.25M/tuần</b></span><span>FDV base <b>$100–250M</b></span></div>
+        <div class="blocks">
+          <div class="blk"><h5><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Luận điểm</h5><ul><li>Câu chuyện “L1 riêng, không VC, không phân bổ cho nhà đầu tư” giống Hyperliquid, nên phần cộng đồng có thể lớn.</li><li>Doanh thu khoảng $21M/năm khi vẫn chỉ cho vào bằng mã mời, khá ấn tượng.</li><li>Hơn 150 cặp, gồm crypto, cổ phiếu, FX, pre-IPO.</li><li>Points chấm theo cả volume, OI, thời gian hoạt động, phí và TVL, nên khó wash hơn.</li></ul></div>
+          <div class="blk"><h5><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Rủi ro</h5><ul><li>Đội ngũ gần như ẩn danh, không có backer hỗ trợ niêm yết hay market making.</li><li>Token chưa được xác nhận.</li><li>Vol/OI ước tính khoảng 7×, tức volume farm nhiều.</li><li>Bảo mật và mức tập trung hóa của L1 chưa rõ.</li></ul></div>
+          <div class="blk"><h5><svg aria-hidden="true"><use href="#i-arrow"/></svg>Cách farm</h5><ul><li>Phân bổ nhỏ.</li><li>Ưu tiên giữ OI có lý do kinh tế, đừng chạy volume vòng tròn, vì có thể bị trừ points hồi tố.</li></ul></div>
+        </div>
+      </article>
+
+      <article class="ngc" id="ng-bulk">
+        <div class="ngc-head">
+          <div><div class="ngc-name">8.3 Bulk</div><div class="ngc-tag">CLOB trong validator Solana · 6MV, Robot, Wintermute, Anatoly</div></div>
+          <div class="ngc-score"><span class="big">2.55 <small>/ 5</small></span><span class="tr" role="img" aria-label="2.55 trên 5"><i style="width:51%"></i></span></div>
+        </div>
+        <div class="ngc-kv"><span>OI <b>≈ $12M</b></span><span>Pre-deposit <b>≈ $27.5M</b></span><span>Token trước 30/6/2027 <b>29.5%</b></span><span>FDV base <b>$150–300M</b></span></div>
+        <div class="blocks">
+          <div class="blk"><h5><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Luận điểm</h5><ul><li>Kiến trúc mới: matching chạy ngay trong validator Solana (Bulk-Agave, plugin “Bulk Tile”, BULKBFT), tick khoảng 20ms, độ trễ cố ý 25ms cho lệnh taker.</li><li>Có Anatoly và Wintermute đứng sau.</li><li>Farm ít công: chỉ cần gửi USDC (khoảng $27.5M pre-deposit tính đến 8/2026).</li></ul></div>
+          <div class="blk"><h5><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Rủi ro</h5><ul><li>Token perp trên Solana lịch sử yếu: FDV DRIFT hiện khoảng $10M, ZEX khoảng $1M.</li><li>Points nghiêng về cá voi.</li><li>Hệ thống chưa chạy thực tế ở quy mô lớn.</li><li>Vốn bị khóa, chi phí cơ hội khoảng 4–5% lãi USDC.</li><li>TGE nhiều khả năng giữa hoặc cuối 2027.</li></ul></div>
+          <div class="blk"><h5><svg aria-hidden="true"><use href="#i-arrow"/></svg>Cách farm</h5><ul><li>Chỉ dùng USDC nhàn rỗi.</li><li>Tính lợi nhuận kỳ vọng so với lãi suất phi rủi ro.</li></ul></div>
+        </div>
+      </article>
+
+      <article class="ngc" id="ng-arcus">
+        <div class="ngc-head">
+          <div><div class="ngc-name">8.4 Arcus</div><div class="ngc-tag">Robinhood Chain · ấp ủ tại dYdX Labs · Robinhood đầu tư</div></div>
+          <div class="ngc-score"><span class="big">3.00 <small>/ 5</small></span><span class="tr" role="img" aria-label="3.00 trên 5"><i style="width:60%"></i></span></div>
+        </div>
+        <div class="ngc-kv"><span>OI <b>$84–86M</b></span><span>Doanh thu <b>≈ $20M/năm</b></span><span>Points <b>≈ 250k/tuần</b></span><span>FDV base <b>$300–600M</b></span></div>
+        <div class="blocks">
+          <div class="blk"><h5><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Luận điểm</h5><ul><li>Nguồn gốc dYdX, Robinhood đầu tư, có kênh phân phối hơn 27 triệu tài khoản Robinhood đã nạp tiền.</li><li>Cổ phiếu token hóa phát hành qua hạ tầng Robinhood.</li><li>Doanh thu khoảng $20M/năm chỉ sau khoảng 4 tháng.</li><li>Bắt buộc KYC nên ít sybil, phần chia cho user thật lớn hơn.</li></ul></div>
+          <div class="blk"><h5><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Rủi ro</h5><ul><li>Token phải chia cho cộng đồng dYdX (trader, staker, validator). Khi Arcus công bố, DYDX giảm 23%, cho thấy thị trường kỳ vọng giá trị dịch chuyển sang Arcus.</li><li>Không mở cho Mỹ, Anh, Canada.</li><li>Robinhood có thể ưu tiên sản phẩm của chính mình (xem P9).</li></ul></div>
+          <div class="blk"><h5><svg aria-hidden="true"><use href="#i-arrow"/></svg>Cách farm</h5><ul><li>Đây là new-gen mình đánh giá cao nhất về chất lượng.</li><li>Phù hợp nếu bạn KYC được và ở vùng được phép.</li></ul></div>
+        </div>
+      </article>
+
+      <article class="ngc" id="ng-qfex">
+        <div class="ngc-head">
+          <div><div class="ngc-name">8.5 QFEX</div><div class="ngc-tag">Sàn tập trung TradFi perps 24/7 · YC, General Catalyst</div></div>
+          <div class="ngc-score"><span class="big">2.95 <small>/ 5</small></span><span class="tr" role="img" aria-label="2.95 trên 5"><i style="width:59%"></i></span></div>
+        </div>
+        <div class="ngc-kv"><span>OI <b>$197–211M</b></span><span>OI 30 ngày <b>+49%</b></span><span>Points <b>chưa có</b></span><span>FDV base <b>$200–500M</b></span></div>
+        <div class="blocks">
+          <div class="blk"><h5><svg class="ic-good" aria-hidden="true"><use href="#i-check"/></svg>Luận điểm</h5><ul><li>Đội ngũ có lý lịch mạnh nhất nhóm new-gen (HFT).</li><li>OI tăng tự nhiên khi chưa có points: từ $90M lên $211M trong khoảng 3 tháng.</li><li>Không dùng oracle: lấy giá trực tiếp từ NYSE và Nasdaq, từ hợp đồng E-mini của CME cho chỉ số.</li><li>Tháng 9/2026, CEO viết bài ủng hộ việc airdrop token chưa vesting cho user sớm nhất.</li></ul></div>
+          <div class="blk"><h5><svg class="ic-bad" aria-hidden="true"><use href="#i-x"/></svg>Rủi ro</h5><ul><li>Đây là <strong>sàn tập trung</strong>, không phải DEX.</li><li>Token có thể không bao giờ ra, hoặc ưu tiên cổ phần.</li><li>Bắt buộc KYC.</li><li>Cạnh tranh trực tiếp với HIP-3 (trade[XYZ]), Variational, Arcus, Ondo perps.</li></ul></div>
+          <div class="blk"><h5><svg aria-hidden="true"><use href="#i-arrow"/></svg>Cách farm</h5><ul><li>Chỉ giao dịch “hữu cơ” khi bạn thật sự cần hedge TradFi hoặc trade cuối tuần.</li><li>Đừng tạo volume giả cho một chương trình chưa tồn tại.</li></ul></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= 9. Xếp hạng ================= -->
+  <section id="xep-hang" aria-labelledby="h-xh">
+    <div class="sec-head">
+      <span class="sec-num">9</span>
+      <h2 id="h-xh">Xếp hạng và phân bổ</h2>
+      <p class="lede">Chất lượng dự án khác với độ hấp dẫn để farm ngay lúc này: dự án sớm, ít cạnh tranh có thể đáng farm hơn dự án tốt nhưng đã đông.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Xếp hạng chất lượng (scorecard)</h4>
+        <div class="rank" role="list">
+          <div class="rk" role="listitem"><span class="pos">1</span><span class="nm">Variational</span><span class="tr"><i style="width:74%"></i></span><span class="sv">3.70</span></div>
+          <div class="rk" role="listitem"><span class="pos">2</span><span class="nm">Arcus</span><span class="tr"><i style="width:60%"></i></span><span class="sv">3.00</span></div>
+          <div class="rk" role="listitem"><span class="pos">3</span><span class="nm">QFEX</span><span class="tr"><i style="width:59%"></i></span><span class="sv">2.95</span></div>
+          <div class="rk" role="listitem"><span class="pos">4</span><span class="nm">RISEx</span><span class="tr"><i style="width:57%"></i></span><span class="sv">2.85</span></div>
+          <div class="rk" role="listitem"><span class="pos">5</span><span class="nm">TxFlow</span><span class="tr"><i style="width:51%"></i></span><span class="sv">2.55</span></div>
+          <div class="rk" role="listitem"><span class="pos">5</span><span class="nm">Bulk</span><span class="tr"><i style="width:51%"></i></span><span class="sv">2.55</span></div>
+          <div class="rk" role="listitem"><span class="pos">6</span><span class="nm">Extended</span><span class="tr"><i style="width:50%"></i></span><span class="sv">2.50</span></div>
+        </div>
+        <p class="fn" style="margin-top:12px">TxFlow và Bulk bằng điểm nhau. Thanh đo điểm trên thang 5.</p>
+      </div>
+      <div class="card">
+        <h4>Độ hấp dẫn để farm ngay lúc này</h4>
+        <p class="muted" style="font-size:14px;margin-bottom:10px">Cân nhắc giá trị kỳ vọng so với chi phí, mức sớm, cạnh tranh.</p>
+        <ol class="farm">
+          <li><div><div class="nm">Variational</div><div class="why">Farm đến TGE, nhưng chỉ khi chi phí mỗi point dưới khoảng $17–20.</div></div></li>
+          <li><div><div class="nm">Arcus</div><div class="why">S1 còn sớm, có KYC, có Robinhood và dYdX đứng sau. Điểm trừ là phải chia token với cộng đồng dYdX.</div></div></li>
+          <li><div><div class="nm">RISEx</div><div class="why">S1 còn sớm, phát cố định 200k/tuần, truy cập có giới hạn. Chấp nhận chờ đến năm 2027.</div></div></li>
+          <li><div><div class="nm">TxFlow</div><div class="why">Rủi ro cao, nhưng points chấm nhiều chiều và không có phần cho VC.</div></div></li>
+          <li><div><div class="nm">Bulk</div><div class="why">Gửi USDC tiện, nhưng nghiêng về cá voi và khóa vốn.</div></div></li>
+          <li><div><div class="nm">QFEX</div><div class="why">Chưa có points, chỉ nên giao dịch hữu cơ.</div></div></li>
+        </ol>
+        <div class="callout note" style="margin-top:14px">
+          <span class="ic"><svg aria-hidden="true"><use href="#i-info"/></svg></span>
+          <div><p><strong>Extended:</strong> đã hết farm. Việc còn lại là ký điều khoản, hedge, và bán theo pattern.</p></div>
+        </div>
+      </div>
+    </div>
+    <h3 class="sub">Gợi ý theo quy mô vốn</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Vốn nhỏ (khoảng $5–10K, như kế hoạch 7K trước đó)</h4>
+        <ul>
+          <li>Tối đa 2 sàn: Variational đến TGE, cộng một new-gen (Arcus hoặc RISEx).</li>
+          <li>Không khóa vốn vào farm kiểu gửi tiền.</li>
+          <li>Dùng đòn bẩy thấp. Volume chỉ nên đến từ lệnh có lý do.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Vốn vừa hoặc lớn</h4>
+        <ul>
+          <li>Thêm Bulk (bằng USDC nhàn rỗi) và TxFlow (phân bổ nhỏ).</li>
+          <li>Giao dịch hữu cơ ở QFEX.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 10. Checklist ================= -->
+  <section id="checklist" aria-labelledby="h-cl">
+    <div class="sec-head">
+      <span class="sec-num">10</span>
+      <h2 id="h-cl">Checklist và công cụ</h2>
+      <p class="lede">Đánh dấu để lưu tiến độ ngay trong trình duyệt của bạn (lưu cục bộ, không gửi đi đâu).</p>
+    </div>
+    <ul class="checks">
+      <li>
+        <label class="chk"><input type="checkbox" data-k="ext-sign"><span class="ct"><strong>Extended:</strong> ký Community Distribution Terms trước <strong>31/12/2026, 23:59 UTC</strong>. Nếu dùng Starknet, chỉ định ví EVM (Arc).</span></label>
+      </li>
+      <li>
+        <label class="chk"><input type="checkbox" data-k="var-sign"><span class="ct"><strong>Variational:</strong> ký điều khoản claim khi mở. Token không claim sẽ bị burn.</span></label>
+      </li>
+      <li>
+        <label class="chk"><input type="checkbox" data-k="pm-weekly"><span class="ct">Theo dõi ladder Polymarket hằng tuần bằng script trong repo (thay <code>&lt;slug&gt;</code> và xác suất launch).</span></label>
+        <div class="codes">
+          <div class="code"><code>python3 research/perp-dex-tge/tools/polymarket_fdv_ladder.py variational-fdv-above-one-day-after-launch 14 0.97</code><button class="copy" type="button" aria-label="Chép lệnh"><svg aria-hidden="true"><use href="#i-copy"/></svg>Chép</button></div>
+          <div class="code"><code>python3 research/perp-dex-tge/tools/polymarket_fdv_ladder.py extended-fdv-above-one-day-after-launch 14 0.9</code><button class="copy" type="button" aria-label="Chép lệnh"><svg aria-hidden="true"><use href="#i-copy"/></svg>Chép</button></div>
+          <div class="code"><code>python3 research/perp-dex-tge/tools/polymarket_fdv_ladder.py qfex-fdv-above-one-day-after-launch 14</code><button class="copy" type="button" aria-label="Chép lệnh"><svg aria-hidden="true"><use href="#i-copy"/></svg>Chép</button></div>
+        </div>
+      </li>
+      <li>
+        <label class="chk"><input type="checkbox" data-k="voloi"><span class="ct">Theo dõi Vol/OI và xu hướng OI 30 ngày trên Castle Labs. Cảnh báo khi OI giảm hơn 30% lúc points giảm.</span></label>
+      </li>
+      <li>
+        <label class="chk"><input type="checkbox" data-k="cliffs"><span class="ct">Lịch cliff: LIT khoảng 27/12/2026 đến 28/1/2027; BP và EDGE khoảng 3/2027; GRVT khoảng 7/2027.</span></label>
+      </li>
+      <li>
+        <label class="chk"><input type="checkbox" data-k="revisit"><span class="ct">Hẹn xem lại token mới TGE ở mốc D60–D110, tức cửa sổ đáy lịch sử.</span></label>
+      </li>
+    </ul>
+    <div class="callout note">
+      <span class="ic"><svg aria-hidden="true"><use href="#i-info"/></svg></span>
+      <div><p>Đã có sẵn trong repo: dashboard “VAR · EXT TGE Watch” (<code>var-ext-tracker/</code>), cập nhật FDV kỳ vọng D+1 hằng ngày.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 11. Giới hạn ================= -->
+  <section id="gioi-han" aria-labelledby="h-gh">
+    <div class="sec-head">
+      <span class="sec-num">11</span>
+      <h2 id="h-gh">Giới hạn của phân tích</h2>
+      <p class="lede">Đọc các con số ở trên cùng với những giới hạn này.</p>
+    </div>
+    <ul class="limits">
+      <li><strong>Mẫu nhỏ</strong>Chỉ 5 perp có kèo Polymarket để hiệu chỉnh, và 4–7 token để rút pattern sau TGE.</li>
+      <li><strong>Nguồn thứ cấp</strong>Nhiều số liệu lấy từ báo hoặc aggregator, có chỗ mâu thuẫn. Ví dụ: vốn của GRVT, tổng points của Extended (ước tính cộng đồng), “0% insider” của BP.</li>
+      <li><strong>Thiếu dữ liệu phí/doanh thu</strong>DefiLlama không theo dõi doanh thu của Variational, GRVT, Backpack, QFEX. Phí trước TGE của Lighter và HYPE bị thiếu.</li>
+      <li><strong>Scorecard và FDV</strong>Điểm do mình chấm. Bảng retro có thiên lệch hindsight. Các khoảng FDV là kịch bản, không phải dự báo điểm.</li>
+      <li><strong>Thời điểm số liệu</strong>Giá và Polymarket là ảnh chụp ngày 18/11/2026 và thay đổi liên tục.</li>
+    </ul>
+  </section>
+
+  <!-- ================= Nguồn ================= -->
+  <section id="nguon" aria-labelledby="h-src">
+    <div class="sec-head">
+      <span class="sec-num">↗</span>
+      <h2 id="h-src">Nguồn</h2>
+      <p class="lede">Bấm từng nhóm để mở danh sách liên kết.</p>
+    </div>
+    <div class="src">
+      <details>
+        <summary>Dữ liệu thị trường<span class="cnt">Polymarket, CoinGecko, DefiLlama, Castle Labs</span></summary>
+        <ul>
+          <li>Polymarket (gamma API và lịch sử giá CLOB), các event:
+            <ul>
+              <li><a href="https://polymarket.com/event/lighter-market-cap-fdv-one-day-after-launch">Lighter FDV 2025</a>, <a href="https://polymarket.com/event/lighter-fdv-above-one-day-after-launch">Lighter FDV 2026</a></li>
+              <li><a href="https://polymarket.com/event/edgex-fdv-above-one-day-after-launch">edgeX FDV</a>, <a href="https://polymarket.com/event/paradex-fdv-above-one-day-after-launch">Paradex FDV</a>, <a href="https://polymarket.com/event/backpack-fdv-above-one-day-after-launch">Backpack FDV</a>, <a href="https://polymarket.com/event/grvt-fdv-above-one-day-after-launch">GRVT FDV</a></li>
+              <li><a href="https://polymarket.com/event/extended-fdv-above-one-day-after-launch">Extended FDV</a>, <a href="https://polymarket.com/event/variational-fdv-above-one-day-after-launch">Variational FDV</a>, <a href="https://polymarket.com/event/qfex-fdv-above-one-day-after-launch">QFEX FDV</a></li>
+              <li><a href="https://polymarket.com/event/will-rise-launch-a-token-by">RISE launch</a>, <a href="https://polymarket.com/event/will-risex-launch-a-token-by-20260708174012702">RISEx launch</a>, <a href="https://polymarket.com/event/will-bulk-launch-a-token-by">BULK launch</a></li>
+              <li><a href="https://polymarket.com/event/monad-market-cap-fdv-one-day-after-launch">Monad FDV</a>, <a href="https://polymarket.com/event/megaeth-market-cap-fdv-one-day-after-launch">MegaETH FDV</a></li>
+            </ul>
+          </li>
+          <li>CoinGecko API: giá, FDV, ATH/ATL, lịch sử 365 ngày.</li>
+          <li>DefiLlama API: <a href="https://api.llama.fi/overview/fees">phí</a>, <a href="https://api.llama.fi/overview/open-interest">OI</a>.</li>
+          <li><a href="https://castlelabs.io/research/perp-dex-rankings">Castle Labs: Perp DEX rankings (17/11/2026)</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Hyperliquid và Aster<span class="cnt">4 nguồn</span></summary>
+        <ul>
+          <li><a href="https://www.theblock.co/post/328769/hyperliquid-airdrops-over-1-2-billion-worth-of-tokens-to-users-as-hype-crosses-4-billion-fdv">The Block: HYPE crosses $4B FDV</a></li>
+          <li><a href="https://www.theblock.co/news/ecosystems/2026-09-08-hyperliquid-open-interest-climbs-14-3-billion-hype-hits-all-time-high-413855">The Block: HL OI $14.3B, HYPE ATH (9/2026)</a></li>
+          <li><a href="https://www.theblock.co/post/369813/asters-next-era-begins-airdrop-points-stage-2-live-tge-countdown-begins">The Block: Aster TGE countdown</a></li>
+          <li><a href="https://www.finanzen.net/nachricht/aktien/backed-by-cz-aster-token-ignites-with-1-650-first-day-rally-14858686">finanzen.net: ASTER first-day rally</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Lighter<span class="cnt">5 nguồn</span></summary>
+        <ul>
+          <li><a href="https://www.kucoin.com/news/flash/lighter-debuts-lit-token-with-a-25-community-airdrop">KuCoin: LIT 25% airdrop</a></li>
+          <li><a href="https://finance.yahoo.com/news/traders-split-over-whether-lighter-095119926.html">Yahoo/CoinDesk: LIT and $3B FDV</a></li>
+          <li><a href="https://www.theblock.co/post/378358/lighter-raises-68-million-1-5-billion-valuation-vc-bets-flood-perp-dex-infrastructure-report">The Block: Lighter raises $68M at $1.5B</a></li>
+          <li><a href="https://www.cryptotimes.io/2026/06/30/why-lighter-lit-surged-25-this-week-buybacks-50m-trading-volume-more/">CryptoTimes: LIT buybacks (6/2026)</a></li>
+          <li><a href="https://www.kucoin.com/news/flash/lighter-s-token-dips-20-as-robinhood-announces-bitstamp-futures-expansion">KuCoin: Robinhood chọn Bitstamp, LIT −20%</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>edgeX, Paradex, Backpack, GRVT<span class="cnt">11 nguồn</span></summary>
+        <ul>
+          <li><a href="https://thedefiant.io/news/defi/amber-group-backed-perp-dex-edgex-to-launch-token-on-march-31">The Defiant: edgeX TGE 31/3</a></li>
+          <li><a href="https://crypto.news/edgex-set-to-launch-edge-token-amid-transparency-concerns/">crypto.news: transparency concerns</a></li>
+          <li><a href="https://cointelegraph.com/news/edgex-blames-external-party-for-token-crash-as-zachxbt-points-to-insider-manipulation">Cointelegraph: EDGE crash, ZachXBT</a></li>
+          <li><a href="https://phemex.com/news/article/paradex-launches-dime-token-with-43-million-fdv-65097">Phemex: DIME $43M FDV</a></li>
+          <li><a href="https://decrypt.co/359780">Decrypt: Paradex DIME TGE</a></li>
+          <li><a href="https://www.kucoin.com/news/flash/backpack-to-launch-bp-token-tge-on-march-23-2026">KuCoin: BP TGE 23/3/2026</a></li>
+          <li><a href="https://www.kucoin.com/news/flash/backpack-launches-bp-token-tge-amid-bear-market">KuCoin: BP TGE amid bear market</a></li>
+          <li><a href="https://cryptobriefing.com/backpack-bp-token-surges-spacex-stock/">CryptoBriefing: BP and SpaceX stock</a></li>
+          <li><a href="https://en.bloomingbit.io/feed/news/124591">Bloomingbit: CFTC approval, BP +42%</a></li>
+          <li><a href="https://www.theblock.co/post/393389/">The Block: GRVT 28% community</a></li>
+          <li><a href="https://www.kucoin.com/news/flash/grvt-announces-tge-details-grvt-airdrop-claims-open-on-july-30">KuCoin: GRVT TGE 30/7</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Extended<span class="cnt">6 nguồn</span></summary>
+        <ul>
+          <li><a href="https://airdropalert.com/blogs/xten-tokenomics/">AirdropAlert: XTEN tokenomics</a></li>
+          <li><a href="https://www.kucoin.com/news/flash/extended-reveals-xten-tokenomics-30-airdropped-at-tge">KuCoin: XTEN tokenomics</a></li>
+          <li><a href="https://financefeeds.com/extended-token-stirs-fierce-speculation/">FinanceFeeds: Extended</a></li>
+          <li><a href="https://cryptorank.io/price/x-10">CryptoRank: XTEN pre-market</a></li>
+          <li><a href="https://www.coinglass.com/currencies/XTEN">Coinglass: XTEN</a></li>
+          <li><a href="https://orbitperpscreener.com/airdrop-calendar">Orbit airdrop calendar</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Variational<span class="cnt">4 nguồn</span></summary>
+        <ul>
+          <li><a href="https://www.datawallet.com/crypto/variational-explained">Datawallet: Variational explained</a></li>
+          <li><a href="https://alearesearch.substack.com/p/only-hyperliquid-traded-more-then">Alea Research: Only Hyperliquid traded more</a></li>
+          <li><a href="https://pulse2.com/variational-about-50-million-raised-for-on-chain-derivatives-trading-protocol">Pulse 2.0: $50M Series A</a></li>
+          <li><a href="https://www.kucoin.com/news/flash/variational-reveals-airdrop-details-var-token-valuation-estimated-at-1-53b-1-85b">KuCoin: VAR valuation estimates</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>RISEx, TxFlow, Bulk<span class="cnt">8 nguồn</span></summary>
+        <ul>
+          <li><a href="https://cryptobriefing.com/risex-launches-ignite-season-1-points-program-following-3b-in-volume-during-the-early-access-phase/">CryptoBriefing: Ignite S1</a></li>
+          <li><a href="https://decrypt.co/324190/galaxy-ventures-backs-rise-chain-8m-raised-to-launch-fastest-zone-for-real-time-apps-on-ethereum">Decrypt: RISE $8M, Galaxy</a></li>
+          <li><a href="https://decrypt.co/348127/rise-acquires-bsx-a-perp-dex-on-base-to-accelerate-development-of-the-first-integrated-orderbooks">Decrypt: RISE acquires BSX</a></li>
+          <li><a href="https://airdrop.promo/airdrops/txflow/">airdrop.promo: TxFlow</a></li>
+          <li><a href="https://www.bitdegree.org/crypto/txflow-review">BitDegree: TxFlow review</a></li>
+          <li><a href="https://cointelegraph.com/press-releases/txflow-l1-mainnet-launch-marks-a-new-phase-for-multi-application-on-chain-finance">Cointelegraph PR: TxFlow L1 mainnet</a></li>
+          <li><a href="https://coinlaunch.space/projects/txflow/">CoinLaunch: TxFlow</a></li>
+          <li><a href="https://defisecret.com/bulk-trade-review-solana-perps-aura-points/">DeFi Secret: Bulk review</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Arcus và QFEX<span class="cnt">6 nguồn</span></summary>
+        <ul>
+          <li><a href="https://coincodecap.com/arcus-review-24-7-stock-token-perps-dex-from-the-dydx-team">CoinCodeCap: Arcus review</a></li>
+          <li><a href="https://www.airdropmeta.com/projects/arcus">AirdropMeta: Arcus</a></li>
+          <li><a href="https://cointelegraph.com/news/robinhood-backed-dex-arcus-debut-multi-asset-trading">Cointelegraph: Arcus debut</a></li>
+          <li><a href="https://research.4pillars.io/en/research/qfex-ftx-without-the-fraud">Four Pillars: QFEX, FTX without the fraud</a> (bài được QFEX tài trợ)</li>
+          <li><a href="https://phemex.com/news/article/qfex-secures-95m-seed-funding-led-by-general-catalyst-64490">Phemex: QFEX $9.5M seed</a></li>
+          <li><a href="https://coinlaunch.space/events-contests/qfex-airdrop-retrodrop/">CoinLaunch: QFEX airdrop</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Trong repo này<span class="cnt">2 tệp</span></summary>
+        <ul>
+          <li>Ghi chú <code>research_notes/Chiến lược 7K cho nhịp pump/hype_lit_kntq_variational.md</code> (17/10/2026), dùng cho cliff LIT, buyback LIT và Polymarket VAR tháng 10.</li>
+          <li>Mô hình hiệu chỉnh trong <code>var-ext-tracker/collect.py</code>.</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="foot">
+    <span>Perp DEX: pattern TGE và định giá · dữ liệu chốt 18/11/2026 (UTC)</span>
+    <span>Không phải lời khuyên đầu tư. Bản gốc: <code>reports/Phân tích perp DEX - pattern TGE và định giá.md</code></span>
+  </div>
+</footer>
+
+<div class="tt" id="tt" role="status" aria-live="polite"></div>
+<button class="to-top" id="toTop" type="button" aria-label="Lên đầu trang"><svg aria-hidden="true"><use href="#i-up"/></svg></button>
+
+<script>const DATA = /*__DATA__*/;</script>
+<script>
+(() => {
+'use strict';
+const D = DATA, doc = document, NS = 'http://www.w3.org/2000/svg', DAY = 86400000;
+
+/* ---------- helpers ---------- */
+function S(tag, a, p){ const e = doc.createElementNS(NS, tag); if (a) for (const k in a){ const v = a[k]; if (v == null) continue; if (k === 'text') e.textContent = v; else e.setAttribute(k, v); } if (p) p.appendChild(e); return e; }
+function H(tag, a, p){ const e = doc.createElement(tag); if (a) for (const k in a){ const v = a[k]; if (v == null) continue; if (k === 'text') e.textContent = v; else if (k === 'class') e.className = v; else e.setAttribute(k, v); } if (p) p.appendChild(e); return e; }
+const trim = s => s.replace(/(\.\d*?)0+$/, '$1').replace(/\.$/, '');
+const fmtM = v => v >= 1000 ? '$' + trim((v / 1000).toFixed(2)) + 'B' : '$' + Math.round(v) + 'M';
+const fmtRange = (a, b) => (b >= 1000 && a < 1000) ? '$' + (a / 1000).toFixed(1) + '–' + (b / 1000).toFixed(1) + 'B' : (a >= 1000 ? '$' + trim((a / 1000).toFixed(1)) + '–' + trim((b / 1000).toFixed(1)) + 'B' : '$' + a + '–' + b + 'M');
+const fmtPct = v => trim(v >= 10 ? v.toFixed(0) : v.toFixed(1)) + '%';
+const lin = (d0, d1, r0, r1) => { const f = v => r0 + (v - d0) / (d1 - d0) * (r1 - r0); f.inv = p => d0 + (p - r0) / (r1 - r0) * (d1 - d0); return f; };
+const logS = (d0, d1, r0, r1) => { const a = Math.log(d0), b = Math.log(d1); const f = v => r0 + (Math.log(Math.max(v, 1e-9)) - a) / (b - a) * (r1 - r0); f.inv = p => Math.exp(a + (p - r0) / (r1 - r0) * (b - a)); return f; };
+const toDays = s => Date.parse(s + 'T00:00:00Z') / DAY;
+const fmtDate = d => { const t = new Date(Math.round(d) * DAY); return t.getUTCDate() + '/' + (t.getUTCMonth() + 1) + '/' + t.getUTCFullYear(); };
+function barPath(x, y, w, h, r, side){
+  r = Math.max(0, Math.min(r, w / 2, h / 2));
+  if (side === 'right') return `M${x},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + h - r}Q${x + w},${y + h} ${x + w - r},${y + h}H${x}Z`;
+  if (side === 'left') return `M${x + w},${y}H${x + r}Q${x},${y} ${x},${y + r}V${y + h - r}Q${x},${y + h} ${x + r},${y + h}H${x + w}Z`;
+  return `M${x + r},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + h - r}Q${x + w},${y + h} ${x + w - r},${y + h}H${x + r}Q${x},${y + h} ${x},${y + h - r}V${y + r}Q${x},${y} ${x + r},${y}Z`;
+}
+
+/* ---------- tooltip ---------- */
+const tt = doc.getElementById('tt');
+function tip(build, cx, cy){
+  tt.replaceChildren(); build(tt); tt.style.opacity = '1';
+  const r = tt.getBoundingClientRect();
+  let x = cx + 16, y = cy + 16;
+  if (x + r.width > innerWidth - 8) x = cx - r.width - 16;
+  if (y + r.height > innerHeight - 8) y = cy - r.height - 16;
+  tt.style.transform = `translate(${Math.max(8, x)}px,${Math.max(8, y)}px)`;
+}
+function untip(){ tt.style.opacity = '0'; }
+const tHead = (t, s) => H('div', {class: 'tt-h', text: s}, t);
+function tRow(t, o){ const r = H('div', {class: 'tt-r'}, t); const k = H('span', {class: 'tt-k ' + (o.kt || '')}, r); k.style.background = o.color || 'transparent'; H('span', {class: 'tt-v', text: o.v}, r); H('span', {class: 'tt-l', text: o.l || ''}, r); }
+const tNote = (t, s) => H('div', {class: 'tt-n', text: s}, t);
+
+/* ---------- responsive mount ---------- */
+const jobs = new Map();
+const ro = 'ResizeObserver' in window ? new ResizeObserver(es => es.forEach(e => { const f = jobs.get(e.target); if (f) f(); })) : null;
+function mount(sel, draw){
+  const host = doc.querySelector(sel); if (!host) return;
+  let lastW = 0, raf = 0;
+  const run = () => { const w = Math.round(host.clientWidth); if (!w || Math.abs(w - lastW) < 2) return; lastW = w; host.replaceChildren(); draw(host, w); };
+  jobs.set(host, () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(run); });
+  run();
+  if (ro) ro.observe(host); else addEventListener('resize', run);
+}
+function svgBase(host, W, Hh, label){ const s = S('svg', {class: 'chart-svg', width: W, height: Hh, viewBox: `0 0 ${W} ${Hh}`, role: 'img', 'aria-label': label || ''}); host.appendChild(s); return s; }
+function local(svg, e){ const r = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal; return {x: (e.clientX - r.left) * vb.width / r.width, y: (e.clientY - r.top) * vb.height / r.height}; }
+function client(svg, x, y){ const r = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal; return {x: r.left + x * r.width / vb.width, y: r.top + y * r.height / vb.height}; }
+function hoverable(el, mark, build){
+  const on = (x, y) => { if (mark) mark.classList.add('hover'); tip(build, x, y); };
+  const off = () => { if (mark) mark.classList.remove('hover'); untip(); };
+  el.addEventListener('pointermove', e => on(e.clientX, e.clientY));
+  el.addEventListener('pointerdown', e => on(e.clientX, e.clientY));
+  el.addEventListener('pointerleave', off);
+  el.addEventListener('focus', () => { const b = el.getBoundingClientRect(); on(b.left + b.width / 2, b.top + b.height / 2); });
+  el.addEventListener('blur', off);
+}
+function legend(sel, items){ const ul = doc.querySelector(sel); if (!ul) return; items.forEach(i => { const li = H('li', null, ul); const k = H('span', {class: 'k-line'}, li); k.style.background = i.color; li.appendChild(doc.createTextNode(i.name)); }); }
+
+/* ---------- line chart (crosshair + tooltip) ---------- */
+function lineChart(sel, c){
+  mount(sel, (host, W) => {
+    const narrow = W < 560;
+    const Hh = narrow ? (c.hN || 260) : (c.h || 320);
+    const m = {t: 18, r: narrow ? (c.rN != null ? c.rN : 16) : (c.r != null ? c.r : 16), b: 34, l: narrow ? (c.lN || 40) : (c.l || 48)};
+    const iw = W - m.l - m.r, ih = Hh - m.t - m.b;
+    const svg = svgBase(host, W, Hh, c.aria);
+    const x = lin(c.x[0], c.x[1], m.l, m.l + iw);
+    const y = (c.log ? logS : lin)(c.y[0], c.y[1], m.t + ih, m.t);
+    const cy = v => y(Math.min(c.y[1], Math.max(c.y[0], v)));
+    const g = S('g', null, svg);
+    c.yTicks.forEach(v => { const yy = y(v); S('line', {x1: m.l, x2: m.l + iw, y1: yy, y2: yy, class: 'grid'}, g); S('text', {x: m.l - 8, y: yy, dy: '0.32em', 'text-anchor': 'end', class: 'tick', text: c.yFmt(v)}, g); });
+    S('line', {x1: m.l, x2: m.l + iw, y1: m.t + ih, y2: m.t + ih, class: 'axis'}, g);
+    (narrow && c.xTicksN ? c.xTicksN : c.xTicks).forEach(v => { const xx = x(v); S('line', {x1: xx, x2: xx, y1: m.t + ih, y2: m.t + ih + 4, class: 'axis'}, g); S('text', {x: xx, y: m.t + ih + 19, 'text-anchor': 'middle', class: 'tick', text: c.xFmt(v, narrow)}, g); });
+    if (c.ref) {
+      const yy = y(c.ref.y); S('line', {x1: m.l, x2: m.l + iw, y1: yy, y2: yy, class: 'ref'}, g);
+      const rx = c.ref.at != null ? x(c.ref.at) : m.l + 6;
+      S('text', {x: rx, y: c.ref.below ? yy + 15 : yy - 6, 'text-anchor': c.ref.anchor || 'start', class: 'ref-label', text: (narrow && c.ref.labelN) || c.ref.label}, g);
+    }
+    (c.annot || []).forEach(a => { const xx = x(a.x); if (xx < m.l || xx > m.l + iw) return; S('line', {x1: xx, x2: xx, y1: m.t, y2: m.t + ih, class: 'annot'}, g); const anchor = (narrow && a.anchorN) || a.anchor || 'start'; S('text', {x: xx + (anchor === 'end' ? -5 : 5), y: m.t + 10 + (a.row || 0) * 15, 'text-anchor': anchor, class: 'annot-label', text: (narrow && a.labelN) || a.label}, g); });
+    const sg = S('g', null, svg);
+    c.series.forEach(s => {
+      let d = '', pen = false;
+      s.pts.forEach(p => { if (p[1] == null || p[0] < c.x[0] || p[0] > c.x[1]) { pen = false; return; } d += (pen ? 'L' : 'M') + x(p[0]).toFixed(1) + ' ' + cy(p[1]).toFixed(1); pen = true; });
+      S('path', {d, class: 'line', style: 'stroke:' + s.color}, sg);
+    });
+    const lg = S('g', null, svg);
+    c.series.forEach(s => {
+      const L = s.label; if (!L) return;
+      const valid = s.pts.filter(p => p[1] != null && p[0] >= c.x[0] && p[0] <= c.x[1]);
+      if (!valid.length) return;
+      const p = L.at === 'end' ? valid[valid.length - 1] : valid.reduce((b, q) => Math.abs(q[0] - L.at) < Math.abs(b[0] - L.at) ? q : b, valid[0]);
+      const px = x(p[0]), py = cy(p[1]);
+      if (L.dot !== false) S('circle', {cx: px, cy: py, r: 4, class: 'dot', style: 'fill:' + s.color}, lg);
+      const o = narrow && L.n ? Object.assign({}, L, L.n) : L;
+      S('text', {x: px + (o.dx != null ? o.dx : 8), y: py + (o.dy || 0), dy: '0.32em', 'text-anchor': o.anchor || 'start', class: 'dlabel', text: typeof L.text === 'function' ? L.text(p) : (L.text || s.name)}, lg);
+    });
+    const set = new Set(); c.series.forEach(s => s.pts.forEach(p => { if (p[1] != null && p[0] >= c.x[0] && p[0] <= c.x[1]) set.add(p[0]); }));
+    const xs = [...set].sort((a, b) => a - b);
+    const cross = S('line', {y1: m.t, y2: m.t + ih, class: 'cross', visibility: 'hidden'}, svg);
+    const hd = c.series.map(s => S('circle', {r: 4.5, class: 'dot', style: 'fill:' + s.color, visibility: 'hidden'}, svg));
+    const hit = S('rect', {x: m.l, y: m.t, width: Math.max(0, iw), height: Math.max(0, ih), class: 'hit', fill: 'transparent'}, svg);
+    const tol = c.tol || 3;
+    const near = xv => { let lo = 0, hi = xs.length - 1; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (xs[mid] < xv) lo = mid; else hi = mid; } return Math.abs(xs[lo] - xv) <= Math.abs(xs[hi] - xv) ? lo : hi; };
+    let idx = -1;
+    const show = (i, ex, ey) => {
+      idx = i; const xv = xs[i], px = x(xv);
+      cross.setAttribute('x1', px); cross.setAttribute('x2', px); cross.setAttribute('visibility', 'visible');
+      const rows = [];
+      c.series.forEach((s, k) => {
+        let best = null;
+        for (const p of s.pts) { if (p[1] == null) continue; const dd = Math.abs(p[0] - xv); if (dd <= tol && (!best || dd < Math.abs(best[0] - xv))) best = p; }
+        if (best) { hd[k].setAttribute('cx', x(best[0])); hd[k].setAttribute('cy', cy(best[1])); hd[k].setAttribute('visibility', 'visible'); rows.push({s, p: best}); }
+        else hd[k].setAttribute('visibility', 'hidden');
+      });
+      rows.sort((a, b) => b.p[1] - a.p[1]);
+      const pos = ex == null ? client(svg, px, m.t + 10) : {x: ex, y: ey};
+      tip(t => { tHead(t, c.tipHead(xv)); if (!rows.length) tRow(t, {v: '—', l: 'Không có dữ liệu'}); rows.forEach(r => tRow(t, {color: r.s.color, v: c.tipVal(r.p, r.s), l: c.tipLab ? c.tipLab(r.p, r.s) : r.s.name})); if (c.tipNote) tNote(t, c.tipNote); }, pos.x, pos.y);
+    };
+    const hide = () => { idx = -1; cross.setAttribute('visibility', 'hidden'); hd.forEach(h => h.setAttribute('visibility', 'hidden')); untip(); };
+    const onPtr = e => { if (!xs.length) return; const q = local(svg, e); show(near(x.inv(q.x)), e.clientX, e.clientY); };
+    hit.addEventListener('pointermove', onPtr);
+    hit.addEventListener('pointerdown', onPtr);
+    hit.addEventListener('pointerleave', hide);
+    host.onkeydown = e => {
+      if (!xs.length) return;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); const st = e.shiftKey ? 10 : 1; const i = idx < 0 ? (e.key === 'ArrowRight' ? 0 : xs.length - 1) : Math.max(0, Math.min(xs.length - 1, idx + (e.key === 'ArrowRight' ? st : -st))); show(i); }
+      else if (e.key === 'Escape') hide();
+    };
+    host.onblur = hide;
+  });
+}
+
+/* ---------- horizontal bars (emphasis) ---------- */
+function barsH(sel, rows, o){
+  mount(sel, (host, W) => {
+    const narrow = W < 560;
+    const lw = narrow ? 82 : 104, vw = narrow ? 96 : 118, rh = 27, bh = 14, top = 6;
+    const Hh = top + rows.length * rh + 26;
+    const svg = svgBase(host, W, Hh, o.aria);
+    const x0 = lw, x1 = W - vw;
+    const x = lin(0, o.max, x0, x1);
+    const g = S('g', null, svg);
+    (narrow ? o.ticksN : o.ticks).forEach(v => { const xx = x(v); S('line', {x1: xx, x2: xx, y1: top - 2, y2: Hh - 22, class: 'grid'}, g); S('text', {x: xx, y: Hh - 6, 'text-anchor': 'middle', class: 'tick', text: o.fmt(v)}, g); });
+    S('line', {x1: x0, x2: x0, y1: top - 2, y2: Hh - 22, class: 'axis'}, g);
+    rows.forEach((r, i) => {
+      const yy = top + i * rh + (rh - bh) / 2 - 2, yc = yy + bh / 2;
+      S('text', {x: x0 - 8, y: yc, dy: '0.32em', 'text-anchor': 'end', class: 'rowlabel' + (r.focus ? ' strong' : ''), text: r.n}, g);
+      const w = Math.max(2, x(r.oi) - x0);
+      const color = r.focus ? 'var(--s1)' : 'var(--deemph)';
+      const bar = S('path', {d: barPath(x0, yy, w, bh, 4, 'right'), class: 'bar', style: 'fill:' + color}, g);
+      S('text', {x: x0 + w + 6, y: yc, dy: '0.32em', class: 'vlabel', text: fmtM(r.oi) + (r.share !== '—' ? ' · ' + r.share : '')}, g);
+      const h = S('rect', {x: 0, y: top + i * rh - 2, width: W, height: rh, fill: 'transparent', class: 'hitrow', tabindex: '0', role: 'img', 'aria-label': r.n + ': OI ' + fmtM(r.oi) + ', thị phần ' + r.share}, g);
+      hoverable(h, bar, t => { tHead(t, r.n); tRow(t, {kt: 'box', color, v: fmtM(r.oi), l: 'open interest'}); tRow(t, {v: r.share, l: 'thị phần OI'}); tNote(t, r.focus ? 'Chưa có token, được phân tích trong báo cáo' : 'Đã có token hoặc ngoài phạm vi'); if (r.note) tNote(t, 'OI lấy từ ' + r.note); });
+    });
+  });
+}
+
+/* ---------- dot plot (OI retention) ---------- */
+function dotPlot(sel, rows){
+  mount(sel, (host, W) => {
+    const narrow = W < 560;
+    const lw = narrow ? 70 : 92, rp = 18, rh = 48, top = 16;
+    const Hh = top + rows.length * rh + 26;
+    const svg = svgBase(host, W, Hh, 'Biểu đồ OI còn lại sau TGE so với T-30');
+    const x = lin(0, 140, lw, W - rp);
+    const g = S('g', null, svg);
+    [0, 25, 50, 75, 100, 125].forEach(v => { const xx = x(v); S('line', {x1: xx, x2: xx, y1: top - 6, y2: Hh - 22, class: v === 100 ? 'ref' : 'grid'}, g); S('text', {x: xx, y: Hh - 6, 'text-anchor': 'middle', class: 'tick', text: v + '%'}, g); });
+    S('text', {x: x(100) + 5, y: top + 2, class: 'ref-label', text: 'T-30 = 100%'}, g);
+    const keys = [{i: 2, k: 'T+30', c: 'var(--o1)'}, {i: 3, k: 'T+90', c: 'var(--o2)'}, {i: 4, k: 'Hiện tại', c: 'var(--o3)'}];
+    rows.forEach((r, j) => {
+      const yc = top + j * rh + rh / 2 + 4;
+      S('text', {x: lw - 10, y: yc, dy: '0.32em', 'text-anchor': 'end', class: 'rowlabel', text: r.name}, g);
+      const vals = keys.map(k => Math.min(140, r.pct[k.i]));
+      S('line', {x1: x(Math.min(...vals)), x2: x(Math.max(...vals)), y1: yc, y2: yc, class: 'conn'}, g);
+      keys.forEach(k => {
+        const v = r.pct[k.i], cxp = x(Math.min(140, v));
+        const dot = S('circle', {cx: cxp, cy: yc, r: 6, class: 'dot', style: 'fill:' + k.c}, g);
+        if (k.k === 'T+90') S('text', {x: cxp, y: yc - 13, 'text-anchor': 'middle', class: 'vlabel', text: fmtPct(v)}, g);
+        const h = S('circle', {cx: cxp, cy: yc, r: 13, fill: 'transparent', class: 'hitdot', tabindex: '0', role: 'img', 'aria-label': r.name + ', ' + k.k + ': ' + fmtPct(v) + ' so với T-30'}, g);
+        hoverable(h, dot, t => { tHead(t, r.name + ' · ' + k.k); tRow(t, {kt: 'dot', color: k.c, v: fmtPct(v), l: 'so với T-30'}); tRow(t, {v: '$' + r.raw[k.i] + 'M', l: 'open interest'}); tNote(t, 'T-30: $' + r.raw[0] + 'M · T0: $' + r.raw[1] + 'M'); });
+      });
+    });
+  });
+}
+
+/* ---------- diverging bars (breakeven) ---------- */
+function diverging(sel, rows){
+  mount(sel, (host, W) => {
+    const narrow = W < 560;
+    const lw = narrow ? 78 : 100, rp = narrow ? 6 : 14, rh = 36, bh = 16, top = 6;
+    const Hh = top + rows.length * rh + 26;
+    const svg = svgBase(host, W, Hh, 'Biểu đồ FDV D1 chia breakeven FDV');
+    const x = logS(0.25, 32, lw, W - rp);
+    const g = S('g', null, svg);
+    [0.25, 0.5, 1, 2, 4, 8, 16, 32].forEach(v => { const xx = x(v); S('line', {x1: xx, x2: xx, y1: top - 2, y2: Hh - 22, class: v === 1 ? 'base' : 'grid'}, g); if (!narrow || v !== 0.5 && v !== 2 && v !== 8) S('text', {x: xx, y: Hh - 6, 'text-anchor': 'middle', class: 'tick', text: v + '×'}, g); });
+    rows.forEach((r, j) => {
+      const yy = top + j * rh + (rh - bh) / 2 - 2, yc = yy + bh / 2;
+      S('text', {x: lw - 10, y: yc, dy: '0.32em', 'text-anchor': 'end', class: 'rowlabel', text: r.n}, g);
+      let d, color, a, b;
+      if (r.kind === 'proj') { a = x(r.lo); b = x(r.hi); d = barPath(a, yy, b - a, bh, 4, 'both'); color = 'var(--pos-soft)'; }
+      else if (r.v >= 1) { a = x(1); b = x(r.v); d = barPath(a, yy, b - a, bh, 4, 'right'); color = 'var(--pos)'; }
+      else { a = x(r.v); b = x(1); d = barPath(a, yy, b - a, bh, 4, 'left'); color = 'var(--neg)'; }
+      const bar = S('path', {d, class: 'bar', style: 'fill:' + color}, g);
+      const left = r.kind !== 'proj' && r.v < 1;
+      const lab = S('text', {x: left ? a - 6 : b + 6, y: yc, dy: '0.32em', 'text-anchor': left ? 'end' : 'start', class: 'vlabel', text: r.txt}, g);
+      const bw = lab.getBBox().width;
+      if (!left && b + 6 + bw > W - 2) {
+        if (b - a > bw + 14) { lab.setAttribute('x', b - 7); lab.setAttribute('text-anchor', 'end'); lab.setAttribute('class', 'vlabel in'); }
+        else { lab.setAttribute('x', W - 2); lab.setAttribute('text-anchor', 'end'); lab.setAttribute('y', yc - 14); }
+      }
+      if (left && a - 6 - bw < lw) { lab.setAttribute('x', b + 6); lab.setAttribute('text-anchor', 'start'); }
+      const h = S('rect', {x: 0, y: top + j * rh - 2, width: W, height: rh, fill: 'transparent', class: 'hitrow', tabindex: '0', role: 'img', 'aria-label': r.n + ': ' + r.txt}, g);
+      hoverable(h, bar, t => { tHead(t, r.n); tRow(t, {kt: 'box', color, v: r.txt, l: 'FDV D1 ÷ breakeven'}); tNote(t, r.kind === 'proj' ? 'Dự phóng: chưa TGE' : (r.v >= 1 ? 'Farmer có lời trên phí' : 'Farmer lỗ phí ròng')); });
+    });
+  });
+}
+
+/* ---------- valuation ranges (football field) ---------- */
+function rangeChart(sel, rows){
+  mount(sel, (host, W) => {
+    const narrow = W < 600;
+    const lw = narrow ? 92 : 132, rp = narrow ? 14 : 26, rh = narrow ? 48 : 46, top = 8;
+    const Hh = top + rows.length * rh + 26;
+    const svg = svgBase(host, W, Hh, 'Biểu đồ khoảng định giá FDV D1 của 7 dự án');
+    const x = logS(20, 3000, lw, W - rp);
+    const g = S('g', null, svg);
+    (narrow ? [20, 50, 200, 1000] : [20, 50, 100, 200, 500, 1000, 2000]).forEach(v => { const xx = x(v); S('line', {x1: xx, x2: xx, y1: top - 4, y2: Hh - 22, class: 'grid'}, g); S('text', {x: xx, y: Hh - 6, 'text-anchor': 'middle', class: 'tick', text: fmtM(v)}, g); });
+    rows.forEach((r, j) => {
+      const yc = top + j * rh + rh / 2;
+      S('text', {x: lw - 12, y: yc - 7, dy: '0.32em', 'text-anchor': 'end', class: 'rowlabel' + (r.ref ? '' : ' strong'), text: r.n}, g);
+      S('text', {x: lw - 12, y: yc + 9, dy: '0.32em', 'text-anchor': 'end', class: 'rowsub', text: (narrow ? '' : 'base ') + fmtRange(r.base[0], r.base[1])}, g);
+      const lo = r.bear ? r.bear[0] : r.base[0];
+      const open = r.bull[1] == null;
+      const hi = open ? r.bull[0] : r.bull[1];
+      S('line', {x1: x(lo), x2: x(hi), y1: yc, y2: yc, class: 'whisk'}, g);
+      S('line', {x1: x(lo), x2: x(lo), y1: yc - 5, y2: yc + 5, class: 'whisk'}, g);
+      if (!open) S('line', {x1: x(hi), x2: x(hi), y1: yc - 5, y2: yc + 5, class: 'whisk'}, g);
+      if (r.bear) S('path', {d: barPath(x(r.bear[0]), yc - 3, Math.max(4, x(r.bear[1]) - x(r.bear[0])), 6, 3, 'both'), style: 'fill:var(--deemph)'}, g);
+      if (!open && r.bull[1] > r.bull[0]) S('path', {d: barPath(x(r.bull[0]), yc - 3, Math.max(4, x(r.bull[1]) - x(r.bull[0])), 6, 3, 'both'), style: 'fill:var(--deemph)'}, g);
+      if (open) S('text', {x: x(hi) + 4, y: yc, dy: '0.32em', class: 'vlabel', text: '+'}, g);
+      const bar = S('path', {d: barPath(x(r.base[0]), yc - 7, x(r.base[1]) - x(r.base[0]), 14, 4, 'both'), class: 'bar', style: 'fill:var(--s1)'}, g);
+      if (r.pre) S('path', {d: barPath(x(r.pre[0]), yc - 13, x(r.pre[1]) - x(r.pre[0]), 4, 2, 'both'), style: 'fill:var(--s2)'}, g);
+      if (r.pm) S('circle', {cx: x(r.pm), cy: yc, r: 5.5, class: 'dot', style: 'fill:var(--s2)'}, g);
+      const h = S('rect', {x: 0, y: top + j * rh, width: W, height: rh, fill: 'transparent', class: 'hitrow', tabindex: '0', role: 'img', 'aria-label': r.n + ': kịch bản cơ sở ' + fmtRange(r.base[0], r.base[1])}, g);
+      hoverable(h, bar, t => {
+        tHead(t, r.n + (r.ref ? ' (mục ' + (r.n === 'Variational' ? '7' : '6') + ')' : ''));
+        tRow(t, {kt: 'box', color: 'var(--deemph)', v: r.bear ? fmtRange(r.bear[0], r.bear[1]) : (r.bearTxt || '—'), l: 'bear'});
+        tRow(t, {kt: 'box', color: 'var(--s1)', v: fmtRange(r.base[0], r.base[1]), l: 'base'});
+        tRow(t, {kt: 'box', color: 'var(--deemph)', v: open ? 'trên ' + fmtM(r.bull[0]) : (r.bull[1] === r.bull[0] ? 'khoảng ' + fmtM(r.bull[0]) : fmtRange(r.bull[0], r.bull[1])), l: 'bull'});
+        if (r.pm) tRow(t, {kt: 'dot', color: 'var(--s2)', v: fmtM(r.pm), l: 'median Polymarket'});
+        if (r.pre) tRow(t, {color: 'var(--s2)', v: fmtRange(r.pre[0], r.pre[1]), l: 'pre-market'});
+      });
+    });
+  });
+}
+
+/* ---------- ladder meter list ---------- */
+function ladder(sel, rows){
+  const host = doc.querySelector(sel); if (!host) return;
+  let ci = -1; rows.forEach((r, i) => { if (ci < 0 && i < rows.length - 1 && r[1] >= 50 && rows[i + 1][1] < 50) ci = i; });
+  rows.forEach(([thr, p], i) => {
+    const row = H('div', {class: 'lrow' + (i === ci || i === ci + 1 ? ' cross' : '')}, host);
+    H('span', {class: 'th', text: '> ' + fmtM(thr)}, row);
+    const pct1 = trim(p.toFixed(1)) + '%';
+    const tr = H('span', {class: 'tr', role: 'img', 'aria-label': 'Xác suất FDV D1 trên ' + fmtM(thr) + ': ' + pct1}, row);
+    const f = H('i', null, tr); f.style.width = p + '%';
+    H('span', {class: 'pv', text: pct1}, row);
+  });
+  if (ci >= 0) {
+    const [x1, p1] = rows[ci], [x2, p2] = rows[ci + 1];
+    const med = Math.exp(Math.log(x1) + (p1 - 50) / (p1 - p2) * (Math.log(x2) - Math.log(x1)));
+    H('p', {class: 'ladder-note', text: 'Hai hàng tô màu là nơi xác suất cắt 50%: median ngụ ý ≈ ' + fmtM(med) + ' (nội suy log).'}, host);
+  }
+}
+
+/* ---------- build charts ---------- */
+barsH('#c-oishare', D.oiShare, {max: 6000, ticks: [0, 1000, 2000, 3000, 4000, 5000, 6000], ticksN: [0, 2000, 4000, 6000], fmt: v => v === 0 ? '0' : fmtM(v), aria: 'Biểu đồ open interest theo sàn ngày 17/11/2026'});
+
+const COL = ['var(--s1)', 'var(--s2)', 'var(--s3)', 'var(--s4)', 'var(--s5)'];
+const priceSeries = D.pricePaths.map((s, i) => ({name: s.name, color: COL[i], tge: toDays(s.tge), pts: s.points, label: {at: 'end', text: p => s.name + ' ' + Math.round(p[1])}}));
+legend('#lg-price', priceSeries);
+lineChart('#c-price', {
+  aria: 'Đường giá sau TGE', x: [0, 330], y: [15, 800], log: true, h: 340, hN: 280, r: 70, rN: 58,
+  yTicks: [20, 50, 100, 200, 500], yFmt: v => String(v),
+  xTicks: [0, 30, 60, 90, 120, 180, 240, 300], xTicksN: [0, 90, 180, 270], xFmt: v => v === 0 ? 'TGE' : 'D' + v,
+  ref: {y: 100, label: 'D1 = 100', at: 330, anchor: 'end', below: true}, tol: 0,
+  series: priceSeries,
+  tipHead: xv => 'D' + xv + ' sau TGE',
+  tipVal: p => String(Math.round(p[1])),
+  tipLab: (p, s) => s.name + ' · $' + p[2] + ' · ' + fmtDate(s.tge + p[0])
+});
+
+lineChart('#c-pm', {
+  aria: 'Tỷ lệ median Polymarket chia FDV thực tế', x: [-180, 0], y: [0.3, 8], log: true, h: 330, hN: 280, r: 18, rN: 12,
+  yTicks: [0.5, 1, 2, 4, 8], yFmt: v => v + '×',
+  xTicks: [-180, -150, -120, -90, -60, -30, 0], xTicksN: [-180, -120, -60, 0], xFmt: v => v === 0 ? 'TGE' : 'T' + v,
+  ref: {y: 1, label: '1× = FDV thực tế D1', labelN: '1× = thực tế', at: -125, below: true}, tol: 1,
+  series: D.pmRatio.map((s, i) => ({name: s.name, color: COL[i], actual: s.actual, pts: s.points.map(p => [p[0], p[2], p[1]]),
+    label: [{at: -82, dy: 16, dx: 0, anchor: 'middle'}, {at: -140, dx: -8, anchor: 'end', n: {dx: 6, anchor: 'start', dy: -12}}, {at: -122, dx: 8}, {at: -108, dy: 16, dx: 0, anchor: 'middle'}][i]})),
+  tipHead: xv => (xv === 0 ? 'Ngày TGE' : (-xv) + ' ngày trước TGE'),
+  tipVal: p => trim(p[1].toFixed(2)) + '×',
+  tipLab: (p, s) => s.name + ' · median ' + fmtM(p[2]) + ' / thực tế ' + fmtM(s.actual)
+});
+legend('#lg-pm', D.pmRatio.map((s, i) => ({name: s.name, color: COL[i]})));
+
+dotPlot('#c-oi', D.oi);
+diverging('#c-be', D.breakeven);
+rangeChart('#c-val', D.valuation);
+
+const tl = name => D.pmTimeline.find(s => s.name === name).points.map(p => [toDays(p[0]), p[1]]);
+const months = ['2026-01-01', '2026-03-01', '2026-05-01', '2026-07-01', '2026-09-01', '2026-11-01'].map(toDays);
+const monthFmt = (v, narrow) => { const d = new Date(v * DAY); return (d.getUTCMonth() + 1) + '/' + (narrow ? String(d.getUTCFullYear()).slice(2) : d.getUTCFullYear()); };
+lineChart('#c-xten-tl', {
+  aria: 'Median Polymarket của Extended theo thời gian', x: [toDays('2025-12-05'), toDays('2026-11-22')], y: [120, 600], log: true, h: 250, hN: 230, r: 52, rN: 46, l: 50, lN: 44,
+  yTicks: [150, 200, 300, 500], yFmt: v => '$' + v + 'M', xTicks: months, xTicksN: [months[0], months[2], months[4]], xFmt: monthFmt, tol: 2,
+  annot: [{x: toDays('2026-10-06'), label: 'Points kết thúc', anchor: 'end', row: 0}, {x: toDays('2026-11-11'), label: 'Mở checker', anchor: 'end', row: 1, labelN: 'Checker'}],
+  series: [{name: 'Extended', color: 'var(--s1)', pts: tl('Extended'), label: {at: 'end', text: p => fmtM(p[1])}}],
+  tipHead: xv => fmtDate(xv), tipVal: p => fmtM(p[1]), tipLab: () => 'median ngụ ý'
+});
+lineChart('#c-var-tl', {
+  aria: 'Median Polymarket của Variational theo thời gian', x: [toDays('2025-12-20'), toDays('2026-11-22')], y: [150, 2000], log: true, h: 250, hN: 230, r: 52, rN: 46, l: 50, lN: 44,
+  yTicks: [200, 500, 1000, 2000], yFmt: v => fmtM(v), xTicks: months, xTicksN: [months[0], months[2], months[4]], xFmt: monthFmt, tol: 2,
+  annot: [{x: toDays('2026-05-20'), label: 'Series A $50M', row: 0}, {x: toDays('2026-09-24'), label: 'Công bố tokenomics', anchor: 'end', row: 1, labelN: 'Tokenomics'}],
+  series: [{name: 'Variational', color: 'var(--s1)', pts: tl('Variational'), label: {at: 'end', text: p => fmtM(p[1])}}],
+  tipHead: xv => fmtDate(xv), tipVal: p => fmtM(p[1]), tipLab: () => 'median ngụ ý'
+});
+ladder('#ld-xten', D.ladders.Extended);
+ladder('#ld-var', D.ladders.Variational);
+
+/* ---------- UI: theme, nav, progress, tables, checklist, copy ---------- */
+const root = doc.documentElement, mq = matchMedia('(prefers-color-scheme: dark)');
+const eff = () => root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light');
+const themeBtn = doc.getElementById('themeBtn');
+function syncTheme(){ const dark = eff() === 'dark'; doc.querySelectorAll('[data-theme-icon]').forEach(u => u.setAttribute('href', dark ? '#i-sun' : '#i-moon')); themeBtn.setAttribute('aria-label', dark ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối'); }
+themeBtn.addEventListener('click', () => { const next = eff() === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', next); try { localStorage.setItem('pdx-theme', next); } catch (e) {} syncTheme(); });
+if (mq.addEventListener) mq.addEventListener('change', syncTheme);
+syncTheme();
+doc.getElementById('printBtn').addEventListener('click', () => print());
+addEventListener('beforeprint', () => doc.querySelectorAll('details').forEach(d => d.setAttribute('open', '')));
+
+const navLinks = [...doc.querySelectorAll('.toc a, .chips a')];
+const now = doc.getElementById('nowReading');
+function setActive(id){
+  navLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + id));
+  const chip = doc.querySelector('.chips a[href="#' + id + '"]');
+  if (chip && chip.parentElement.offsetParent !== null) { const bar = chip.parentElement; bar.scrollTo({left: chip.offsetLeft - bar.clientWidth / 2 + chip.clientWidth / 2, behavior: 'smooth'}); }
+  const a = doc.querySelector('.toc a[href="#' + id + '"]');
+  if (now && a) { const n = a.querySelector('.n').textContent; now.replaceChildren(doc.createTextNode('Đang đọc: ')); H('b', {text: n + ' · ' + a.textContent.slice(n.length)}, now); }
+}
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }), {rootMargin: '-30% 0px -65% 0px'});
+  doc.querySelectorAll('main section[id]').forEach(s => io.observe(s));
+}
+const prog = doc.getElementById('progress'), toTop = doc.getElementById('toTop');
+const onScroll = () => { const h = doc.documentElement; const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight); prog.style.transform = 'scaleX(' + Math.min(1, Math.max(0, p)) + ')'; toTop.classList.toggle('show', h.scrollTop > 900); };
+addEventListener('scroll', onScroll, {passive: true}); onScroll();
+addEventListener('scroll', untip, {passive: true});
+toTop.addEventListener('click', () => scrollTo({top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}));
+doc.addEventListener('pointerdown', e => { if (!e.target.closest('.chart')) untip(); });
+
+function markScroll(){ doc.querySelectorAll('.tbl').forEach(t => { const w = t.querySelector('.table-wrap'); if (w) t.classList.toggle('scrollable', w.scrollWidth > w.clientWidth + 2); }); }
+addEventListener('resize', markScroll); markScroll();
+
+const KEY = 'pdx-checklist-v1'; let st = {};
+try { st = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+doc.querySelectorAll('.chk input[data-k]').forEach(i => { i.checked = !!st[i.dataset.k]; i.addEventListener('change', () => { st[i.dataset.k] = i.checked; try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }); });
+
+doc.querySelectorAll('.copy').forEach(b => b.addEventListener('click', async () => {
+  const txt = b.parentElement.querySelector('code').textContent;
+  let ok = false;
+  try { await navigator.clipboard.writeText(txt); ok = true; } catch (e) {
+    const ta = H('textarea', null, doc.body); ta.value = txt; ta.select(); try { ok = doc.execCommand('copy'); } catch (e2) {} ta.remove();
+  }
+  const label = b.lastChild; const old = label.textContent;
+  label.textContent = ok ? 'Đã chép' : 'Không chép được'; b.classList.toggle('done', ok);
+  setTimeout(() => { label.textContent = old; b.classList.remove('done'); }, 1500);
+}));
+})();
+</script>
+</body>
+</html>

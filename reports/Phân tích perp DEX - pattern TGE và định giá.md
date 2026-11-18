@@ -7,9 +7,9 @@
 ## 0. TL;DR
 
 1. **Polymarket định giá quá cao trước TGE perp DEX, và kỳ vọng tụt dần theo thời gian.** Với 5 perp đã TGE có kèo "FDV one day after launch" (Lighter, edgeX, Backpack, GRVT, Paradex):
-   - Median ngụ ý lúc mới mở kèo cao hơn FDV thực tế D1 khoảng 80% (trung vị, 4/4 trường hợp).
-   - Ở T-30 ngày vẫn cao hơn khoảng 42% (4/5 trường hợp).
-   - Ở T-2 ngày vẫn cao hơn khoảng 30% (4/5 trường hợp).
+   - Lúc mới mở kèo, FDV thực tế D1 thấp hơn median ngụ ý khoảng 80% (trung vị, 4/4 trường hợp).
+   - Ở T-30 ngày, FDV thực tế vẫn thấp hơn median khoảng 42% (4/5 trường hợp).
+   - Ở T-2 ngày, vẫn thấp hơn khoảng 30% (4/5 trường hợp).
    - Quy tắc thực dụng: lấy median T-30 nhân 0.6, median T-7/T-2 nhân 0.7, hoặc giá pre-market nhân 0.9.
 2. **Thị trường chung quyết định mặt bằng FDV nhiều hơn fundamentals.**
    - TGE trong bull hoặc mania: HYPE (11/2024) khoảng $4B, ASTER (9/2025) khoảng $4–6B.
@@ -25,7 +25,7 @@
    - Ngoại lệ: token có flywheel (HYPE), hoặc airdrop trả dần (GRVT giữ được OI).
    - Extended đã "cliff" ngay trước TGE: points kết thúc 6/10, OI giảm 48% trong 30 ngày.
 6. **Chỉ số mới: "Breakeven FDV" = phí user đã trả trước TGE ÷ % airdrop.** Hệ số FDV D1 ÷ breakeven dự báo được tâm lý sau TGE.
-   - Tích cực: ASTER khoảng 12x, LIT từ 17x trở lên.
+   - Tích cực: ASTER khoảng 12x, LIT khoảng 17x (cận trên, vì DefiLlama thiếu dữ liệu phí trước 10/2025).
    - Tiêu cực: edgeX 0.55x, Paradex 0.42x. Farmer lỗ phí ròng nên xả mạnh.
 7. **Định giá D1, kịch bản cơ sở:**
    - **Variational: $0.6–1.0B**, khoảng $17–29/point.
